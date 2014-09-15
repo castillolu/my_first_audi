@@ -12,7 +12,10 @@ var maxSize = 2000000;
 var dbapp = {
         
     openDatabase : function(){
+        console.log("before");
         db = window.openDatabase(shortName, version, displayName, maxSize);
+        db.transaction(dbapp.populateDB, dbapp.successCB, dbapp.errorCB);
+        console.log("after");
     },
 
     queryDemo : function () {
@@ -20,7 +23,7 @@ var dbapp = {
     },
     
     queryDB : function (tx) {
-        tx.executeSql('SELECT * FROM USERS', [], dbapp.querySuccess, dbapp.errorCB);
+        tx.executeSql('SELECT * FROM Users', [], dbapp.querySuccess, dbapp.errorCB);
     },
     
     querySuccess : function (tx, results) {
@@ -28,7 +31,7 @@ var dbapp = {
         var s = "";
         if (results != null && results.rows != null) {
             for(var i=0; i<results.rows.length; i++) {
-                s += "<li><a href='edit.html?id="+results.rows.item(i).id + "'>" + results.rows.item(i).data + "</a></li>"; 
+                s += "<li><a href='edit.html?id="+results.rows.item(i).id + "'>" + results.rows.item(i).name + "</a></li>"; 
             }
             $("#info").html(s);
         }else{
@@ -65,6 +68,7 @@ var dbapp = {
     //
     successCB :function () {
         console.log("success!");
+
     },
     
     //login users
