@@ -26,8 +26,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        //$(document).on('ready', this.onDeviceReady);
+        //document.addEventListener('deviceready', this.onDeviceReady, false);
+        $(document).on('ready', this.onDeviceReady);
         document.getElementById('scan').addEventListener('click', this.scan, false);
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
@@ -127,20 +127,24 @@ var app = {
     },
     
     loginAuth: function(e){
+        e.preventDefault();
         //disable the button so we can't resubmit while we wait
         $("#submit",this).attr("disabled","disabled");
-        var user = $("#username", this).val();
+        var user = $("#email", this).val();
         var password = $("#password", this).val();
         if(user != '' && password!= '') {
-            var res = dbapp.auth(user,password);
-            if(res == true) {
-                alert("Login Successfully");
-            } else {
-                alert("Your login failed");
-            }
-            $("#submit").removeAttr("disabled");
+            dbapp.auth(user,password);
+            setTimeout(function (){
+                if(result) {
+                    alert("Login Successfully");
+                } else {
+                    alert("Your login failed");
+                }
+                $("#submit").removeAttr("disabled");
+            },50);
         }
         return false;
-    }    
+    }
+    
 
 };

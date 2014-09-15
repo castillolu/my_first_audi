@@ -4,10 +4,11 @@
 
 // global variables
 var db;
-var shortName = 'myFirstAudiDB';
-var version = '';
-var displayName = 'My First AUDI';
-var maxSize = 2000000;
+var shortName = 'DB_MYAUDI.sqllite';
+var version = '1.0';
+var displayName = 'DB_My_First_AUDI';
+var maxSize = 2097152;
+var result = false;
 
 var dbapp = {
         
@@ -23,11 +24,14 @@ var dbapp = {
     },
     
     queryDB : function (tx) {
+        console.log("consulta");
         tx.executeSql('SELECT * FROM Users', [], dbapp.querySuccess, dbapp.errorCB);
     },
     
     querySuccess : function (tx, results) {
+        console.log("querySuccess");
         $('#info').html("querySuccess");
+        
         var s = "";
         if (results != null && results.rows != null) {
             for(var i=0; i<results.rows.length; i++) {
@@ -43,15 +47,17 @@ var dbapp = {
     // Populate the database 
     //
     populateDB : function (tx) {
+        console.log("create");
          tx.executeSql('CREATE TABLE IF NOT EXISTS Users(' + 
                         'id INTEGER NOT NULL PRIMARY KEY, ' +
                         'country_id INTEGER NOT NULL, ' +
                         'profile_id INTEGER NOT NULL, ' +
-                        'name TEXT NOT NULL' +
-                        'last_name TEXT NOT NULL' +
-                        'email TEXT NOT NULL' +
-                        'password TEXT NOT NULL' +
-                        'language TEXT NOT NULL');
+                        'name TEXT NOT NULL,' +
+                        'last_name TEXT NOT NULL,' +
+                        'email TEXT NOT NULL,' +
+                        'password TEXT NOT NULL,' +
+                        'language TEXT NOT NULL)');
+        console.log("insert");
          tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
                        'last_name, email, password, language) ' + 
                        ' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",'+
@@ -61,6 +67,7 @@ var dbapp = {
     // Transaction error callback
     //
     errorCB : function (tx, err) {
+        console.log(err);
         alert("Error processing SQL: "+err);
     },
 
@@ -73,18 +80,32 @@ var dbapp = {
     
     //login users
     auth: function(user, pass){
-        tx.executeSql('SELECT * FROM Users WHERE email = ? AND password = ?',
-                      [user, md5(pass)], 
-                      dbapp.authSuccess,
-                      dbapp.errorauth
+        db.transaction(
+            function(tx){
+                tx.executeSql('SELECT * FROM Users WHERE password = ? AND email = ?',
+                    [md5(pass), user], 
+                    dbapp.dataHandler,
+                    dbapp.errorHandler);
+            }
         );
+        return result;
     },
-    
-    authSuccess : function(){
-        return true;
+        
+    errorHandler : function (transaction, error)
+    {
+        // error.message is a human-readable string.
+        // error.code is a numeric error code
+        alert('Oops.  Error was '+error.message+' (Code '+error.code+')');
+     
+        result = false;
     },
-    
-    errorauth : function(){
-        return false;
+     
+    dataHandler : function (transaction, results)
+    {
+        if(results.rows.length > 0){
+            result = true;
+        }else{
+            result = false;
+        }
     }
 };
