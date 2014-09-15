@@ -16,13 +16,10 @@ var dbapp = {
     },
 
     queryDemo : function () {
-        $('#info').html("queryDemo");
         db.transaction(dbapp.queryDB);
-        $('#info').html("queryDemo");
     },
     
     queryDB : function (tx) {
-        $('#info').html("queryDB");
         tx.executeSql('SELECT * FROM USERS', [], dbapp.querySuccess, dbapp.errorCB);
     },
     
@@ -43,9 +40,19 @@ var dbapp = {
     // Populate the database 
     //
     populateDB : function (tx) {
-         tx.executeSql('CREATE TABLE IF NOT EXISTS USERS (id unique, data)');
-         tx.executeSql('INSERT INTO USERS (id, data) VALUES (1, "First row")');
-         tx.executeSql('INSERT INTO USERS (id, data) VALUES (2, "Second row")');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS Users(' + 
+                        'id INTEGER NOT NULL PRIMARY KEY, ' +
+                        'country_id INTEGER NOT NULL, ' +
+                        'profile_id INTEGER NOT NULL, ' +
+                        'name TEXT NOT NULL' +
+                        'last_name TEXT NOT NULL' +
+                        'email TEXT NOT NULL' +
+                        'password TEXT NOT NULL' +
+                        'language TEXT NOT NULL');
+         tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
+                       'last_name, email, password, language) ' + 
+                       ' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",'+
+                       '"21232f297a57a5a743894a0e4a801fc3", "ENGLISH")');
     },
 
     // Transaction error callback
@@ -58,5 +65,22 @@ var dbapp = {
     //
     successCB :function () {
         console.log("success!");
+    },
+    
+    //login users
+    auth: function(user, pass){
+        tx.executeSql('SELECT * FROM Users WHERE email = ? AND password = ?',
+                      [user, md5(pass)], 
+                      dbapp.authSuccess,
+                      dbapp.errorauth
+        );
+    },
+    
+    authSuccess : function(){
+        return true;
+    },
+    
+    errorauth : function(){
+        return false;
     }
 };

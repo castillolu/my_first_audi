@@ -31,6 +31,8 @@ var app = {
         document.getElementById('scan').addEventListener('click', this.scan, false);
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
+        document.getElementById('login').addEventListener('submit', this.loginAuth, false);
+             
     },
 
     // deviceready Event Handler
@@ -122,6 +124,23 @@ var app = {
             alert(error);
         }
 
+    },
+    
+    loginAuth: function(e){
+        //disable the button so we can't resubmit while we wait
+        $("#submit",this).attr("disabled","disabled");
+        var user = $("#username", this).val();
+        var password = $("#password", this).val();
+        if(user != '' && password!= '') {
+            var res = dbapp.auth(user,password);
+            if(res == true) {
+                alert("Login Successfully");
+            } else {
+                alert("Your login failed");
+            }
+            $("#submit").removeAttr("disabled");
+        }
+        return false;
     }    
 
 };

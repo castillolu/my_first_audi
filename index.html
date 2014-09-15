@@ -27,7 +27,14 @@
     </head>
     <body>
         <div class="app">
-            <h1>My First AUDI</h1>
+            <h1>Login</h1>
+            <form action="#" method="post" name="login" id="login">
+                <label for="username">Email : </label>
+                <input type="email" name="email" id="name" value="" placeholder="Email" />
+                <label for="password">Password : </label>
+                <input type="password" name="password" id="password" value="" placeholder="Password" />
+                <input type="submit" name="submit" id="submit" value="Login" />
+            </form>
             <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
             <p><a href="#" class="topcoat-button" id="send_register">Send Lead</a></p>
             <p><a href="#" class="topcoat-button" id="query_db">Consulta DB</a></p>
@@ -38,6 +45,7 @@
         <script type="text/javascript" src="childbrowser.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/md5.js"></script>
         <script type="text/javascript" src="js/database.js"></script>
         <script type="text/javascript">
             app.initialize();
