@@ -148,7 +148,7 @@ var app = {
         return false;
     },
     
-    checkConnection : function(reachability) {
+    checkConnection : function() {
         $("#info").html("checkConnection");
         var networkState = navigator.network.connection.type;
 
@@ -171,7 +171,7 @@ var app = {
     
     funOnline: function(){
         alert("Online");
-        alert(navigator.network.connection.type);
+        this.checkConnection();
     }
     
 
