@@ -151,7 +151,6 @@ var app = {
     checkConnection : function(reachability) {
         $("#info").html("checkConnection");
         var networkState = navigator.network.connection.type;
-        alert(networkState);
 
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -172,7 +171,7 @@ var app = {
     
     funOnline: function(){
         alert("Online");
-        this.checkConnection();
+        alert(navigator.network.connection.type);
     }
     
 
