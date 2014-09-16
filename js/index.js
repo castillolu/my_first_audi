@@ -1,4 +1,4 @@
-/*
+    /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -32,6 +32,8 @@ var app = {
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
         document.getElementById('login').addEventListener('submit', this.loginAuth, false);
+        document.addEventListener("offline", this.funOffline, false);
+        document.addEventListener("online", this.funOnline, false);
       
     },
 
@@ -163,6 +165,14 @@ var app = {
 
         alert('Connection type: ' + states[networkState]);
     
+    },
+    
+    funOffline: function(){
+        alert("Offline");
+    },
+    
+    funOnline: function(){
+        alert("Online");
     }
     
 
