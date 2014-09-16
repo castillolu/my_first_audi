@@ -172,6 +172,7 @@ var app = {
     },
     
     funOnline: function(){
+        alert(navigator.network.connection);
         alert("Online");
     }
     
