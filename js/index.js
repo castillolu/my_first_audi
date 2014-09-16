@@ -47,7 +47,7 @@ var app = {
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
         dbapp.openDatabase();
-        this.checkConnection();
+        setTimeout(this.checkConnection(),50);
     },
 
     scan: function() {
@@ -151,7 +151,7 @@ var app = {
         $("#info").html("checkConnection");
         var networkState = navigator.network.connection.type;
 
-        $("#info").html("networkState");
+        $("#info").html(networkState);
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
         states[Connection.ETHERNET] = 'Ethernet connection';
