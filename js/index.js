@@ -147,6 +147,7 @@ var app = {
     },
     
     reachableCallback: function(reachability) {
+        $("#info").html("reachableCallback");
         // There is no consistency on the format of reachability
         var networkState = reachability.code || reachability;
 
