@@ -32,7 +32,7 @@ var app = {
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
         document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-             
+        navigator.network.isReachable("myfirstaudi.info", this.reachableCallback, {});             
     },
 
     // deviceready Event Handler
@@ -144,6 +144,18 @@ var app = {
             },50);
         }
         return false;
+    },
+    
+    reachableCallback: function(reachability) {
+        // There is no consistency on the format of reachability
+        var networkState = reachability.code || reachability;
+
+        var states = {};
+        states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+        states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+        states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+
+        alert('Connection type: ' + states[networkState]);
     }
     
 

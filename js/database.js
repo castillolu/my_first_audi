@@ -48,7 +48,7 @@ var dbapp = {
     //
     populateDB : function (tx) {
         console.log("create");
-         tx.executeSql('CREATE TABLE IF NOT EXISTS Users(' + 
+        tx.executeSql('CREATE TABLE IF NOT EXISTS Users(' + 
                         'id INTEGER NOT NULL PRIMARY KEY, ' +
                         'country_id INTEGER NOT NULL, ' +
                         'profile_id INTEGER NOT NULL, ' +
@@ -57,11 +57,10 @@ var dbapp = {
                         'email TEXT NOT NULL,' +
                         'password TEXT NOT NULL,' +
                         'language TEXT NOT NULL)');
-        console.log("insert");
-         tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
-                       'last_name, email, password, language) ' + 
-                       ' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",'+
-                       '"21232f297a57a5a743894a0e4a801fc3", "ENGLISH")');
+        tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
+                        'last_name, email, password, language) ' + 
+                        ' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",'+
+                        '"21232f297a57a5a743894a0e4a801fc3", "ENGLISH")');
     },
 
     // Transaction error callback
