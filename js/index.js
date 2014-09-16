@@ -32,7 +32,7 @@ var app = {
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
         document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-        this.checkConnection();       
+      
     },
 
     // deviceready Event Handler
@@ -47,6 +47,7 @@ var app = {
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
         dbapp.openDatabase();
+        this.checkConnection();
     },
 
     scan: function() {
@@ -147,9 +148,10 @@ var app = {
     },
     
     checkConnection : function(reachability) {
-        $("#info").html("reachableCallback");
+        $("#info").html("checkConnection");
         var networkState = navigator.network.connection.type;
 
+        $("#info").html("networkState");
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
         states[Connection.ETHERNET] = 'Ethernet connection';
