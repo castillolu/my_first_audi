@@ -47,7 +47,7 @@ var app = {
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
         dbapp.openDatabase();
-        this.checkConnection;
+        this.checkConnection();
     },
 
     scan: function() {
