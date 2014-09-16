@@ -149,7 +149,7 @@ var app = {
     
     checkConnection : function(reachability) {
         $("#info").html("checkConnection");
-        var networkState = navigator.network.connection.type;
+        var networkState = navigator.connection.type;
         alert(networkState);
 
         var states = {};
