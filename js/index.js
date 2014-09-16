@@ -150,7 +150,8 @@ var app = {
     
     checkConnection : function(reachability) {
         $("#info").html("checkConnection");
-        var networkState = navigator.connection.type;
+        var networkState = navigator.network.connection.type;
+        alert(networkState);
 
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
