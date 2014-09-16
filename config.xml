@@ -14,7 +14,7 @@
     </author>
 
     <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
-    <gap:plugin name="NetworkStatus" value="org.apache.cordova.core.NetworkManager" />
+    <gap:plugin name="org.apache.cordova.network-information" />
     
     <gap:platform name="ios" />
     <gap:platform name="android" />    
