@@ -49,7 +49,6 @@ var app = {
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
         dbapp.openDatabase();
-        this.checkConnection();
     },
 
     scan: function() {
@@ -152,7 +151,6 @@ var app = {
     checkConnection : function(reachability) {
         $("#info").html("checkConnection");
         var networkState = navigator.connection.type;
-        alert(networkState);
 
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -172,8 +170,8 @@ var app = {
     },
     
     funOnline: function(){
-        alert(navigator.network.connection.type);
         alert("Online");
+        this.checkConnection();
     }
     
 
