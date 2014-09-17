@@ -106,5 +106,15 @@ var dbapp = {
         }else{
             result = false;
         }
+    },
+    
+    //Update users from BD PHP
+    updateUsers : function(dataJson){
+        var users = JSON.parse(dataJson);
+        $("#info").html("Usuarios");
+        for(var user in users){
+            $("#info").append(user.id + "</br>");
+            console.log(user);
+        }
     }
 };

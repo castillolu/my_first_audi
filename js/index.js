@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var urlAPI = "http://192.168.0.105/my_first_audi/api";
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -32,8 +34,8 @@ var app = {
         document.getElementById('send_register').addEventListener('click', this.sendLead, false);
         document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
         document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-        document.addEventListener("offline", this.funOffline, false);
-        document.addEventListener("online", this.funOnline, false);
+        document.addEventListener("offline", this.isOffline, false);
+        document.addEventListener("online", this.isOnline, false);
       
     },
 
@@ -148,43 +150,48 @@ var app = {
         return false;
     },
     
-    checkConnection : function() {
-        $("#info").html("checkConnection");
-        var networkState = navigator.network.connection.type;
-
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';
-
-        alert('Connection type: ' + states[networkState]);
-    
+   
+    isOffline: function(){
+        //TODO Disable button Sync 
     },
     
-    funOffline: function(){
-        alert("Offline");
+    isOnline: function(){
+        //TODO Enable button Sync 
+        var networkState = navigator.network.connection.type;
+        
+        $("#info").html(networkState);
+        if(networkState == 'wifi'){
+            this.getUsers();
+        }
+
     },
     
-    funOnline: function(){
-        alert("Online");
-        $("#info").html("checkConnection");
-        var networkState = navigator.network.connection.type;
+    getUsers : function(){
+        try{
+            $.ajax(urlAPI + "/users/list_users", {
+                type: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa("admin:1234"));
+                },
+                crossDomain: true,
+                contentType: "application/json",
+                success: function(data) {
+                    if(data.status){
+                        dbapp.updateUsers(data.data);
+                    }else{
+                        $("#info").html("Error al crear el registro : " + data.error);
+                    }
+                },
+                error: function(jqXHR, text_status, strError) {
+                    alert(text_status + " " + strError);
+                }
+            });
+        }
+        catch(error)
+        {
+            alert(error);
+        }
 
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.NONE]     = 'No network connection';
-
-        alert('Connection type: ' + networkState);
-    
     }
     
 
