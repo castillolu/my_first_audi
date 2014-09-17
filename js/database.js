@@ -122,15 +122,43 @@ var dbapp = {
                 objUser.email = users[user].email;
                 objUser.password = users[user].password;
                 objUser.language = users[user].country.language;
-                db.transaction(dbapp.updateUserDB, dbapp.successCB, dbapp.errorCB);
+                db.transaction(dbapp.searchUserDB, dbapp.successCB, dbapp.errorCB);
             }
         }catch(error){
             alert(error);
         }
     },
     
-    updateUserDB : function(){
+    searchUserDB : function(){
+        result = false;
+        db.transaction(
+            function(tx){
+                tx.executeSql('SELECT * FROM Users WHERE id = ?',
+                    [objUser.id], 
+                    dbapp.dataHandler,
+                    dbapp.errorHandler);
+            }
+        );
+        if(result){
+            db.transaction(dbapp.updateUserDB, dbapp.successCB, dbapp.errorCB);
+        }else{
+            db.transaction(dbapp.createUserDB, dbapp.successCB, dbapp.errorCB);
+        }   
         
+    },
+    
+    updateUserDB : function(){
+        tx.executeSql('UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
+                        'profile_id = ' + objUser.profile_id + ', ' +
+                        'name = "' + objUser.name + '", ' +
+                        'last_name = "' + objUser.last_name + '"' +', ' +
+                        'email = "' + objUser.email + '"' + ', ' +
+                        'password = "' + objUser.password + '"' + ', ' + 
+                        'language = "' + objUser.language + '" ' +  
+                        'WHERE id = ' + objUser.id);
+    },
+    
+    createUserDB : function(){
         tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
@@ -142,6 +170,5 @@ var dbapp = {
                         ', "' + objUser.email + '"' + 
                         ', "' + objUser.password + '"' + 
                         ', "' + objUser.language + '")');
-        
     }
 };
