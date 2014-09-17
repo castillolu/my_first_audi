@@ -162,7 +162,15 @@ var app = {
         $("#info").html(networkState);
         alert(networkState);
         if(networkState == 'wifi' || networkState == 'WIFI'){
+            $("#info").html("IF");
             this.getUsers();
+        }else{
+            if(networkState = Connection.WIFI){
+                $("#info").html("ELSE 1");
+                
+            }else{
+                $("#info").html("ELSE 2");
+            }
         }
 
     },
