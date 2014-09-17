@@ -18,6 +18,7 @@
  */
 var urlAPI = "http://192.168.0.105/my_first_audi/api";
 var authAPI = "admin:1234";
+var appStart = false;
 
 var app = {
     // Application Constructor
@@ -162,9 +163,10 @@ var app = {
         
         $("#info").html(networkState);
         alert(networkState);
-        if(networkState == 'wifi' || networkState == 'WIFI'){
+        if(networkState == 'wifi' || appStart == false){
+            appStart = true;
             $("#info").html("IF");
-            this.getUsers();
+            app.getUsers();
             $("#info").html("before IF");
         }
 
