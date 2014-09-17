@@ -160,13 +160,15 @@ var app = {
         var networkState = navigator.network.connection.type;
         
         $("#info").html(networkState);
-        if(networkState == 'wifi'){
+        alert(networkState);
+        if(networkState == 'wifi' || networkState == 'WIFI'){
             this.getUsers();
         }
 
     },
     
     getUsers : function(){
+        $("#info").html("getUsers");
         try{
             $.ajax(urlAPI + "/users/list_users", {
                 type: "GET",
