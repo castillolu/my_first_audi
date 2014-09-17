@@ -113,7 +113,8 @@ var dbapp = {
         $("#info").html("Update user each per each");
         try{
             for(var user in users){
-                $("#info").append(user.id + "</br>");
+                alert(user);
+                $("#info").append(user + "</br>");
                 console.log(user);
             }
         }catch(error){
