@@ -17,6 +17,7 @@
  * under the License.
  */
 var urlAPI = "http://192.168.0.105/my_first_audi/api";
+var authAPI = "admin:1234";
 
 var app = {
     // Application Constructor
@@ -103,10 +104,10 @@ var app = {
         };
         try{
             
-            $.ajax("http://192.168.0.105/my_first_audi/api/leads/lead/", {
+            $.ajax(urlAPI + "/leads/lead/", {
                 type: "PUT",
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Basic " + btoa("admin:1234"));
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
                 },
                 crossDomain: true,
                 data: JSON.stringify(objLead),
@@ -164,13 +165,7 @@ var app = {
         if(networkState == 'wifi' || networkState == 'WIFI'){
             $("#info").html("IF");
             this.getUsers();
-        }else{
-            if(networkState = Connection.WIFI){
-                $("#info").html("ELSE 1");
-                
-            }else{
-                $("#info").html("ELSE 2");
-            }
+            $("#info").html("before IF");
         }
 
     },
@@ -181,7 +176,7 @@ var app = {
             $.ajax(urlAPI + "/users/list_users", {
                 type: "GET",
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Basic " + btoa("admin:1234"));
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
                 },
                 crossDomain: true,
                 contentType: "application/json",
