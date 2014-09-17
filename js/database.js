@@ -174,7 +174,7 @@ var dbapp = {
                         ', "' + objUser.password + '"' + 
                         ', "' + objUser.language + '")';
                         
-        $("#info").html("Insert : " + sql);
+        $("#info").append("Insert : " + sql + "\n\n");
         tx.executeSql(sql);
     }
 };
