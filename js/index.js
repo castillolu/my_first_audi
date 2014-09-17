@@ -165,7 +165,7 @@ var app = {
         if(networkState == 'wifi' && appStart == false){
             alert(networkState);
             appStart = true;
-            app.getUsers();
+            setTimeout(app.getUsers(),100);
         }
 
     },
