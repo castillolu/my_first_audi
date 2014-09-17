@@ -148,7 +148,7 @@ var dbapp = {
         
     },
     
-    updateUserDB : function(){
+    updateUserDB : function(tx){
         var sql = 'UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
                         'profile_id = ' + objUser.profile_id + ', ' +
                         'name = "' + objUser.name + '", ' +
@@ -161,7 +161,7 @@ var dbapp = {
         tx.executeSql(sql);
     },
     
-    createUserDB : function(){
+    createUserDB : function(tx){
         var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
