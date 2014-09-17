@@ -162,7 +162,7 @@ var app = {
         var networkState = navigator.network.connection.type;
         
         $("#info").html(networkState);
-        if(networkState == 'wifi' || appStart == false){
+        if(networkState == 'wifi' && appStart == false){
             alert(networkState);
             appStart = true;
             app.getUsers();
@@ -182,6 +182,7 @@ var app = {
                 contentType: "application/json",
                 success: function(data) {
                     if(data.status){
+                        $("#info").html("Resultado de la Consulta : " + data.status);
                         dbapp.updateUsers(data.data);
                     }else{
                         $("#info").html("Error al crear el registro : " + data.error);
