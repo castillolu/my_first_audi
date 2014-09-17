@@ -122,6 +122,7 @@ var dbapp = {
                 objUser.email = users[user].email;
                 objUser.password = users[user].password;
                 objUser.language = users[user].country.language;
+                alert(objUser.email);
                 db.transaction(dbapp.searchUserDB, dbapp.successCB, dbapp.errorCB);
             }
         }catch(error){
