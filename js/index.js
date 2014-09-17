@@ -162,12 +162,10 @@ var app = {
         var networkState = navigator.network.connection.type;
         
         $("#info").html(networkState);
-        alert(networkState);
         if(networkState == 'wifi' || appStart == false){
+            alert(networkState);
             appStart = true;
-            $("#info").html("IF");
             app.getUsers();
-            $("#info").html("before IF");
         }
 
     },
