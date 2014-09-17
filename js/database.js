@@ -109,10 +109,9 @@ var dbapp = {
     },
     
     //Update users from BD PHP
-    updateUsers : function(dataJson){
+    updateUsers : function(users){
         $("#info").html("Update user each per each");
         try{
-            var users = JSON.parse(dataJson);
             for(var user in users){
                 $("#info").append(user.id + "</br>");
                 console.log(user);
