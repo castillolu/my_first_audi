@@ -149,18 +149,20 @@ var dbapp = {
     },
     
     updateUserDB : function(){
-        tx.executeSql('UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
+        var sql = 'UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
                         'profile_id = ' + objUser.profile_id + ', ' +
                         'name = "' + objUser.name + '", ' +
                         'last_name = "' + objUser.last_name + '"' +', ' +
                         'email = "' + objUser.email + '"' + ', ' +
                         'password = "' + objUser.password + '"' + ', ' + 
                         'language = "' + objUser.language + '" ' +  
-                        'WHERE id = ' + objUser.id);
+                        'WHERE id = ' + objUser.id;
+        $("#info").html("Update : " + sql);
+        tx.executeSql(sql);
     },
     
     createUserDB : function(){
-        tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
+        var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
                         objUser.id + 
@@ -170,6 +172,9 @@ var dbapp = {
                         ', "' + objUser.last_name + '"' + 
                         ', "' + objUser.email + '"' + 
                         ', "' + objUser.password + '"' + 
-                        ', "' + objUser.language + '")');
+                        ', "' + objUser.language + '")';
+                        
+        $("#info").html("Insert : " + sql);
+        tx.executeSql(sql);
     }
 };
