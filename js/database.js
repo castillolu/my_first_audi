@@ -130,17 +130,17 @@ var dbapp = {
             alert(error);
         }
     },
+
+
     
-    searchUserDB : function(){
+    searchUserDB : function(tx){
         result = false;
-        db.transaction(
-            function(tx){
-                tx.executeSql('SELECT * FROM Users WHERE id = ?',
+
+        tx.executeSql('SELECT * FROM Users WHERE id = ?',
                     [objUser.id], 
                     dbapp.dataHandler,
                     dbapp.errorHandler);
-            }
-        );
+
         if(result){
             db.transaction(dbapp.updateUserDB, dbapp.successCB, dbapp.errorCB);
         }else{
