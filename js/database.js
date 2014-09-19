@@ -9,7 +9,7 @@ var version = '1.0';
 var displayName = 'DB_My_First_AUDI';
 var maxSize = 2097152;
 var result = false;
-var objUser = {};
+
 
 var dbapp = {
         
@@ -120,26 +120,15 @@ var dbapp = {
         $("#info").append("Update user each per each");
         try{
             for(var user in users){
-                objUser = {};
-                objUser.id = users[user].id;
-                objUser.country_id = users[user].country.id;
-                objUser.profile_id = users[user].profile.id;
-                objUser.name = users[user].name;
-                objUser.last_name = users[user].last_name;
-                objUser.email = users[user].email;
-                objUser.password = users[user].password;
-                objUser.language = users[user].country.language;
-                $("#info").append(objUser.id + " --- " + objUser.email + "\n\n");
-                db.transaction(dbapp.searchUserDB, dbapp.successCB, dbapp.errorCB);
+                dbapp.searchUserDB(users[user]);
             }
         }catch(error){
             alert(error);
         }
     },
 
-
     
-    searchUserDB : function(tx){
+    searchUserDB : function(objUser){
         result = false;
         db.transaction(
             function(tx){
