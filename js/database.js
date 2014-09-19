@@ -111,9 +111,10 @@ var dbapp = {
     
     //Update users from BD PHP
     updateUsers : function(users){
-        $("#info").html("Update user each per each");
+        $("#info").append("Update user each per each");
         try{
             for(var user in users){
+                objUser = {};
                 objUser.id = users[user].id;
                 objUser.country_id = users[user].country.id;
                 objUser.profile_id = users[user].profile.id;
@@ -157,7 +158,7 @@ var dbapp = {
                         'password = "' + objUser.password + '"' + ', ' + 
                         'language = "' + objUser.language + '" ' +  
                         'WHERE id = ' + objUser.id;
-        $("#info").html("Update : " + sql);
+        $("#info").append("Update : " + sql);
         tx.executeSql(sql,[], dbapp.dataHandler, dbapp.errorHandler);
     },
     

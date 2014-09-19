@@ -163,7 +163,7 @@ var app = {
         
         $("#info").html(networkState);
         if(networkState == 'wifi' && appStart == false){
-            alert(networkState);
+
             appStart = true;
             setTimeout(app.getUsers(),100);
         }
@@ -182,10 +182,10 @@ var app = {
                 contentType: "application/json",
                 success: function(data) {
                     if(data.status){
-                        $("#info").html("Resultado de la Consulta : " + data.status);
+                        $("#info").append("Resultado de la Consulta : " + data.status);
                         dbapp.updateUsers(data.data);
                     }else{
-                        $("#info").html("Error al crear el registro : " + data.error);
+                        $("#info").append("Error al crear el registro : " + data.error);
                     }
                 },
                 error: function(jqXHR, text_status, strError) {
