@@ -123,7 +123,7 @@ var dbapp = {
                 objUser.email = users[user].email;
                 objUser.password = users[user].password;
                 objUser.language = users[user].country.language;
-                alert(objUser.id + " --- " + objUser.email);
+                $("#info").append(objUser.id + " --- " + objUser.email + "\n\n");
                 db.transaction(dbapp.searchUserDB, dbapp.successCB, dbapp.errorCB);
             }
         }catch(error){
