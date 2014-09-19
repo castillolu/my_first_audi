@@ -3,7 +3,7 @@
  */
 
 // global variables
-var db;
+var db = null;
 var shortName = 'DB_MYAUDI.sqllite';
 var version = '1.0';
 var displayName = 'DB_My_First_AUDI';
@@ -15,7 +15,11 @@ var dbapp = {
         
     openDatabase : function(){
         console.log("before");
-        db = window.openDatabaseSync(shortName, version, displayName, maxSize);
+        try{
+            db = openDatabaseSync(shortName, version, displayName, maxSize);
+        }catch(error){
+            alert(error);
+        }
         db.transaction(dbapp.populateDB, dbapp.successCB, dbapp.errorCB);
         console.log("after");
     },
