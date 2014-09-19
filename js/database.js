@@ -112,6 +112,34 @@ var dbapp = {
             result = false;
         }
     },
+
+    errorSearchUser : function (transaction, error)
+    {
+        // error.message is a human-readable string.
+        // error.code is a numeric error code
+        alert('Oops.  Error was '+error.message+' (Code '+error.code+')');
+     
+        result = false;
+    },
+     
+    successSearchUser : function (transaction, results, objUser)
+    {
+        if(results.rows.length > 0){
+            db.transaction(function(tx){
+                    dbapp.updateUserDB(tx, objUser);
+                },
+                dbapp.successCB, 
+                dbapp.errorCB
+            );
+        }else{
+            db.transaction(function(tx){
+                    dbapp.createUserDB(tx, objUser);
+                },
+                dbapp.successCB, 
+                dbapp.errorCB
+            );
+        }
+    },
     
     //Update users from BD PHP
     updateUsers : function(users){
@@ -133,23 +161,19 @@ var dbapp = {
             function(tx){
                 try{
                         tx.executeSql('SELECT * FROM Users WHERE id = ?',
-                            [objUser.id], 
-                            dbapp.dataHandler,
-                            dbapp.errorHandler);
+                            [objUser.id],
+                            function(tx, result){
+                                dbapp.successSearchUser(tx, result, objUser)
+                            },
+                            dbapp.errorSearchUser);
                 }catch(error) {
                     alert("Line 140 : " + error);
                 }
             }
         );
-        if(result){
-            db.transaction(dbapp.updateUserDB, dbapp.successCB, dbapp.errorCB);
-        }else{
-            db.transaction(dbapp.createUserDB, dbapp.successCB, dbapp.errorCB);
-        }   
-        
     },
     
-    updateUserDB : function(tx){
+    updateUserDB : function(tx, objUser){
         var sql = 'UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
                         'profile_id = ' + objUser.profile_id + ', ' +
                         'name = "' + objUser.name + '", ' +
@@ -158,11 +182,11 @@ var dbapp = {
                         'password = "' + objUser.password + '"' + ', ' + 
                         'language = "' + objUser.language + '" ' +  
                         'WHERE id = ' + objUser.id;
-        $("#info").append("Update : " + sql);
-        tx.executeSql(sql,[], dbapp.dataHandler, dbapp.errorHandler);
+        
+        tx.executeSql(sql,[], function(){$("#info").append("Update : " + sql);}, dbapp.errorHandler);
     },
     
-    createUserDB : function(tx){
+    createUserDB : function(tx, objUser){
         var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
@@ -176,6 +200,6 @@ var dbapp = {
                         ', "' + objUser.language + '")';
                         
         $("#info").append("Insert : " + sql + "\n\n");
-        tx.executeSql(sql,[], dbapp.dataHandler, dbapp.errorHandler);
+        tx.executeSql(sql,[], function(){$("#info").append("Insert : " + sql);}, dbapp.errorHandler);
     }
 };
