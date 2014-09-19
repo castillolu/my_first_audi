@@ -16,7 +16,9 @@ var dbapp = {
     openDatabase : function(){
         console.log("before");
         try{
-            db = openDatabaseSync(shortName, version, displayName, maxSize);
+            db = openDatabaseSync(shortName, version, displayName, maxSize, function(db){
+                $("#info").html("exito!! ");    
+            });
         }catch(error){
             alert(error);
         }
