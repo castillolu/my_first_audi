@@ -125,18 +125,16 @@ var dbapp = {
     successSearchUser : function (transaction, results, objUser)
     {
         if(results.rows.length > 0){
-            db.transaction(function(tx){
+            db.transaction(
+                function(tx){
                     dbapp.updateUserDB(tx, objUser);
-                },
-                dbapp.successCB, 
-                dbapp.errorCB
+                }
             );
         }else{
-            db.transaction(function(tx){
+            db.transaction(
+                function(tx){
                     dbapp.createUserDB(tx, objUser);
-                },
-                dbapp.successCB, 
-                dbapp.errorCB
+                }
             );
         }
     },
@@ -182,12 +180,11 @@ var dbapp = {
                         'password = "' + objUser.password + '"' + ', ' + 
                         'language = "' + objUser.language + '" ' +  
                         'WHERE id = ' + objUser.id;
-        
-        tx.executeSql(sql,[], function(){$("#info").append("Update : " + sql);}, dbapp.errorHandler);
+        //TODO: AJUSTAR SUCCESS           
+        tx.executeSql(sql,[], function(){$("#info").append("Update : " + sql + "\n\n\n\n");}, dbapp.errorHandler);
     },
     
     createUserDB : function(tx, objUser){
-        $("#info").append("\n\n######## : " + objUser.country.id + "   #####   " + objUser.profile.id + "  ###########\n\n\n\n\n");
         var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
@@ -199,8 +196,8 @@ var dbapp = {
                         ', "' + objUser.email + '"' + 
                         ', "' + objUser.password + '"' + 
                         ', "' + objUser.language + '")';
-                        
-        $("#info").append("Insert : " + sql + "\n\n");
-        tx.executeSql(sql,[], function(){$("#info").append("Insert : " + sql);}, dbapp.errorHandler);
+        //TODO: AJUSTAR SUCCESS   
+        var xx = tx.executeSql(sql,[], function(){$("#info").append("Insert : " + sql + "\n\n\n\n");}, dbapp.errorHandler);
+
     }
 };
