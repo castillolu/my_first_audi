@@ -174,8 +174,8 @@ var dbapp = {
     },
     
     updateUserDB : function(tx, objUser){
-        var sql = 'UPDATE Users SET country_id = ' + objUser.country_id + ', ' + 
-                        'profile_id = ' + objUser.profile_id + ', ' +
+        var sql = 'UPDATE Users SET country_id = ' + objUser.country.id + ', ' + 
+                        'profile_id = ' + objUser.profile.id + ', ' +
                         'name = "' + objUser.name + '", ' +
                         'last_name = "' + objUser.last_name + '"' +', ' +
                         'email = "' + objUser.email + '"' + ', ' +
@@ -187,12 +187,13 @@ var dbapp = {
     },
     
     createUserDB : function(tx, objUser){
+        $("#info").append("\n\n######## : " + objUser.country.id + "   #####   " + objUser.profile.id + "  ###########\n\n\n\n\n");
         var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
                         'last_name, email, password, language) ' + 
                         ' VALUES (' + 
                         objUser.id + 
-                        ', ' + objUser.country_id + 
-                        ', ' + objUser.profile_id + 
+                        ', ' + objUser.country.id + 
+                        ', ' + objUser.profile.id + 
                         ', "' + objUser.name + '"' + 
                         ', "' + objUser.last_name + '"' + 
                         ', "' + objUser.email + '"' + 
