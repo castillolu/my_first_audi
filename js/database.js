@@ -15,7 +15,7 @@ var dbapp = {
         
     openDatabase : function(){
         console.log("before");
-        db = window.openDatabase(shortName, version, displayName, maxSize);
+        db = window.openDatabaseSync(shortName, version, displayName, maxSize);
         db.transaction(dbapp.populateDB, dbapp.successCB, dbapp.errorCB);
         console.log("after");
     },
@@ -135,12 +135,14 @@ var dbapp = {
     
     searchUserDB : function(tx){
         result = false;
-
-        tx.executeSql('SELECT * FROM Users WHERE id = ?',
+        db.transaction(
+            function(tx){
+                tx.executeSql('SELECT * FROM Users WHERE id = ?',
                     [objUser.id], 
                     dbapp.dataHandler,
                     dbapp.errorHandler);
-
+            }
+        );
         if(result){
             db.transaction(dbapp.updateUserDB, dbapp.successCB, dbapp.errorCB);
         }else{
