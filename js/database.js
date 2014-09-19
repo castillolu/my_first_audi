@@ -158,7 +158,7 @@ var dbapp = {
                         'language = "' + objUser.language + '" ' +  
                         'WHERE id = ' + objUser.id;
         $("#info").html("Update : " + sql);
-        tx.executeSql(sql);
+        tx.executeSql(sql,[], dbapp.dataHandler, dbapp.errorHandler);
     },
     
     createUserDB : function(tx){
@@ -175,6 +175,6 @@ var dbapp = {
                         ', "' + objUser.language + '")';
                         
         $("#info").append("Insert : " + sql + "\n\n");
-        tx.executeSql(sql);
+        tx.executeSql(sql,[], dbapp.dataHandler, dbapp.errorHandler);
     }
 };

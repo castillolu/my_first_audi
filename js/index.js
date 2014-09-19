@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var urlAPI = "http://192.168.0.105/my_first_audi/api";
+var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
 
