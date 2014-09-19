@@ -68,7 +68,7 @@ var dbapp = {
     //
     errorCB : function (tx, err) {
         console.log(err);
-        alert("Error processing SQL: "+err);
+        $("#info").append("Error processing SQL: "+err);
     },
 
     // Transaction success callback
