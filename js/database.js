@@ -128,12 +128,17 @@ var dbapp = {
     
     searchUserDB : function(objUser){
         result = false;
+
         db.transaction(
             function(tx){
-                tx.executeSql('SELECT * FROM Users WHERE id = ?',
-                    [objUser.id], 
-                    dbapp.dataHandler,
-                    dbapp.errorHandler);
+                try{
+                        tx.executeSql('SELECT * FROM Users WHERE id = ?',
+                            [objUser.id], 
+                            dbapp.dataHandler,
+                            dbapp.errorHandler);
+                }catch(error) {
+                    alert("Line 140 : " + error);
+                }
             }
         );
         if(result){
