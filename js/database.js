@@ -19,7 +19,7 @@ var dbapp = {
 		} catch (error) {
 			alert(error);
 		}
-		db.transaction(dbapp.populateDB, dbapp.successCB, dbapp.errorCB);
+		db.transaction(dbapp.populateDB, callBacks.successDB, callBacks.errorQuery);
 		console.log("after");
 	},
 	queryDemo: function() {
@@ -27,7 +27,7 @@ var dbapp = {
 	},
 	queryDB: function(tx) {
 		console.log("consulta");
-		tx.executeSql('SELECT * FROM Users', [], dbapp.querySuccess, dbapp.errorCB);
+		tx.executeSql('SELECT * FROM Users', [], dbapp.querySuccess, callBacks.errorQuery);
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
@@ -63,69 +63,19 @@ var dbapp = {
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
 				'"21232f297a57a5a743894a0e4a801fc3", "ENGLISH")');
 	},
-	// Transaction error callback
-	//
-	errorCB: function(tx, err) {
-		console.log(err);
-		$("#info").append("Error processing SQL: " + err);
-	},
-	// Transaction success callback
-	//
-	successCB: function() {
-		console.log("success!");
-
-	},
 	//login users
 	auth: function(user, pass) {
 		db.transaction(
 				function(tx) {
 					tx.executeSql('SELECT * FROM Users WHERE password = ? AND email = ?',
 							[md5(pass), user],
-							dbapp.dataHandler,
-							dbapp.errorHandler);
+							function(){
+								
+							},
+							callBacks.successQuery,
+							callBacks.errorQuery);
 				}
 		);
-		return result;
-	},
-	errorHandler: function(transaction, error)
-	{
-		// error.message is a human-readable string.
-		// error.code is a numeric error code
-		alert('Oops.  Error was ' + error.message + ' (Code ' + error.code + ')');
-
-		result = false;
-	},
-	dataHandler: function(transaction, results)
-	{
-		if (results.rows.length > 0) {
-			result = true;
-		} else {
-			result = false;
-		}
-	},
-	errorSearchUser: function(transaction, error)
-	{
-		// error.message is a human-readable string.
-		// error.code is a numeric error code
-		alert('Oops.  Error was ' + error.message + ' (Code ' + error.code + ')');
-
-		result = false;
-	},
-	successSearchUser: function(transaction, results, objUser)
-	{
-		if (results.rows.length > 0) {
-			db.transaction(
-					function(tx) {
-						dbapp.updateUserDB(tx, objUser);
-					}
-			);
-		} else {
-			db.transaction(
-					function(tx) {
-						dbapp.createUserDB(tx, objUser);
-					}
-			);
-		}
 	},
 	//Update users from BD PHP
 	updateUsers: function(users) {
@@ -147,9 +97,9 @@ var dbapp = {
 						tx.executeSql('SELECT * FROM Users WHERE id = ?',
 								[objUser.id],
 								function(tx, result) {
-									dbapp.successSearchUser(tx, result, objUser)
+									callBacks.successSearchUser(tx, result, objUser)
 								},
-								dbapp.errorSearchUser);
+								callBacks.errorQuery);
 					} catch (error) {
 						alert("Line 140 : " + error);
 					}
@@ -168,24 +118,27 @@ var dbapp = {
 		//TODO: AJUSTAR SUCCESS           
 		tx.executeSql(sql, [], function() {
 			$("#info").append("Update : " + sql + "\n\n\n\n");
-		}, dbapp.errorHandler);
+		}, result.errorQuery);
 	},
 	createUserDB: function(tx, objUser) {
-		var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
-				'last_name, email, password, language) ' +
-				' VALUES (' +
-				objUser.id +
-				', ' + objUser.country.id +
-				', ' + objUser.profile.id +
-				', "' + objUser.name + '"' +
-				', "' + objUser.last_name + '"' +
-				', "' + objUser.email + '"' +
-				', "' + objUser.password + '"' +
-				', "' + objUser.language + '")';
-		//TODO: AJUSTAR SUCCESS   
-		var xx = tx.executeSql(sql, [], function() {
-			$("#info").append("Insert : " + sql + "\n\n\n\n");
-		}, dbapp.errorHandler);
-
+		try {
+			var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
+					'last_name, email, password, language) ' +
+					' VALUES (' +
+					objUser.id +
+					', ' + objUser.country.id +
+					', ' + objUser.profile.id +
+					', "' + objUser.name + '"' +
+					', "' + objUser.last_name + '"' +
+					', "' + objUser.email + '"' +
+					', "' + objUser.password + '"' +
+					', "' + objUser.language + '")';
+			//TODO: AJUSTAR SUCCESS   
+			var xx = tx.executeSql(sql, [], function() {
+				$("#info").append("Insert : " + sql + "\n\n\n\n");
+			}, result.errorQuery);
+		} catch (error) {
+			alert(error);
+		}
 	}
 };

@@ -1,4 +1,4 @@
-    /*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -21,186 +21,173 @@ var authAPI = "admin:1234";
 var appStart = false;
 
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // `load`, `deviceready`, `offline`, and `online`.
-    bindEvents: function() {
+	// Application Constructor
+	initialize: function() {
+		this.bindEvents();
+	},
+	// Bind Event Listeners
+	//
+	// Bind any events that are required on startup. Common events are:
+	// `load`, `deviceready`, `offline`, and `online`.
+	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        //$(document).on('ready', this.onDeviceReady);
+		document.addEventListener('deviceready', this.onDeviceReady, false);
+		//$(document).on('ready', this.onDeviceReady);
 //        document.getElementById('scan').addEventListener('click', this.scan, false);
 //        document.getElementById('send_register').addEventListener('click', this.sendLead, false);
 //        document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
-        document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-        document.addEventListener("offline", this.isOffline, false);
-        document.addEventListener("online", this.isOnline, false);
-		$("#synchro_info_txt").html(language);		
-		$.i18n.init( function(t){
+		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
+		document.addEventListener("offline", this.isOffline, false);
+		document.addEventListener("online", this.isOnline, false);
+		$.i18n.init(function(t) {
 			lng: language;
 			$(".login").i18n();
 		});
-		
-    },
 
-    // deviceready Event Handler
-    //
-    // The scope of `this` is the event. In order to call the `receivedEvent`
-    // function, we must explicity call `app.receivedEvent(...);`
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
+	},
+	// deviceready Event Handler
+	//
+	// The scope of `this` is the event. In order to call the `receivedEvent`
+	// function, we must explicity call `app.receivedEvent(...);`
+	onDeviceReady: function() {
+		app.receivedEvent('deviceready');
+	},
+	// Update DOM on a Received Event
+	receivedEvent: function(id) {
+		console.log('Received Event: ' + id);
+		dbapp.openDatabase();
+	},
+	scan: function() {
+		try {
+			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        console.log('Received Event: ' + id);
-        dbapp.openDatabase();
-    },
+			scanner.scan(function(result) {
 
-    scan: function() {
-        console.log('scanning');
-        
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+				alert("We got a barcode\n" +
+						"Result: " + result.text + "\n" +
+						"Format: " + result.format + "\n" +
+						"Cancelled: " + result.cancelled);
 
-        scanner.scan( function (result) { 
+				document.getElementById("info").innerHTML = result.text;
+				console.log(result);
 
-            alert("We got a barcode\n" + 
-            "Result: " + result.text + "\n" + 
-            "Format: " + result.format + "\n" + 
-            "Cancelled: " + result.cancelled);  
+			}, function(error) {
+				console.log("Scanning failed: ", error);
+			});
 
-            document.getElementById("info").innerHTML = result.text;
-            console.log(result);
+		} catch (error) {
+			alert(error);
+		}
 
-        }, function (error) { 
-            console.log("Scanning failed: ", error); 
-        } );
-    },
+	},
+	sendLead: function() {
+		var objLead = {
+			country: 1,
+			name: "Luis Alberto",
+			lastName: "Castillo",
+			email: 'a@nettingsolutions.com',
+			booking: 2,
+			typeCar: 'Renault 4',
+			typeRegistry: 'ON_SITE',
+			status: 1
+		};
+		try {
 
-    encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+			$.ajax(urlAPI + "/leads/lead/", {
+				type: "PUT",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				data: JSON.stringify(objLead),
+				contentType: "application/json",
+				success: function(e) {
+					if (e.status) {
+						$("#info").html("Creacion de registro con el ID : " + e.id);
+					} else {
+						$("#info").html("Error al crear el registro : " + e.error);
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert(text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert(error);
+		}
 
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.audi.com", function(success) {
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
+	},
+	loginAuth: function(e) {
+		try {
+			e.preventDefault();
+			//disable the button so we can't resubmit while we wait
+			$("#submit", this).attr("disabled", "disabled");
+			var user = $("#email", this).val();
+			var password = $("#password", this).val();
+			if (user != '' && password != '') {
+				dbapp.auth(user, password);
+				setTimeout(function() {
+					if (statusTrans) {
+						alert("Login Successfully");
+						$("#synchro_info_txt").html(localStorage.lastname);
+						$("#synchro_info_txt").append(localStorage.email);
+					} else {
+						alert("Your login failed");
+					}
+					$("#submit").removeAttr("disabled");
+				}, 50);
+			}
+			return false;
+		} catch (error) {
+			alert(error);
+		}
+	},
+	isOffline: function() {
+		//TODO Disable button Sync 
+	},
+	isOnline: function() {
+		//TODO Enable button Sync 
+		var networkState = navigator.network.connection.type;
 
-    },
-    
-    sendLead: function() {
-        $("#info").html("Enviando Lead... ");
-        var objLead = {
-            country: 1,
-            name:"Luis Alberto",
-            lastName: "Castillo",
-            email: 'a@nettingsolutions.com',
-            booking: 2,
-            typeCar: 'Renault 4',
-            typeRegistry: 'ON_SITE',
-            status:1
-        };
-        try{
-            
-            $.ajax(urlAPI + "/leads/lead/", {
-                type: "PUT",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-                },
-                crossDomain: true,
-                data: JSON.stringify(objLead),
-                contentType: "application/json",
-                success: function(e) {
-                    if(e.status){
-                        $("#info").html("Creacion de registro con el ID : " + e.id);
-                    }else{
-                        $("#info").html("Error al crear el registro : " + e.error);
-                    }
-                },
-                error: function(jqXHR, text_status, strError) {
-                    alert(text_status + " " + strError);
-                }
-            });
-        }
-        catch(error)
-        {
-            alert(error);
-        }
+		$("#info").html(networkState);
+		if (networkState == 'wifi' && appStart == false) {
 
-    },
-    
-    loginAuth: function(e){
-        e.preventDefault();
-        //disable the button so we can't resubmit while we wait
-        $("#submit",this).attr("disabled","disabled");
-        var user = $("#email", this).val();
-        var password = $("#password", this).val();
-        if(user != '' && password!= '') {
-            dbapp.auth(user,password);
-            setTimeout(function (){
-                if(result) {
-                    alert("Login Successfully");
-                } else {
-                    alert("Your login failed");
-                }
-                $("#submit").removeAttr("disabled");
-            },50);
-        }
-        return false;
-    },
-    
-   
-    isOffline: function(){
-        //TODO Disable button Sync 
-    },
-    
-    isOnline: function(){
-        //TODO Enable button Sync 
-        var networkState = navigator.network.connection.type;
-        
-        $("#info").html(networkState);
-        if(networkState == 'wifi' && appStart == false){
+			appStart = true;
+			setTimeout(app.getUsers(), 100);
+		}
 
-            appStart = true;
-            setTimeout(app.getUsers(),100);
-        }
+	},
+	getUsers: function() {
+		$("#info").html("Updating users...");
+		try {
+			$.ajax(urlAPI + "/users/list_users", {
+				type: "GET",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				contentType: "application/json",
+				success: function(data) {
+					if (data.status) {
+						$("#info").append("Resultado de la Consulta : " + data.status);
+						dbapp.updateUsers(data.data);
+					} else {
+						$("#info").append("Error al crear el registro : " + data.error);
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert(text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert(error);
+		}
 
-    },
-    
-    getUsers : function(){
-        $("#info").html("Updating users...");
-        try{
-            $.ajax(urlAPI + "/users/list_users", {
-                type: "GET",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-                },
-                crossDomain: true,
-                contentType: "application/json",
-                success: function(data) {
-                    if(data.status){
-                        $("#info").append("Resultado de la Consulta : " + data.status);
-                        dbapp.updateUsers(data.data);
-                    }else{
-                        $("#info").append("Error al crear el registro : " + data.error);
-                    }
-                },
-                error: function(jqXHR, text_status, strError) {
-                    alert(text_status + " " + strError);
-                }
-            });
-        }
-        catch(error)
-        {
-            alert(error);
-        }
+	}
 
-    }
-    
 
 };
