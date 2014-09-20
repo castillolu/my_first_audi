@@ -41,7 +41,7 @@ var app = {
         document.addEventListener("online", this.isOnline, false);
 		$("#synchro_info_txt").html(language);		
 		$.i18n.init( function(t){
-			lng: "es";
+			lng: language;
 			$(".login").i18n();
 		});
 		
