@@ -21,41 +21,41 @@ img{
 /***********************************/
 @font-face {
     font-family: 'AudiBold';
-    src: url('css/crm_30.Par.0092.File.eot');
-    src: url('css/crm_30.Par.0092.File.eot?#iefix') format('embedded-opentype'),
-		url('css/crm_30.Par.0095.File.woff') format('woff'),
-		url('css/crm_30.Par.0094.File.ttf') format('truetype'),
-		url('css/crm_30.Par.0093.File.svg#AudiTypeBold') format('svg');
+    src: url('../fonts/crm_30.Par.0092.File.eot');
+    src: url('../fonts/crm_30.Par.0092.File.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/crm_30.Par.0095.File.woff') format('woff'),
+		url('../fonts/crm_30.Par.0094.File.ttf') format('truetype'),
+		url('../fonts/crm_30.Par.0093.File.svg#AudiTypeBold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'AudiExtendedBold';
-    src: url('css/crm_30.Par.0091.File.eot');
-    src: url('css/crm_30.Par.0091.File.eot?#iefix') format('embedded-opentype'),
-		url('css/crm_30.Par.0090.File.woff') format('woff'),
-		url('css/crm_30.Par.0089.File.ttf') format('truetype'),
-		url('css/crm_30.Par.0088.File.svg#AudiTypeExtendedBold') format('svg');
+    src: url('../fonts/crm_30.Par.0091.File.eot');
+    src: url('../fonts/crm_30.Par.0091.File.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/crm_30.Par.0090.File.woff') format('woff'),
+		url('../fonts/crm_30.Par.0089.File.ttf') format('truetype'),
+		url('../fonts/crm_30.Par.0088.File.svg#AudiTypeExtendedBold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'AudiExtendedNormal';
-    src: url('css/crm_30.Par.0096.File.eot');
-    src: url('css/crm_30.Par.0096.File.eot?#iefix') format('embedded-opentype'),
-		url('css/crm_30.Par.0099.File.woff') format('woff'),
-		url('css/crm_30.Par.0098.File.ttf') format('truetype'),
-		url('css/crm_30.Par.0097.File.svg#AudiTypeExtendedNormal') format('svg');
+    src: url('../fonts/crm_30.Par.0096.File.eot');
+    src: url('../fonts/crm_30.Par.0096.File.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/crm_30.Par.0099.File.woff') format('woff'),
+		url('../fonts/crm_30.Par.0098.File.ttf') format('truetype'),
+		url('../fonts/crm_30.Par.0097.File.svg#AudiTypeExtendedNormal') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'AudiNormal';
-    src: url('css/crm_31.Par.0013.File.eot');
-    src: url('css/crm_31.Par.0013.File.eot?#iefix') format('embedded-opentype'),
-		url('css/crm_31.Par.0016.File.woff') format('woff'),
-		url('css/crm_31.Par.0015.File.ttf') format('truetype'),
-		url('css/crm_31.Par.0014.File.svg#AudiTypeNormal') format('svg');
+    src: url('../fonts/crm_31.Par.0013.File.eot');
+    src: url('../fonts/crm_31.Par.0013.File.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/crm_31.Par.0016.File.woff') format('woff'),
+		url('../fonts/crm_31.Par.0015.File.ttf') format('truetype'),
+		url('../fonts/crm_31.Par.0014.File.svg#AudiTypeNormal') format('svg');
     font-weight: normal;
     font-style: normal;
 }

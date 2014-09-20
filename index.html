@@ -26,20 +26,47 @@
         <title>My First AUDI</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Login</h1>
-            <form action="#" method="post" name="login" id="login">
-                <label for="username">Email : </label>
-                <input type="email" name="email" id="email" value="" placeholder="Email" />
-                <label for="password">Password : </label>
-                <input type="password" name="password" id="password" value="" placeholder="Password" />
-                <input type="submit" name="submit" id="submit" value="Login" />
-            </form>
-            <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
-            <p><a href="#" class="topcoat-button" id="send_register">Send Lead</a></p>
-            <p><a href="#" class="topcoat-button" id="query_db">Consulta DB</a></p>
-            <p id="info">.</p>
-        </div>
+		<div id="app_contenedor">
+			<div id="app_info">
+
+				<div id="synchro">
+					<div id="synchro_info">
+						<div id="synchro_info_txt">Last synchro</div>
+					</div>
+				</div>
+
+				<div id="header">
+					<div id="header_logo"><img src="img/logo_audi.jpg" width="600" height="88" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"> </div>
+					<div class="clearing"></div>
+					<div id="header_1_img"><img src="img/header_1.jpg" width="600" height="290" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"></div>
+					<div id="header_1_titulo">Mi Primer<br>
+						Audi
+					</div>         
+				</div>  
+				<div class="clearing"></div>      
+
+				<div id="contenido">
+					<div id="contenido_info">
+						<div class="aviso">
+							<div class="aviso_titulo">titulo</div>
+							<form action="#" method="post" name="login" id="login">
+								<div class="aviso_contenido">
+									<div class="aviso_contenido_info">
+										<label for="username">Email : </label>
+										<input type="email" name="email" id="email" value="" placeholder="Email" />
+										<label for="password">Password : </label>
+										<input type="password" name="password" id="password" value="" placeholder="Password" />
+									</div>
+									<div class="btn_normal">
+										<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
+									</div>
+								</div>
+							</form>					  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="childbrowser.js"></script>
@@ -49,7 +76,7 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/database.js"></script>
         <script type="text/javascript">
-            app.initialize();
+			app.initialize();
         </script>
     </body>
 </html>
