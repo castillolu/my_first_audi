@@ -30,6 +30,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
+		var language = window.navigator.userLanguage || window.navigator.language;
         document.addEventListener('deviceready', this.onDeviceReady, false);
         //$(document).on('ready', this.onDeviceReady);
 //        document.getElementById('scan').addEventListener('click', this.scan, false);
@@ -38,7 +39,12 @@ var app = {
         document.getElementById('login').addEventListener('submit', this.loginAuth, false);
         document.addEventListener("offline", this.isOffline, false);
         document.addEventListener("online", this.isOnline, false);
-      
+		$("#synchro_info_txt").html(language);		
+		$.i18n.init( function(t){
+			lng: "es";
+			$(".login").i18n();
+		});
+		
     },
 
     // deviceready Event Handler
@@ -67,10 +73,6 @@ var app = {
             "Format: " + result.format + "\n" + 
             "Cancelled: " + result.cancelled);  
 
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
             document.getElementById("info").innerHTML = result.text;
             console.log(result);
 

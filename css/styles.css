@@ -1,10 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 * {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 body {
 	font-family:Verdana, Geneva, sans-serif;
@@ -103,7 +99,7 @@ img{
 }
 #header_1_titulo, #header_2_titulo{
 	font-size:4em;
-	line-height:50px;
+	line-height:1em;
 	position:relative;
 	z-index:1;
 }
@@ -296,6 +292,8 @@ textarea{
 	width:30%;
 }
 .btn_normal_info{
+    background-color: #25292c;
+    color: #fff;
 	padding:12px;   
 }
 .btn_normal2{
