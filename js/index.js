@@ -31,6 +31,7 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
+		$("#synchro_info_txt").html(navigator.userAgent);
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			document.addEventListener('deviceready', this.onDeviceReady, false);
  		}else{
