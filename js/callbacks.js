@@ -24,10 +24,9 @@ var callBacks = {
 	},
 	successAuth: function(transaction, results)
 	{
-		var user = {};
 		if (results.rows.length > 0) {
-			user.status = true;
 			if(typeof(Storage) !== "undefined") {
+				localStorage.setItem("status", true);
 				localStorage.setItem("name", results.rows.item(0).name);
 				localStorage.setItem("last_name", results.rows.item(0).last_name);
 				localStorage.setItem("language", results.rows.item(0).language);
@@ -37,9 +36,12 @@ var callBacks = {
 				// Sorry! No Web Storage support..
 			}			
 		} else {
-			user.status = false;
+			if(typeof(Storage) !== "undefined") {
+				localStorage.setItem("status", false);
+			} else {
+				// Sorry! No Web Storage support..
+			}			
 		}
-		return user;
 	},
 	
 	// Transaction success callback

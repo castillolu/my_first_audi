@@ -69,10 +69,7 @@ var dbapp = {
 				function(tx) {
 					tx.executeSql('SELECT * FROM Users WHERE password = ? AND email = ?',
 							[md5(pass), user],
-							function(){
-								
-							},
-							callBacks.successQuery,
+							callBacks.successAuth,
 							callBacks.errorQuery);
 				}
 		);

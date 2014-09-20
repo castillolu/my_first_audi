@@ -31,8 +31,11 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-		document.addEventListener('deviceready', this.onDeviceReady, false);
-		//$(document).on('ready', this.onDeviceReady);
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+			document.addEventListener('deviceready', this.onDeviceReady, false);
+ 		}else{
+			$(document).on('ready', this.onDeviceReady);
+		}
 //        document.getElementById('scan').addEventListener('click', this.scan, false);
 //        document.getElementById('send_register').addEventListener('click', this.sendLead, false);
 //        document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
@@ -128,10 +131,9 @@ var app = {
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
 				dbapp.auth(user, password);
-				setTimeout(function(result) {
-					if (result.status) {
-						alert("Login Successfully");
-						$("#synchro_info_txt").html(localStorage.lastname);
+				setTimeout(function() {
+					if (localStorage.status) {
+						$("#synchro_info_txt").html(localStorage.last_name);
 						$("#synchro_info_txt").append(localStorage.email);
 					} else {
 						alert("Your login failed");
