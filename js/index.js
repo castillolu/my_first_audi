@@ -128,8 +128,8 @@ var app = {
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
 				dbapp.auth(user, password);
-				setTimeout(function() {
-					if (statusTrans) {
+				setTimeout(function(result) {
+					if (result.status) {
 						alert("Login Successfully");
 						$("#synchro_info_txt").html(localStorage.lastname);
 						$("#synchro_info_txt").append(localStorage.email);
