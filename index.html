@@ -8,50 +8,140 @@
         <title>My First AUDI</title>
     </head>
     <body>
-		<div id="app_contenedor" class="login">
-			<div id="app_info">
-
-				<div id="synchro">
-					<div id="synchro_info">
-						<div id="synchro_info_txt">Last synchro</div>
+		<!-- START LOGIN PAGE -->
+		<div data-role="page" id="login-page">
+			<div id="app_contenedor" class="login">
+				<div id="app_info">
+					<div data-role="header">
+						<div id="synchro">
+							<div id="synchro_info">
+								<div id="synchro_info_txt">Last synchro</div>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div id="header">
-					<div id="header_logo"><img src="img/logo_audi.jpg" width="600" height="88" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"> </div>
-					<div class="clearing"></div>
-					<div id="header_1_img"><img src="img/header_1.jpg" width="600" height="290" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"></div>
-					<div id="header_1_titulo" data-i18n="login.title_1"></div>         
-					<div id="header_1_titulo" data-i18n="login.title_2"></div>         
-				</div>  
-				<div class="clearing"></div>      
+					<div data-role="content">
+						<div id="header">
+							<div id="header_logo"><img src="img/logo_audi.jpg" width="600" height="88" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"> </div>
+							<div class="clearing"></div>
+							<div id="header_1_img"><img src="img/header_1.jpg" width="600" height="290" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"></div>
+							<div id="header_1_titulo" data-i18n="login.title_1"></div>         
+							<div id="header_1_titulo" data-i18n="login.title_2"></div>         
+						</div>  
+						<div class="clearing"></div>      
 
-				<div id="contenido">
-					<div id="contenido_info">
-						<div class="aviso">
-							<div class="aviso_titulo">titulo</div>
-							<form action="#" method="post" name="login" id="login">
-								<div class="aviso_contenido">
-									<div class="aviso_contenido_info">
-										<label for="username" data-i18n="login.username"></label>
-										<input type="email" name="email" id="email" value="" />
-										<label for="password" data-i18n="login.password"></label>
-										<input type="password" name="password" id="password" value="" />
-									</div>
-									<div class="btn_normal">
-										<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
-									</div>
+						<div id="contenido">
+							<div id="contenido_info">
+								<div class="aviso">
+									<div class="aviso_titulo">titulo</div>
+									<form action="#" method="post" name="login" id="login">
+										<div class="aviso_contenido">
+											<div class="aviso_contenido_info">
+												<label for="username" data-i18n="login.username"></label>
+												<input type="email" name="email" id="email" value="" />
+												<label for="password" data-i18n="login.password"></label>
+												<input type="password" name="password" id="password" value="" />
+											</div>
+											<div class="btn_normal">
+												<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
+											</div>
+										</div>
+									</form>					  
 								</div>
-							</form>					  
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>		
+			</div>		
+		</div>
+
+		<!-- START LOGIN PAGE -->
+		<div data-role="page" id="dashboard">
+			<div id="app_contenedor" class="dashboard">
+				<div id="app_info">
+
+					<div data-role="header">
+
+						<div id="synchro">
+							<div id="synchro_info">
+								<div id="synchro_info_txt">Last synchro</div>
+							</div>
+						</div>
+					</div>
+
+					<div data-role="content">
+						<div id="header">
+							<div id="header_logo"><img src="img/logo_audi.jpg" width="600" height="88" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"> </div>
+							<div class="clearing"></div>
+							<div id="header_3_titulo" data-i18n="login.title_1"></div>         
+							<div id="header_3_titulo" data-i18n="login.title_2"></div>         
+						</div> 
+						<div class="clearing"></div> 
+
+						<div id="contenido">
+							<div id="contenido_login">   
+
+								<div id="contenido_login_menu">
+									<div id="contenido_login_menu_btn">
+										<div class="btn_home">
+											<a href="" target="_self">
+												<div class="btn_home_ico"><img src="img/ico_form.png" width="60" height="60" hspace="0" vspace="0" border="0"  style="max-width: 60px; border: 0;"></div>
+												<div class="btn_home_info">Form</div>
+											</a>
+										</div>            
+										<div class="btn_home">
+											<a href="" target="_self">
+												<div class="btn_home_ico"><img src="img/ico_check.png" width="60" height="60" hspace="0" vspace="0" border="0"  style="max-width: 60px; border: 0; "></div>
+												<div class="btn_home_info">Check in</div>
+											</a>
+										</div>            
+										<div class="btn_home">
+											<a href="" target="_self">
+												<div class="btn_home_ico"><img src="img/ico_synchro.png" width="60" height="60" hspace="0" vspace="0" border="0"  style="max-width: 60px; border: 0; "></div>
+												<div class="btn_home_info">Synchro</div>
+											</a>
+										</div>
+										<div class="btn_home">
+											<a href="" target="_self">
+												<div class="btn_home_ico"><img src="img/ico_survey.png" width="60" height="60" hspace="0" vspace="0" border="0"  style="max-width: 60px; border: 0;"></div>
+												<div class="btn_home_info">Survey</div>
+											</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearing"></div>
+
+								<div class="aviso_confirma">
+									<div class="aviso_contenido">
+										<div class="aviso_contenido_info">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus malesuada dui vel porttitor. Curabitur non massa felis. In iaculis blandit iaculis. In id lectus nec tortor malesuada aliquet. Aenean ut quam mollis, pretium libero maximus, euismod mi. In ornare neque eget pulvinar hendrerit.
+										</div>
+										<div class="btn_normal">
+											<a href="" target="_self"><div class="btn_normal_info">Accept</div></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearing"></div>
+
+								<div class="btn_home_salir">
+									<a href="" target="_self">
+										<div class="btn_home_info">Exit</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>		
+			</div>		
+		</div>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="childbrowser.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile.js"></script>		
         <script type="text/javascript" src="js/md5.js"></script>
         <script type="text/javascript" src="js/utf8_encode.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

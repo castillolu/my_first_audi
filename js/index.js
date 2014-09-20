@@ -31,7 +31,6 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-		$("#synchro_info_txt").html(navigator.userAgent);
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			document.addEventListener('deviceready', this.onDeviceReady, false);
  		}else{
@@ -136,6 +135,7 @@ var app = {
 					if (localStorage.status) {
 						$("#synchro_info_txt").html(localStorage.last_name);
 						$("#synchro_info_txt").append(localStorage.email);
+						$.mobile.changePage("#dashboard")
 					} else {
 						alert("Your login failed");
 					}
