@@ -42,10 +42,12 @@ var app = {
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
-		$.i18n.init(function(t) {
-			lng: language;
-			$(".login").i18n();
-		});
+		setTimeout(function(){
+			$.i18n.init(function(t) {
+				lng: language;
+				$(".login, .general, .register").i18n();
+			});
+		},100);
 	},
 	// deviceready Event Handler
 	//
@@ -55,7 +57,11 @@ var app = {
 		app.receivedEvent('deviceready');
 		app.loadContent();
 		setTimeout(function(){
-			$('#form_lead').on('click', app.goToFormLead);				
+			$('#btn_lead').on('click', app.goToFormLead);				
+			$('#btn_check_in').on('click', app.goToFormCheckIn);				
+			$('#btn_synchro').on('click', app.goToSynchro);				
+			$('#btn_survey').on('click', app.goToFormSurvey);				
+			$('#btn_logout').on('click', app.logOut);				
 		},50);
 	},
 	// Update DOM on a Received Event
@@ -82,7 +88,6 @@ var app = {
 			$.mobile.changePage("#dashboard");
 		}
 		
-		$( "#form_lead" ).on( "click", this.goToFormLead);
 	},
 	scan: function() {
 		try {
@@ -210,15 +215,28 @@ var app = {
 		}
 		catch (error)
 		{
-			alert(error);
+			alert("getUsers " + error);
 		}
 
 	},
-	
 	goToFormLead : function(){
 		console.log("goToFormLead");
 		$.mobile.changePage("#register");
+	},
+	goToFormCheckIn : function(){
+		console.log("goToFormCheckIn");
+		$.mobile.changePage("#check-in");
+	},
+	goToSynchro : function(){
+		console.log("goToSynchro");
+	},
+	goToFormSurvey : function(){
+		console.log("goToFormSurvey");
+		$.mobile.changePage("#survey");
+	},
+	logOut : function(){
+		console.log("logOut");
+		localStorage.clear();
+		$.mobile.changePage("#login-page",{reloadPage:true});
 	}
-
-
 };

@@ -1,8 +1,20 @@
 {
-  "login": {
-    "title_1": "Mi Primer",
-    "title_2": "AUDI",
-    "username": "Usuario español",
-    "password": "Contrseña español"
-  }
+	"general": {
+		"title_1": "Mi Primer",
+		"title_2": "AUDI"
+	},
+	"login": {
+		"username": "Usuario español",
+		"password": "Contrseña español"
+	},
+	"register": {
+		"name": "Nombre:",
+		"last_name": "Apellido(s):",
+		"email": "Correo electrónico:",
+		"phone": "Teléfono:",
+		"address": "Dirección:",
+		"current_car": "¿Qué carro conduce actualmente? (Marca/Modelo/Año)",
+		"model_audi": "¿Cuál es su modelo de Mi Primer Audi de interés para su prueba de manejo?",
+		"booking": "Por favor, seleccione la feche para su prueba de manejo:"
+	}
 }

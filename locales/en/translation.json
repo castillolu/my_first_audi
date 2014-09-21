@@ -1,8 +1,20 @@
 {
-  "login": {
-    "title_1": "My First",
-    "title_2": "AUDI",
-    "username": "Username",
-    "password": "Password"
-  }
+	"general": {
+		"title_1": "My First",
+		"title_2": "AUDI"
+	},
+	"login": {
+		"username": "User",
+		"password": "Password"
+	},
+	"register": {
+		"name": "Name:",
+		"last_name": "Last name:",
+		"email": "Email:",
+		"phone": "Phone number:",
+		"address": "Address:",
+		"current_car": "What car do you currently own?",
+		"model_audi": "What My First Audi model would you like to test drive?",
+		"booking": "Please select your preferred date for your test drive:"
+	}
 }

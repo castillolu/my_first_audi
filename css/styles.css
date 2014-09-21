@@ -117,14 +117,14 @@ img{
 .contenido_info{
 	padding:35% 0px 0px 0px;
 }
-#contenido_infoSurvey{
+.contenido_infoSurvey{
 	padding:20% 0px 0px 0px;
 }
-#contenido_info_txt{
+.contenido_info_txt{
 	font-size:0.9em;
 	padding:0px 0px 20px 0px;
 }
-#contenido_login{
+.contenido_login{
 	padding:10% 0px 0px 0px;
 	margin:0 auto;
 }

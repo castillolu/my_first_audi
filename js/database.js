@@ -17,7 +17,7 @@ var dbapp = {
 		try {
 			db = window.openDatabase(shortName, version, displayName, maxSize);
 		} catch (error) {
-			alert(error);
+			alert("openDatabase " +error);
 		}
 		db.transaction(dbapp.populateDB, callBacks.successDB, callBacks.errorQuery);
 		console.log("after");
@@ -57,11 +57,12 @@ var dbapp = {
 				'last_name TEXT NOT NULL,' +
 				'email TEXT NOT NULL,' +
 				'password TEXT NOT NULL,' +
+				'type_registry TEXT NOT NULL,' +
 				'language TEXT NOT NULL)');
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
-				'last_name, email, password, language) ' +
+				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
-				'"21232f297a57a5a743894a0e4a801fc3", "ENGLISH")');
+				'"21232f297a57a5a743894a0e4a801fc3", "DEALER_AND_ON_SITE", "en-us")');
 	},
 	//login users
 	auth: function(user, pass) {
@@ -82,7 +83,7 @@ var dbapp = {
 				dbapp.searchUserDB(users[user]);
 			}
 		} catch (error) {
-			alert(error);
+			alert("updateUsers " +error);
 		}
 	},
 	searchUserDB: function(objUser) {
@@ -98,7 +99,7 @@ var dbapp = {
 								},
 								callBacks.errorQuery);
 					} catch (error) {
-						alert("Line 140 : " + error);
+						alert("SearchUserDB : " + error);
 					}
 				}
 		);
@@ -110,6 +111,7 @@ var dbapp = {
 				'last_name = "' + objUser.last_name + '"' + ', ' +
 				'email = "' + objUser.email + '"' + ', ' +
 				'password = "' + objUser.password + '"' + ', ' +
+				'type_registry = "' + objUser.country.typeRegistry + '"' + ', ' +
 				'language = "' + objUser.language + '" ' +
 				'WHERE id = ' + objUser.id;
 		//TODO: AJUSTAR SUCCESS           
@@ -120,7 +122,7 @@ var dbapp = {
 	createUserDB: function(tx, objUser) {
 		try {
 			var sql = 'INSERT INTO Users (id, country_id, profile_id, name, ' +
-					'last_name, email, password, language) ' +
+					'last_name, email, password, type_registry, language) ' +
 					' VALUES (' +
 					objUser.id +
 					', ' + objUser.country.id +
@@ -129,13 +131,14 @@ var dbapp = {
 					', "' + objUser.last_name + '"' +
 					', "' + objUser.email + '"' +
 					', "' + objUser.password + '"' +
+					', "' + objUser.country.typeRegistry + '"' +
 					', "' + objUser.language + '")';
 			//TODO: AJUSTAR SUCCESS   
 			var xx = tx.executeSql(sql, [], function() {
 				$("#info").append("Insert : " + sql + "\n\n\n\n");
 			}, result.errorQuery);
 		} catch (error) {
-			alert(error);
+			alert("createUserDB " +error);
 		}
 	}
 };
