@@ -46,7 +46,6 @@ var app = {
 			lng: language;
 			$(".login").i18n();
 		});
-
 	},
 	// deviceready Event Handler
 	//
@@ -55,6 +54,7 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		app.loadContent();
+		$('#form_lead').on('tap', app.goToFormLead);				
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
@@ -209,6 +209,11 @@ var app = {
 			alert(error);
 		}
 
+	},
+	
+	goToFormLead : function(){
+		console.log("goToFormLead");
+		$.mobile.changePage("#register");
 	}
 
 

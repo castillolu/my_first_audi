@@ -263,6 +263,9 @@ textarea{
 	padding:25px 5px 5px 5px;
 	width:44.5%;
 }
+.btn_home a{
+	display: block;
+}
 .btn_home_salir{
 	background-color:#e21838;
 	clear:both;
@@ -327,4 +330,18 @@ textarea{
 a{
 	color:#FFF;
 	text-decoration:none;
+}
+
+/*
+jQuery Mobile
+
+*/
+.ui-page-theme-a a:visited, 
+html .ui-bar-a a:visited, 
+html .ui-body-a a:visited, 
+html body .ui-group-theme-a a:visited{
+	color: #fff;
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{
+	text-shadow: none;
 }
