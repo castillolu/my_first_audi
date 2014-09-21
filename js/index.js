@@ -31,9 +31,9 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			document.addEventListener('deviceready', this.onDeviceReady, false);
- 		}else{
+		} else {
 			$(document).on('ready', this.onDeviceReady);
 		}
 //        document.getElementById('scan').addEventListener('click', this.scan, false);
@@ -54,11 +54,31 @@ var app = {
 	// function, we must explicity call `app.receivedEvent(...);`
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
+		app.loadContent();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
 		console.log('Received Event: ' + id);
 		dbapp.openDatabase();
+	},
+	loadContent: function() {
+		$("#dashboard").load("dashboard.html", function() {
+			console.log("Load dashboard.");
+		});
+		$("#register").load("register.html", function() {
+			console.log("Load register.");
+		});
+		$("#check-in").load("checkin.html", function() {
+			console.log("Load check-in.");
+		});
+		$("#survey").load("survey.html", function() {
+			console.log("Load survey.");
+		});
+		if (localStorage.status) {
+			$(".synchro_info_txt").html(localStorage.last_name);
+			$(".synchro_info_txt").append(localStorage.email);
+			$.mobile.changePage("#dashboard");
+		}
 	},
 	scan: function() {
 		try {
@@ -133,8 +153,8 @@ var app = {
 				dbapp.auth(user, password);
 				setTimeout(function() {
 					if (localStorage.status) {
-						$("#synchro_info_txt").html(localStorage.last_name);
-						$("#synchro_info_txt").append(localStorage.email);
+						$(".synchro_info_txt").html(localStorage.last_name);
+						$(".synchro_info_txt").append(localStorage.email);
 						$.mobile.changePage("#dashboard")
 					} else {
 						alert("Your login failed");
@@ -154,7 +174,6 @@ var app = {
 		//TODO Enable button Sync 
 		var networkState = navigator.network.connection.type;
 
-		$("#info").html(networkState);
 		if (networkState == 'wifi' && appStart == false) {
 
 			appStart = true;

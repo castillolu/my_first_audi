@@ -60,64 +60,61 @@ img{
     font-style: normal;
 }
 /***********************************/
-#app_contenedor{
+.app_contenedor{
 	margin:0 auto;
 	width:100%; 
 }
-#app_info{
+.app_info{
 }
 /************ synchro *************/
-#synchro{
+.synchro{
 	background-color:#e21838;
 	color:#FFF;
 	font-size:0.8em;   
 }
-#synchro_info{
+.synchro_info{
 	margin:0 auto;
 	width:100%;
 }
-#synchro_info_txt{
+.synchro_info_txt{
 	padding:0px 10px 3px 10px;
 }
 /************ header *************/
-#header{
+.header{
 	margin:0 auto;
 	width:79%; 
 }
-#header_logo{
+.header_logo{
 }
-#header_logo img{
+.header_logo img{
 	float:right;
 }
-#header_1_img, #header_2_img{
+.header_1_img, .header_2_img{
 	position:absolute;
 }
-#header_logo img{
-	float:right;
-}
-#header_1_titulo, #header_2_titulo, #header_3_titulo{
+.header_1_titulo, .header_2_titulo, .header_3_titulo{
 	color:#000000;
 	font-family: 'AudiExtendedBold';
 	font-size:3em;
 	text-align:right;
 }
-#header_1_titulo, #header_2_titulo{
+.header_1_titulo, .header_2_titulo{
 	font-size:4em;
 	line-height:1em;
 	position:relative;
 	z-index:1;
 }
-#header_3_titulo{
+.header_3_titulo{
 	font-size:5.5em;
 	line-height:70px;
 }
 /************ contenido *************/
-#contenido{
+.contenido{
 	color:#8a8e94;
 	margin:0 auto;
 	width:79%; 
 }
-#contenido_info{
+.contenido_info{
 	padding:35% 0px 0px 0px;
 }
 #contenido_infoSurvey{
@@ -251,10 +248,10 @@ textarea{
 	font-size:1.2em;
 }
 /************ botones *************/
-#contenido_login_menu{
+.contenido_login_menu{
 	margin:0 auto;
 }
-#contenido_login_menu_btn{
+.contenido_login_menu_btn{
 	padding:10px;
 }
 .btn_home{
