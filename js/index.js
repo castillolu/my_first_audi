@@ -54,7 +54,9 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		app.loadContent();
-		$('#form_lead').on('tap', app.goToFormLead);				
+		setTimeout(function(){
+			$('#form_lead').on('click', app.goToFormLead);				
+		},50);
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
@@ -62,8 +64,8 @@ var app = {
 		dbapp.openDatabase();
 	},
 	loadContent: function() {
-		$("#dashboard").load("dashboard.html", function() {
-			console.log("Load dashboard.");
+		$.get("dashboard.html").success(function(html){
+			$("#dashboard").html(html);
 		});
 		$("#register").load("register.html", function() {
 			console.log("Load register.");
@@ -79,6 +81,8 @@ var app = {
 			$(".synchro_info_txt").append(localStorage.email);
 			$.mobile.changePage("#dashboard");
 		}
+		
+		$( "#form_lead" ).on( "click", this.goToFormLead);
 	},
 	scan: function() {
 		try {
