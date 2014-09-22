@@ -15,6 +15,12 @@
 		"address": "Address:",
 		"current_car": "What car do you currently own?",
 		"model_audi": "What My First Audi model would you like to test drive?",
-		"booking": "Please select your preferred date for your test drive:"
+		"booking": "Please select your preferred date for your test drive:",
+		"select_booking": "Select booking",
+		"select": "Select year"
+	},
+	"attr": {
+		"brand": "Brand",
+		"model": "Model"
 	}
 }

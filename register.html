@@ -37,16 +37,61 @@
 									<label for="address" data-i18n="register.address"></label>
 									<input type="text" name="address" id="address" value="" />
 									<label for="current_car" data-i18n="register.current_car"></label>
-									<input type="text" name="current_car" id="current_car" value="" />
-								</div>
-								<div class="btn_normal">
-									<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
+									<div class="ui-grid-b">
+										<div class="ui-block-a">
+											<label for="current_car_brand"></label>
+											<input type="text" name="current_car_brand" id="current_car_brand" data-i18n="[placeholder]translation:attr.brand;"/>
+										</div>
+										<div class="ui-block-b">
+											<label for="current_car_model"></label>
+											<input type="text" name="current_car_model" id="current_car_model" data-i18n="[placeholder]translation:attr.model;" />
+										</div>
+										<div class="ui-block-c">
+											<label for="current_car_year"></label>
+											<select name="current_car_year" id="current_car_year" >
+												<option value="" data-i18n="register.select"></option>
+												<option value="2015">2015</option>
+												<option value="2014">2014</option>
+												<option value="2013">2013</option>
+												<option value="2012">2012</option>
+												<option value="2011">2011</option>
+												<option value="2010">2010</option>
+												<option value="2009">2009</option>
+												<option value="2008">2008</option>
+												<option value="2007">2007</option>
+												<option value="2006">2006</option>
+												<option value="2005">2005</option>
+												<option value="2004">2004</option>
+												<option value="2003">2003</option>
+												<option value="2002">2002</option>
+												<option value="2001">2001</option>
+												<option value="2000">2000</option>
+											</select>
+										</div>
+									</div>
+									<fieldset data-role="controlgroup"  data-type="horizontal">
+										<legend data-i18n="register.model_audi"></legend>
+										<input type="radio" name="model_audi" id="model_audi-1" value="A1" />
+										<label for="model_audi-1">A1</label>
+										<input type="radio" name="model_audi" id="model_audi-2" value="A3"  />
+										<label for="model_audi-2">A3</label>
+										<input type="radio" name="model_audi" id="model_audi-3" value="Q3"  />
+										<label for="model_audi-3">Q3</label>
+									</fieldset>
+									<label for="current_car_year" data-i18n="register.booking"></label>
+									<select name="booking" id="booking" >
+										<option value="" data-i18n="register.select_booking"></option>
+									</select>
+
 								</div>
 							</div>
 						</form>					  
+						<div class="btn_normal">
+							<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>	
-	</div>		
+		</div>
+	</div>	
 </div>		

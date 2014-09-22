@@ -15,6 +15,12 @@
 		"address": "Dirección:",
 		"current_car": "¿Qué carro conduce actualmente? (Marca/Modelo/Año)",
 		"model_audi": "¿Cuál es su modelo de Mi Primer Audi de interés para su prueba de manejo?",
-		"booking": "Por favor, seleccione la feche para su prueba de manejo:"
+		"booking": "Por favor, seleccione la feche para su prueba de manejo:",
+		"select_booking": "Seleccione reserva",
+		"select": "Seleccione"
+	},
+	"attr": {
+		"brand": "Marca",
+		"model": "Modelo"
 	}
 }
