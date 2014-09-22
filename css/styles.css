@@ -6,7 +6,6 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
-/*
 body {
 	font-family:Verdana, Geneva, sans-serif;
 	width: 100%;
@@ -19,7 +18,6 @@ img{
     height: 100%;
     width: 100%;
 }
-*/
 /***********************************/
 @font-face {
     font-family: 'AudiBold';
@@ -62,11 +60,10 @@ img{
     font-style: normal;
 }
 /***********************************/
-/*.app_contenedor{
+.app_contenedor{
 	margin:0 auto;
 	width:100%; 
 }
-*/
 .app_info{
 }
 /************ synchro *************/
@@ -85,7 +82,7 @@ img{
 /************ header *************/
 .header{
 	margin:0 auto;
-/*	width:79%; */
+	width:79%; 
 }
 .header_logo{
 }
@@ -114,10 +111,9 @@ img{
 /************ contenido *************/
 .contenido{
 	color:#8a8e94;
-	/*margin:0 auto;*/
-/*	width:79%; */
+	margin:0 auto;
+	width:79%; 
 }
-/*
 .contenido_info{
 	padding:35% 0px 0px 0px;
 }
@@ -132,7 +128,6 @@ img{
 	padding:10% 0px 0px 0px;
 	margin:0 auto;
 }
-*/
 /************ avisos/alertas *************/
 .aviso{
 	font-size:0.9em;
@@ -158,28 +153,23 @@ img{
 	padding:20px;
 }
 /************ formularios *************/
-
 input{
 	/* color:#8a8e94;*/
-	/*padding:10px 5px 0px 2px;*/
+	padding:10px 5px 0px 2px;
 	vertical-align:text-bottom;
-	/*width:100%;*/
+	width:100%;
 }
-/*
 select{
 	padding:10px 5px 0px 2px;
 	vertical-align:text-bottom;
 	width:115%;
 }
-*/
-/*
 textarea{
-	color:#8a8e94;
+	/*color:#8a8e94;*/
 	font-size:1.6em;
 	padding:5px;
 	width:99.5%;
 }
-*/
 .aviso_formulario li, .survey_formulario li, .survey_formulario_check li, .survey_formulario_logged li, .survey_currentVehicle_list li{
 	list-style:none;
 	padding:3px 20px 3px 5px;
@@ -258,24 +248,21 @@ textarea{
 	font-size:1.2em;
 }
 /************ botones *************/
-/*
 .contenido_login_menu{
 	margin:0 auto;
 }
 .contenido_login_menu_btn{
 	padding:10px;
 }
-*/
 .btn_home{
 	background-color:#25292c;
 	border:1px solid #FFF;
 	float:left;
 	font-size:1.6em;
-/*	margin:10px;
+	margin:10px;
 	padding:25px 5px 5px 5px;
 	width:44.5%;
-
-*/}
+}
 .btn_home a{
 	display: block;
 }
@@ -283,18 +270,16 @@ textarea{
 	background-color:#e21838;
 	clear:both;
 	font-size:1.6em;
-/*	margin:0 auto;
+	margin:0 auto;
 	margin-bottom:20px;
 	margin-top:50px;
-*/
 	text-align:center;
 	width:93%;
-
 }
 .btn_home_info{
 	color:#97999a;
 	font-family: 'AudiExtendedBold';
-/*	padding:15px 0px 2px 5px;*/
+	padding:15px 0px 2px 5px;
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -308,7 +293,7 @@ textarea{
 	font-size:0.9em;
 	margin:0 auto;
 	text-align:center;
-/*	width:30%;*/
+	width:30%;
 }
 .btn_normal_info{
     background-color: #25292c;
