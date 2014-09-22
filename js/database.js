@@ -176,7 +176,7 @@ var dbapp = {
 	},
 	searchBookingDB: function(objBooking) {
 		result = false;
-        $(".synchro_info_txt").append("searchBookingDB");
+        //$(".synchro_info_txt").append("searchBookingDB");
 
 		db.transaction(
 				function(tx) {
@@ -194,7 +194,7 @@ var dbapp = {
 		);
 	},
 	updateBookingDB: function(tx, objBooking) {
-        $(".synchro_info_txt").append("updateBookingDB");
+        $("#log").append("updateBookingDB");
 		try {
 			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
 					'name = "' + objBooking.name + '", ' +
@@ -202,6 +202,8 @@ var dbapp = {
 					'quotas = ' + objBooking.language +
 					'WHERE id = ' + objBooking.id;
 			//TODO: AJUSTAR SUCCESS           
+            $("#log").append(sql);
+
 			tx.executeSql(sql, [], function() {
 			}, result.errorQuery);
 		} catch (error) {
@@ -217,7 +219,8 @@ var dbapp = {
 					', "' + objBooking.name + '"' +
 					', "' + objBooking.date + '"' +
 					', "' + objBooking.quotas + '")';
-			//TODO: AJUSTAR SUCCESS   
+			//TODO: AJUSTAR SUCCESS  
+            $("#log").append(sql);
 			var xx = tx.executeSql(sql, [], function() {
 			}, result.errorQuery);
 		} catch (error) {
