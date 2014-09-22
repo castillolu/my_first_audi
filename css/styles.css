@@ -81,9 +81,8 @@ img{
 }
 /************ header *************/
 .header{
-	/*margin:0 auto;
-	width:79%; */
-   height:390px;
+	margin:0 auto;
+	width:85%;
 }
 .header_logo{
 }
@@ -112,11 +111,11 @@ img{
 /************ contenido *************/
 .contenido{
 	color:#8a8e94;
-	/*margin:0 auto;
-	width:79%;*/
+	margin:0 auto;
+	width:85%;
 }
 .contenido_info{
-	/*padding:35% 0px 0px 0px;*/
+	padding:35% 0px 0px 0px;
 }
 .contenido_infoSurvey{
 	/*padding:20% 0px 0px 0px;*/
@@ -157,6 +156,8 @@ img{
 input{
 	/* color:#8a8e94;*/
 	/*padding:10px 5px 0px 2px;*/
+   font-size:2em;
+   padding:5% 1% 0px 1%;
 	vertical-align:text-bottom;
 	/*width:100%;*/
 }
