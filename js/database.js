@@ -17,7 +17,7 @@ var dbapp = {
 		try {
 			db = window.openDatabase(shortName, version, displayName, maxSize);
 		} catch (error) {
-			alert("openDatabase " +error);
+			alert("openDatabase " + error);
 		}
 		db.transaction(dbapp.populateDB, callBacks.successDB, callBacks.errorQuery);
 		console.log("after");
@@ -59,6 +59,28 @@ var dbapp = {
 				'password TEXT NOT NULL,' +
 				'type_registry TEXT NOT NULL,' +
 				'language TEXT NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Leads(' +
+				'id INTEGER NOT NULL PRIMARY KEY, ' +
+				'country_id INTEGER NOT NULL, ' +
+				'booking_id INTEGER NOT NULL, ' +
+				'name TEXT NOT NULL,' +
+				'last_name TEXT NOT NULL,' +
+				'email TEXT NOT NULL,' +
+				'phone TEXT NOT NULL,' +
+				'address TEXT NOT NULL,' +
+				'brand TEXT NOT NULL,' +
+				'model TEXT NOT NULL,' +
+				'year TEXT INTEGER NOT NULL,' +
+				'model_audi TEXT NOT NULL,' +
+				'type_registry TEXT NOT NULL,' +
+				'status TEXT NOT NULL,' +
+				'control INTEGER NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Bookings(' +
+				'id INTEGER NOT NULL PRIMARY KEY, ' +
+				'country_id INTEGER NOT NULL, ' +
+				'name TEXT NOT NULL, ' +
+				'date TEXT NOT NULL,' +
+				'quotas INTEGER NOT NULL)');
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
@@ -83,7 +105,7 @@ var dbapp = {
 				dbapp.searchUserDB(users[user]);
 			}
 		} catch (error) {
-			alert("updateUsers " +error);
+			alert("updateUsers " + error);
 		}
 	},
 	searchUserDB: function(objUser) {
@@ -138,7 +160,85 @@ var dbapp = {
 				$("#info").append("Insert : " + sql + "\n\n\n\n");
 			}, result.errorQuery);
 		} catch (error) {
-			alert("createUserDB " +error);
+			alert("createUserDB " + error);
 		}
+	},
+	//Update bookings from BD PHP
+	updateBookings: function(bookings) {
+		//$("#info").append("Update booking each per each");
+		try {
+			for (var booking in bookings) {
+				dbapp.searchUserDB(bookings[booking]);
+			}
+		} catch (error) {
+			alert("updateBookings " + error);
+		}
+	},
+	searchBookingDB: function(objBooking) {
+		result = false;
+
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Bookings WHERE id = ?',
+								[objBooking.id],
+								function(tx, result) {
+									callBacks.successSearchBooking(tx, result, objBooking)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("searchBookingDB : " + error);
+					}
+				}
+		);
+	},
+	updateBookingDB: function(tx, objBooking) {
+		try {
+			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
+					'name = "' + objBooking.name + '", ' +
+					'date = "' + objBooking.last_name + '"' + ', ' +
+					'quotas = ' + objBooking.language +
+					'WHERE id = ' + objBooking.id;
+			//TODO: AJUSTAR SUCCESS           
+			tx.executeSql(sql, [], function() {
+			}, result.errorQuery);
+		} catch (error) {
+			alert("updateBookingDB " + error);
+		}
+	},
+	createBookingDB: function(tx, objBooking) {
+		try {
+			var sql = 'INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
+					' VALUES (' +
+					objBooking.id +
+					', ' + objBooking.country.id +
+					', "' + objBooking.name + '"' +
+					', "' + objBooking.date + '"' +
+					', "' + objBooking.quotas + '")';
+			//TODO: AJUSTAR SUCCESS   
+			var xx = tx.executeSql(sql, [], function() {
+			}, result.errorQuery);
+		} catch (error) {
+			alert("createBookingDB " + error);
+		}
+	},
+	
+	queryBookings : function(){
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?',
+								[localStorage.country],
+								function(tx, result) {
+									callBacks.successSearchBookingsByCountry(tx, result)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("queryBookings : " + error);
+					}
+				}
+		);
+
 	}
+
 };

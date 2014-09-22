@@ -42,12 +42,12 @@ var app = {
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
-		setTimeout(function(){
+		setTimeout(function() {
 			$.i18n.init(function(t) {
 				lng: language;
 				$(".login, .general, .register").i18n();
 			});
-		},100);
+		}, 100);
 	},
 	// deviceready Event Handler
 	//
@@ -56,13 +56,7 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		app.loadContent();
-		setTimeout(function(){
-			$('#btn_lead').on('click', app.goToFormLead);				
-			$('#btn_check_in').on('click', app.goToFormCheckIn);				
-			$('#btn_synchro').on('click', app.goToSynchro);				
-			$('#btn_survey').on('click', app.goToFormSurvey);				
-			$('#btn_logout').on('click', app.logOut);				
-		},50);
+		setTimeout(app.loadActions, 50);
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
@@ -70,8 +64,8 @@ var app = {
 		dbapp.openDatabase();
 	},
 	loadContent: function() {
-		$.get("dashboard.html").success(function(html){
-			$("#dashboard").html(html);
+		$("#dashboard").load("dashboard.html", function() {
+			console.log("Load register.");
 		});
 		$("#register").load("register.html", function() {
 			console.log("Load register.");
@@ -83,11 +77,43 @@ var app = {
 			console.log("Load survey.");
 		});
 		if (localStorage.status) {
-			$(".synchro_info_txt").html(localStorage.last_name);
-			$(".synchro_info_txt").append(localStorage.email);
 			$.mobile.changePage("#dashboard");
 		}
-		
+
+	},
+	loadActions: function() {
+		$('#btn_lead').on('click', app.goToFormLead);
+		$('#btn_check_in').on('click', app.goToFormCheckIn);
+		$('#btn_synchro').on('click', app.goToSynchro);
+		$('#btn_survey').on('click', app.goToFormSurvey);
+		$('#btn_logout').on('click', app.logOut);
+		if (localStorage.status) {
+			$(".synchro_info_txt").html(localStorage.last_name);
+			$(".synchro_info_txt").append(localStorage.email);
+			$("#country_id").val(localStorage.country);
+			switch (localStorage.type_registry) {
+				case "ON_SITE":
+					var $radios = $('input:radio[name=type_registry]');
+					if ($radios.is(':checked') === false) {
+						$radios.filter('[value=ON_SITE]').prop('checked', true);
+					}
+					$(".opt_type_registry").hide();
+					$(".opt_booking").hide();
+					break;
+				case "DEALER":
+					var $radios = $('input:radio[name=type_registry]');
+					if ($radios.is(':checked') === false) {
+						$radios.filter('[value=DEALER]').prop('checked', true);
+					}
+					$(".opt_type_registry").hide();
+					$(".opt_booking").show();
+					break;
+				case "DEALER_AND_ON_SITE":
+					$(".opt_type_registry").show();
+					break;
+			}
+			dbapp.queryBookings();
+		}
 	},
 	scan: function() {
 		try {
@@ -219,24 +245,53 @@ var app = {
 		}
 
 	},
-	goToFormLead : function(){
+	getBookings: function() {
+		$("#info").html("Updating bookings...");
+		try {
+			$.ajax(urlAPI + "/bookings/list", {
+				type: "GET",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				contentType: "application/json",
+				success: function(data) {
+					if (data.status) {
+						$("#info").append("Resultado de la Consulta : " + data.status);
+						dbapp.updateBookings(data.data);
+					} else {
+						$("#info").append("Error al crear el registro : " + data.error);
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert(text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert("getUsers " + error);
+		}
+
+	},
+	goToFormLead: function() {
 		console.log("goToFormLead");
 		$.mobile.changePage("#register");
 	},
-	goToFormCheckIn : function(){
+	goToFormCheckIn: function() {
 		console.log("goToFormCheckIn");
 		$.mobile.changePage("#check-in");
 	},
-	goToSynchro : function(){
+	goToSynchro: function() {
 		console.log("goToSynchro");
 	},
-	goToFormSurvey : function(){
+	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
 		$.mobile.changePage("#survey");
 	},
-	logOut : function(){
+	logOut: function() {
 		console.log("logOut");
 		localStorage.clear();
-		$.mobile.changePage("#login-page",{reloadPage:true});
+		$.mobile.changePage("#login-page", {reloadPage: true});
 	}
 };

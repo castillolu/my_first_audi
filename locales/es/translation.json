@@ -17,10 +17,13 @@
 		"model_audi": "¿Cuál es su modelo de Mi Primer Audi de interés para su prueba de manejo?",
 		"booking": "Por favor, seleccione la feche para su prueba de manejo:",
 		"select_booking": "Seleccione reserva",
-		"select": "Seleccione"
+		"select": "Seleccione año",
+		"onsite": "En sitio",
+		"dealer": "Distribuidor"
 	},
 	"attr": {
 		"brand": "Marca",
-		"model": "Modelo"
+		"model": "Modelo",
+		"save": "Guardar"
 	}
 }

@@ -17,10 +17,13 @@
 		"model_audi": "What My First Audi model would you like to test drive?",
 		"booking": "Please select your preferred date for your test drive:",
 		"select_booking": "Select booking",
-		"select": "Select year"
+		"select": "Select year",
+		"onsite": "On site",
+		"dealer": "Dealer"
 	},
 	"attr": {
 		"brand": "Brand",
-		"model": "Model"
+		"model": "Model",
+		"save": "Save"		
 	}
 }

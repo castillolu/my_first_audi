@@ -26,6 +26,13 @@
 						<form action="#" method="post" name="form_lead" id="form_lead">
 							<div class="aviso_contenido">
 								<div class="aviso_contenido_info">
+									<fieldset class="opt_type_registry" data-role="controlgroup"  data-type="horizontal">
+										<legend></legend>
+										<input type="radio" name="type_registry" id="onsite" value="ON_SITE" />
+										<label for="onsite" data-i18n="register.onsite"></label>
+										<input type="radio" name="type_registry" id="dealer" value="DEALER"  />
+										<label for="dealer" data-i18n="register.dealer"></label>
+									</fieldset>
 									<label for="name" data-i18n="register.name"></label>
 									<input type="text" name="name" id="name" value="" />
 									<label for="last_name" data-i18n="register.last_name"></label>
@@ -78,16 +85,18 @@
 										<input type="radio" name="model_audi" id="model_audi-3" value="Q3"  />
 										<label for="model_audi-3">Q3</label>
 									</fieldset>
-									<label for="current_car_year" data-i18n="register.booking"></label>
-									<select name="booking" id="booking" >
-										<option value="" data-i18n="register.select_booking"></option>
-									</select>
-
+									<div class="opt_booking">
+										<label for="current_car_year" data-i18n="register.booking"></label>
+										<select name="booking_id" id="booking_id" >
+											<option value="" data-i18n="register.select_booking"></option>
+										</select>
+									</div>
 								</div>
+								<input type="hidden" name="country_id" id="country_id" value="" />
 							</div>
 						</form>					  
 						<div class="btn_normal">
-							<input type="submit" name="submit"  class="btn_normal_info" id="submit" value="Login" />
+							<input type="submit" name="submit"  class="btn_normal_info" id="submit" data-i18n="[value]translation:attr.save;"  />
 						</div>
 					</div>
 				</div>
