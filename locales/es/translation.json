@@ -4,8 +4,8 @@
 		"title_2": "AUDI"
 	},
 	"login": {
-		"username": "Usuario español",
-		"password": "Contrseña español"
+		"username": "Usuario",
+		"password": "Contrseña"
 	},
 	"register": {
 		"name": "Nombre:",
@@ -24,6 +24,7 @@
 	"attr": {
 		"brand": "Marca",
 		"model": "Modelo",
-		"save": "Guardar"
+		"save": "Guardar",
+		"login": "Entrar"
 	}
 }

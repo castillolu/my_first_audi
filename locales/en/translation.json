@@ -24,6 +24,7 @@
 	"attr": {
 		"brand": "Brand",
 		"model": "Model",
-		"save": "Save"		
+		"save": "Save",
+		"login": "Login"		
 	}
 }

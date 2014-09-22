@@ -86,35 +86,37 @@ var app = {
 		$('#btn_check_in').on('click', app.goToFormCheckIn);
 		$('#btn_synchro').on('click', app.goToSynchro);
 		$('#btn_survey').on('click', app.goToFormSurvey);
-		$('#btn_logout').on('click', app.logOut);
-		if (localStorage.status) {
-			$(".synchro_info_txt").html(localStorage.last_name);
-			$(".synchro_info_txt").append(localStorage.email);
-			$("#country_id").val(localStorage.country);
-			switch (localStorage.type_registry) {
-				case "ON_SITE":
-					var $radios = $('input:radio[name=type_registry]');
-					if ($radios.is(':checked') === false) {
-						$radios.filter('[value=ON_SITE]').prop('checked', true);
-					}
-					$(".opt_type_registry").hide();
-					$(".opt_booking").hide();
-					break;
-				case "DEALER":
-					var $radios = $('input:radio[name=type_registry]');
-					if ($radios.is(':checked') === false) {
-						$radios.filter('[value=DEALER]').prop('checked', true);
-					}
-					$(".opt_type_registry").hide();
-					$(".opt_booking").show();
-					break;
-				case "DEALER_AND_ON_SITE":
-					$(".opt_type_registry").show();
-					break;
-			}
-            dbapp.queryBookings();
-		}
+        $('#btn_logout').on('click', app.logOut);
+        app.eventsRegistry();
 	},
+    eventsRegistry : function(){
+        if (localStorage.status) {
+            switch (localStorage.type_registry) {
+                case "ON_SITE":
+                    var $radios = $('input:radio[name=type_registry]');
+                    if ($radios.is(':checked') === false) {
+                        $radios.filter('[value=ON_SITE]').prop('checked', true);
+                    }
+                    $(".opt_type_registry").hide();
+                    $(".opt_booking").hide();
+                    break;
+                case "DEALER":
+                    var $radios = $('input:radio[name=type_registry]');
+                    if ($radios.is(':checked') === false) {
+                        $radios.filter('[value=DEALER]').prop('checked', true);
+                    }
+                    $(".opt_type_registry").hide();
+                    $(".opt_booking").show();
+                    break;
+                case "DEALER_AND_ON_SITE":
+                    $(".opt_type_registry").show();
+                    break;
+            }
+            dbapp.queryBookings();
+            $("#country_id").val(localStorage.country);
+            $('#form_lead').on('submit', app.saveLead);
+        }
+    },
 	scan: function() {
 		try {
 			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
@@ -177,11 +179,44 @@ var app = {
 		}
 
 	},
-	loginAuth: function(e) {
+    loginAuth: function(e) {
+        try {
+            e.preventDefault();
+            //disable the button so we can't resubmit while we wait
+            $("#submit", this).attr("disabled", "disabled");
+            var lead = {};
+            lead.type_registry = $("#type_registry", this).val();
+            lead.name = $("#name", this).val();
+            lead.last_name = $("#last_name", this).val();
+            lead.email = $("#email", this).val();
+            lead.phone = $("#phone", this).val();
+            lead.address = $("#address", this).val();
+            lead.current_car_brand = $("#current_car_brand", this).val();
+            lead.current_car_model = $("#current_car_model", this).val();
+            lead.current_car_year = $("#current_car_year", this).val();
+            lead.model_audi = $("#model_audi", this).val();
+            lead.booking_id = $("#booking_id", this).val();
+            if (user != '' && password != '') {
+                dbapp.auth(user, password);
+                setTimeout(function() {
+                    if (localStorage.status) {
+                        $.mobile.changePage("#dashboard")
+                    } else {
+                        alert("Your login failed");
+                    }
+                    $("#submit").removeAttr("disabled");
+                }, 50);
+            }
+            return false;
+        } catch (error) {
+            alert(error);
+        }
+    },
+	saveLead: function(e) {
 		try {
 			e.preventDefault();
 			//disable the button so we can't resubmit while we wait
-			$("#submit", this).attr("disabled", "disabled");
+			$("#submit-lead", this).attr("disabled", "disabled");
 			var user = $("#email", this).val();
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
