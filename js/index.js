@@ -112,6 +112,9 @@ var app = {
 					$(".opt_type_registry").show();
 					break;
 			}
+            setTimeout(app.getUsers(), 100);
+            setTimeout(app.getBookings(), 100);
+
 		}
 	},
 	scan: function() {
