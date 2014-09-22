@@ -165,10 +165,10 @@ var dbapp = {
 	},
 	//Update bookings from BD PHP
 	updateBookings: function(bookings) {
-		//$("#info").append("Update booking each per each");
+		$(".updateBookings").append("Update booking each per each");
 		try {
 			for (var booking in bookings) {
-				dbapp.searchUserDB(bookings[booking]);
+				dbapp.searchBookingDB(bookings[booking]);
 			}
 		} catch (error) {
 			alert("updateBookings " + error);

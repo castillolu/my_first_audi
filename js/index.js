@@ -112,7 +112,6 @@ var app = {
 					$(".opt_type_registry").show();
 					break;
 			}
-			dbapp.queryBookings();
 		}
 	},
 	scan: function() {
@@ -213,11 +212,12 @@ var app = {
 
 			appStart = true;
 			setTimeout(app.getUsers(), 100);
+            setTimeout(app.getBookings(), 100);
 		}
 
 	},
 	getUsers: function() {
-		$("#info").html("Updating users...");
+		$(".synchro_info_txt").html("Updating users...");
 		try {
 			$.ajax(urlAPI + "/users/list_users", {
 				type: "GET",
@@ -228,10 +228,10 @@ var app = {
 				contentType: "application/json",
 				success: function(data) {
 					if (data.status) {
-						$("#info").append("Resultado de la Consulta : " + data.status);
+						$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
 						dbapp.updateUsers(data.data);
 					} else {
-						$("#info").append("Error al crear el registro : " + data.error);
+						$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
@@ -246,7 +246,7 @@ var app = {
 
 	},
 	getBookings: function() {
-		$("#info").html("Updating bookings...");
+		$(".synchro_info_txt").html("Updating bookings...");
 		try {
 			$.ajax(urlAPI + "/bookings/list", {
 				type: "GET",
@@ -257,10 +257,10 @@ var app = {
 				contentType: "application/json",
 				success: function(data) {
 					if (data.status) {
-						$("#info").append("Resultado de la Consulta : " + data.status);
+						$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
 						dbapp.updateBookings(data.data);
 					} else {
-						$("#info").append("Error al crear el registro : " + data.error);
+						$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
