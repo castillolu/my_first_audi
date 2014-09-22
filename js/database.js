@@ -197,8 +197,8 @@ var dbapp = {
 		try {
 			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
 					'name = "' + objBooking.name + '", ' +
-					'date = "' + objBooking.last_name + '"' + ', ' +
-					'quotas = ' + objBooking.language +
+					'date = "' + objBooking.date + '"' + ', ' +
+					'quotas = ' + objBooking.quotas +
 					'WHERE id = ' + objBooking.id;
 			//TODO: AJUSTAR SUCCESS           
             $("#log").append(sql);
