@@ -10,13 +10,13 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 	width: 100%;
 	height: 100%;
-	margin: 0;
-	padding: 0;
+	/*margin: 0;
+	padding: 0;*/
 }
 img{
 	border:none;
-    height: 100%;
-    width: 100%;
+    /*height: 100%;
+    width: 100%;*/
 }
 /***********************************/
 @font-face {
@@ -61,8 +61,8 @@ img{
 }
 /***********************************/
 .app_contenedor{
-	margin:0 auto;
-	width:100%; 
+	/*margin:0 auto;
+	width:100%;*/ 
 }
 .app_info{
 }
@@ -73,16 +73,17 @@ img{
 	font-size:0.8em;   
 }
 .synchro_info{
-	margin:0 auto;
-	width:100%;
+	/*margin:0 auto;
+	width:100%;*/
 }
 .synchro_info_txt{
-	padding:0px 10px 3px 10px;
+	/*padding:0px 10px 3px 10px;*/
 }
 /************ header *************/
 .header{
-	margin:0 auto;
-	width:79%; 
+	/*margin:0 auto;
+	width:79%; */
+   height:390px;
 }
 .header_logo{
 }
@@ -111,22 +112,22 @@ img{
 /************ contenido *************/
 .contenido{
 	color:#8a8e94;
-	margin:0 auto;
+	/*margin:0 auto;*/
 	width:79%; 
 }
 .contenido_info{
-	padding:35% 0px 0px 0px;
+	/*padding:35% 0px 0px 0px;*/
 }
 .contenido_infoSurvey{
-	padding:20% 0px 0px 0px;
+	/*padding:20% 0px 0px 0px;*/
 }
 .contenido_info_txt{
 	font-size:0.9em;
-	padding:0px 0px 20px 0px;
+	/*padding:0px 0px 20px 0px;*/
 }
 .contenido_login{
-	padding:10% 0px 0px 0px;
-	margin:0 auto;
+	/*margin:0 auto;
+    padding:10% 0px 0px 0px;*/	
 }
 /************ avisos/alertas *************/
 .aviso{
@@ -134,56 +135,56 @@ img{
 }
 .aviso_confirma{
 	font-size:0.9em;
-	margin:0 auto;
-	width:93%;
+	/*margin:0 auto;
+	width:93%;*/
 }
 .aviso_titulo{
 	background-color:#d7d7d7;
 	color:#000000;
 	font-family: 'AudiExtendedBold';
 	font-size:1.8em;
-	padding:12px 10px 5px 15px;
+	/*padding:12px 10px 5px 15px;*/
 }
 .aviso_contenido{
 	border:1px solid #d7d7d7;
-	margin:5px 0px 5px 0px;
-	padding:0px 0px 15px 0px;
+	/*margin:5px 0px 5px 0px;
+	padding:0px 0px 15px 0px;*/
 }
 .aviso_contenido_info{
-	padding:20px;
+	/*padding:20px;*/
 }
 /************ formularios *************/
 input{
 	/* color:#8a8e94;*/
-	padding:10px 5px 0px 2px;
+	/*padding:10px 5px 0px 2px;*/
 	vertical-align:text-bottom;
-	width:100%;
+	/*width:100%;*/
 }
 select{
-	padding:10px 5px 0px 2px;
+	/*padding:10px 5px 0px 2px;*/
 	vertical-align:text-bottom;
-	width:115%;
+	/*width:115%;*/
 }
 textarea{
 	/*color:#8a8e94;*/
 	font-size:1.6em;
-	padding:5px;
-	width:99.5%;
+	/*padding:5px;
+	width:99.5%;*/
 }
 .aviso_formulario li, .survey_formulario li, .survey_formulario_check li, .survey_formulario_logged li, .survey_currentVehicle_list li{
 	list-style:none;
-	padding:3px 20px 3px 5px;
+	/*padding:3px 20px 3px 5px;*/
 }
 .survey_contenido_info{
 	border:1px solid #dddddd;
-	margin:0px 0px 5px 0px;
+	/*margin:0px 0px 5px 0px;*/
 }
 .survey_formulario, .survey_formulario_check, .survey_formulario_logged{
-	padding:5px 22px 3px 22px;
+	/*padding:5px 22px 3px 22px;*/
 }
 .survey_formulario li{
-	padding:3px 7px;
-	width:97%;
+	/*padding:3px 7px;
+	width:97%;*/
 }
 .survey_formulario_check li{
 	display:inline-block;
@@ -191,23 +192,23 @@ textarea{
 .survey_formulario_logged li{
 	border:1px solid #dddddd;
 	color:#000;
-	margin:0px 0px 5px 0px;
-	padding:10px 10px 5px 5px;
+	/*margin:0px 0px 5px 0px;
+	padding:10px 10px 5px 5px;*/
 }
 .survey_currentVehicle_list, .survey_currentVehicle_logged_list{
-	width:102.5%;
+	/*width:102.5%;*/
 }
 .survey_currentVehicle_list li, .survey_currentVehicle_logged_list li{
 	display:inline-block;
-	padding:3px 0px;
-	width:32.75%;
+	/*padding:3px 0px;
+	width:32.75%;*/
 }
 .survey_currentVehicle_list div, .survey_currentVehicle_logged_list div{
 	display:inline-block;
-	width:70%;
+	/*width:70%;*/
 }
 .survey_currentVehicle_camp{
-	padding:0px 10px 0px 0px;
+	/*padding:0px 10px 0px 0px;*/
 }
 .survey_currentVehicle_logged_list li{
 	border:none;
@@ -216,32 +217,32 @@ textarea{
 .survey_currentVehicle_logged_list div{
 	background-color:#f5f5f5;
 	color:#000;
-	padding:10px 5px 2px 5px;
+	/*padding:10px 5px 2px 5px;*/
 }
 .check input{
-	width:auto;
+	/*width:auto;*/
 }
 .check2{
-	width:65.3%;
-	padding:0px !important;
+	/*width:65.3%;
+	padding:0px !important;*/
 }
 .check2 input{
-	width:85.5%;
+	/*width:85.5%;*/
 }
 .form_titulo{
 	background-color:#dddddd;
-	width:100%;
+	/*width:100%;*/
 }
 .form_titulo_info{
 	color:#000;
 	font-size:1.4em;
 	font-weight:bold;
-	padding:10px 0px 3px 10px;
+	/*padding:10px 0px 3px 10px;*/
 }
 .form_pregunta_info{
 	color:#000;
 	font-size:1em;
-	padding:10px 0px 3px 10px;
+	/*padding:10px 0px 3px 10px;*/
 }
 .survey_ico{
 	color:#e21838;
@@ -249,19 +250,19 @@ textarea{
 }
 /************ botones *************/
 .contenido_login_menu{
-	margin:0 auto;
+	/*margin:0 auto;*/
 }
 .contenido_login_menu_btn{
-	padding:10px;
+	/*padding:10px;*/
 }
 .btn_home{
 	background-color:#25292c;
 	border:1px solid #FFF;
 	float:left;
 	font-size:1.6em;
-	margin:10px;
+	/*margin:10px;
 	padding:25px 5px 5px 5px;
-	width:44.5%;
+	width:44.5%;*/
 }
 .btn_home a{
 	display: block;
@@ -270,16 +271,16 @@ textarea{
 	background-color:#e21838;
 	clear:both;
 	font-size:1.6em;
-	margin:0 auto;
+	/*margin:0 auto;
 	margin-bottom:20px;
-	margin-top:50px;
+	margin-top:50px;*/
 	text-align:center;
-	width:93%;
+	/*width:93%;*/
 }
 .btn_home_info{
 	color:#97999a;
 	font-family: 'AudiExtendedBold';
-	padding:15px 0px 2px 5px;
+	/*padding:15px 0px 2px 5px;*/
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -291,36 +292,36 @@ textarea{
 .btn_normal{
 	background-color:#25292c;
 	font-size:0.9em;
-	margin:0 auto;
+	/*margin:0 auto;*/
 	text-align:center;
-	width:30%;
+	/*width:30%;*/
 }
 .btn_normal_info{
     background-color: #25292c;
     color: #fff;
-	padding:12px;   
+	/*padding:12px;  */ 
 }
 .btn_normal2{
 	background-color:#25292c;
 	font-size:0.9em;
-	margin:0 auto;
+	/*margin:0 auto;*/
 	text-align:center;
 }
 .btn_normal2_info{
 	font-size:1.4em;
-	margin:0 auto;
-	padding:10px 0px 5px 0px;
+	/*margin:0 auto;
+	padding:10px 0px 5px 0px;*/
 	text-align:center;
 	vertical-align:middle;
 }
 .btn_normal2_info_txt{
 	display:inline-block;
-	padding:22px 0px 0px 0px;
+	/*padding:22px 0px 0px 0px;*/
 	vertical-align:top;
 }
 .btn_normal2_ico{
 	display:inline-block;
-	padding:0px 0px 0px 10px;
+	/*padding:0px 0px 0px 10px;*/
 }
 /************ clearing *************/
 .clearing{
@@ -398,6 +399,15 @@ html head + body .ui-body-a.ui-focus {
 	-webkit-box-shadow: 0 0 12px 	#e21838 /*{a-active-background-color}*/;
 	-moz-box-shadow: 0 0 12px 		#e21838 /*{a-active-background-color}*/;
 	box-shadow: 0 0 12px 			#e21838 /*{a-active-background-color}*/;
+}
+/* Page and overlay */
+.ui-overlay-a,
+.ui-page-theme-a,
+.ui-page-theme-a .ui-panel-wrapper {
+	background-color: 			#FFFFFF /*{a-page-background-color}*/;
+	border-color:	 		#bbb /*{a-page-border}*/;
+	color: 					#333 /*{a-page-color}*/;
+	text-shadow: 0 /*{a-page-shadow-x}*/ 1px /*{a-page-shadow-y}*/ 0 /*{a-page-shadow-radius}*/ 	#f3f3f3 /*{a-page-shadow-color}*/;
 }
 /* JQUERY VALIDATE */
 label.error {
