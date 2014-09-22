@@ -83,16 +83,18 @@ var callBacks = {
 	},
 	successSearchBookingsByCountry: function(transaction, results)
 	{
-		var html = "";
+		var html = '<option value="" data-i18n="register.select_booking"></option>';
+
 		if (results.rows.length > 0) {
 			for(var i = 0; i < results.rows.length; i++){
-				html += results.rows.item(i).name;
-				html += " - ";
-				html += results.rows.item(i).date;
+				var id = results.rows.item(i).id
+				var textOpt = results.rows.item(i).date;
+				textOpt += "  - ";
+				textOpt += results.rows.item(i).name;
+				html += '<option value="' + id + '">' + textOpt + '</option>';
 			}
 		}
-		$(".synchro_info_txt").append(html);
-		return html;
+		$("#booking_id").html(html);
 	}
 
 };

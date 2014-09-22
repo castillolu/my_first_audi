@@ -201,8 +201,6 @@ var dbapp = {
 					'quotas = ' + objBooking.quotas +
 					'WHERE id = ' + objBooking.id;
 			//TODO: AJUSTAR SUCCESS           
-            $("#log").append(sql);
-
 			tx.executeSql(sql, [], function() {
 			}, result.errorQuery);
 		} catch (error) {
@@ -219,7 +217,6 @@ var dbapp = {
 					', "' + objBooking.date + '"' +
 					', "' + objBooking.quotas + '")';
 			//TODO: AJUSTAR SUCCESS  
-            $("#log").append(sql);
 			var xx = tx.executeSql(sql, [], function() {
 			}, result.errorQuery);
 		} catch (error) {
