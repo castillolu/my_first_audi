@@ -38,6 +38,7 @@ var app = {
 		}
 //        document.getElementById('scan').addEventListener('click', this.scan, false);
 //        document.getElementById('send_register').addEventListener('click', this.sendLead, false);
+        document.getElementById('log').addEventListener('click', dbapp.queryDemo, false);
 //        document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);

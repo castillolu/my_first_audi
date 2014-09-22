@@ -27,7 +27,7 @@ var dbapp = {
 	},
 	queryDB: function(tx) {
 		console.log("consulta");
-		tx.executeSql('SELECT * FROM Users', [], dbapp.querySuccess, callBacks.errorQuery);
+		tx.executeSql('SELECT * FROM Bookings', [], dbapp.querySuccess, callBacks.errorQuery);
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
