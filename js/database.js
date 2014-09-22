@@ -165,7 +165,6 @@ var dbapp = {
 	},
 	//Update bookings from BD PHP
 	updateBookings: function(bookings) {
-		$("#log").html("Update booking each per each");
 		try {
 			for (var booking in bookings) {
 				dbapp.searchBookingDB(bookings[booking]);
