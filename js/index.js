@@ -179,7 +179,7 @@ var app = {
 		}
 
 	},
-    loginAuth: function(e) {
+    saveLead: function(e) {
         try {
             e.preventDefault();
             //disable the button so we can't resubmit while we wait
@@ -212,11 +212,11 @@ var app = {
             alert(error);
         }
     },
-	saveLead: function(e) {
+	loginAuth: function(e) {
 		try {
 			e.preventDefault();
 			//disable the button so we can't resubmit while we wait
-			$("#submit-lead", this).attr("disabled", "disabled");
+			$("#submit", this).attr("disabled", "disabled");
 			var user = $("#email", this).val();
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
