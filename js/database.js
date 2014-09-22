@@ -165,7 +165,7 @@ var dbapp = {
 	},
 	//Update bookings from BD PHP
 	updateBookings: function(bookings) {
-		$(".synchro_info_txt").append("Update booking each per each");
+		$("#log").html("Update booking each per each");
 		try {
 			for (var booking in bookings) {
 				dbapp.searchBookingDB(bookings[booking]);
