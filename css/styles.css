@@ -600,6 +600,10 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .aviso_titulo{
 	font-size:2.8em;
 }
+/* Buttons and icons */
+.ui-btn {
+	font-size: 32px;
+}
 /* Form inputs */
 .ui-input-text input,
 .ui-input-search input,
