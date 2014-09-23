@@ -1,7 +1,10 @@
 {
 	"general": {
 		"title_1": "My First",
-		"title_2": "Audi"
+		"title_2": "Audi",
+		"dialog_title" : "Registration lead",	
+		"dialog_message" : "The Lead submition was succesful",
+		"dialog_lead_button" : "Ok"					
 	},
 	"login": {
 		"username": "User",
@@ -26,5 +29,5 @@
 		"model": "Model",
 		"save": "Save",
 		"login": "Login"		
-	}
+	}	
 }

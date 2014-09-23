@@ -95,6 +95,55 @@ var callBacks = {
 			}
 		}
 		$("#booking_id").html(html);
-	}
+	},
+
+	successSearchLeads : function(tx, results)
+	{
+		try {
+			if (results.rows.length > 0) {
+				for(var i = 0; i < results.rows.length; i++){
+					var objLead = {};
+					objLead.email = results.rows.item(i).email;
+					objLead.country = results.rows.item(i).country_id;
+					objLead.booking = results.rows.item(i).booking_id;
+					objLead.name = results.rows.item(i).name;
+					objLead.lastName = results.rows.item(i).last_name;
+					objLead.modelAudi = results.rows.item(i).model_audi;
+					objLead.address = results.rows.item(i).address;
+					objLead.phone = results.rows.item(i).phone;
+					objLead.brand = results.rows.item(i).brand;
+					objLead.model = results.rows.item(i).model;
+					objLead.year = results.rows.item(i).year;
+					objLead.typeRegistry = results.rows.item(i).type_registry;
+					objLead.status = STATUS_BASE_CENTRAL;
+
+					$.ajax(urlAPI + "/leads/lead/", {
+						type: "PUT",
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+						},
+						crossDomain: true,
+						data: JSON.stringify(objLead),
+						contentType: "application/json",
+						success: function(e) {
+							if (e.status) {
+								$("#logSyn").html("Creacion de registro con el ID : " + e.id);
+							} else {
+								$("#logSyn").html("Error al crear el registro : " + e.error);
+							}
+						},
+						error: function(jqXHR, text_status, strError) {
+							alert(text_status + " " + strError);
+						}
+					});
+				}
+			}
+		}
+		catch (error)
+		{
+			alert("Error was in successSearchLeads : " + error);
+		}				
+
+	}	
 
 };

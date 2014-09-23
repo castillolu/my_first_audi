@@ -10,6 +10,14 @@ var displayName = 'DB_My_First_AUDI';
 var maxSize = 2097152;
 var result = false;
 
+//STATUS LEAD AND SURVEY
+var STATUS_CREATE                 = 'CREATE';
+var STATUS_BASE_CENTRAL           = 'BASE_CENTRAL';
+var STATUS_MARKETO                = 'MARKETO';
+var STATUS_CHECK_IN               = 'CHECK_IN';
+var STATUS_CHECK_IN_BASE_CENTRAL  = 'CHECK_IN_BASE_CENTRAL';
+var STATUS_CHECK_IN_MARKETO       = 'CHECK_IN_MARKETO';
+
 
 var dbapp = {
 	openDatabase: function() {
@@ -244,7 +252,7 @@ var dbapp = {
 	saveLead: function(tx, objLead) {
         console.log("dbapp.saveLead");
 		try {
-			$("#logLead").html("Before INSERT");
+			//$("#logLead").html("Before INSERT");
 			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
 						'phone, address, brand, model, year, ' +
 						'model_audi, type_registry, status, control) VALUES (' +
@@ -260,7 +268,7 @@ var dbapp = {
 					' "' + objLead.year + '", ' +
 					' "' + objLead.model_audi + '", ' +
 					' "' + objLead.type_registry + '", ' +
-					' "CREATE", ' +
+					' "' + STATUS_CREATE +'", ' +
 					' "' + md5(objLead.email) + '")';
 
 			//$("#logLead").html("Insert : " + sql + "</br></br></br>");
@@ -283,6 +291,25 @@ var dbapp = {
 			alert("bdapp.saveLead " + error);
 
 		}
+	},
+
+	sendLeads : function(){
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Leads WHERE status = ?',
+								[STATUS_CREATE],
+								function(tx, result) {
+									callBacks.successSearchLeads(tx, result)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("sendLeads : " + error);
+					}
+				}
+		);
+
 	}
+
 
 };

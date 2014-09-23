@@ -47,7 +47,7 @@ var app = {
 				lng: language;
 				$(".login, .general, .register").i18n();
 			});
-		}, 1000);
+		}, 100);
 	},
 	// deviceready Event Handler
 	//
@@ -135,45 +135,6 @@ var app = {
 			});
 
 		} catch (error) {
-			alert(error);
-		}
-
-	},
-	sendLead: function() {
-		var objLead = {
-			country: 1,
-			name: "Luis Alberto",
-			lastName: "Castillo",
-			email: 'a@nettingsolutions.com',
-			booking: 2,
-			typeCar: 'Renault 4',
-			typeRegistry: 'ON_SITE',
-			status: 1
-		};
-		try {
-
-			$.ajax(urlAPI + "/leads/lead/", {
-				type: "PUT",
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-				},
-				crossDomain: true,
-				data: JSON.stringify(objLead),
-				contentType: "application/json",
-				success: function(e) {
-					if (e.status) {
-//						$("#info").html("Creacion de registro con el ID : " + e.id);
-					} else {
-//						$("#info").html("Error al crear el registro : " + e.error);
-					}
-				},
-				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
-				}
-			});
-		}
-		catch (error)
-		{
 			alert(error);
 		}
 
@@ -347,7 +308,8 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-		console.log("goToSynchro");
+        dbapp.sendLeads();
+        console.log("goToSynchro");
 	},
 	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
@@ -356,6 +318,7 @@ var app = {
 	logOut: function() {
 		console.log("logOut");
 		localStorage.clear();
-		$.mobile.changePage("#login-page", {reloadPage: true});
+        window.location.href = "index.html";
+		//$.mobile.changePage("#login-page", {reloadPage: true});
 	}
 };

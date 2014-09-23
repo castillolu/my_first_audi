@@ -11,7 +11,7 @@
     <body>
 		<!-- START LOGIN PAGE -->
 		<div data-role="page" id="login-page">
-			<div class="app_contenedor login">
+			<div class="app_contenedor general">
 				<div class="app_info">
 					<div data-role="header">
 						<div class="synchro">
@@ -22,7 +22,7 @@
 					</div>
 
 					<div data-role="content">
-						<div class="header general">
+						<div class="header">
 							<div class="header_logo"><img src="img/logo_audi.jpg" width="600" height="88" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"> </div>
 							<div class="clearing"></div>
 							<div class="header_1_img"><img src="img/header_1.jpg" width="600" height="290" hspace="0" vspace="0" border="0"  style="max-width: 600px; border: 0; display: block;"></div>
@@ -31,7 +31,7 @@
 						</div>  
 						<div class="clearing"></div>      
 
-						<div class="contenido">
+						<div class="contenido login">
 							<div class="contenido_info">
 								<div class="aviso">
 									<div class="aviso_titulo">titulo</div>	
@@ -72,13 +72,13 @@
 		<div data-role="page" id="survey">
 		</div>
 
-		<div data-role="page" id="dialogLead">
+		<div data-role="page" id="dialogLead" class="general">
 			<div data-role="header">
-				<h1>Lead seved successfully</h1>
+				<h1 data-i18n="general.dialog_lead_title"></h1>
 			</div>    
 			<div data-role="content" id="text">
-				<p>Texto</p>
-				<a href="index.html#registry" data-role="button" data-rel="back" data-theme="b" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">ok</span></span></a>
+				<p data-i18n="general.dialog_lead_title"></p>
+				<a href="index.html#registry" data-role="button" data-rel="back" data-theme="b" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text" data-i18n="general.dialog_lead_button"></span></span></a>
 			</div>    
 		</div>		
 
