@@ -47,7 +47,7 @@ var app = {
 				lng: language;
 				$(".login, .general, .register").i18n();
 			});
-		}, 100);
+		}, 1000);
 	},
 	// deviceready Event Handler
 	//
