@@ -197,7 +197,7 @@ var dbapp = {
 			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
 					'name = "' + objBooking.name + '", ' +
 					'date = "' + objBooking.date + '"' + ', ' +
-					'quotas = ' + objBooking.quotas +
+					'quotas = ' + objBooking.quotas + ' ' +
 					'WHERE id = ' + objBooking.id;
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [], function() {
