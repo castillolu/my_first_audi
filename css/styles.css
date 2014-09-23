@@ -142,7 +142,7 @@ img{
 	color:#000000;
 	font-family: 'AudiExtendedBold';
 	font-size:1.8em;
-	/*padding:12px 10px 5px 15px;*/
+	padding:12px 10px 5px 15px;
 }
 .aviso_contenido{
 	border:1px solid #d7d7d7;
@@ -150,7 +150,7 @@ img{
 	padding:0px 0px 15px 0px;*/
 }
 .aviso_contenido_info{
-	/*padding:20px;*/
+	padding:20px;
 }
 /************ formularios *************/
 input{
@@ -289,15 +289,28 @@ textarea{
 	text-align:center;
 }
 .btn_normal{
-	background-color:#25292c;
-	font-size:0.9em;
-	/*margin:0 auto;*/
+	/*background-color:#25292c;
+   color:#FFFFFF;
+	font-size:2em;*/
+	/*margin:0 auto;
 	text-align:center;
-	/*width:30%;*/
+	width:30%;*/
+   padding:0px 25%;
 }
-.btn_normal_info{
+.btn_normal .ui-btn{
+   height:30px;
+}
+.btn_normal{
+	/*background-color:#25292c;
+   color:#FFFFFF;
+	font-size:2em;*/
+	/*margin:0 auto;
+	text-align:center;
+	width:30%;*/
+   padding:0px 25%;
+}.btn_normal_info{
     background-color: #25292c;
-    color: #fff;
+    color: #FFFFFF;
 	/*padding:12px;  */ 
 }
 .btn_normal2{
@@ -420,12 +433,12 @@ textarea.ui-input-text {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	outline: 0;
-   font-size:1.8em;
+   font-size:1.65em;
 }
 .ui-input-text input,
 .ui-input-search input {
 	margin: 0;
-	min-height: 3em;
+	min-height: 1em;
 	text-align: left; /* Opera aligns type="date" right by default */
 	border: 0;
 	background: transparent none;
@@ -451,6 +464,33 @@ label.error {
 	width: 100%;
 	float: none;
 }
+/* Hide the native input element */
+.ui-input-btn input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	-webkit-border-radius: inherit;
+	border-radius: inherit;	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	cursor: pointer;
+	background: #25292c;
+	background: rgba(37,41,44,1);
+	filter: Alpha(Opacity=0);
+	opacity: 1;
+	/*font-size: 1px;
+	text-indent: -9999px;*/
+    font-size: 1.1em;
+    color:#FFF;
+    text-indent: 0px;
+	z-index: 2;
+}
+
 @media screen and (orientation: portrait) {
 	label.error {
 		margin-left: 0;
