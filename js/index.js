@@ -262,36 +262,37 @@ var app = {
 
 	},
 	getBookings: function() {
-		$(".synchro_info_txt").html("Updating bookings...");
-		try {
-			$.ajax(urlAPI + "/bookings/list", {
-				type: "GET",
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-				},
-				crossDomain: true,
-				contentType: "application/json",
-				success: function(data) {
-					if (data.status) {
-						$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
-						dbapp.updateBookings(data.data);
-					} else {
-						$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
-					}
-				},
-				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
-				}
-			});
-		}
-		catch (error)
-		{
-			alert("getUsers " + error);
-		}
+        $(".synchro_info_txt").html("Updating bookings...");
+        try {
+            $.ajax(urlAPI + "/bookings/list", {
+                type: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+                },
+                crossDomain: true,
+                contentType: "application/json",
+                success: function(data) {
+                    if (data.status) {
+                        $(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
+                        dbapp.updateBookings(data.data);
+                    } else {
+                        $(".synchro_info_txt").append("Error al crear el registro : " + data.error);
+                    }
+                },
+                error: function(jqXHR, text_status, strError) {
+                    alert(text_status + " " + strError);
+                }
+            });
+        }
+        catch (error)
+        {
+            alert("getUsers " + error);
+        }
 
-	},
-	goToFormLead: function() {
-		console.log("goToFormLead");
+    },
+    goToFormLead: function() {
+		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
+        console.log("goToFormLead");
         $(':input','#form_lead')
             .not(':button, :submit, :reset, :hidden')
             .val('')
