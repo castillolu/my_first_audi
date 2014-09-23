@@ -136,7 +136,7 @@ var dbapp = {
 				'WHERE id = ' + objUser.id;
 		//TODO: AJUSTAR SUCCESS           
 		tx.executeSql(sql, [], function() {
-		}, result.errorQuery);
+		}, callBacks.errorQuery);
 	},
 	createUserDB: function(tx, objUser) {
 		try {
@@ -154,7 +154,7 @@ var dbapp = {
 					', "' + objUser.language + '")';
 			//TODO: AJUSTAR SUCCESS   
 //				$("#info").append("Insert : " + sql + "\n\n\n\n");
-			}, result.errorQuery);
+			}, callBacks.errorQuery);
 		} catch (error) {
 			alert("createUserDB " + error);
 		}
@@ -198,7 +198,7 @@ var dbapp = {
 					'WHERE id = ' + objBooking.id;
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [], function() {
-			}, result.errorQuery);
+			}, callBacks.errorQuery);
 		} catch (error) {
 			alert("updateBookingDB " + error);
 		}
@@ -214,7 +214,7 @@ var dbapp = {
 					', "' + objBooking.quotas + '")';
 			//TODO: AJUSTAR SUCCESS  
 			var xx = tx.executeSql(sql, [], function() {
-			}, result.errorQuery);
+			}, callBacks.errorQuery);
 		} catch (error) {
 			alert("createBookingDB " + error);
 		}
