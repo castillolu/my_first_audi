@@ -87,6 +87,8 @@ var app = {
 		$('#btn_synchro').on('click', app.goToSynchro);
 		$('#btn_survey').on('click', app.goToFormSurvey);
         $('#btn_logout').on('click', app.logOut);
+        $('#onsite').on('click', app.hideBooking);
+        $('#dealer').on('click', app.showBooking);
         app.eventsRegistry();
         app.validateLead();
 	},
@@ -301,24 +303,31 @@ var app = {
         
         $("#country_id").val(localStorage.country);
 
-		$.mobile.changePage("#register");
-	},
-	goToFormCheckIn: function() {
-		console.log("goToFormCheckIn");
-		$.mobile.changePage("#check-in");
-	},
-	goToSynchro: function() {
+        $.mobile.changePage("#register");
+    },
+    goToFormCheckIn: function() {
+        console.log("goToFormCheckIn");
+        $.mobile.changePage("#check-in");
+    },
+    goToSynchro: function() {
         dbapp.sendLeads();
         console.log("goToSynchro");
-	},
-	goToFormSurvey: function() {
-		console.log("goToFormSurvey");
-		$.mobile.changePage("#survey");
-	},
-	logOut: function() {
-		console.log("logOut");
-		localStorage.clear();
+    },
+    goToFormSurvey: function() {
+        console.log("goToFormSurvey");
+        $.mobile.changePage("#survey");
+    },
+    logOut: function() {
+        console.log("logOut");
+        localStorage.clear();
         window.location.href = "index.html";
-		//$.mobile.changePage("#login-page", {reloadPage: true});
-	}
+        //$.mobile.changePage("#login-page", {reloadPage: true});
+    },
+    hideBooking : function(){
+        $('#booking_id option').attr('selected', false);
+        $(".opt_booking").hide();
+    },
+    showBooking : function(){
+        $(".opt_booking").show();
+    }
 };
