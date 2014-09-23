@@ -260,7 +260,7 @@ textarea{
 	/*float:left;*/
 	font-size:1.6em;
 	margin:5px;
-	padding:25px 5px 5px 5px;
+	padding:10% 2% 2%;
 	/*width:44.5%;*/
 }
 .btn_home a{
@@ -559,9 +559,21 @@ only screen and (                min-resolution: 192dpi) and (min-width: 1300px)
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
 
   /* Large screen, retina, stuff to override above media query */
+  
+  .btn_home{
+	font-size:4.4em;
+	padding:20% 4% 4%;
+	/*width:44.5%;*/
+}
 /* Hide the native input element */
 .ui-input-btn input {
-    font-size: 2.2em;
+    font-size: 4.4em;
+}
+/* Form labels (overrides font-weight bold in bars, and mini font-size) */
+.ui-mobile label,
+div.ui-controlgroup-label {
+	font-weight: normal;
+	font-size: 32px;
 }
 }
 em {
