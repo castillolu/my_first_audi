@@ -31,14 +31,14 @@ var dbapp = {
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
-		$('#info').html("querySuccess");
+//		$('#info').html("querySuccess");
 
 		var s = "";
 		if (results != null && results.rows != null) {
 			for (var i = 0; i < results.rows.length; i++) {
 				s += "<li><a href='edit.html?id=" + results.rows.item(i).id + "'>" + results.rows.item(i).name + "</a></li>";
 			}
-			$("#info").html(s);
+			//$("#info").html(s);
 		} else {
 			console.log("null");
 		}
@@ -98,7 +98,6 @@ var dbapp = {
 	},
 	//Update users from BD PHP
 	updateUsers: function(users) {
-		$("#info").append("Update user each per each");
 		try {
 			for (var user in users) {
 				dbapp.searchUserDB(users[user]);
@@ -137,7 +136,6 @@ var dbapp = {
 				'WHERE id = ' + objUser.id;
 		//TODO: AJUSTAR SUCCESS           
 		tx.executeSql(sql, [], function() {
-			$("#info").append("Update : " + sql + "\n\n\n\n");
 		}, result.errorQuery);
 	},
 	createUserDB: function(tx, objUser) {
@@ -155,8 +153,7 @@ var dbapp = {
 					', "' + objUser.country.typeRegistry + '"' +
 					', "' + objUser.language + '")';
 			//TODO: AJUSTAR SUCCESS   
-			var xx = tx.executeSql(sql, [], function() {
-				$("#info").append("Insert : " + sql + "\n\n\n\n");
+//				$("#info").append("Insert : " + sql + "\n\n\n\n");
 			}, result.errorQuery);
 		} catch (error) {
 			alert("createUserDB " + error);
@@ -262,7 +259,7 @@ var dbapp = {
 					' "' + objLead.type_registry + '", ' +
 					' "CREATE", ' +
 					' "' + md5(objLead.email) + '")';
-
+			$("#logLead").html(sql);
 			//TODO: AJUSTAR SUCCESS   
 			var xx = tx.executeSql(sql, [], 
 				function() {
