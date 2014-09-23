@@ -115,7 +115,7 @@ img{
 	width:85%;
 }
 .contenido_info{
-	padding:35% 0px 0px 0px;
+	padding:33% 0px 0px 0px;
 }
 .contenido_infoSurvey{
 	/*padding:20% 0px 0px 0px;*/
@@ -426,7 +426,8 @@ html head + body .ui-body-a.ui-focus {
 .ui-input-search input,
 textarea.ui-input-text {
 	padding: .4em;
-	line-height: 1.4em;
+	/*line-height: 1.4em;*/
+   line-height: 1em;
 	display: block;
 	width: 100%;
 	-webkit-box-sizing: border-box;
@@ -438,7 +439,7 @@ textarea.ui-input-text {
 .ui-input-text input,
 .ui-input-search input {
 	margin: 0;
-	min-height: 1em;
+	/*min-height: 1em;*/
 	text-align: left; /* Opera aligns type="date" right by default */
 	border: 0;
 	background: transparent none;
@@ -463,6 +464,10 @@ label.error {
 	margin-top: 0.5em;
 	width: 100%;
 	float: none;
+}
+.ui-select .ui-btn {
+	/*margin: 0;*/
+	opacity: 1; /* Fixes #2588: When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select (including "inherit") without explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 }
 /* Hide the native input element */
 .ui-input-btn input {
@@ -489,6 +494,23 @@ label.error {
     color:#FFF;
     text-indent: 0px;
 	z-index: 2;
+}
+/* Buttons and icons */
+.ui-btn {
+	font-size: 16px;
+	margin: .5em 0;
+	padding: .8em 1em;
+	display: block;
+	position: relative;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 @media screen and (orientation: portrait) {
 	label.error {
