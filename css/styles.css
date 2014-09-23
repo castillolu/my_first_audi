@@ -565,6 +565,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	padding:20% 4% 4%;
 	/*width:44.5%;*/
 }
+.btn_home_ico img{
+   height:200px;
+   display:block;
+   min-width:200px;
+}
 /* Hide the native input element */
 .ui-input-btn input {
     font-size: 4.4em;
