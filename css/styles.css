@@ -156,9 +156,11 @@ img{
 	font-family: 'AudiExtendedBold';
 	font-size:1.8em;
 	padding:12px 10px 5px 15px;
+   margin:5px;
 }
 .aviso_contenido{
 	border:1px solid #d7d7d7;
+   margin:5px;
 	/*margin:5px 0px 5px 0px;
 	padding:0px 0px 15px 0px;*/
 }
@@ -274,10 +276,11 @@ textarea{
 	font-size:1.6em;
 	margin:5px;
 	padding:10% 2% 2%;
+   display:block;
 	/*width:44.5%;*/
 }
 .btn_home a{
-	display: block;
+	/*display: block;*/
 }
 .btn_home_salir{
 	background-color:#e21838;
@@ -572,20 +575,40 @@ only screen and (                min-resolution: 192dpi) and (min-width: 1300px)
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
 
   /* Large screen, retina, stuff to override above media query */
-  
-  .btn_home{
-	font-size:4.4em;
-	padding:20% 4% 4%;
+.header_1_img img, .header_2_img img{
+   min-width:1200px;
+   height:auto;
+}
+.header_3_titulo{
+	font-size:10.5em;
+	line-height:140px;
+}
+.header_logo img{
+   min-width:1200px;
+   height:auto;
+}
+.btn_home{
+   font-size:4.3em;
+   padding:20% 4% 4%;
 	/*width:44.5%;*/
 }
 .btn_home_ico img{
-   height:200px;
+   height:120px;
    display:block;
-   min-width:200px;
+   min-width:120px;
+}
+.aviso_titulo{
+	font-size:2.8em;
+}
+/* Form inputs */
+.ui-input-text input,
+.ui-input-search input,
+textarea.ui-input-text {
+   font-size:2em;
 }
 /* Hide the native input element */
 .ui-input-btn input {
-    font-size: 4.4em;
+    font-size: 3em;
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
