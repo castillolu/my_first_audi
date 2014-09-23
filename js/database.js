@@ -60,19 +60,18 @@ var dbapp = {
 				'type_registry TEXT NOT NULL,' +
 				'language TEXT NOT NULL)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS Leads(' +
-				'id INTEGER NOT NULL PRIMARY KEY, ' +
+				'email TEXT NOT NULL PRIMARY KEY,' +
 				'country_id INTEGER NOT NULL, ' +
-				'booking_id INTEGER NOT NULL, ' +
+				'booking_id INTEGER NULL, ' +
 				'name TEXT NOT NULL,' +
 				'last_name TEXT NOT NULL,' +
-				'email TEXT NOT NULL,' +
 				'phone TEXT NOT NULL,' +
 				'address TEXT NOT NULL,' +
 				'brand TEXT NOT NULL,' +
 				'model TEXT NOT NULL,' +
 				'year TEXT INTEGER NOT NULL,' +
 				'model_audi TEXT NOT NULL,' +
-				'type_registry TEXT NOT NULL,' +
+				'type_registry TEXT NULL,' +
 				'status TEXT NOT NULL,' +
 				'control INTEGER NOT NULL)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS Bookings(' +
@@ -240,6 +239,49 @@ var dbapp = {
 				}
 		);
 
+	},
+
+	saveLead: function(tx, objLead) {
+        console.log("dbapp.saveLead");
+		try {
+			$("#logLead").html("Before INSERT");
+			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
+						'phone, address, brand, model, year, ' +
+						'model_audi, type_registry, status, control) VALUES (' +
+					' "' + objLead.email + '", ' +
+					objLead.country_id + ', ' + 
+					objLead.booking_id + ', ' +
+					' "' + objLead.name + '", ' +
+					' "' + objLead.last_name + '", ' +
+					' "' + objLead.phone + '", ' +
+					' "' + objLead.address + '", ' +
+					' "' + objLead.brand + '", ' +
+					' "' + objLead.model + '", ' +
+					' "' + objLead.year + '", ' +
+					' "' + objLead.model_audi + '", ' +
+					' "' + objLead.type_registry + '", ' +
+					' "CREATE", ' +
+					' "' + md5(objLead.email) + '")';
+
+			//TODO: AJUSTAR SUCCESS   
+			var xx = tx.executeSql(sql, [], 
+				function() {
+					alert("Lead created Successfully!!");
+					$(':input','#form_lead')
+	 					.not(':button, :submit, :reset, :hidden')
+	 					.val('')
+	 					.removeAttr('checked')
+	 					.removeAttr('selected');
+
+	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
+	 				$('#form_lead select').selectmenu('refresh', true) 
+				}, 
+				callBacks.errorQuery
+			);
+		} catch (error) {
+			alert("bdapp.saveLead " + error);
+
+		}
 	}
 
 };

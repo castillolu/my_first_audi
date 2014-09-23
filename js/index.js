@@ -88,6 +88,7 @@ var app = {
 		$('#btn_survey').on('click', app.goToFormSurvey);
         $('#btn_logout').on('click', app.logOut);
         app.eventsRegistry();
+        app.validateLead();
 	},
     eventsRegistry : function(){
         if (localStorage.status) {
@@ -113,8 +114,6 @@ var app = {
                     break;
             }
             dbapp.queryBookings();
-            $("#country_id").val(localStorage.country);
-            $('#form_lead').on('submit', app.saveLead);
         }
     },
 	scan: function() {
@@ -179,37 +178,55 @@ var app = {
 		}
 
 	},
-    saveLead: function(e) {
-        try {
-            e.preventDefault();
-            //disable the button so we can't resubmit while we wait
-            $("#submit", this).attr("disabled", "disabled");
-            var lead = {};
-            lead.type_registry = $("#type_registry", this).val();
-            lead.name = $("#name", this).val();
-            lead.last_name = $("#last_name", this).val();
-            lead.email = $("#email", this).val();
-            lead.phone = $("#phone", this).val();
-            lead.address = $("#address", this).val();
-            lead.current_car_brand = $("#current_car_brand", this).val();
-            lead.current_car_model = $("#current_car_model", this).val();
-            lead.current_car_year = $("#current_car_year", this).val();
-            lead.model_audi = $("#model_audi", this).val();
-            lead.booking_id = $("#booking_id", this).val();
-            if (user != '' && password != '') {
-                dbapp.auth(user, password);
-                setTimeout(function() {
-                    if (localStorage.status) {
-                        $.mobile.changePage("#dashboard")
-                    } else {
-                        alert("Your login failed");
-                    }
-                    $("#submit").removeAttr("disabled");
-                }, 50);
+
+    validateLead : function(){
+        $( "#form_lead" ).validate({
+            rules: {
+                email: {required: true },
+                name: {required: true },
+                last_name: {required: true },
+                email: {required: true },
+                phone: {required: true },
+                address: {required: true },
+                current_car_brand: {required: true },
+                current_car_model: {required: true },
+                current_car_year: {required: true },
+                model_audi: {required: true }
+            },
+            errorLabelContainer: "#messageErrorLead",
+            wrapper: "li",           
+            submitHandler: function (form) {
+                console.log("submitHandler");
+                app.saveLead();
             }
+        });        
+    },
+    saveLead: function() {
+        console.log("app.saveLead");
+        try {
+            //disable the button so we can't resubmit while we wait
+            //$("#submit-lead", this).attr("disabled", "disabled");
+            var objLead = {};
+            objLead.type_registry = $("input[name='type_registry']").val();
+            objLead.name = $("#name").val();
+            objLead.last_name = $("#last_name").val();
+            objLead.email = $("#email_lead").val();
+            objLead.phone = $("#phone").val();
+            objLead.address = $("#address").val();
+            objLead.brand = $("#current_car_brand").val();
+            objLead.model = $("#current_car_model").val();
+            objLead.year = $("#current_car_year").val();
+            objLead.model_audi = $("input[name='model_audi']").val();
+            objLead.booking_id = $("#booking_id").val()==""?"NULL":$("#booking_id").val();
+            objLead.country_id = $("#country_id").val();
+            db.transaction(
+                    function(tx) {
+                        dbapp.saveLead(tx, objLead);
+                    }
+            );            
             return false;
         } catch (error) {
-            alert(error);
+            alert("app.saveLead " + error);
         }
     },
 	loginAuth: function(e) {
@@ -225,7 +242,7 @@ var app = {
 					if (localStorage.status) {
 						$(".synchro_info_txt").html(localStorage.last_name);
 						$(".synchro_info_txt").append(localStorage.email);
-						$.mobile.changePage("#dashboard")
+						$.mobile.changePage("#dashboard");
 					} else {
 						alert("Your login failed");
 					}
@@ -234,7 +251,7 @@ var app = {
 			}
 			return false;
 		} catch (error) {
-			alert(error);
+			alert("loginAuth : " + error);
 		}
 	},
 	isOffline: function() {
@@ -312,6 +329,18 @@ var app = {
 	},
 	goToFormLead: function() {
 		console.log("goToFormLead");
+        $(':input','#form_lead')
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
+            .removeAttr('checked')
+            .removeAttr('selected');
+
+        $(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
+        //$('#current_car_year, #booking_id').selectmenu('refresh', true);
+        $('#current_car_year option, #booking_id option').attr('selected', false);
+        
+        $("#country_id").val(localStorage.country);
+
 		$.mobile.changePage("#register");
 	},
 	goToFormCheckIn: function() {

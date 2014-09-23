@@ -38,7 +38,7 @@
 									<label for="last_name" data-i18n="register.last_name"></label>
 									<input type="text" name="last_name" id="last_name" value="" />
 									<label for="email" data-i18n="register.email"></label>
-									<input type="email" name="email" id="email" value="" />
+									<input type="email" name="email_lead" id="email_lead" value="" />
 									<label for="phone" data-i18n="register.phone"></label>
 									<input type="tel" name="phone" id="phone" value="" />
 									<label for="address" data-i18n="register.address"></label>
@@ -73,6 +73,7 @@
 												<option value="2002">2002</option>
 												<option value="2001">2001</option>
 												<option value="2000">2000</option>
+												<option value="2000">All</option>
 											</select>
 										</div>
 									</div>
@@ -94,6 +95,9 @@
 								</div>
 								<input type="hidden" name="country_id" id="country_id" value="" />
 							</div>
+
+							<div id="messageErrorLead"></div>
+							<div id="logLead"></div>
 							<div class="btn_normal">
 								<input type="submit" name="submit-lead"  class="btn_normal_info" id="submit-lead" data-i18n="[value]translation:attr.save;"  />
 							</div>
