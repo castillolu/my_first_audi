@@ -206,11 +206,11 @@ var app = {
 						$(".synchro_info_txt").html(localStorage.last_name);
 						$(".synchro_info_txt").append(localStorage.email);
 						$.mobile.changePage("#dashboard");
-					} else {
-						alert("Your login failed");
-					}
-					$("#submit").removeAttr("disabled");
-				}, 50);
+                    } else {
+                        alert("Your login failed");
+                    }
+                }, 50);
+				$("#submit").removeAttr("disabled");
 			}
 			return false;
 		} catch (error) {
