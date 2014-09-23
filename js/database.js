@@ -263,11 +263,11 @@ var dbapp = {
 					' "CREATE", ' +
 					' "' + md5(objLead.email) + '")';
 
-			$("#logLead").html("Insert : " + sql + "</br></br></br>");
+			//$("#logLead").html("Insert : " + sql + "</br></br></br>");
 			//TODO: AJUSTAR SUCCESS   
 			var xx = tx.executeSql(sql, [], 
 				function() {
-					alert("Lead created Successfully!!");
+					$("#leadSuccess").trigger( "click" );
 					$(':input','#form_lead')
 	 					.not(':button, :submit, :reset, :hidden')
 	 					.val('')
