@@ -84,10 +84,23 @@ img{
 	margin:0 auto;
 	width:85%;
 }
+.header_all{
+	background: url(../img/header_2_bkg.jpg) no-repeat scroll 0 55px transparent;
+	height: 271px;
+	margin:0 auto;
+	width:85%;
+}
+.header_login{
+	background: url(../img/header_1_bkg.jpg) no-repeat scroll 0 0 transparent;
+	height: 437px;
+	margin:0 auto;
+	width:85%;
+}
 .header_logo{
+	text-align: right;
 }
 .header_logo img{
-	float:right;
+	/*float:right;*/
 }
 .header_1_img, .header_2_img{
 	position:absolute;
@@ -115,7 +128,7 @@ img{
 	width:85%;
 }
 .contenido_info{
-	padding:33% 0px 0px 0px;
+	padding:3% 0px 0px 0px;
 }
 .contenido_infoSurvey{
 	/*padding:20% 0px 0px 0px;*/

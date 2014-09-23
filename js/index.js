@@ -91,6 +91,7 @@ var app = {
         $('#dealer').on('click', app.showBooking);
         app.eventsRegistry();
         app.validateLead();
+        app.loadAutoCompleteLead();
 	},
     eventsRegistry : function(){
         if (localStorage.status) {
@@ -328,5 +329,13 @@ var app = {
     },
     showBooking : function(){
         $(".opt_booking").show();
+    },
+
+    /*CHECK-IN*/
+
+    loadAutoCompleteLead : function(){
+        $("#serachLead").html();
+
     }
+
 };
