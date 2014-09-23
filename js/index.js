@@ -42,12 +42,14 @@ var app = {
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
+/*
 		setTimeout(function() {
 			$.i18n.init(function(t) {
 				lng: language;
 				$(".login, .general, .register").i18n();
 			});
 		}, 500);
+*/        
 	},
 	// deviceready Event Handler
 	//
@@ -127,7 +129,7 @@ var app = {
 						"Format: " + result.format + "\n" +
 						"Cancelled: " + result.cancelled);
 
-				document.getElementById("info").innerHTML = result.text;
+//				document.getElementById("info").innerHTML = result.text;
 				console.log(result);
 
 			}, function(error) {
@@ -162,9 +164,9 @@ var app = {
 				contentType: "application/json",
 				success: function(e) {
 					if (e.status) {
-						$("#info").html("Creacion de registro con el ID : " + e.id);
+//						$("#info").html("Creacion de registro con el ID : " + e.id);
 					} else {
-						$("#info").html("Error al crear el registro : " + e.error);
+//						$("#info").html("Error al crear el registro : " + e.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
@@ -336,7 +338,6 @@ var app = {
             .removeAttr('selected');
 
         $(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
-        //$('#current_car_year, #booking_id').selectmenu('refresh', true);
         $('#current_car_year option, #booking_id option').attr('selected', false);
         
         $("#country_id").val(localStorage.country);
