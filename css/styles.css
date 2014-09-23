@@ -125,8 +125,8 @@ img{
 	/*padding:0px 0px 20px 0px;*/
 }
 .contenido_login{
-	/*margin:0 auto;
-    padding:10% 0px 0px 0px;*/	
+	/*margin:0 auto;*/	
+    padding:10% 0px 0px 0px;
 }
 /************ avisos/alertas *************/
 .aviso{
@@ -257,11 +257,11 @@ textarea{
 .btn_home{
 	background-color:#25292c;
 	border:1px solid #FFF;
-	float:left;
+	/*float:left;*/
 	font-size:1.6em;
-	/*margin:10px;
+	margin:5px;
 	padding:25px 5px 5px 5px;
-	width:44.5%;*/
+	/*width:44.5%;*/
 }
 .btn_home a{
 	display: block;
@@ -277,9 +277,9 @@ textarea{
 	/*width:93%;*/
 }
 .btn_home_info{
-	color:#97999a;
+	/*color:#97999a;*/
 	font-family: 'AudiExtendedBold';
-	/*padding:15px 0px 2px 5px;*/
+	padding:15px 0px 2px 5px;
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -419,7 +419,7 @@ html head + body .ui-body-a.ui-focus {
 	background-color: 			#FFFFFF /*{a-page-background-color}*/;
 	border-color:	 		#bbb /*{a-page-border}*/;
 	color: 					#333 /*{a-page-color}*/;
-	text-shadow: 0 /*{a-page-shadow-x}*/ 1px /*{a-page-shadow-y}*/ 0 /*{a-page-shadow-radius}*/ 	#f3f3f3 /*{a-page-shadow-color}*/;
+	text-shadow: 0 /*{a-page-shadow-x}*/ 0 /*{a-page-shadow-y}*/ 0 /*{a-page-shadow-radius}*/ 	 /*{a-page-shadow-color}*/;
 }
 /* Form inputs */
 .ui-input-text input,
@@ -512,6 +512,32 @@ label.error {
 	-ms-user-select: none;
 	user-select: none;
 }
+/* Links */
+.ui-page-theme-a a,
+html .ui-bar-a a,
+html .ui-body-a a,
+html body .ui-group-theme-a a {
+	color: #97999a /*{a-link-color}*/;
+	/*font-weight: bold;*/
+}
+.ui-page-theme-a a:visited,
+html .ui-bar-a a:visited,
+html .ui-body-a a:visited,
+html body .ui-group-theme-a a:visited {
+    color: #97999a /*{a-link-visited}*/;
+}
+.ui-page-theme-a a:hover,
+html .ui-bar-a a:hover,
+html .ui-body-a a:hover,
+html body .ui-group-theme-a a:hover {
+	color: #97999a /*{a-link-hover}*/;
+}
+.ui-page-theme-a a:active,
+html .ui-bar-a a:active,
+html .ui-body-a a:active,
+html body .ui-group-theme-a a:active {
+	color: #97999a /*{a-link-active}*/;
+}
 @media screen and (orientation: portrait) {
 	label.error {
 		margin-left: 0;
@@ -523,6 +549,20 @@ label.error {
 		display: inline-block;
 		margin-left: 0;
 	}
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1300px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
+
+  /* Large screen, retina, stuff to override above media query */
+/* Hide the native input element */
+.ui-input-btn input {
+    font-size: 2.2em;
+}
 }
 em {
 	color: red;
