@@ -196,7 +196,6 @@ var app = {
 		try {
 			e.preventDefault();
 			//disable the button so we can't resubmit while we wait
-			$("#submit", this).attr("disabled", "disabled");
 			var user = $("#email", this).val();
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
@@ -210,7 +209,6 @@ var app = {
                         alert("Your login failed");
                     }
                 }, 50);
-				$("#submit").removeAttr("disabled");
 			}
 			return false;
 		} catch (error) {

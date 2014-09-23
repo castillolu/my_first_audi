@@ -8,7 +8,7 @@
 	},
 	"login": {
 		"username": "Usuario",
-		"password": "Contrseña"
+		"password": "Contraseña"
 	},
 	"register": {
 		"name": "Nombre:",
