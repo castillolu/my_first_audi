@@ -48,8 +48,10 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		app.loadContent();
-		app.loadActions();
-        app.loadAutoCompleteLead();
+        setTimeout(function(){
+            app.loadActions();
+            app.loadAutoCompleteLead();
+        },200);
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
@@ -90,15 +92,16 @@ var app = {
 
 	},
 	loadActions: function() {
-		$(document).on('click', '#btn_lead', app.goToFormLead);
-		$(document).on('click', '#btn_check_in', app.goToFormCheckIn);
-		$(document).on('click', '#btn_synchro', app.goToSynchro);
-		$(document).on('click', '#btn_survey', app.goToFormSurvey);
-        $(document).on('click', '#btn_logout', app.logOut);
-        $(document).on('click', '#onsite', app.hideBooking);
-        $(document).on('click', '#dealer', app.showBooking);
-        $(document).on('click', '#qr-code', app.scan);
-        $(document).on('click', '.item-lead a', app.selectLead);
+        $('#btn_lead').on('click', app.goToFormLead);
+        $('#btn_check_in').on('click', app.goToFormCheckIn);
+        $('#btn_synchro').on('click', app.goToSynchro);
+        $('#btn_survey').on('click', app.goToFormSurvey);
+        $('#btn_logout').on('click', app.logOut);
+        $('#onsite').on('click', app.hideBooking);
+        $('#dealer').on('click', app.showBooking);
+        $('#btn_qr_code').on('click', app.scan);
+        $('.back_to_menu').on('click', app.backDashboard);
+//        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
 	},
@@ -214,7 +217,6 @@ var app = {
 			if (user != '' && password != '') {
 				dbapp.auth(user, password);
 				setTimeout(function() {
-                    console.log("Status : " + localStorage.status);
 					if (localStorage.status == 'true') {
                         setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
@@ -336,6 +338,12 @@ var app = {
         window.location.href = "index.html";
         //$.mobile.changePage("#login-page", {reloadPage: true});
     },
+
+    backDashboard: function(){
+        console.log("backDashboard");
+        $.mobile.changePage("#dashboard");
+
+    },
     hideBooking : function(){
         $('#booking_id option').attr('selected', false);
         $(".opt_booking").hide();
@@ -348,7 +356,7 @@ var app = {
     loadAutoCompleteLead : function(){
         console.log("loadAutoCompleteLead");
         $("#serachLead").html("");
-        dbapp.searchLeadCkeckIn();
+        //dbapp.searchLeadCkeckIn();
     },
 
     selectLead :function()
@@ -356,5 +364,7 @@ var app = {
         console.log("selectLead");
 //        console.log($(this));
     }
+
+
 
 };

@@ -25,7 +25,8 @@
 		"brand": "Brand",
 		"model": "Model",
 		"save": "Save",
-		"login": "Login"
+		"login": "Login",
+		"back": "Back"
 	},
 	"survey":{
 	   "email": "Your email that was entered at the time of registration:",
