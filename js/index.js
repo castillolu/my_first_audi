@@ -186,7 +186,7 @@ var app = {
             //disable the button so we can't resubmit while we wait
             //$("#submit-lead", this).attr("disabled", "disabled");
             var objLead = {};
-            objLead.type_registry = $("input[name='type_registry']").val();
+            objLead.type_registry = $("input[name='type_registry']:checked").val();
             objLead.name = $("#name").val();
             objLead.last_name = $("#last_name").val();
             objLead.email = $("#email_lead").val();
@@ -195,7 +195,7 @@ var app = {
             objLead.brand = $("#current_car_brand").val();
             objLead.model = $("#current_car_model").val();
             objLead.year = $("#current_car_year").val();
-            objLead.model_audi = $("input[name='model_audi']").val();
+            objLead.model_audi = $("input[name='model_audi']:checked").val();
             objLead.booking_id = $("#booking_id").val()==""?"NULL":$("#booking_id").val();
             objLead.country_id = $("#country_id").val();
             db.transaction(
@@ -307,16 +307,13 @@ var app = {
 //		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
         console.log("goToFormLead");
         $(':input','#form_lead')
-            .not(':button, :submit, :reset, :hidden')
-            .val('')
-            .removeAttr('checked')
-            .removeAttr('selected');
-
+            .not(':radio, :button, :submit, :reset, :hidden')
+            .val('');
+/*
         $(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
         $('#current_car_year option, #booking_id option').attr('selected', false);
-        
+        */
         $("#country_id").val(localStorage.country);
-
         $.mobile.changePage("#register");
     },
     goToFormCheckIn: function() {
