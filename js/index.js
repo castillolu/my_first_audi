@@ -125,12 +125,15 @@ var app = {
 
 			scanner.scan(function(result) {
 
+                if(result.format = "QR_CODE"){
+                    dbapp.searchLeadByQRCode(result.text);
+                }
+                /*
 				alert("We got a barcode\n" +
 						"Result: " + result.text + "\n" +
 						"Format: " + result.format + "\n" +
 						"Cancelled: " + result.cancelled);
-
-//				document.getElementById("info").innerHTML = result.text;
+                */
 				console.log(result);
 
 			}, function(error) {
