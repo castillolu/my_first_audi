@@ -59,15 +59,13 @@ var app = {
 
     setLanguage : function(language, firstTime)
     {
-
-        console.log(language);
         if(firstTime){
             $.i18n.init(function(t) {
                 lng: language;
                 $(".login, .general, .register, .survey").i18n();
             });
         }else{
-            i18n.setLng(language, { fixLng: true }, function(t) { 
+            i18n.setLng(language, function(t) { 
                 $(".login, .general, .register, .survey").i18n();
             });
         }
@@ -86,7 +84,7 @@ var app = {
 		$("#survey").load("survey.html", function() {
 			console.log("Load survey.");
 		});
-		if (localStorage.status) {
+		if (localStorage.status == true) {
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -216,8 +214,9 @@ var app = {
 			if (user != '' && password != '') {
 				dbapp.auth(user, password);
 				setTimeout(function() {
-					if (localStorage.status) {
-                        app.setLanguage(localStorage.language, false);
+                    console.log("Status : " + localStorage.status);
+					if (localStorage.status == 'true') {
+                        setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
                     } else {
                         alert("Your login failed");
@@ -245,7 +244,7 @@ var app = {
 
 	},
 	getUsers: function() {
-		$(".synchro_info_txt").html("Updating users...");
+		console.log("Updating users...");
 		try {
 			$.ajax(urlAPI + "/users/list_users", {
 				type: "GET",
@@ -274,7 +273,7 @@ var app = {
 
 	},
 	getBookings: function() {
-        $(".synchro_info_txt").html("Updating bookings...");
+        console.log("Updating bookings...");
         try {
             $.ajax(urlAPI + "/bookings/list", {
                 type: "GET",
@@ -285,10 +284,10 @@ var app = {
                 contentType: "application/json",
                 success: function(data) {
                     if (data.status) {
-                        $(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
+                        console.log("Resultado de la Consulta : " + data.status);
                         dbapp.updateBookings(data.data);
                     } else {
-                        $(".synchro_info_txt").append("Error al crear el registro : " + data.error);
+                        console.log("Error al crear el registro : " + data.error);
                     }
                 },
                 error: function(jqXHR, text_status, strError) {
@@ -303,7 +302,7 @@ var app = {
 
     },
     goToFormLead: function() {
-		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
+//		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
         console.log("goToFormLead");
         $(':input','#form_lead')
             .not(':button, :submit, :reset, :hidden')
@@ -333,6 +332,7 @@ var app = {
     logOut: function() {
         console.log("logOut");
         localStorage.clear();
+        localStorage.setItem("status", false);
         window.location.href = "index.html";
         //$.mobile.changePage("#login-page", {reloadPage: true});
     },
@@ -345,7 +345,6 @@ var app = {
     },
 
     /*CHECK-IN*/
-
     loadAutoCompleteLead : function(){
         console.log("loadAutoCompleteLead");
         $("#serachLead").html("");
@@ -355,7 +354,7 @@ var app = {
     selectLead :function()
     {
         console.log("selectLead");
-        console.log($(this));
+//        console.log($(this));
     }
 
 };
