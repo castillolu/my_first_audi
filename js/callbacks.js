@@ -144,6 +144,31 @@ var callBacks = {
 			alert("Error was in successSearchLeads : " + error);
 		}				
 
-	}	
+	},
+
+	successSearchLeadsCheckIn : function(tx, results){
+        console.log("successSearchLeadsCheckIn");
+
+		try {
+			var html = "";
+			$("#serachLead").html("");
+			if (results.rows.length > 0) {
+				for(var i = 0; i < results.rows.length; i++){
+					var obj = {};
+					obj.email = results.rows.item(i).email;
+					obj.name = results.rows.item(i).name;
+					obj.lastName = results.rows.item(i).last_name;
+					var content = obj.name + " " + obj.lastName + " (" + obj.email + ")";
+					html += '<li><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
+
+				}
+			}
+			$("#serachLead").html(html);
+		}
+		catch (error)
+		{
+			alert("Error was in successSearchLeadsCheckIn : " + error);
+		}			
+	}
 
 };

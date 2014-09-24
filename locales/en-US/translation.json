@@ -18,8 +18,8 @@
 		"booking": "Please select your preferred date for your test drive:",
 		"select_booking": "Select booking",
 		"select": "Select year",
-		"onsite": "On site",
-		"dealer": "Dealer"
+		"onsite": "Test drive on site",
+		"dealer": "Test drive on dealership"
 	},
 	"attr": {
 		"brand": "Brand",

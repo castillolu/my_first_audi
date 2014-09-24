@@ -91,7 +91,6 @@ var app = {
         $('#dealer').on('click', app.showBooking);
         app.eventsRegistry();
         app.validateLead();
-        app.loadAutoCompleteLead();
 	},
     eventsRegistry : function(){
         if (localStorage.status) {
@@ -307,6 +306,7 @@ var app = {
     },
     goToFormCheckIn: function() {
         console.log("goToFormCheckIn");
+        app.loadAutoCompleteLead();
         $.mobile.changePage("#check-in");
     },
     goToSynchro: function() {
@@ -334,7 +334,12 @@ var app = {
     /*CHECK-IN*/
 
     loadAutoCompleteLead : function(){
-        $("#serachLead").html();
+
+        console.log("loadAutoCompleteLead");
+        $("#serachLead").html("");
+        dbapp.searchLeadCkeckIn();
+
+        //var html = '<li><a id="'+ +'" href="#">' + + '</a></li>';
 
     }
 

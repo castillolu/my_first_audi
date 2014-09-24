@@ -21,8 +21,8 @@
 		"booking": "Por favor, seleccione la feche para su prueba de manejo:",
 		"select_booking": "Seleccione reserva",
 		"select": "Seleccione año",
-		"onsite": "En sitio",
-		"dealer": "Distribuidor"
+		"onsite": "Prueba en sitio",
+		"dealer": "Prueba en Audi Center"
 	},
 	"attr": {
 		"brand": "Marca",
