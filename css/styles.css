@@ -80,7 +80,7 @@ h1{
 	width:100%;*/
 }
 .synchro_info_txt{
-	/*padding:0px 10px 3px 10px;*/
+	padding:5px 10px 3px 10px;
 }
 /************ header *************/
 .header{
@@ -442,7 +442,8 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    border: none;
    font-size:1.3em;
    font-family:Verdana, Geneva, sans-serif;
-   margin:0 auto;
+  /* margin:0 auto;*/
+   padding:10px;
 }
 .contenido_login #btn_logout{
    width:98%;
@@ -454,6 +455,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    font-size:1.4em;
    font-family: 'AudiExtendedBold';
    margin:0 auto;
+   padding:10px;
 }
 .ui-filterable{
    margin-bottom:3.5%;
@@ -519,7 +521,7 @@ textarea.ui-input-text {
 	border-radius: inherit;
 }
 .ui-input-search input {
-   text-indent:15px;
+   text-indent:30px;
 }
 .ui-input-search:after {
 	position: absolute;
@@ -682,6 +684,7 @@ html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited,
 html head + body .ui-btn.ui-btn-a:visited {
 	text-shadow: 0 /*{a-bup-shadow-x}*/ 0px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/  /*{a-bup-shadow-color}*/;
+   margin:0 auto;
 }
 /* Button hover */
 .ui-page-theme-a .ui-btn:hover,
@@ -690,6 +693,12 @@ html .ui-body-a .ui-btn:hover,
 html body .ui-group-theme-a .ui-btn:hover,
 html head + body .ui-btn.ui-btn-a:hover {
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/  /*{a-bhover-shadow-color}*/;
+}
+/* No margin in grids for 100% width button elements until we can use max-width: fill-available; */
+[class*="ui-block-"] > button.ui-btn {
+	margin-right: 0;
+	margin-left: 0;
+   margin:0 auto;
 }
 @media screen and (orientation: portrait) {
 	label.error {
@@ -712,6 +721,9 @@ only screen and (                min-resolution: 192dpi) and (min-width: 1300px)
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
 
   /* Large screen, retina, stuff to override above media query */
+.synchro{
+	font-size:1.2em;   
+}
 .header_1_img img, .header_2_img img{
    min-width:1200px;
    height:auto;
@@ -740,7 +752,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
    height:80px;
 }
 .boton_general .ui-btn{
-   font-size:2.2em;
+   font-size:3em;
 }
 .boton_general .ui-btn img{
    width:9%;
@@ -759,6 +771,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .contenido_login #btn_logout{
    height:100px;
    font-size:2.8em;
+   width:100%;
 }
 
 /* Form inputs */
@@ -790,7 +803,7 @@ div.ui-controlgroup-label {
 	height: 28px;
 }
 .ui-input-search input{
-   text-indent:25;
+   text-indent:40;
 }
 .ui-btn-icon-left:after,
 .ui-btn-icon-right:after,
@@ -799,6 +812,12 @@ div.ui-controlgroup-label {
 .ui-btn-icon-notext:after {
 	width: 36px;
 	height: 36px;
+}
+.ui-btn-icon-notext:after,
+.ui-btn-icon-left:after,
+.ui-btn-icon-right:after {
+	top: 50%;
+	margin-top: -25px;
 }
 }
 em {
