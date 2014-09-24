@@ -39,12 +39,7 @@ var app = {
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
-		setTimeout(function() {
-			$.i18n.init(function(t) {
-				lng: language;
-				$(".login, .general, .register, .survey").i18n();
-			});
-		}, 1000);
+        setTimeout(app.setLanguage(language, true), 1000);
 	},
 	// deviceready Event Handler
 	//
@@ -53,13 +48,31 @@ var app = {
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');
 		app.loadContent();
-		setTimeout(app.loadActions, 50);
+		app.loadActions();
+        app.loadAutoCompleteLead();
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
 		console.log('Received Event: ' + id);
 		dbapp.openDatabase();
 	},
+
+    setLanguage : function(language, firstTime)
+    {
+
+        console.log(language);
+        if(firstTime){
+            $.i18n.init(function(t) {
+                lng: language;
+                $(".login, .general, .register, .survey").i18n();
+            });
+        }else{
+            i18n.setLng(language, { fixLng: true }, function(t) { 
+                $(".login, .general, .register, .survey").i18n();
+            });
+        }
+    },
+
 	loadContent: function() {
 		$("#dashboard").load("dashboard.html", function() {
 			console.log("Load register.");
@@ -79,14 +92,15 @@ var app = {
 
 	},
 	loadActions: function() {
-		$('#btn_lead').on('click', app.goToFormLead);
-		$('#btn_check_in').on('click', app.goToFormCheckIn);
-		$('#btn_synchro').on('click', app.goToSynchro);
-		$('#btn_survey').on('click', app.goToFormSurvey);
-        $('#btn_logout').on('click', app.logOut);
-        $('#onsite').on('click', app.hideBooking);
-        $('#dealer').on('click', app.showBooking);
-        $('#qr-code').on('click', app.scan);
+		$(document).on('click', '#btn_lead', app.goToFormLead);
+		$(document).on('click', '#btn_check_in', app.goToFormCheckIn);
+		$(document).on('click', '#btn_synchro', app.goToSynchro);
+		$(document).on('click', '#btn_survey', app.goToFormSurvey);
+        $(document).on('click', '#btn_logout', app.logOut);
+        $(document).on('click', '#onsite', app.hideBooking);
+        $(document).on('click', '#dealer', app.showBooking);
+        $(document).on('click', '#qr-code', app.scan);
+        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
 	},
@@ -113,7 +127,7 @@ var app = {
                     $(".opt_type_registry").show();
                     break;
             }
-            dbapp.queryBookings();
+            setTimeout(dbapp.queryBookings, 200);
         }
     },
 	scan: function() {
@@ -203,8 +217,7 @@ var app = {
 				dbapp.auth(user, password);
 				setTimeout(function() {
 					if (localStorage.status) {
-						$(".synchro_info_txt").html(localStorage.last_name);
-						$(".synchro_info_txt").append(localStorage.email);
+                        app.setLanguage(localStorage.language, false);
 						$.mobile.changePage("#dashboard");
                     } else {
                         alert("Your login failed");
@@ -307,7 +320,6 @@ var app = {
     },
     goToFormCheckIn: function() {
         console.log("goToFormCheckIn");
-        app.loadAutoCompleteLead();
         $.mobile.changePage("#check-in");
     },
     goToSynchro: function() {
@@ -335,13 +347,15 @@ var app = {
     /*CHECK-IN*/
 
     loadAutoCompleteLead : function(){
-
         console.log("loadAutoCompleteLead");
         $("#serachLead").html("");
         dbapp.searchLeadCkeckIn();
+    },
 
-        //var html = '<li><a id="'+ +'" href="#">' + + '</a></li>';
-
+    selectLead :function()
+    {
+        console.log("selectLead");
+        console.log($(this));
     }
 
 };
