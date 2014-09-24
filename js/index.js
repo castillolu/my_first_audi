@@ -36,7 +36,7 @@ var app = {
 		} else {
 			$(document).on('ready', this.onDeviceReady);
 		}
-//        document.getElementById('scan').addEventListener('click', this.scan, false);
+//        document.getElementById('qr-code').addEventListener('click', this.scan, false);
 //        document.getElementById('send_register').addEventListener('click', this.sendLead, false);
 //        document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
@@ -89,6 +89,7 @@ var app = {
         $('#btn_logout').on('click', app.logOut);
         $('#onsite').on('click', app.hideBooking);
         $('#dealer').on('click', app.showBooking);
+        $('#qr-code').on('click', app.scan);
         app.eventsRegistry();
         app.validateLead();
 	},
