@@ -140,6 +140,7 @@ img{
 .contenido_login{
 	/*margin:0 auto;*/	
     padding:10% 0px 0px 0px;
+    text-align:center;
 }
 /************ avisos/alertas *************/
 .aviso{
@@ -147,6 +148,7 @@ img{
 }
 .aviso_confirma{
 	font-size:0.9em;
+   text-align:center;
 	/*margin:0 auto;
 	width:93%;*/
 }
@@ -166,6 +168,7 @@ img{
 }
 .aviso_contenido_info{
 	padding:20px;
+   text-align:left;
 }
 /************ formularios *************/
 input{
@@ -287,8 +290,8 @@ textarea{
 	background-color:#e21838;
 	clear:both;
 	font-size:1.6em;
-	/*margin:0 auto;
-	margin-bottom:20px;
+	margin:0 auto;
+	/*margin-bottom:20px;
 	margin-top:50px;*/
 	text-align:center;
 	/*width:93%;*/
@@ -297,6 +300,7 @@ textarea{
 	/*color:#97999a;*/
 	font-family: 'AudiExtendedBold';
 	padding:15px 0px 2px 5px;
+   text-align:left;
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -408,6 +412,27 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	color: 					#fff /*{a-active-color}*/;
 	text-shadow: 0 /*{a-active-shadow-x}*/ 1px /*{a-active-shadow-y}*/ 0 /*{a-active-shadow-radius}*/ #005599 /*{a-active-shadow-color}*/;
 }
+
+.aviso_contenido button{
+   width:50%;
+   height:30px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#25292c;
+   border: none;
+   font-size:1.2em;
+}
+.contenido_login #btn_logout{
+   width:98%;
+   height:30px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#e21838;
+   border: none;
+   font-size:1.4em;
+   font-family: 'AudiExtendedBold';
+}
+
 /* Active radio button icon */
 .ui-page-theme-a .ui-radio-on:after,
 html .ui-bar-a .ui-radio-on:after,
@@ -589,8 +614,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	line-height:140px;
 }
 .header_logo img{
-   min-width:1200px;
-   height:auto;
+   /*min-width:1200px;
+   height:auto;*/
 }
 .btn_home{
    font-size:4.3em;
@@ -605,22 +630,22 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	font-size:2.8em;
 }
 .btn_normal .ui-btn{
-   height:60px;
+   height:80px;
 }
 /* Buttons and icons */
 .ui-btn {
-	font-size: 20px;
+	font-size: 32px;
 }
 
 /* Form inputs */
 .ui-input-text input,
 .ui-input-search input,
 textarea.ui-input-text {
-   font-size:1.8em;
+   font-size:2.8em;
 }
 /* Hide the native input element */
 .ui-input-btn input {
-    /*font-size: 2em;*/
+    font-size: 1.7em;
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,

@@ -147,8 +147,8 @@ var callBacks = {
 	},
 
 	successSearchLeadsCheckIn : function(tx, results){
-        console.log("successSearchLeadsCheckIn");
 
+        console.log("successSearchLeadsCheckIn");
 		try {
 			var html = "";
 			$("#serachLead").html("");
@@ -169,6 +169,28 @@ var callBacks = {
 		{
 			alert("Error was in successSearchLeadsCheckIn : " + error);
 		}			
+	},
+
+	successSearchLeadQRCode : function(tx, results){
+        console.log("successSearchLeadQRCode");
+		try {
+			if (results.rows.length > 0) {
+				$("#list-data-lead .name").html(results.rows.item(0).name);
+				$("#list-data-lead .last_name").html(results.rows.item(0).last_name);
+				$("#list-data-lead .email").html(results.rows.item(0).email);
+				$("#list-data-lead .phone").html(results.rows.item(0).phone);
+				$("#list-data-lead .address").html(results.rows.item(0).address);
+				$("#list-data-lead .current_car").html(results.rows.item(0).brand + " / " + results.rows.item(0).model + " / " + results.rows.item(0).year);
+				$("#list-data-lead .model_audi").html(results.rows.item(0).model_audi);
+				$("#list-data-lead .tyep_registry").html(results.rows.item(0).tyep_registry);
+			}
+		}
+		catch (error)
+		{
+			alert("Error was in successSearchLeadQRCode : " + error);
+		}			
+
+
 	}
 
 };

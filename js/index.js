@@ -36,9 +36,6 @@ var app = {
 		} else {
 			$(document).on('ready', this.onDeviceReady);
 		}
-//        document.getElementById('scan').addEventListener('click', this.scan, false);
-//        document.getElementById('send_register').addEventListener('click', this.sendLead, false);
-//        document.getElementById('query_db').addEventListener('click', dbapp.queryDemo, false);
 		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
@@ -89,6 +86,7 @@ var app = {
         $('#btn_logout').on('click', app.logOut);
         $('#onsite').on('click', app.hideBooking);
         $('#dealer').on('click', app.showBooking);
+        $('#qr-code').on('click', app.scan);
         app.eventsRegistry();
         app.validateLead();
 	},
@@ -124,12 +122,15 @@ var app = {
 
 			scanner.scan(function(result) {
 
+                if(result.format = "QR_CODE"){
+                    dbapp.searchLeadByQRCode(result.text);
+                }
+                /*
 				alert("We got a barcode\n" +
 						"Result: " + result.text + "\n" +
 						"Format: " + result.format + "\n" +
 						"Cancelled: " + result.cancelled);
-
-//				document.getElementById("info").innerHTML = result.text;
+                */
 				console.log(result);
 
 			}, function(error) {

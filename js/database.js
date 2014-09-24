@@ -316,20 +316,38 @@ var dbapp = {
 
 		var leads;
 		db.transaction(
+			function(tx) {
+				try {
+					tx.executeSql('SELECT * FROM Leads WHERE status = ? OR status = ? OR status = ? AND country_id = ?',
+						[STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO, localStorage.country],
+						function(tx, result) {
+							callBacks.successSearchLeadsCheckIn(tx, result)
+						},
+						callBacks.errorQuery
+					);
+				} catch (error) {
+					alert("searchLeadCkeckIn : " + error);
+				}
+			}
+		);
+	},
+
+	searchLeadByQRCode : function(qrCode){
+		db.transaction(
 				function(tx) {
 					try {
-						tx.executeSql('SELECT * FROM Leads WHERE status = ? OR status = ? OR status = ? AND country_id = ?',
-								[STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO, localStorage.country],
+						tx.executeSql('SELECT * FROM Leads WHERE control = ?',
+								[qrCode],
 								function(tx, result) {
-									leads = callBacks.successSearchLeadsCheckIn(tx, result)
+									callBacks.successSearchLeadQRCode(tx, result)
 								},
 								callBacks.errorQuery);
 					} catch (error) {
-						alert("sendLeads : " + error);
+						alert("searchLeadByQRCode : " + error);
 					}
 				}
 		);
-	}
 
+	}
 
 };
