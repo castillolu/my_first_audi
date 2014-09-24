@@ -26,5 +26,26 @@
 		"model": "Model",
 		"save": "Save",
 		"login": "Login"
+	},
+	"survey":{
+	   "email": "Your email that was entered at the time of registration:",
+	   "experience": "How was your my First Audi experience?",
+	   "excellent": "Excellent",
+	   "good": "Good",
+	   "regular": "Regular",
+	   "bad": "Bad",
+	   "testdrive_experience": "How would you rate your test drive experience in general?",
+	   "vehicles": "What vehicles did you test drive?",
+	   "other": "Other",
+	   "like": "Please express what you like the most from your test drive.",
+	   "contact": "Would you like to be contacted by the salesperson that helped you again?",
+	   "yes": "Yes",
+	   "no": "No",
+	   "time": "Are you interested in purchasing an Audi? If so, in what time frame?",
+	   "3_months": "Next 3 months",
+	   "6_months": "Next 6 months",
+	   "12_months": "Next 12 months",
+	   "undecided": "Undecided",
+	   "model": "In which Audi models are you interested?"
 	}
 }

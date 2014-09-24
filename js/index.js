@@ -42,7 +42,7 @@ var app = {
 		setTimeout(function() {
 			$.i18n.init(function(t) {
 				lng: language;
-				$(".login, .general, .register").i18n();
+				$(".login, .general, .register, .survey").i18n();
 			});
 		}, 1000);
 	},

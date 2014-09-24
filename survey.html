@@ -1,21 +1,147 @@
 <div class="app_contenedor survey">
-	<div class="app_info">
+    <div class="app_info">
 
-		<div data-role="header">
-			<div class="synchro">
-				<div class="synchro_info">
-					<div class="synchro_info_txt">Last synchro</div>
-				</div>
-			</div>
-		</div>
+        <div data-role="header">
+            <div class="synchro">
+                <div class="synchro_info">
+                    <div class="synchro_info_txt">Last synchro</div>
+                </div>
+            </div>
+        </div>
 
-		<div data-role="content">
-			<div class="header_all general">
-				<div class="header_logo"><img src="img/logo_audi.jpg" hspace="0" vspace="0" border="0"  style="border: 0;"> </div>
-				<div class="header_1_titulo" data-i18n="general.title_1"></div>         
-				<div class="header_1_titulo" data-i18n="general.title_2"></div>         
-			</div>  
-			<div class="clearing"></div> 
-		</div>	
-	</div>		
-</div>		
+        <div data-role="content">
+            <div class="header_all general">
+                <div class="header_logo"><img src="img/logo_audi.jpg" hspace="0" vspace="0" border="0"  style="border: 0;"> </div>
+                <div class="header_1_titulo" data-i18n="general.title_1"></div>         
+                <div class="header_1_titulo" data-i18n="general.title_2"></div>         
+            </div>  
+            <div class="clearing"></div>      
+
+            <div class="contenido">
+                <div class="contenido_info">
+                    <form action="#" method="post" name="form_survey" id="form_survey">
+                        
+                        <div class="aviso">
+                            <div class="aviso_contenido">
+                                <div class="aviso_contenido_info">
+                                    <label for="email" data-i18n="survey.email"></label>
+                                    <input type="text" name="email" id="email" value="" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="aviso">
+                            <div class="aviso_titulo">Previous activities</div>
+                            <div class="aviso_contenido">
+                                <div class="aviso_contenido_info">
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.experience"></legend>
+                                        <input type="radio" name="experience" id="experience-1" value="excellent" />
+                                        <label for="experience-1" data-i18n="survey.excellent"></label>
+                                        <input type="radio" name="experience" id="experience-2" value="good" />
+                                        <label for="experience-2" data-i18n="survey.good"></label>
+                                        <input type="radio" name="experience" id="experience-3" value="regular" />
+                                        <label for="experience-3" data-i18n="survey.regular"></label>
+                                        <input type="radio" name="experience" id="experience-4" value="bad" />
+                                        <label for="experience-4" data-i18n="survey.bad"></label>
+                                    </fieldset>
+                                </div>
+                                <input type="hidden" name="country_id" id="country_id" value="" />
+                                <a id='leadSuccess' href="#dialogLead" data-rel="dialog" data-transition="pop" style='display:none;'></a>
+                            </div>
+                        </div>
+
+                        <div class="aviso">
+                            <div class="aviso_titulo">Test drive</div>
+                            <div class="aviso_contenido">
+                                <div class="aviso_contenido_info">
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.testdrive_experience"></legend>
+                                        <input type="radio" name="testdrive_experience" id="testdrive_experience-1" value="excellent" />
+                                        <label for="testdrive_experience-1" data-i18n="survey.excellent"></label>
+                                        <input type="radio" name="testdrive_experience" id="testdrive_experience-2" value="good" />
+                                        <label for="testdrive_experience-2" data-i18n="survey.good"></label>
+                                        <input type="radio" name="testdrive_experience" id="testdrive_experience-3" value="regular" />
+                                        <label for="testdrive_experience-3" data-i18n="survey.regular"></label>
+                                        <input type="radio" name="testdrive_experience" id="testdrive_experience-4" value="bad" />
+                                        <label for="testdrive_experience-4" data-i18n="survey.bad"></label>
+                                    </fieldset>
+
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.vehicles"></legend>
+                                        <input type="radio" name="vehicles" id="vehicles-1" value="A1" />
+                                        <label for="vehicles-1">A1</label>
+                                        <input type="radio" name="vehicles" id="vehicles-2" value="A3" />
+                                        <label for="vehicles-2">A3</label>
+                                        <input type="radio" name="vehicles" id="vehicles-3" value="Q3" />
+                                        <label for="vehicles-3">Q3</label>
+                                    </fieldset>
+                                    <label for="other_vehicle" data-i18n="survey.other"></label>
+                                    <input type="text" name="other_vehicle" id="other_vehicle" value="" />
+
+                                    <label for="like" data-i18n="survey.like"></label>
+                                    <input type="text" name="like" id="like" value="" />
+                                </div>
+                                <input type="hidden" name="country_id" id="country_id" value="" />
+                                <a id='leadSuccess' href="#dialogLead" data-rel="dialog" data-transition="pop" style='display:none;'></a>
+                            </div>
+                        </div>
+
+                        <div class="aviso">
+                            <div class="aviso_titulo">Models of interest</div>
+                            <div class="aviso_contenido">
+                                <div class="aviso_contenido_info">
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.contact"></legend>
+                                        <input type="radio" name="contact" id="contact-1" value="yes" />
+                                        <label for="contact-1" data-i18n="survey.yes"></label>
+                                        <input type="radio" name="contact" id="contact-2" value="no" />
+                                        <label for="contact-2" data-i18n="survey.no"></label>
+                                    </fieldset>
+
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.time"></legend>
+                                        <input type="radio" name="time" id="time-1" value="3" />
+                                        <label for="time-1" data-i18n="survey.3_months"></label>
+                                        <input type="radio" name="time" id="time-2" value="6" />
+                                        <label for="time-2" data-i18n="survey.6_months"></label>
+                                        <input type="radio" name="time" id="time-3" value="12" />
+                                        <label for="time-3" data-i18n="survey.12_months"></label>
+                                        <input type="radio" name="time" id="time-4" value="0" />
+                                        <label for="time-4" data-i18n="survey.undecided"></label>
+                                    </fieldset>
+
+
+                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                        <legend data-i18n="survey.model"></legend>
+                                        <input type="checkbox" name="model" id="model-1" value="1" />
+                                        <label for="model-1">Audi A1</label>
+                                        <input type="checkbox" name="model" id="model-2" value="1" />
+                                        <label for="model-2">Audi A3</label>
+                                        <input type="checkbox" name="model" id="model-3" value="1" />
+                                        <label for="model-3">Audi A5</label>
+                                        <input type="checkbox" name="model" id="model-4" value="1" />
+                                        <label for="model-4">Audi A6</label>
+                                        <input type="checkbox" name="model" id="model-5" value="1" />
+                                        <label for="model-5">Audi A7</label>
+                                        <input type="checkbox" name="model" id="model-6" value="1" />
+                                        <label for="model-6">Audi A8</label>
+                                    </fieldset>
+
+                                </div>
+                                <input type="hidden" name="country_id" id="country_id" value="" />
+                                
+                            </div>
+                            <a id='surveySuccess' href="#dialogSurvey" data-rel="dialog" data-transition="pop" style='display:none;'></a>
+                            <div id="messageErrorSurvey"></div>
+                            <div id="logSurvey"></div>
+                            <div class="btn_normal">
+                                <input type="submit" name="submit-survey"  class="btn_normal_info" id="submit-survey" data-i18n="[value]translation:attr.save;"  />
+                            </div>
+                        </div>
+                    </form>                   
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>      
