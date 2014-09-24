@@ -166,8 +166,9 @@ h1{
 .aviso_contenido{
    border:1px solid #d7d7d7;
    margin:5px;
-	/*margin:5px 0px 5px 0px;
-	padding:0px 0px 15px 0px;*/
+   text-align:center;
+	/*margin:5px 0px 5px 0px;*/
+	padding:0px 0px 15px 0px;
 }
 .aviso_contenido_info{
    padding:20px;
@@ -424,6 +425,15 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 }
 
 .aviso_contenido button{
+   /*width:50%;
+   height:40px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#25292c;
+   border: none;
+   font-size:1.3em;*/
+}
+.aviso_contenido .btn_accept{
    width:50%;
    height:40px;
    color:#FFF;
@@ -431,6 +441,8 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    background-color:#25292c;
    border: none;
    font-size:1.3em;
+   font-family:Verdana, Geneva, sans-serif;
+   margin:0 auto;
 }
 .contenido_login #btn_logout{
    width:98%;
@@ -441,6 +453,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    border: none;
    font-size:1.4em;
    font-family: 'AudiExtendedBold';
+   margin:0 auto;
 }
 .ui-filterable{
    margin-bottom:3.5%;
@@ -477,7 +490,7 @@ html head + body .ui-body-a.ui-focus {
 	background-color: 			#FFFFFF /*{a-page-background-color}*/;
 	border-color:	 		#bbb /*{a-page-border}*/;
 	color: 					#333 /*{a-page-color}*/;
-	text-shadow: none;
+	text-shadow: 0;
 }
 /* Form inputs */
 .ui-input-text input,
@@ -507,6 +520,20 @@ textarea.ui-input-text {
 }
 .ui-input-search input {
    text-indent:15px;
+}
+.ui-input-search:after {
+	position: absolute;
+	left: .3125em;
+	top: 50%;
+	margin-top: -7px;
+	content: "";
+	background-position: center center;
+	background-repeat: no-repeat;
+	width:14px;
+	height: 14px;
+	filter: Alpha(Opacity=50);
+	opacity: .5;
+   background-size:100%;
 }
 .ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear,
 .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear {
@@ -576,7 +603,7 @@ label.error {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -585,30 +612,23 @@ label.error {
 /* Button up */
 .boton_general .ui-btn{
    background-color:#25292c;
-   color:#FFF;
-   
+   color:#FFFFFF;
+   font-size:1.4em;
+}
+.boton_general .ui-btn img{
+   vertical-align:bottom;
+   width:7%;
 }
 /* Button hover */
-.ui-page-theme-a .boton_general .ui-btn:hover,
-html .ui-bar-a .boton_general .ui-btn:hover,
-html .ui-body-a .boton_general .ui-btn:hover,
-html body .ui-group-theme-a .boton_general .ui-btn:hover,
-html head + body .boton_general .ui-btn.ui-btn-a:hover {
+.boton_general .ui-btn:hover, .aviso_contenido_info .ui-btn:hover, .aviso_contenido .btn_accept:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
-	border-color:	 		none/*{a-bhover-border}*/;
-	color: 					#FFF  /*{a-bhover-color}*/;
-	text-shadow:none;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
-/* Button down */
-.ui-page-theme-a .boton_general .ui-btn:active,
-html .ui-bar-a .boton_general .ui-btn:active,
-html .ui-body-a .boton_general .ui-btn:active,
-html body .ui-group-theme-a .boton_general .ui-btn:active,
-html head + body .boton_general .ui-btn.ui-btn-a:active {
+.boton_general .ui-btn:active, .aviso_contenido_info .ui-btn:active{
 	background-color: 			#25292c /*{a-bdown-background-color}*/;
-	border-color:	 		none /*{a-bdown-border}*/;
-	color: 					#25292c  /*{a-bdown-color}*/;
-	text-shadow:none;
+   color: 					#FFFFFF  /*{a-bhover-color}*/;
+  text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .contenido login .ui-btn {
    background-color:#06C;
@@ -648,6 +668,28 @@ html body .ui-group-theme-a a:active {
 	overflow: hidden;
    padding:5px 25px;
    font-size:1.2em;   
+}
+/* Button up */
+.ui-page-theme-a .ui-btn,
+html .ui-bar-a .ui-btn,
+html .ui-body-a .ui-btn,
+html body .ui-group-theme-a .ui-btn,
+html head + body .ui-btn.ui-btn-a,
+/* Button visited */
+.ui-page-theme-a .ui-btn:visited,
+html .ui-bar-a .ui-btn:visited,
+html .ui-body-a .ui-btn:visited,
+html body .ui-group-theme-a .ui-btn:visited,
+html head + body .ui-btn.ui-btn-a:visited {
+	text-shadow: 0 /*{a-bup-shadow-x}*/ 0px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/  /*{a-bup-shadow-color}*/;
+}
+/* Button hover */
+.ui-page-theme-a .ui-btn:hover,
+html .ui-bar-a .ui-btn:hover,
+html .ui-body-a .ui-btn:hover,
+html body .ui-group-theme-a .ui-btn:hover,
+html head + body .ui-btn.ui-btn-a:hover {
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/  /*{a-bhover-shadow-color}*/;
 }
 @media screen and (orientation: portrait) {
 	label.error {
@@ -697,6 +739,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .btn_normal .ui-btn{
    height:80px;
 }
+.boton_general .ui-btn{
+   font-size:2.2em;
+}
+.boton_general .ui-btn img{
+   width:9%;
+}
 /* Buttons and icons */
 .ui-btn {
 	font-size: 32px;
@@ -704,7 +752,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .aviso_contenido_info p{
    font-size:2.4em;
 }
-.aviso_contenido button{
+.aviso_contenido .btn_accept{
    height:80px;
    font-size:2.6em;
 }
@@ -735,7 +783,22 @@ div.ui-controlgroup-label {
 #list-data-lead .ui-grid-c,
 #list-data-lead .ui-grid-d,
 #list-data-lead .ui-grid-solo {
-   font-size:2.4em;   
+   font-size:2.8em;   
+}
+.ui-input-search:after {
+	width: 28px;
+	height: 28px;
+}
+.ui-input-search input{
+   text-indent:25;
+}
+.ui-btn-icon-left:after,
+.ui-btn-icon-right:after,
+.ui-btn-icon-top:after,
+.ui-btn-icon-bottom:after,
+.ui-btn-icon-notext:after {
+	width: 36px;
+	height: 36px;
 }
 }
 em {
