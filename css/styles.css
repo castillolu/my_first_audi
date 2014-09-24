@@ -589,8 +589,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	line-height:140px;
 }
 .header_logo img{
-   min-width:1200px;
-   height:auto;
+   /*min-width:1200px;
+   height:auto;*/
 }
 .btn_home{
    font-size:4.3em;
