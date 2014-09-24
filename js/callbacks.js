@@ -174,27 +174,23 @@ var callBacks = {
 	successSearchLeadQRCode : function(){
         console.log("successSearchLeadQRCode");
 		try {
-			var html = "";
-			$("#serachLead").html("");
 			if (results.rows.length > 0) {
-				for(var i = 0; i < results.rows.length; i++){
-					var obj = {};
-					obj.email = results.rows.item(i).email;
-					obj.name = results.rows.item(i).name;
-					obj.lastName = results.rows.item(i).last_name;
-					var content = obj.name + " " + obj.lastName + " (" + obj.email + ")";
-					html += '<li><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
-
-				}
+				$("#list-data-lead .name").html(results.rows.item(0).name);
+				$("#list-data-lead .last_name").html(results.rows.item(0).last_name);
+				$("#list-data-lead .email").html(results.rows.item(0).email);
+				$("#list-data-lead .phone").html(results.rows.item(0).phone);
+				$("#list-data-lead .address").html(results.rows.item(0).address);
+				$("#list-data-lead .current_car").html(results.rows.item(0).brand + " / " + results.rows.item(0).model + " / " + results.rows.item(0).year);
+				$("#list-data-lead .model_audi").html(results.rows.item(0).model_audi);
+				$("#list-data-lead .tyep_registry").html(results.rows.item(0).tyep_registry);
 			}
-			$("#serachLead").html(html);
 		}
 		catch (error)
 		{
 			alert("Error was in successSearchLeadQRCode : " + error);
 		}			
 
-		
+
 	}
 
 };
