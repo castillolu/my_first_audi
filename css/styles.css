@@ -279,6 +279,7 @@ textarea{
    display:block;
 	/*width:44.5%;*/
 }
+
 .btn_home a{
 	/*display: block;*/
 }
@@ -301,8 +302,12 @@ textarea{
 	color:#FFFFFF;
 }
 .btn_home_ico{
-	margin:0 auto;
+	/*margin:0 auto;*/
 	text-align:center;
+}
+.btn_home_ico img{
+   height:60px;
+   min-width:60px;
 }
 .btn_normal{
 	/*background-color:#25292c;
@@ -594,12 +599,19 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 }
 .btn_home_ico img{
    height:120px;
-   display:block;
    min-width:120px;
 }
 .aviso_titulo{
 	font-size:2.8em;
 }
+.btn_normal .ui-btn{
+   height:60px;
+}
+/* Buttons and icons */
+.ui-btn {
+	font-size: 32px;
+}
+
 /* Form inputs */
 .ui-input-text input,
 .ui-input-search input,
