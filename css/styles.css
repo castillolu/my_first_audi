@@ -477,7 +477,7 @@ html head + body .ui-body-a.ui-focus {
 	background-color: 			#FFFFFF /*{a-page-background-color}*/;
 	border-color:	 		#bbb /*{a-page-border}*/;
 	color: 					#333 /*{a-page-color}*/;
-	text-shadow: none;
+	text-shadow: 0;
 }
 /* Form inputs */
 .ui-input-text input,
@@ -576,7 +576,7 @@ label.error {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -585,30 +585,22 @@ label.error {
 /* Button up */
 .boton_general .ui-btn{
    background-color:#25292c;
-   color:#FFF;
-   
+   color:#FFFFFF;
+}
+.boton_general .ui-btn img{
+   vertical-align:bottom;
+   width:7%;
 }
 /* Button hover */
-.ui-page-theme-a .boton_general .ui-btn:hover,
-html .ui-bar-a .boton_general .ui-btn:hover,
-html .ui-body-a .boton_general .ui-btn:hover,
-html body .ui-group-theme-a .boton_general .ui-btn:hover,
-html head + body .boton_general .ui-btn.ui-btn-a:hover {
+.boton_general .ui-btn:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
-	border-color:	 		none/*{a-bhover-border}*/;
-	color: 					#FFF  /*{a-bhover-color}*/;
-	text-shadow:none;
+	color: 					#676a6d  /*{a-bhover-color}*/;
+   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
-/* Button down */
-.ui-page-theme-a .boton_general .ui-btn:active,
-html .ui-bar-a .boton_general .ui-btn:active,
-html .ui-body-a .boton_general .ui-btn:active,
-html body .ui-group-theme-a .boton_general .ui-btn:active,
-html head + body .boton_general .ui-btn.ui-btn-a:active {
+.boton_general .ui-btn:active{
 	background-color: 			#25292c /*{a-bdown-background-color}*/;
-	border-color:	 		none /*{a-bdown-border}*/;
-	color: 					#25292c  /*{a-bdown-color}*/;
-	text-shadow:none;
+   color: 					#676a6d  /*{a-bhover-color}*/;
+  text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .contenido login .ui-btn {
    background-color:#06C;
@@ -648,6 +640,28 @@ html body .ui-group-theme-a a:active {
 	overflow: hidden;
    padding:5px 25px;
    font-size:1.2em;   
+}
+/* Button up */
+.ui-page-theme-a .ui-btn,
+html .ui-bar-a .ui-btn,
+html .ui-body-a .ui-btn,
+html body .ui-group-theme-a .ui-btn,
+html head + body .ui-btn.ui-btn-a,
+/* Button visited */
+.ui-page-theme-a .ui-btn:visited,
+html .ui-bar-a .ui-btn:visited,
+html .ui-body-a .ui-btn:visited,
+html body .ui-group-theme-a .ui-btn:visited,
+html head + body .ui-btn.ui-btn-a:visited {
+	text-shadow: 0 /*{a-bup-shadow-x}*/ 0px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/  /*{a-bup-shadow-color}*/;
+}
+/* Button hover */
+.ui-page-theme-a .ui-btn:hover,
+html .ui-bar-a .ui-btn:hover,
+html .ui-body-a .ui-btn:hover,
+html body .ui-group-theme-a .ui-btn:hover,
+html head + body .ui-btn.ui-btn-a:hover {
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/  /*{a-bhover-shadow-color}*/;
 }
 @media screen and (orientation: portrait) {
 	label.error {
@@ -697,6 +711,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .btn_normal .ui-btn{
    height:80px;
 }
+.boton_general .ui-btn img{
+   width:9%;
+}
 /* Buttons and icons */
 .ui-btn {
 	font-size: 32px;
@@ -735,7 +752,14 @@ div.ui-controlgroup-label {
 #list-data-lead .ui-grid-c,
 #list-data-lead .ui-grid-d,
 #list-data-lead .ui-grid-solo {
-   font-size:2.4em;   
+   font-size:2.8em;   
+}
+.ui-input-search:after {
+	width: 28px;
+	height: 28px;
+}
+.ui-input-search input{
+   text-indent:25;
 }
 }
 em {
