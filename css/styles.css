@@ -379,7 +379,8 @@ a{
 /************ listas *************/
 #list-data-lead{
    padding:10px;
-   border: 1px solid #d7d7d7;  
+   border: 1px solid #d7d7d7;
+   margin:10px 0px;
 }
 /*
 jQuery Mobile
@@ -799,8 +800,9 @@ div.ui-controlgroup-label {
    font-size:2.8em;   
 }
 .ui-input-search:after {
-	width: 28px;
-	height: 28px;
+   left:.6em;
+	width: 36px;
+	height: 36px;
 }
 .ui-input-search input{
    text-indent:40;
@@ -816,7 +818,7 @@ div.ui-controlgroup-label {
 .ui-btn-icon-notext:after,
 .ui-btn-icon-left:after,
 .ui-btn-icon-right:after {
-	top: 50%;
+	top: 25%;
 	margin-top: -25px;
 }
 }
