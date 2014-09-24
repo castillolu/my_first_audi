@@ -140,6 +140,7 @@ img{
 .contenido_login{
 	/*margin:0 auto;*/	
     padding:10% 0px 0px 0px;
+    text-align:center;
 }
 /************ avisos/alertas *************/
 .aviso{
@@ -147,6 +148,7 @@ img{
 }
 .aviso_confirma{
 	font-size:0.9em;
+   text-align:center;
 	/*margin:0 auto;
 	width:93%;*/
 }
@@ -166,6 +168,7 @@ img{
 }
 .aviso_contenido_info{
 	padding:20px;
+   text-align:left;
 }
 /************ formularios *************/
 input{
@@ -297,6 +300,7 @@ textarea{
 	/*color:#97999a;*/
 	font-family: 'AudiExtendedBold';
 	padding:15px 0px 2px 5px;
+   text-align:left;
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -408,6 +412,27 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	color: 					#fff /*{a-active-color}*/;
 	text-shadow: 0 /*{a-active-shadow-x}*/ 1px /*{a-active-shadow-y}*/ 0 /*{a-active-shadow-radius}*/ #005599 /*{a-active-shadow-color}*/;
 }
+
+.aviso_contenido button{
+   width:50%;
+   height:30px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#25292c;
+   border: none;
+   font-size:1.2em;
+}
+.contenido_login #btn_logout{
+   width:98%;
+   height:30px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#e21838;
+   border: none;
+   font-size:1.4em;
+   font-family: 'AudiExtendedBold';
+}
+
 /* Active radio button icon */
 .ui-page-theme-a .ui-radio-on:after,
 html .ui-bar-a .ui-radio-on:after,
@@ -609,7 +634,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 }
 /* Buttons and icons */
 .ui-btn {
-	font-size: 30px;
+	font-size: 32px;
 }
 
 /* Form inputs */
