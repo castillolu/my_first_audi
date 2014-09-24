@@ -609,18 +609,18 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 }
 /* Buttons and icons */
 .ui-btn {
-	font-size: 32px;
+	font-size: 20px;
 }
 
 /* Form inputs */
 .ui-input-text input,
 .ui-input-search input,
 textarea.ui-input-text {
-   font-size:2em;
+   font-size:.1.8em;
 }
 /* Hide the native input element */
 .ui-input-btn input {
-    font-size: 3em;
+    font-size: 2em;
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
