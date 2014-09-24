@@ -166,8 +166,9 @@ h1{
 .aviso_contenido{
    border:1px solid #d7d7d7;
    margin:5px;
-	/*margin:5px 0px 5px 0px;
-	padding:0px 0px 15px 0px;*/
+   text-align:center;
+	/*margin:5px 0px 5px 0px;*/
+	padding:0px 0px 15px 0px;
 }
 .aviso_contenido_info{
    padding:20px;
@@ -424,6 +425,15 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 }
 
 .aviso_contenido button{
+   /*width:50%;
+   height:40px;
+   color:#FFF;
+   margin:5px 0px 10px;
+   background-color:#25292c;
+   border: none;
+   font-size:1.3em;*/
+}
+.aviso_contenido .btn_accept{
    width:50%;
    height:40px;
    color:#FFF;
@@ -431,6 +441,8 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    background-color:#25292c;
    border: none;
    font-size:1.3em;
+   font-family:Verdana, Geneva, sans-serif;
+   margin:0 auto;
 }
 .contenido_login #btn_logout{
    width:98%;
@@ -441,6 +453,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
    border: none;
    font-size:1.4em;
    font-family: 'AudiExtendedBold';
+   margin:0 auto;
 }
 .ui-filterable{
    margin-bottom:3.5%;
@@ -507,6 +520,20 @@ textarea.ui-input-text {
 }
 .ui-input-search input {
    text-indent:15px;
+}
+.ui-input-search:after {
+	position: absolute;
+	left: .3125em;
+	top: 50%;
+	margin-top: -7px;
+	content: "";
+	background-position: center center;
+	background-repeat: no-repeat;
+	width:14px;
+	height: 14px;
+	filter: Alpha(Opacity=50);
+	opacity: .5;
+   background-size:100%;
 }
 .ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear,
 .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear {
@@ -586,20 +613,21 @@ label.error {
 .boton_general .ui-btn{
    background-color:#25292c;
    color:#FFFFFF;
+   font-size:1.4em;
 }
 .boton_general .ui-btn img{
    vertical-align:bottom;
    width:7%;
 }
 /* Button hover */
-.boton_general .ui-btn:hover{
+.boton_general .ui-btn:hover, .aviso_contenido_info .ui-btn:hover, .aviso_contenido .btn_accept:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
-	color: 					#676a6d  /*{a-bhover-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
    text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
-.boton_general .ui-btn:active{
+.boton_general .ui-btn:active, .aviso_contenido_info .ui-btn:active{
 	background-color: 			#25292c /*{a-bdown-background-color}*/;
-   color: 					#676a6d  /*{a-bhover-color}*/;
+   color: 					#FFFFFF  /*{a-bhover-color}*/;
   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .contenido login .ui-btn {
@@ -711,6 +739,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .btn_normal .ui-btn{
    height:80px;
 }
+.boton_general .ui-btn{
+   font-size:2.2em;
+}
 .boton_general .ui-btn img{
    width:9%;
 }
@@ -721,7 +752,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 .aviso_contenido_info p{
    font-size:2.4em;
 }
-.aviso_contenido button{
+.aviso_contenido .btn_accept{
    height:80px;
    font-size:2.6em;
 }
@@ -760,6 +791,14 @@ div.ui-controlgroup-label {
 }
 .ui-input-search input{
    text-indent:25;
+}
+.ui-btn-icon-left:after,
+.ui-btn-icon-right:after,
+.ui-btn-icon-top:after,
+.ui-btn-icon-bottom:after,
+.ui-btn-icon-notext:after {
+	width: 36px;
+	height: 36px;
 }
 }
 em {
