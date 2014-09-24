@@ -91,7 +91,7 @@ var dbapp = {
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
-				'"21232f297a57a5a743894a0e4a801fc3", "DEALER_AND_ON_SITE", "en-us")');
+				'"21232f297a57a5a743894a0e4a801fc3", "DEALER_AND_ON_SITE", "es-US")');
 	},
 	//login users
 	auth: function(user, pass) {

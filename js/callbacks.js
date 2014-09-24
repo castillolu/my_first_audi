@@ -159,7 +159,7 @@ var callBacks = {
 					obj.name = results.rows.item(i).name;
 					obj.lastName = results.rows.item(i).last_name;
 					var content = obj.name + " " + obj.lastName + " (" + obj.email + ")";
-					html += '<li><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
+					html += '<li class"item-lead"><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
 
 				}
 			}
