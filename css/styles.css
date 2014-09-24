@@ -623,13 +623,23 @@ label.error {
    width:7%;
 }
 /* Button hover */
-.boton_general .ui-btn:hover, .aviso_contenido_info .ui-btn:hover, .aviso_contenido .btn_accept:hover{
+.aviso_contenido_info .ui-btn:hover{
+	background-color: 			#e21838 /*{a-bhover-background-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+}
+.boton_general .ui-btn:hover{
+	background-color: 			#25292c /*{a-bhover-background-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+}
+.aviso_contenido .btn_accept:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
    text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .boton_general .ui-btn:active, .aviso_contenido_info .ui-btn:active{
-	background-color: 			#25292c /*{a-bdown-background-color}*/;
+	background-color: 			#e21838 /*{a-bdown-background-color}*/;
    color: 					#FFFFFF  /*{a-bhover-color}*/;
   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
@@ -700,6 +710,32 @@ html head + body .ui-btn.ui-btn-a:hover {
 	margin-right: 0;
 	margin-left: 0;
    margin:0 auto;
+}
+/* titulos popups */
+.ui-header .ui-title,
+.ui-footer .ui-title {
+	font-size: 2em;
+	min-height: 1.1em;
+	text-align: left;
+	display: block;
+	margin: 0 2%;
+	padding: 0.2em 0 0.2em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	outline: 0 !important;
+   font-family: 'AudiExtendedBold';
+}
+#dialogLead a.ui-btn.ui-icon-delete{
+ display: none;
+}
+#dialogLead a{
+   background-color:#25292c;
+   color:#FFF;
+   width:50%;
+}
+#dialogLead p{
+   padding:10px;
 }
 @media screen and (orientation: portrait) {
 	label.error {
@@ -783,7 +819,7 @@ textarea.ui-input-text {
 }
 /* Hide the native input element */
 .ui-input-btn input {
-    font-size: 1.7em;
+    font-size: 1.7gitem;
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
@@ -803,6 +839,7 @@ div.ui-controlgroup-label {
    left:.6em;
 	width: 36px;
 	height: 36px;
+   top:35%;
 }
 .ui-input-search input{
    text-indent:40;
@@ -812,14 +849,18 @@ div.ui-controlgroup-label {
 .ui-btn-icon-top:after,
 .ui-btn-icon-bottom:after,
 .ui-btn-icon-notext:after {
-	width: 36px;
-	height: 36px;
+	width: 40px;
+	height: 40px;
 }
 .ui-btn-icon-notext:after,
 .ui-btn-icon-left:after,
 .ui-btn-icon-right:after {
 	top: 25%;
 	margin-top: -25px;
+}
+.ui-dialog-contain {
+	width: 100%;
+	max-width: 1000px;
 }
 }
 em {
