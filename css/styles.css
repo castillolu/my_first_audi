@@ -287,8 +287,8 @@ textarea{
 	background-color:#e21838;
 	clear:both;
 	font-size:1.6em;
-	/*margin:0 auto;
-	margin-bottom:20px;
+	margin:0 auto;
+	/*margin-bottom:20px;
 	margin-top:50px;*/
 	text-align:center;
 	/*width:93%;*/
@@ -605,22 +605,22 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	font-size:2.8em;
 }
 .btn_normal .ui-btn{
-   height:60px;
+   height:80px;
 }
 /* Buttons and icons */
 .ui-btn {
-	font-size: 20px;
+	font-size: 30px;
 }
 
 /* Form inputs */
 .ui-input-text input,
 .ui-input-search input,
 textarea.ui-input-text {
-   font-size:1.8em;
+   font-size:2.8em;
 }
 /* Hide the native input element */
 .ui-input-btn input {
-    /*font-size: 2em;*/
+    font-size: 1.7em;
 }
 /* Form labels (overrides font-weight bold in bars, and mini font-size) */
 .ui-mobile label,
