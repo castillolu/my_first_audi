@@ -171,7 +171,7 @@ var callBacks = {
 		}			
 	},
 
-	successSearchLeadQRCode : function(){
+	successSearchLeadQRCode : function(tx, results){
         console.log("successSearchLeadQRCode");
 		try {
 			if (results.rows.length > 0) {
