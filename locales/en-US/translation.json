@@ -46,6 +46,11 @@
 	   "6_months": "Next 6 months",
 	   "12_months": "Next 12 months",
 	   "undecided": "Undecided",
-	   "model": "In which Audi models are you interested?"
+	   "model": "In which Audi models are you interested?",
+	   "requiere_experience": "Select My First Audi experience",
+	   "requiere_testdrive_experience": "Select your test drive experience",
+	   "requiere_like": "Enter what you like the most from test drive",
+	   "requiere_contact": "Select if you like contacted",
+	   "requiere_time": "Select the time frame"
 	}
 }

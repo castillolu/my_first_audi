@@ -20,12 +20,12 @@
             <div class="contenido">
                 <div class="contenido_info">
                     <form action="#" method="post" name="form_survey" id="form_survey">
-                        
+                        <div id="messageErrorSurvey"></div>
                         <div class="aviso">
                             <div class="aviso_contenido">
                                 <div class="aviso_contenido_info">
                                     <label for="email_survey" data-i18n="survey.email"></label>
-                                    <input type="text" name="email_survey" id="email_survey" value="" />
+                                    <input type="email" name="email_survey" id="email_survey" value="" />
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <div class="aviso_contenido">
                                 <div class="aviso_contenido_info">
                                     <fieldset data-role="controlgroup"  data-type="horizontal">
-                                        <legend data-i18n="survey.experience"></legend>
+                                        <legend data-i18n="survey.experience" class="asterisk"></legend>
                                         <input type="radio" name="experience" id="experience-1" value="excellent" />
                                         <label for="experience-1" data-i18n="survey.excellent"></label>
                                         <input type="radio" name="experience" id="experience-2" value="good" />
@@ -54,7 +54,7 @@
                             <div class="aviso_contenido">
                                 <div class="aviso_contenido_info">
                                     <fieldset data-role="controlgroup"  data-type="horizontal">
-                                        <legend data-i18n="survey.testdrive_experience"></legend>
+                                        <legend data-i18n="survey.testdrive_experience" class="asterisk"></legend>
                                         <input type="radio" name="testdrive_experience" id="testdrive_experience-1" value="excellent" />
                                         <label for="testdrive_experience-1" data-i18n="survey.excellent"></label>
                                         <input type="radio" name="testdrive_experience" id="testdrive_experience-2" value="good" />
@@ -65,19 +65,27 @@
                                         <label for="testdrive_experience-4" data-i18n="survey.bad"></label>
                                     </fieldset>
 
-                                    <fieldset data-role="controlgroup"  data-type="horizontal" class="vehicles">
-                                        <legend data-i18n="survey.vehicles"></legend>
-                                        <input type="radio" name="vehicles" id="vehicles-1" value="A1" />
-                                        <label for="vehicles-1">A1</label>
-                                        <input type="radio" name="vehicles" id="vehicles-2" value="A3" />
-                                        <label for="vehicles-2">A3</label>
-                                        <input type="radio" name="vehicles" id="vehicles-3" value="Q3" />
-                                        <label for="vehicles-3">Q3</label>
-                                    </fieldset>
-                                    <label for="other_vehicle" data-i18n="survey.other"></label>
-                                    <input type="text" name="other_vehicle" id="other_vehicle" value="" />
+                                    <div>
+                                        <div class="fifty">
+                                            <fieldset data-role="controlgroup"  data-type="horizontal" class="vehicles">
+                                                <legend data-i18n="survey.vehicles"></legend>
+                                                <input type="radio" name="vehicles" id="vehicles-1" value="A1" />
+                                                <label for="vehicles-1">A1</label>
+                                                <input type="radio" name="vehicles" id="vehicles-2" value="A3" />
+                                                <label for="vehicles-2">A3</label>
+                                                <input type="radio" name="vehicles" id="vehicles-3" value="Q3" />
+                                                <label for="vehicles-3">Q3</label>
+                                            </fieldset>
+                                        </div>
+                                        <div class="fifty">
+                                            <label for="other_vehicle" data-i18n="survey.other"></label>
+                                            <input type="text" name="other_vehicle" id="other_vehicle" value="" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="clearing"></div>
 
-                                    <label for="like" data-i18n="survey.like"></label>
+                                    <label for="like" data-i18n="survey.like" class="asterisk"></label>
                                     <input type="text" name="like" id="like" value="" />
                                 </div>
                             </div>
@@ -88,7 +96,7 @@
                             <div class="aviso_contenido">
                                 <div class="aviso_contenido_info">
                                     <fieldset data-role="controlgroup"  data-type="horizontal">
-                                        <legend data-i18n="survey.contact"></legend>
+                                        <legend data-i18n="survey.contact" class="asterisk"></legend>
                                         <input type="radio" name="contact" id="contact-1" value="yes" />
                                         <label for="contact-1" data-i18n="survey.yes"></label>
                                         <input type="radio" name="contact" id="contact-2" value="no" />
@@ -96,7 +104,7 @@
                                     </fieldset>
 
                                     <fieldset data-role="controlgroup"  data-type="horizontal">
-                                        <legend data-i18n="survey.time"></legend>
+                                        <legend data-i18n="survey.time" class="asterisk"></legend>
                                         <input type="radio" name="time" id="time-1" value="3" />
                                         <label for="time-1" data-i18n="survey.3_months"></label>
                                         <input type="radio" name="time" id="time-2" value="6" />
