@@ -84,6 +84,7 @@ var callBacks = {
 	successSearchBookingsByCountry: function(transaction, results)
 	{
 		var html = '<option value="" data-i18n="register.select_booking"></option>';
+		html += '<option value="A">AAA</option>';
 
 		if (results.rows.length > 0) {
 			for(var i = 0; i < results.rows.length; i++){
