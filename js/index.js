@@ -432,7 +432,6 @@ var app = {
                             xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
                         },
                         crossDomain: true,
-                        dataType : "jsonp",
                         contentType: "application/json",
                         success: function(data) {
                             if (data.status) {
