@@ -752,15 +752,18 @@ html head + body .ui-btn.ui-btn-a:hover {
 	outline: 0 !important;
    font-family: 'AudiExtendedBold';
 }
-#dialogLead a.ui-btn.ui-icon-delete{
+#dialogLead a.ui-btn.ui-icon-delete,
+#dialogCheckIn a.ui-btn.ui-icon-delete{
  display: none;
 }
-#dialogLead a{
+#dialogLead a,
+#dialogCheckIn a{
    background-color:#25292c;
    color:#FFF;
    width:50%;
 }
-#dialogLead p{
+#dialogLead p,
+#dialogCheckIn p{
    padding:10px;
    font-size:1.2em;
 }
