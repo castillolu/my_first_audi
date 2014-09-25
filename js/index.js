@@ -101,38 +101,12 @@ var app = {
 		$('#dealer').on('click', app.showBooking);
 		$('#btn_qr_code').on('click', app.scan);
 		$('.back_to_menu').on('click', app.backDashboard);
+		$(document).on('click', 'ul#searchLead li a', app.selectLead);		
 //        $('#query').on('click', dbapp.queryDemo);
-//        $(document).on('click', '.item-lead a', app.selectLead);
 		app.validateLead();
 		app.validateSurvey();
 	},
 
-	scan: function() {
-		try {
-			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-			scanner.scan(function(result) {
-
-				if (result.format = "QR_CODE") {
-					dbapp.searchLeadByQRCode(result.text);
-				}
-				/*
-				 alert("We got a barcode\n" +
-				 "Result: " + result.text + "\n" +
-				 "Format: " + result.format + "\n" +
-				 "Cancelled: " + result.cancelled);
-				 */
-				console.log(result);
-
-			}, function(error) {
-				console.log("Scanning failed: ", error);
-			});
-
-		} catch (error) {
-			alert(error);
-		}
-
-	},
 	validateLead: function() {
 		$("#form_lead").validate({
 			rules: {
@@ -500,15 +474,41 @@ var app = {
 	/*CHECK-IN*/
 	loadAutoCompleteLead: function() {
 		console.log("loadAutoCompleteLead");
-		$("#serachLead").html("");
-		//dbapp.searchLeadCkeckIn();
+		dbapp.searchLeadCkeckIn();
 	},
+	
+	scan: function() {
+		try {
+			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+			scanner.scan(function(result) {
+
+				if (result.format = "QR_CODE") {
+					dbapp.searchLeadByQRCode(result.text);
+				}
+				/*
+				 alert("We got a barcode\n" +
+				 "Result: " + result.text + "\n" +
+				 "Format: " + result.format + "\n" +
+				 "Cancelled: " + result.cancelled);
+				 */
+				console.log(result);
+
+			}, function(error) {
+				console.log("Scanning failed: ", error);
+			});
+
+		} catch (error) {
+			alert(error);
+		}
+
+	},
+	
 	selectLead: function()
 	{
 		console.log("selectLead");
-//        console.log($(this));
+		dbapp.searchLeadByEmail($(this).attr('id'));
+		$( "#searchLead li" ).addClass( "ui-screen-hidden" );
+		
 	}
-
-
-
 };

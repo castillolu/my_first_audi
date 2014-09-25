@@ -308,7 +308,7 @@ var dbapp = {
 							dbapp.queryBookings();
 						}
 					},
-					callBacks.errorQuery
+					callBacks.errorSaveLead
 					);
 		} catch (error) {
 			alert("bdapp.saveLead " + error);
@@ -415,7 +415,6 @@ var dbapp = {
 	searchLeadCkeckIn: function() {
 		console.log("searchLeadCkeckIn");
 
-		var leads;
 		db.transaction(
 				function(tx) {
 					try {
@@ -439,11 +438,28 @@ var dbapp = {
 						tx.executeSql('SELECT * FROM Leads WHERE control = ?',
 								[qrCode],
 								function(tx, result) {
-									callBacks.successSearchLeadQRCode(tx, result)
+									callBacks.successSearchLeadQRCodeOrEmail(tx, result)
 								},
 								callBacks.errorQuery);
 					} catch (error) {
 						alert("searchLeadByQRCode : " + error);
+					}
+				}
+		);
+
+	},
+	searchLeadByEmail: function(email) {
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Leads WHERE email = ?',
+								[email],
+								function(tx, result) {
+									callBacks.successSearchLeadQRCodeOrEmail(tx, result)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("searchLeadByEmail : " + error);
 					}
 				}
 		);

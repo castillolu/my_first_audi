@@ -13,6 +13,15 @@ var callBacks = {
 
 		result = false;
 	},
+	errorSaveLead : function(transaction, error)
+	{
+		$("#dialog_title").html(i18n.t("translation:general.dialog_lead_exist_title"));
+		$("#dialog_message").html(i18n.t("translation:general.dialog_lead_exist_message"));
+		$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_exist_button"));
+		$("#leadSuccess").trigger("click");
+
+		result = false;
+	},
 	successQuery: function(transaction, results)
 	{
 		if (results.rows.length > 0) {
@@ -202,7 +211,7 @@ var callBacks = {
         console.log("successSearchLeadsCheckIn");
 		try {
 			var html = "";
-			$("#serachLead").html("");
+			$("#searchLead").html("");
 			if (results.rows.length > 0) {
 				for(var i = 0; i < results.rows.length; i++){
 					var obj = {};
@@ -210,11 +219,11 @@ var callBacks = {
 					obj.name = results.rows.item(i).name;
 					obj.lastName = results.rows.item(i).last_name;
 					var content = obj.name + " " + obj.lastName + " (" + obj.email + ")";
-					html += '<li class"item-lead"><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
+					html += '<li><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
 
 				}
 			}
-			$("#serachLead").html(html);
+			$("#searchLead").html(html);
 		}
 		catch (error)
 		{
@@ -222,8 +231,8 @@ var callBacks = {
 		}			
 	},
 
-	successSearchLeadQRCode : function(tx, results){
-        console.log("successSearchLeadQRCode");
+	successSearchLeadQRCodeOrEmail : function(tx, results){
+        console.log("successSearchLeadQRCodeOrEmail");
 		try {
 			if (results.rows.length > 0) {
 				$("#list-data-lead .name").html(results.rows.item(0).name);
@@ -233,7 +242,7 @@ var callBacks = {
 				$("#list-data-lead .address").html(results.rows.item(0).address);
 				$("#list-data-lead .current_car").html(results.rows.item(0).brand + " / " + results.rows.item(0).model + " / " + results.rows.item(0).year);
 				$("#list-data-lead .model_audi").html(results.rows.item(0).model_audi);
-				$("#list-data-lead .tyep_registry").html(results.rows.item(0).tyep_registry);
+				$("#list-data-lead .type_registry").html(results.rows.item(0).type_registry);
 			}
 		}
 		catch (error)
