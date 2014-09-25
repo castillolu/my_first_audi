@@ -235,6 +235,8 @@ var callBacks = {
         console.log("successSearchLeadQRCodeOrEmail");
 		try {
 			if (results.rows.length > 0) {
+				emailLead = results.rows.item(0).email;
+				typeRegistry = results.rows.item(0).type_registry;
 				$("#list-data-lead .name").html(results.rows.item(0).name);
 				$("#list-data-lead .last_name").html(results.rows.item(0).last_name);
 				$("#list-data-lead .email").html(results.rows.item(0).email);

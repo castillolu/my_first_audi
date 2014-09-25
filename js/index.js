@@ -100,6 +100,8 @@ var app = {
 		$('#onsite').on('click', app.hideBooking);
 		$('#dealer').on('click', app.showBooking);
 		$('#btn_qr_code').on('click', app.scan);
+		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
+		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);		
 //        $('#query').on('click', dbapp.queryDemo);
@@ -510,5 +512,23 @@ var app = {
 		dbapp.searchLeadByEmail($(this).attr('id'));
 		$( "#searchLead li" ).addClass( "ui-screen-hidden" );
 		
+	},
+	
+	confirmCheckInLead : function(){
+	
+		console.log("app.confirmCheckInLead");
+		
+		$("#dialog_checkin_title").html(i18n.t("translation:checkin.dialog_checkin_title"));
+		$("#dialog_checkin_message").html(i18n.t("translation:checkin.dialog_checkin_message"));
+		$("#dialog_checkin_btn_continue").html(i18n.t("translation:checkin.dialog_checkin_button_continue"));
+		$("#dialog_checkin_btn_cancel").html(i18n.t("translation:checkin.dialog_checkin_button_cancel"));
+		$("#confirmSuccess").trigger("click");
+		
+	},
+	
+	checkInLead : function(){
+		console.log("app.checkInLead");
+		
+		dbapp.checkInLead(emailLead, typeRegistry);
 	}
 };

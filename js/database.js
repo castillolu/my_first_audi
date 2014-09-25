@@ -9,6 +9,8 @@ var version = '1.0';
 var displayName = 'DB_My_First_AUDI';
 var maxSize = 2097152;
 var result = false;
+var emailLead = "";
+var typeRegistry = "";
 
 //STATUS LEAD AND SURVEY
 var STATUS_CREATE = 'CREATE';
@@ -484,6 +486,25 @@ var dbapp = {
 			);
 		} catch (error) {
 			alert("updateDateLastSyncro : " + error);
+		}
+	},
+	checkInLead: function(email, typeRegistry) {
+		try {
+			db.transaction(
+					function(tx) {
+						var sql = 'UPDATE Leads SET status = ? WHERE email = ? ';
+						tx.executeSql(sql, [STATUS_CHECK_IN, email], function(tx, result) {
+							if(typeRegistry == "DEALER"){
+								$.mobile.changePage("#survey");
+							}else{
+								
+							}
+						},
+						callBacks.errorQuery);
+					}
+			);
+		} catch (error) {
+			alert("checkInLead : " + error);
 		}
 	}
 

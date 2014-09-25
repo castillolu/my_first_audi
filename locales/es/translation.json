@@ -78,6 +78,10 @@
 		"current_car": "Carro conduce actualmente:",
 		"audi_model": "Mi Primer Audi de interés:",
 		"type_registry": "Tipo de registro:",
-		"btn_checkin":	 "Check In"
+		"btn_checkin":	 "Check In",
+		"dialog_checkin_title" : "Check In",
+		"dialog_checkin_message" : "Gracias. La confirmación de tu visita  ha sido exitosa.\nDisfruta de tu obsequio",
+		"dialog_checkin_button_continue" : "Continuar",
+		"dialog_checkin_button_cancel" : "Cancelar"
 	}	
 }

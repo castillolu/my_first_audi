@@ -79,6 +79,10 @@
 		"current_car": "Car you drive:",
 		"audi_model": "Test model:",
 		"type_registry": "Type registry:",
-		"btn_checkin":	 "Check In"
+		"btn_checkin":	 "Check In",
+		"dialog_checkin_title" : "Check In",
+		"dialog_checkin_message" : "Thank you. You have successfully checked in to your My First Audi visit",
+		"dialog_checkin_button_continue" : "Continue ",
+		"dialog_checkin_button_cancel" : "Cancel"
 	}
 }
