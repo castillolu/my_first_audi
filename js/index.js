@@ -234,6 +234,14 @@ var app = {
                 contact: {required: true },
                 time: {required: true }
             },
+            messages: {
+                email_survey: {required: i18n.t("translation:register.requiere_email") },
+                experience: {required: i18n.t("translation:survey.requiere_experience") },
+                testdrive_experience: {required: i18n.t("translation:survey.requiere_testdrive_experience") },
+                like: {required: i18n.t("translation:survey.requiere_like") },
+                contact: {required: i18n.t("translation:survey.requiere_contact") },
+                time: {required: i18n.t("translation:survey.requiere_time") },
+            },
             errorLabelContainer: "#messageErrorSurvey",
             wrapper: "li",           
             submitHandler: function (form) {
@@ -284,6 +292,7 @@ var app = {
 				setTimeout(function() {
 					if (localStorage.status == 'true') {
                         setTimeout(app.setLanguage(localStorage.language, false), 1000);
+                        setTimeout(app.getModels(), 100);
 						$.mobile.changePage("#dashboard");
                     } else {
                         alert("Your login failed");
@@ -305,10 +314,9 @@ var app = {
 		if (networkState == 'wifi' && appStart == false) {
 
 			appStart = true;
-            //setTimeout(app.getUsers(), 100);
-            //setTimeout(app.getBookings(), 100);
-            setTimeout(app.getModels(), 100);
-		}
+            setTimeout(app.getUsers(), 100);
+            setTimeout(app.getBookings(), 100);
+        }
 
 	},
 	getUsers: function() {
@@ -379,6 +387,7 @@ var app = {
                 },
                 crossDomain: true,
                 contentType: "application/json",
+                data: {country: localStorage.country}
                 success: function(data) {
                     if (data.status) {
                         //dbapp.updateBookings(data.data);
@@ -419,7 +428,7 @@ var app = {
     goToSynchro: function() {
         dbapp.sendLeads();
         dbapp.sendSurveys();
-        
+
         setTimeout(function(){
             if(synchro == true){
                 try {

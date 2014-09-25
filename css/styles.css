@@ -373,13 +373,13 @@ textarea{
 	/*padding:0px 0px 0px 10px;*/
 }
 /************ error list *************/
-#messageErrorLead{
+#messageErrorLead, #messageErrorSurvey{
    border:1px solid #d7d7d7;
    background-color:#f4f4f4;
    margin:5px;
    padding:5px;
 }
-#messageErrorLead li{
+#messageErrorLead li, #messageErrorSurvey li{
    list-style:none;
    padding:0 10px;
 }
@@ -910,4 +910,14 @@ em {
 	color: red;
 	font-weight: bold;
 	padding-right: .25em;
+}
+
+.asterisk:after{
+	content: " *";
+	color: #e21838;
+}
+
+.fifty{
+	float: left;
+	width: 50%;
 }
