@@ -426,7 +426,7 @@ var app = {
                 $("#logSyn").html("Entro Syncro");
                 try {
                     $("#logSyn").append("ID Country : " +  localStorage.country);
-                    $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {
+                    $.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
                         type: "GET",
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
