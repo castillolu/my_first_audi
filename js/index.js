@@ -380,8 +380,16 @@ var app = {
     hideBooking : function(){
         $('#booking_id option').attr('selected', false);
         $(".opt_booking").hide();
+        $( "#booking_id" ).rules( "remove" );
     },
     showBooking : function(){
+        $( "#booking_id" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Required booking",
+            }
+        });
+
         $(".opt_booking").show();
     },
 
