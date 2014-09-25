@@ -757,6 +757,14 @@ html head + body .ui-btn.ui-btn-a:hover {
 .ui-dialog {
 	 background:#dddddd !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
 }
+.ui-dialog-contain {
+	width: 92.5%;
+	max-width: 500px;
+	margin: 10% auto 1em auto;
+	padding: 0;
+	position: relative;
+	top: 15em;
+}
 @media screen and (orientation: portrait) {
 	label.error {
 		margin-left: 0;
@@ -893,6 +901,9 @@ div.ui-controlgroup-label {
 .ui-header .ui-title,
 .ui-footer .ui-title {
 	font-size: 4em;
+}
+.ui-dialog-contain {
+	top: 30em;
 }
 }
 em {
