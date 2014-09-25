@@ -108,7 +108,7 @@ var app = {
         app.eventsRegistry();
         app.validateLead();
         app.validateSurvey();
-        dbapp.queryBookings();
+		setTimeout(dbapp.queryBookings(), 300);
     },
     eventsRegistry : function(){
         if (localStorage.status == 'true') {
