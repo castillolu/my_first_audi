@@ -422,6 +422,7 @@ var app = {
         
         setTimeout(function(){
             if(synchro == true){
+                $("#logSyn").html("Entro Syncro");
                 try {
                     $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {
                         type: "GET",
@@ -433,7 +434,8 @@ var app = {
                         contentType: "application/json",
                         success: function(data) {
                             if (data.status) {
-                                console.log("Resultado de la Consulta : " + data.status);
+                                $("#logSyn").append("Resultado de la Consulta : " + data.status);
+                                $("#logSyn").append("Resultado de la Consulta : " + data.data[0].datelocal);
                                 dbapp.updateDateLastSyncro(data.data);
                             } else {
                                 console.log("Error al crear el registro : " + data.error);
