@@ -238,6 +238,7 @@ var app = {
 	},
 	isOnline: function() {
 		//TODO Enable button Sync 
+
 		var networkState = navigator.network.connection.type;
 
 		if (networkState == 'wifi' && appStart == false) {

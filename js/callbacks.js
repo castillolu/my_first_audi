@@ -90,16 +90,15 @@ var callBacks = {
 			for(var i = 0; i < results.rows.length; i++){
 				var id = results.rows.item(i).id
 				var textOpt = results.rows.item(i).date;
-				textOpt += "  - ";
+				textOpt += " - ";
 				textOpt += results.rows.item(i).name;
 				html += '<option value="' + id + '">' + textOpt + '</option>';
+				$("#logLead").append(textOpt);
 			}
 		}
+		
 		$("#booking_id").html(html);
 		//refresh and force rebuild
-		setTimeout(function(){
-			$('#booking_id').selectmenu();;
-		},50);
 	},
 
 	successSearchLeads : function(tx, results)
