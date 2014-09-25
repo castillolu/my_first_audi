@@ -88,6 +88,7 @@ var app = {
 			console.log("Load survey.");
 		});
 		if (localStorage.status == 'true') {
+            setTimeout(app.setLanguage(localStorage.language, false), 1000);
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -102,7 +103,7 @@ var app = {
         $('#dealer').on('click', app.showBooking);
         $('#btn_qr_code').on('click', app.scan);
         $('.back_to_menu').on('click', app.backDashboard);
-        $('#query').on('click', dbapp.queryDemo);
+        //$('#query').on('click', dbapp.queryDemo);
 //        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
