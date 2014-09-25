@@ -19,7 +19,7 @@
 var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
-var synchro = false;
+var synchro = 'true';
 
 var app = {
 	// Application Constructor
@@ -112,7 +112,7 @@ var app = {
     },
     eventsRegistry : function(){
         if (localStorage.status == 'true') {
-            console.log("eventsRegistry : " + localStorage.status)
+            $('#logIndex').html("eventsRegistry : " + localStorage.status)
             switch (localStorage.type_registry) {
                 case "ON_SITE":
                     var $radios = $('input:radio[name=type_registry]');
@@ -251,7 +251,7 @@ var app = {
         });        
     },
     saveSurvey: function() {
-        console.log("app.saveSurvey");
+        $('#logIndex').html("app.saveSurvey");
         try {
             //disable the button so we can't resubmit while we wait
             //$("#submit-lead", this).attr("disabled", "disabled");
@@ -317,7 +317,6 @@ var app = {
             setTimeout(app.getUsers(), 100);
             setTimeout(app.getBookings(), 100);
         }
-
 	},
 	getUsers: function() {
 		console.log("Updating users...");
@@ -430,19 +429,17 @@ var app = {
         dbapp.sendSurveys();
 
         setTimeout(function(){
-            if(synchro == true){
+            if(synchro == 'true'){
                 try {
-                    $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {
+                    $.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
                         type: "GET",
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
                         },
                         crossDomain: true,
-                        dataType : "jsonp",
                         contentType: "application/json",
                         success: function(data) {
                             if (data.status) {
-                                console.log("Resultado de la Consulta : " + data.status);
                                 dbapp.updateDateLastSyncro(data.data);
                             } else {
                                 console.log("Error al crear el registro : " + data.error);
