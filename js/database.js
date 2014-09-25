@@ -284,14 +284,10 @@ var dbapp = {
 	 					.not(':radio, :button, :submit, :reset, :hidden')
 	 					.val('');
 
- 					console.log("clear radios");
 					$("input[name='type_registry']").checkboxradio("refresh");
 					$("input[name='model_audi']").checkboxradio("refresh");
- 					console.log("clear label");
 	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
- 					console.log("clear select");
-	 				$('#form_lead select').selectmenu('refresh', true) 
- 					console.log("click leadSuccess");
+	 				$('#form_lead select').selectmenu('refresh'); 
 					$("#leadSuccess").trigger( "click" );
 				}, 
 				callBacks.errorQuery
