@@ -107,7 +107,7 @@ var app = {
         app.validateLead();
 	},
     eventsRegistry : function(){
-        if (localStorage.status) {
+        if (localStorage.status == true) {
             switch (localStorage.type_registry) {
                 case "ON_SITE":
                     var $radios = $('input:radio[name=type_registry]');
@@ -332,6 +332,7 @@ var app = {
                             xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
                         },
                         crossDomain: true,
+                        dataType : "jsonp",
                         contentType: "application/json",
                         success: function(data) {
                             if (data.status) {
