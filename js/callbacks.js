@@ -95,6 +95,8 @@ var callBacks = {
 			}
 		}
 		$("#booking_id").html(html);
+		//refresh and force rebuild
+		$('#booking_id').selectmenu('refresh', true);
 	},
 
 	successSearchLeads : function(tx, results)
