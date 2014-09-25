@@ -762,6 +762,11 @@ html head + body .ui-btn.ui-btn-a:hover {
    color:#FFF;
    width:50%;
 }
+#dialogCheckIn .ui-block-b a{
+   background-color:#e21838;
+   color:#FFF;
+   width:50%;
+}
 #dialogLead p,
 #dialogCheckIn p{
    padding:10px;
@@ -922,7 +927,7 @@ div.ui-controlgroup-label {
 	width: 100%;
 	max-width: 1000px;
 }
-#dialogLead p{
+#dialogLead p, #dialogCheckIn p{
    font-size:2.4em;
 }
 .ui-header .ui-title,
