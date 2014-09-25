@@ -105,7 +105,7 @@ var app = {
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);		
 		$("#list-data-lead").hide();
-		$(".aviso_contenido").hide();
+		$(".aviso_confirma").hide();
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
