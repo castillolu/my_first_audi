@@ -439,6 +439,10 @@ var dbapp = {
 						$('.synchro').addClass('synchro_updated');
 						$('.synchro_updated').addClass('synchro');
 						$('.synchro_info_txt').html(date.datelocal);
+						setTimeout(function(){
+							$('.synchro').addClass('synchro_updated');
+							$('.synchro_updated').addClass('synchro');						
+						}, 120000);
 					},
 					callBacks.errorQuery);
 				}
