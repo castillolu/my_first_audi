@@ -146,6 +146,52 @@ var callBacks = {
 
 	},
 
+	successSearchSurveys : function(tx, results)
+	{
+		try {
+			if (results.rows.length > 0) {
+				for(var i = 0; i < results.rows.length; i++){
+					var objSurvey = {};
+					objSurvey.email = results.rows.item(i).email;
+					objSurvey.country = results.rows.item(i).country_id;
+					objSurvey.experience = results.rows.item(i).experience;
+					objSurvey.testdrive_experience = results.rows.item(i).testdrive_experience;
+					objSurvey.vehicles = results.rows.item(i).vehicles;
+					objSurvey.like = results.rows.item(i).like;
+					objSurvey.contact = results.rows.item(i).contact;
+					objSurvey.time = results.rows.item(i).time;
+					objSurvey.model = results.rows.item(i).model;
+					objSurvey.status = STATUS_BASE_CENTRAL;
+
+					$.ajax(urlAPI + "/surveys/survey/", {
+						type: "PUT",
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+						},
+						crossDomain: true,
+						data: JSON.stringify(objSurvey),
+						contentType: "application/json",
+						success: function(e) {
+							if (e.status) {
+								$("#logSyn").html("Creacion de registro con el ID : " + e.id);
+							} else {
+								$("#logSyn").html("Error al crear el registro : " + e.error);
+							}
+						},
+						error: function(jqXHR, text_status, strError) {
+							alert(text_status + " " + strError);
+						}
+					});
+				}
+			}
+		}
+		catch (error)
+		{
+			alert("Error was in successSearchSurveys : " + error);
+		}				
+
+	},
+
 	successSearchLeadsCheckIn : function(tx, results){
 
         console.log("successSearchLeadsCheckIn");

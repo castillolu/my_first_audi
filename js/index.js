@@ -57,6 +57,7 @@ var app = {
 	receivedEvent: function(id) {
 		console.log('Received Event: ' + id);
 		dbapp.openDatabase();
+        this.isOnline();
 	},
 
     setLanguage : function(language, firstTime)
@@ -85,7 +86,7 @@ var app = {
 		});
 		$("#survey").load("survey.html", function() {
 			console.log("Load survey.");
-		});
+        });
 		if (localStorage.status == true) {
 			$.mobile.changePage("#dashboard");
 		}
@@ -104,6 +105,7 @@ var app = {
 //        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
+        app.validateSurvey();
 	},
     eventsRegistry : function(){
         if (localStorage.status) {
@@ -208,6 +210,56 @@ var app = {
             alert("app.saveLead " + error);
         }
     },
+
+    validateSurvey : function(){
+        $( "#form_survey" ).validate({
+            rules: {
+                experience: {required: true },
+                email_survey: {required: true },
+                testdrive_experience: {required: true },
+                like: {required: true },
+                contact: {required: true },
+                time: {required: true }
+            },
+            errorLabelContainer: "#messageErrorSurvey",
+            wrapper: "li",           
+            submitHandler: function (form) {
+                console.log("submitHandler");
+                app.saveSurvey();
+            }
+        });        
+    },
+    saveSurvey: function() {
+        console.log("app.saveSurvey");
+        try {
+            //disable the button so we can't resubmit while we wait
+            //$("#submit-lead", this).attr("disabled", "disabled");
+
+            var chkArray = [];
+            $("input[name='model']:checked").each(function() {
+                chkArray.push($(this).val());
+            });
+            
+            var objSurvey = {};
+            objSurvey.email = $("#email_survey").val();
+            objSurvey.experience = $("input[name='experience']:checked").val();
+            objSurvey.testdrive_experience = $("input[name='testdrive_experience']:checked").val();
+            objSurvey.vehicles = $("input[name='vehicles']:checked").val() == undefined ? $("#other_vehicle").val() : $("input[name='vehicles']:checked").val();
+            objSurvey.like = $("#like").val();
+            objSurvey.contact = $("input[name='contact']:checked").val();
+            objSurvey.time = $("input[name='time']:checked").val();
+            objSurvey.model = chkArray.join(',');
+            objSurvey.country_id = $("#survey_country").val();
+            db.transaction(
+                    function(tx) {
+                        dbapp.saveSurvey(tx, objSurvey);
+                    }
+            );            
+            return false;
+        } catch (error) {
+            alert("app.saveSurvey " + error);
+        }
+    },
 	loginAuth: function(e) {
 		try {
 			e.preventDefault();
@@ -235,14 +287,15 @@ var app = {
 	},
 	isOnline: function() {
 		//TODO Enable button Sync 
-		var networkState = navigator.network.connection.type;
+		//var networkState = navigator.network.connection.type;
 
-		if (networkState == 'wifi' && appStart == false) {
+		//if (networkState == 'wifi' && appStart == false) {
 
 			appStart = true;
-			setTimeout(app.getUsers(), 100);
-            setTimeout(app.getBookings(), 100);
-		}
+            //setTimeout(app.getUsers(), 100);
+            //setTimeout(app.getBookings(), 100);
+            setTimeout(app.getModels(), 100);
+		//}
 
 	},
 	getUsers: function() {
@@ -303,6 +356,36 @@ var app = {
         }
 
     },
+    getModels: function() {
+        console.log("Updating models...");
+        try {
+            $.ajax(urlAPI + "/models/list", {
+                type: "GET",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+                },
+                crossDomain: true,
+                contentType: "application/json",
+                success: function(data) {
+                    if (data.status) {
+                        //dbapp.updateBookings(data.data);
+                        
+                        localStorage.setItem("models", JSON.stringify(data.data));
+                    } else {
+                        console.log("Error al crear el registro : " + data.error);
+                    }
+                },
+                error: function(jqXHR, text_status, strError) {
+                    alert(text_status + " " + strError);
+                }
+            });
+        }
+        catch (error)
+        {
+            alert("getUsers " + error);
+        }
+
+    },
     goToFormLead: function() {
 //		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
         console.log("goToFormLead");
@@ -322,10 +405,22 @@ var app = {
     },
     goToSynchro: function() {
         dbapp.sendLeads();
+        dbapp.sendSurveys();
         console.log("goToSynchro");
     },
     goToFormSurvey: function() {
         console.log("goToFormSurvey");
+        $("#survey_country").val(localStorage.country);
+
+        var models = JSON.parse(localStorage.getItem("models"));
+        for (i in models){
+            console.log(models[i]);
+            var html = '<input type="checkbox" name="model" id="model-' + i + '" value="' + models[i].id + '" />';
+            html += '<label for="model-' + i + '">' + models[i].name + '</label>';
+
+            $("#survey_model").append(html);
+        }
+
         $.mobile.changePage("#survey");
     },
     logOut: function() {

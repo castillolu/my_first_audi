@@ -82,6 +82,17 @@ var dbapp = {
 				'type_registry TEXT NULL,' +
 				'status TEXT NOT NULL,' +
 				'control INTEGER NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Surveys(' +
+				'email TEXT NOT NULL PRIMARY KEY,' +
+				'country_id INTEGER NOT NULL, ' +
+				'experience TEXT NOT NULL,' +
+				'testdrive_experience TEXT NOT NULL,' +
+				'vehicles TEXT NOT NULL,' +
+				'like TEXT NOT NULL,' +
+				'contact TEXT NOT NULL,' +
+				'time TEXT NOT NULL,' +
+				'model TEXT INTEGER NOT NULL,' +
+				'status TEXT NOT NULL)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS Bookings(' +
 				'id INTEGER NOT NULL PRIMARY KEY, ' +
 				'country_id INTEGER NOT NULL, ' +
@@ -298,6 +309,53 @@ var dbapp = {
 		}
 	},
 
+	saveSurvey: function(tx, objSurvey) {
+        console.log("dbapp.saveSurvey");
+		try {
+			var sql = 'INSERT INTO Surveys (email, country_id, experience, testdrive_experience, vehicles,' +
+						'like, contact, time, model, status) VALUES (' +
+					' "' + objSurvey.email + '", ' +
+					objSurvey.country_id + ', ' + 
+					' "' + objSurvey.experience + '", ' +
+					' "' + objSurvey.testdrive_experience + '", ' +
+					' "' + objSurvey.vehicles + '", ' +
+					' "' + objSurvey.like + '", ' +
+					' "' + objSurvey.contact + '", ' +
+					' "' + objSurvey.time + '", ' +
+					' "' + objSurvey.model + '", ' +
+					' "' + STATUS_CREATE +'")';
+
+			$("#logSurvey").html("Insert : " + sql + "</br></br></br>");
+			//TODO: AJUSTAR SUCCESS   
+			var xx = tx.executeSql(sql, [], 
+				function() {
+					console.log("clear inputs");
+					$(':input','#form_survey')
+	 					.not(':radio, :checkbox, :button, :submit, :reset, :hidden')
+	 					.val('');
+
+ 					console.log("clear radios");
+					$("input[name='experience']").checkboxradio("refresh");
+					$("input[name='testdrive_experience']").checkboxradio("refresh");
+					$("input[name='vehicles']").checkboxradio("refresh");
+					$("input[name='contact']").checkboxradio("refresh");
+					$("input[name='time']").checkboxradio("refresh");
+					$("input[name='model']").checkboxradio("refresh");
+ 					console.log("clear label");
+	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
+	 				$(".ui-checkbox label").removeClass('ui-btn-active ui-checkbox-on');
+ 					console.log("clear select");
+ 					console.log("click surveySuccess");
+					$("#surveySuccess").trigger( "click" );
+				}, 
+				callBacks.errorQuery
+			);
+		} catch (error) {
+			alert("bdapp.saveSurvey " + error);
+
+		}
+	},
+
 	sendLeads : function(){
 		db.transaction(
 				function(tx) {
@@ -314,6 +372,23 @@ var dbapp = {
 				}
 		);
 
+	},
+
+	sendSurveys : function(){
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Surveys WHERE status = ?',
+								[STATUS_CREATE],
+								function(tx, result) {
+									callBacks.successSearchSurveys(tx, result)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("sendSurveys : " + error);
+					}
+				}
+		);
 	},
 
 	searchLeadCkeckIn : function(){

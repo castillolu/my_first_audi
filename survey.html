@@ -46,7 +46,6 @@
                                         <label for="experience-4" data-i18n="survey.bad"></label>
                                     </fieldset>
                                 </div>
-                                <input type="hidden" name="country_id_survey" id="country_id_survey" value="" />
                             </div>
                         </div>
 
@@ -66,7 +65,7 @@
                                         <label for="testdrive_experience-4" data-i18n="survey.bad"></label>
                                     </fieldset>
 
-                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                    <fieldset data-role="controlgroup"  data-type="horizontal" class="vehicles">
                                         <legend data-i18n="survey.vehicles"></legend>
                                         <input type="radio" name="vehicles" id="vehicles-1" value="A1" />
                                         <label for="vehicles-1">A1</label>
@@ -81,7 +80,6 @@
                                     <label for="like" data-i18n="survey.like"></label>
                                     <input type="text" name="like" id="like" value="" />
                                 </div>
-                                <input type="hidden" name="country_id_surver_1" id="country_id_surver_1" value="" />
                             </div>
                         </div>
 
@@ -110,24 +108,12 @@
                                     </fieldset>
 
 
-                                    <fieldset data-role="controlgroup"  data-type="horizontal">
+                                    <fieldset data-role="controlgroup"  data-type="horizontal" id="survey_model">
                                         <legend data-i18n="survey.model"></legend>
-                                        <input type="checkbox" name="model" id="model-1" value="1" />
-                                        <label for="model-1">Audi A1</label>
-                                        <input type="checkbox" name="model" id="model-2" value="1" />
-                                        <label for="model-2">Audi A3</label>
-                                        <input type="checkbox" name="model" id="model-3" value="1" />
-                                        <label for="model-3">Audi A5</label>
-                                        <input type="checkbox" name="model" id="model-4" value="1" />
-                                        <label for="model-4">Audi A6</label>
-                                        <input type="checkbox" name="model" id="model-5" value="1" />
-                                        <label for="model-5">Audi A7</label>
-                                        <input type="checkbox" name="model" id="model-6" value="1" />
-                                        <label for="model-6">Audi A8</label>
                                     </fieldset>
 
                                 </div>
-                                <input type="hidden" name="country_id_surver_2" id="country_id_surver_2" value="" />
+                                <input type="hidden" name="survey_country" id="survey_country" value="" />
                                 
                             </div>
                             <a id='surveySuccess' href="#dialogSurvey" data-rel="dialog" data-transition="pop" style='display:none;'></a>
