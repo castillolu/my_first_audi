@@ -108,7 +108,6 @@ var app = {
         app.eventsRegistry();
         app.validateLead();
         app.validateSurvey();
-		setTimeout(dbapp.queryBookings(), 300);
     },
     eventsRegistry : function(){
         if (localStorage.status == 'true') {
@@ -418,6 +417,7 @@ var app = {
         $('#current_car_year option, #booking_id option').attr('selected', false);
         */
         $("#country_id").val(localStorage.country);
+		dbapp.queryBookings();
         $.mobile.changePage("#register");
     },
     goToFormCheckIn: function() {
