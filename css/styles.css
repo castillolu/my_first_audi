@@ -544,7 +544,7 @@ textarea.ui-input-text {
 	border-radius: inherit;
 }
 .ui-input-search input {
-   text-indent:30px;
+   padding-left: 30px;
 }
 .ui-input-search:after {
 	position: absolute;
