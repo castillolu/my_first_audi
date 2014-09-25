@@ -105,7 +105,7 @@ var dbapp = {
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
-				'"21232f297a57a5a743894a0e4a801fc3", "DEALER_AND_ON_SITE", "en-US")');
+				'"21232f297a57a5a743894a0e4a801fc3", "DEALER", "en-US")');
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		} else {
 			tx.executeSql('INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
@@ -270,7 +270,6 @@ var dbapp = {
 	saveLead: function(tx, objLead) {
 		console.log("dbapp.saveLead");
 		try {
-			//$("#logLead").html("Before INSERT");
 			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
 					'phone, address, brand, model, year, ' +
 					'model_audi, type_registry, status, control) VALUES (' +
@@ -288,12 +287,9 @@ var dbapp = {
 					' "' + objLead.type_registry + '", ' +
 					' "' + STATUS_CREATE + '", ' +
 					' "' + md5(objLead.email) + '")';
-
-			//$("#logLead").html("Insert : " + sql + "</br></br></br>");
 			//TODO: AJUSTAR SUCCESS   
 			var xx = tx.executeSql(sql, [],
 					function() {
-						console.log("clear inputs");
 						$(':input', '#form_lead')
 								.not(':radio, :button, :submit, :reset, :hidden')
 								.val('');

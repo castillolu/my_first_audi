@@ -11,7 +11,7 @@
 		"password": "Password"
 	},
 	"register": {
-		"title": "Lead capture form",
+		"title": "Registration Form",
 		"name": "Name:",
 		"last_name": "Last name:",
 		"email": "Email:",

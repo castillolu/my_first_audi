@@ -12,7 +12,7 @@
 		"password": "Contraseña"
 	},
 	"register": {
-		"title": "Lead capture form",
+		"title": "Formulario de registro",
 		"name": "Nombre:",
 		"last_name": "Apellido(s):",
 		"email": "Correo electrónico:",
