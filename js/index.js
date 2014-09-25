@@ -19,7 +19,7 @@
 var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
-var synchro = 'false';
+var synchro = 'true';
 
 var app = {
 	// Application Constructor
@@ -417,8 +417,9 @@ var app = {
         $.mobile.changePage("#check-in");
     },
     goToSynchro: function() {
-        dbapp.sendLeads();
-        dbapp.sendSurveys();
+//        dbapp.sendLeads();
+//        dbapp.sendSurveys();
+        synchro = 'true';
         
         setTimeout(function(){
             if(synchro == 'true'){
