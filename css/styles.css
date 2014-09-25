@@ -372,6 +372,12 @@ textarea{
 	display:inline-block;
 	/*padding:0px 0px 0px 10px;*/
 }
+.btn_normal .ui-grid-solo{
+   color:#FFF;
+   width:50%;
+   margin:0 auto;
+   padding:35% 0px 0px;
+}
 /************ error list *************/
 #messageErrorLead, #messageErrorSurvey{
    border:1px solid #d7d7d7;
@@ -634,6 +640,10 @@ label.error {
    color:#FFFFFF;
    font-size:1.4em;
 }
+.boton_general .ui-btn:active{
+   background-color:#25292c;
+   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+}
 .boton_general .ui-btn img{
    vertical-align:bottom;
    width:7%;
@@ -654,7 +664,7 @@ label.error {
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
    text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
-.boton_general .ui-btn:active, .aviso_contenido_info .ui-btn:active{
+.aviso_contenido_info .ui-btn:active{
 	background-color: 			#e21838 /*{a-bdown-background-color}*/;
    color: 					#FFFFFF  /*{a-bhover-color}*/;
   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
