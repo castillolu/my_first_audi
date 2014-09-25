@@ -112,7 +112,7 @@ var app = {
     },
     eventsRegistry : function(){
         if (localStorage.status == 'true') {
-            console.log("eventsRegistry : " + localStorage.status)
+            $('#logIndex').html("eventsRegistry : " + localStorage.status)
             switch (localStorage.type_registry) {
                 case "ON_SITE":
                     var $radios = $('input:radio[name=type_registry]');
@@ -243,7 +243,7 @@ var app = {
         });        
     },
     saveSurvey: function() {
-        console.log("app.saveSurvey");
+        $('#logIndex').html("app.saveSurvey");
         try {
             //disable the button so we can't resubmit while we wait
             //$("#submit-lead", this).attr("disabled", "disabled");
@@ -305,8 +305,8 @@ var app = {
 		if (networkState == 'wifi' && appStart == false) {
 
 			appStart = true;
-            //setTimeout(app.getUsers(), 100);
-            //setTimeout(app.getBookings(), 100);
+            setTimeout(app.getUsers(), 100);
+            setTimeout(app.getBookings(), 100);
             setTimeout(app.getModels(), 100);
 		}
 
