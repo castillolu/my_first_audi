@@ -816,7 +816,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
    height:auto;*/
 }
 .btn_home{
-   font-size:4.3em;
+   font-size:3em;
    padding:20% 4% 4%;
 	/*width:44.5%;*/
 }
