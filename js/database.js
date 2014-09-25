@@ -431,21 +431,21 @@ var dbapp = {
 	},
 
 	updateDateLastSyncro : function(date){
-		db.transaction(
+		try {
+			db.transaction(
 				function(tx) {
-					try {
-						var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
-						tx.executeSql(sql, [], function(tx, result) {
-									$('.synchro').addClass('synchro_updated');
-									$('.synchro_updated').addClass('synchro');
-									$('.synchro_info_txt').html(date.datelocal);
-								},
-								callBacks.errorQuery);
-					} catch (error) {
-						alert("updateDateLastSyncro : " + error);
-					}
+					var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
+					tx.executeSql(sql, [], function(tx, result) {
+						$('.synchro').addClass('synchro_updated');
+						$('.synchro_updated').addClass('synchro');
+						$('.synchro_info_txt').html(date.datelocal);
+					},
+					callBacks.errorQuery);
 				}
 		);		
+		} catch (error) {
+			alert("updateDateLastSyncro : " + error);
+		}
 	}
 
 };
