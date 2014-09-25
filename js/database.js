@@ -39,14 +39,14 @@ var dbapp = {
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
-		$('#info').html("querySuccess");
+		$('#logLead').html("querySuccess");
 
 		var s = "";
 		if (results != null && results.rows != null) {
 			for (var i = 0; i < results.rows.length; i++) {
 				s += "<li><a href='edit.html?id=" + results.rows.item(i).id + "'>" + results.rows.item(i).name + "</a></li>";
 			}
-			$("#info").html(s);
+			$("#logLead").html(s);
 		} else {
 			console.log("null");
 		}
