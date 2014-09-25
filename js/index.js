@@ -19,6 +19,7 @@
 var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
+var synchro = false;
 
 var app = {
 	// Application Constructor
@@ -322,6 +323,36 @@ var app = {
     },
     goToSynchro: function() {
         dbapp.sendLeads();
+        setTimeout(function(){
+            if(synchro == true){
+                try {
+                    $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {
+                        type: "GET",
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+                        },
+                        crossDomain: true,
+                        contentType: "application/json",
+                        success: function(data) {
+                            if (data.status) {
+                                console.log("Resultado de la Consulta : " + data.status);
+                                dbapp.updateDateLastSyncro(data.data);
+                            } else {
+                                console.log("Error al crear el registro : " + data.error);
+                            }
+                        },
+                        error: function(jqXHR, text_status, strError) {
+                            alert(text_status + " " + strError);
+                        }
+                    });
+                }
+                catch (error)
+                {
+                    alert("goToSynchro " + error);
+                }                
+            }
+        }, 200);
+
         console.log("goToSynchro");
     },
     goToFormSurvey: function() {

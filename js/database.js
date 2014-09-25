@@ -88,6 +88,8 @@ var dbapp = {
 				'name TEXT NOT NULL, ' +
 				'date TEXT NOT NULL,' +
 				'quotas INTEGER NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Updates(' +
+				'lastupdate TEXT NOT NULL)');
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
@@ -199,6 +201,7 @@ var dbapp = {
 				}
 		);
 	},
+
 	updateBookingDB: function(tx, objBooking) {
         $("#log").append("updateBookingDB");
 		try {
@@ -305,7 +308,7 @@ var dbapp = {
 						tx.executeSql('SELECT * FROM Leads WHERE status = ?',
 								[STATUS_CREATE],
 								function(tx, result) {
-									callBacks.successSearchLeads(tx, result)
+									callBacks.successSearchLeads(tx, result);
 								},
 								callBacks.errorQuery);
 					} catch (error) {
@@ -353,6 +356,24 @@ var dbapp = {
 				}
 		);
 
+	},
+
+	updateDateLastSyncro : function(date){
+		db.transaction(
+				function(tx) {
+					try {
+						var sql = 'INSERT INTO Leads (lastupdate) VALUES ("' + date.datelocal + '")';
+						tx.executeSql(sql, [], function(tx, result) {
+									$('.synchro').addClass('synchro_updated');
+									$('.synchro_updated').addClass('synchro');
+									$('.synchro_info_txt').html(date.datelocal);
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("updateDateLastSyncro : " + error);
+					}
+				}
+		);		
 	}
 
 };
