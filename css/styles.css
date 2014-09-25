@@ -765,6 +765,20 @@ html head + body .ui-btn.ui-btn-a:hover {
 	position: relative;
 	top: 15em;
 }
+.ui-listview > li {
+	display: block;
+	position: relative;
+	overflow: visible;
+   border-left:1px solid #dddddd;
+   border-right:1px solid #dddddd;
+   width:95%;
+   margin:0 auto;
+}
+html .ui-filterable + .ui-listview,
+html .ui-filterable.ui-listview {
+	margin-top: -1em;
+   margin-bottom: .5em;
+}
 @media screen and (orientation: portrait) {
 	label.error {
 		margin-left: 0;
