@@ -35,18 +35,19 @@ var dbapp = {
 	},
 	queryDB: function(tx) {
 		console.log("consulta");
-		tx.executeSql('SELECT * FROM Bookings', [], dbapp.querySuccess, callBacks.errorQuery);
+		tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?', 
+			[localStorage.country], dbapp.querySuccess, callBacks.errorQuery);
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
-		$('#info').html("querySuccess");
+		$('#logLead').html("querySuccess");
 
 		var s = "";
 		if (results != null && results.rows != null) {
 			for (var i = 0; i < results.rows.length; i++) {
 				s += "<li><a href='edit.html?id=" + results.rows.item(i).id + "'>" + results.rows.item(i).name + "</a></li>";
 			}
-			$("#info").html(s);
+			$("#logLead").html(s);
 		} else {
 			console.log("null");
 		}
@@ -99,6 +100,8 @@ var dbapp = {
 				'name TEXT NOT NULL, ' +
 				'date TEXT NOT NULL,' +
 				'quotas INTEGER NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Updates(' +
+				'lastupdate TEXT NOT NULL)');
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
@@ -210,6 +213,7 @@ var dbapp = {
 				}
 		);
 	},
+
 	updateBookingDB: function(tx, objBooking) {
         $("#log").append("updateBookingDB");
 		try {
@@ -291,14 +295,10 @@ var dbapp = {
 	 					.not(':radio, :button, :submit, :reset, :hidden')
 	 					.val('');
 
- 					console.log("clear radios");
 					$("input[name='type_registry']").checkboxradio("refresh");
 					$("input[name='model_audi']").checkboxradio("refresh");
- 					console.log("clear label");
 	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
- 					console.log("clear select");
-	 				$('#form_lead select').selectmenu('refresh', true) 
- 					console.log("click leadSuccess");
+//	 				$('#form_lead select').selectmenu('refresh', true) 
 					$("#leadSuccess").trigger( "click" );
 				}, 
 				callBacks.errorQuery
@@ -363,7 +363,7 @@ var dbapp = {
 						tx.executeSql('SELECT * FROM Leads WHERE status = ?',
 								[STATUS_CREATE],
 								function(tx, result) {
-									callBacks.successSearchLeads(tx, result)
+									callBacks.successSearchLeads(tx, result);
 								},
 								callBacks.errorQuery);
 					} catch (error) {
@@ -428,6 +428,24 @@ var dbapp = {
 				}
 		);
 
+	},
+
+	updateDateLastSyncro : function(date){
+		db.transaction(
+				function(tx) {
+					try {
+						var sql = 'INSERT INTO Leads (lastupdate) VALUES ("' + date.datelocal + '")';
+						tx.executeSql(sql, [], function(tx, result) {
+									$('.synchro').addClass('synchro_updated');
+									$('.synchro_updated').addClass('synchro');
+									$('.synchro_info_txt').html(date.datelocal);
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("updateDateLastSyncro : " + error);
+					}
+				}
+		);		
 	}
 
 };

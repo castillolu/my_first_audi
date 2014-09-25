@@ -75,6 +75,11 @@ h1{
 	color:#FFF;
 	font-size:0.8em;   
 }
+.synchro_updated{
+	background-color:#3ea40c;
+	color:#FFF;
+	font-size:0.8em;   
+}
 .synchro_info{
 	/*margin:0 auto;
 	width:100%;*/
@@ -366,6 +371,17 @@ textarea{
 .btn_normal2_ico{
 	display:inline-block;
 	/*padding:0px 0px 0px 10px;*/
+}
+/************ error list *************/
+#messageErrorLead{
+   border:1px solid #d7d7d7;
+   background-color:#f4f4f4;
+   margin:5px;
+   padding:5px;
+}
+#messageErrorLead li{
+   list-style:none;
+   padding:0 10px;
 }
 /************ clearing *************/
 .clearing{
@@ -738,6 +754,17 @@ html head + body .ui-btn.ui-btn-a:hover {
    padding:10px;
    font-size:1.2em;
 }
+.ui-dialog {
+	 background:#dddddd !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
+}
+.ui-dialog-contain {
+	width: 92.5%;
+	max-width: 500px;
+	margin: 10% auto 1em auto;
+	padding: 0;
+	position: relative;
+	top: 15em;
+}
 @media screen and (orientation: portrait) {
 	label.error {
 		margin-left: 0;
@@ -869,11 +896,14 @@ div.ui-controlgroup-label {
 	max-width: 1000px;
 }
 #dialogLead p{
-   font-size:2.6em;
+   font-size:2.4em;
 }
 .ui-header .ui-title,
 .ui-footer .ui-title {
 	font-size: 4em;
+}
+.ui-dialog-contain {
+	top: 30em;
 }
 }
 em {

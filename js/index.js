@@ -19,6 +19,7 @@
 var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
+var synchro = false;
 
 var app = {
 	// Application Constructor
@@ -57,7 +58,6 @@ var app = {
 	receivedEvent: function(id) {
 		console.log('Received Event: ' + id);
 		dbapp.openDatabase();
-        this.isOnline();
 	},
 
     setLanguage : function(language, firstTime)
@@ -87,7 +87,8 @@ var app = {
 		$("#survey").load("survey.html", function() {
 			console.log("Load survey.");
         });
-		if (localStorage.status == true) {
+		if (localStorage.status == 'true') {
+            setTimeout(app.setLanguage(localStorage.language, false), 1000);
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -102,13 +103,16 @@ var app = {
         $('#dealer').on('click', app.showBooking);
         $('#btn_qr_code').on('click', app.scan);
         $('.back_to_menu').on('click', app.backDashboard);
+//        $('#query').on('click', dbapp.queryDemo);
 //        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
         app.validateSurvey();
-	},
+        dbapp.queryBookings();
+    },
     eventsRegistry : function(){
-        if (localStorage.status) {
+        if (localStorage.status == 'true') {
+            console.log("eventsRegistry : " + localStorage.status)
             switch (localStorage.type_registry) {
                 case "ON_SITE":
                     var $radios = $('input:radio[name=type_registry]');
@@ -130,7 +134,6 @@ var app = {
                     $(".opt_type_registry").show();
                     break;
             }
-            setTimeout(dbapp.queryBookings, 200);
         }
     },
 	scan: function() {
@@ -163,7 +166,6 @@ var app = {
     validateLead : function(){
         $( "#form_lead" ).validate({
             rules: {
-                email: {required: true },
                 name: {required: true },
                 last_name: {required: true },
                 email: {required: true },
@@ -173,6 +175,17 @@ var app = {
                 current_car_model: {required: true },
                 current_car_year: {required: true },
                 model_audi: {required: true }
+            },
+            messages: {
+                email: {required: i18n.t("translation:register.requiere_email") },
+                name: {required: i18n.t("translation:register.requiere_name") },
+                last_name: {required: i18n.t("translation:register.requiere_last_name") },
+                phone: {required: i18n.t("translation:register.requiere_phone") },
+                address: {required: i18n.t("translation:register.requiere_address") },
+                current_car_brand: {required: i18n.t("translation:register.requiere_brand") },
+                current_car_model: {required: i18n.t("translation:register.requiere_model") },
+                current_car_year: {required: i18n.t("translation:register.requiere_year") },
+                model_audi: {required: i18n.t("translation:register.requiere_model_audi") }
             },
             errorLabelContainer: "#messageErrorLead",
             wrapper: "li",           
@@ -287,15 +300,15 @@ var app = {
 	},
 	isOnline: function() {
 		//TODO Enable button Sync 
-		//var networkState = navigator.network.connection.type;
+		var networkState = navigator.network.connection.type;
 
-		//if (networkState == 'wifi' && appStart == false) {
+		if (networkState == 'wifi' && appStart == false) {
 
 			appStart = true;
             //setTimeout(app.getUsers(), 100);
             //setTimeout(app.getBookings(), 100);
             setTimeout(app.getModels(), 100);
-		//}
+		}
 
 	},
 	getUsers: function() {
@@ -406,6 +419,38 @@ var app = {
     goToSynchro: function() {
         dbapp.sendLeads();
         dbapp.sendSurveys();
+        
+        setTimeout(function(){
+            if(synchro == true){
+                try {
+                    $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {
+                        type: "GET",
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+                        },
+                        crossDomain: true,
+                        dataType : "jsonp",
+                        contentType: "application/json",
+                        success: function(data) {
+                            if (data.status) {
+                                console.log("Resultado de la Consulta : " + data.status);
+                                dbapp.updateDateLastSyncro(data.data);
+                            } else {
+                                console.log("Error al crear el registro : " + data.error);
+                            }
+                        },
+                        error: function(jqXHR, text_status, strError) {
+                            alert(text_status + " " + strError);
+                        }
+                    });
+                }
+                catch (error)
+                {
+                    alert("goToSynchro " + error);
+                }                
+            }
+        }, 200);
+
         console.log("goToSynchro");
     },
     goToFormSurvey: function() {
@@ -437,10 +482,25 @@ var app = {
 
     },
     hideBooking : function(){
-        $('#booking_id option').attr('selected', false);
-        $(".opt_booking").hide();
+        $( '#booking_id option').attr('selected', false);
+        $( ".opt_booking").hide();
+        $( "#booking_id" ).rules( "remove" );
+        $( "input[name='type_registry']").rules( "remove" );
     },
     showBooking : function(){
+        $( "#booking_id" ).rules( "add", {
+            required: true,
+            messages: {
+                required: i18n.t("translation:register.requiere_booking"),
+            }
+        });
+        $( "input[name='type_registry']").rules( "add", {
+            required: true,
+            messages: {
+                required: i18n.t("translation:register.requiere_booking"),
+            }
+        });
+
         $(".opt_booking").show();
     },
 
