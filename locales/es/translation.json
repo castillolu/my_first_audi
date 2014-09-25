@@ -11,6 +11,7 @@
 		"dialog_lead_exist_button" : "Aceptar"
 	},
 	"login": {
+		"title": "Ingreso de usuario",
 		"username": "Usuario",
 		"password": "Contraseña"
 	},

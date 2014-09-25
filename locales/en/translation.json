@@ -11,6 +11,7 @@
 		"dialog_lead_exist_button" : "Ok"
 	},
 	"login": {
+		"title": "User log-in",
 		"username": "User",
 		"password": "Password"
 	},
