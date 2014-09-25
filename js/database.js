@@ -106,6 +106,12 @@ var dbapp = {
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
 				'"21232f297a57a5a743894a0e4a801fc3", "DEALER_AND_ON_SITE", "en-US")');
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		} else {
+			tx.executeSql('INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
+					' VALUES (1, 1, "8 AM - A1", "2014-09-29", 20)');
+		}
+
 	},
 	//login users
 	auth: function(user, pass) {
@@ -248,8 +254,8 @@ var dbapp = {
 		try {
 			db.transaction(
 					function(tx) {
-						tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?',
-								[localStorage.country],
+						tx.executeSql('SELECT * FROM Bookings WHERE country_id = ? AND quotas > ?',
+								[localStorage.country, 0],
 								function(tx, result) {
 									callBacks.successSearchBookingsByCountry(tx, result)
 								},
@@ -301,6 +307,9 @@ var dbapp = {
 						$("#dialog_message").html(i18n.t("translation:general.dialog_lead_message"));
 						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_button"));
 						$("#leadSuccess").trigger("click");
+						if(objLead.booking_id != "NULL"){
+							dbapp.updateQuotasBooking(objLead.booking_id);
+						}
 					},
 					callBacks.errorQuery
 					);
@@ -309,6 +318,24 @@ var dbapp = {
 
 		}
 	},
+	
+	updateQuotasBooking : function(bookingId){
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('UPDATE Bookings SET quotas=quotas-1 WHERE id = ?',
+								[bookingId],
+								function(tx, result) {
+									console.log(result);
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("updateQuotasBooking : " + error);
+					}
+				}
+		);
+	},	
+	
 	saveSurvey: function(tx, objSurvey) {
 		console.log("dbapp.saveSurvey");
 		try {
