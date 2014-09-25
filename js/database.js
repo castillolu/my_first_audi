@@ -109,7 +109,7 @@ var dbapp = {
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		} else {
 			tx.executeSql('INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
-					' VALUES (1, 1, "8 AM - A1", "2014-09-29", 20)');
+					' VALUES (1, 1, "Testing - Testing", "2014-09-29", 2)');
 		}
 
 	},
@@ -309,6 +309,7 @@ var dbapp = {
 						$("#leadSuccess").trigger("click");
 						if(objLead.booking_id != "NULL"){
 							dbapp.updateQuotasBooking(objLead.booking_id);
+							dbapp.queryBookings();
 						}
 					},
 					callBacks.errorQuery

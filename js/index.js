@@ -407,7 +407,7 @@ var app = {
 
     },
     goToFormLead: function() {
-//		$(".synchro_info_txt").append(" Resolution : " + $(window).height() + " - " + $(window).width());
+		dbapp.queryBookings();
         console.log("goToFormLead");
         $(':input','#form_lead')
             .not(':radio, :button, :submit, :reset, :hidden')
@@ -415,9 +415,8 @@ var app = {
 /*
         $(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
         $('#current_car_year option, #booking_id option').attr('selected', false);
-        */
+*/
         $("#country_id").val(localStorage.country);
-		dbapp.queryBookings();
         $.mobile.changePage("#register");
     },
     goToFormCheckIn: function() {

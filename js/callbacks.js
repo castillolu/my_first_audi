@@ -84,7 +84,7 @@ var callBacks = {
 	successSearchBookingsByCountry: function(transaction, results)
 	{
 		console.log("successSearchBookingsByCountry");
-		var html = '';
+		var html = '<option value="">' + i18n.t("translation:register.select_booking") + '</option>';
 
 		if (results.rows.length > 0) {
 			for(var i = 0; i < results.rows.length; i++){
@@ -95,7 +95,9 @@ var callBacks = {
 				html += '<option value="' + id + '">' + textOpt + '</option>';
 			}
 		}
-		$("#booking_id").append(html);
+		$("#booking_id").html(html);
+		$('#form_lead select#booking_id').selectmenu('refresh');
+		
 	},
 
 	successSearchLeads : function(tx, results)
