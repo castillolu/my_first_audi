@@ -52,7 +52,7 @@ var app = {
         setTimeout(function(){
             app.loadActions();
             app.loadAutoCompleteLead();
-        },200);
+        },500);
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {

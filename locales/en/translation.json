@@ -1,8 +1,11 @@
 {
 	"general": {
 		"title_1": "My First",
-		"title_2": "Audi"
-	},
+		"title_2": "Audi",
+		"dialog_lead_title" : "Lead capture",
+		"dialog_lead_message" : "The capture lead has successfully",		
+		"dialog_lead_button" : "Ok",
+		"last_syncro" : "Last synchronization : "	},
 	"login": {
 		"username": "User",
 		"password": "Password"

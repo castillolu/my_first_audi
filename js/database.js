@@ -11,12 +11,12 @@ var maxSize = 2097152;
 var result = false;
 
 //STATUS LEAD AND SURVEY
-var STATUS_CREATE                 = 'CREATE';
-var STATUS_BASE_CENTRAL           = 'BASE_CENTRAL';
-var STATUS_MARKETO                = 'MARKETO';
-var STATUS_CHECK_IN               = 'CHECK_IN';
-var STATUS_CHECK_IN_BASE_CENTRAL  = 'CHECK_IN_BASE_CENTRAL';
-var STATUS_CHECK_IN_MARKETO       = 'CHECK_IN_MARKETO';
+var STATUS_CREATE = 'CREATE';
+var STATUS_BASE_CENTRAL = 'BASE_CENTRAL';
+var STATUS_MARKETO = 'MARKETO';
+var STATUS_CHECK_IN = 'CHECK_IN';
+var STATUS_CHECK_IN_BASE_CENTRAL = 'CHECK_IN_BASE_CENTRAL';
+var STATUS_CHECK_IN_MARKETO = 'CHECK_IN_MARKETO';
 
 
 var dbapp = {
@@ -35,8 +35,8 @@ var dbapp = {
 	},
 	queryDB: function(tx) {
 		console.log("consulta");
-		tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?', 
-			[localStorage.country], dbapp.querySuccess, callBacks.errorQuery);
+		tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?',
+				[localStorage.country], dbapp.querySuccess, callBacks.errorQuery);
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
@@ -196,7 +196,7 @@ var dbapp = {
 	},
 	searchBookingDB: function(objBooking) {
 		result = false;
-        //$(".synchro_info_txt").append("searchBookingDB");
+		//$(".synchro_info_txt").append("searchBookingDB");
 
 		db.transaction(
 				function(tx) {
@@ -213,9 +213,8 @@ var dbapp = {
 				}
 		);
 	},
-
 	updateBookingDB: function(tx, objBooking) {
-        $("#log").append("updateBookingDB");
+		$("#log").append("updateBookingDB");
 		try {
 			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
 					'name = "' + objBooking.name + '", ' +
@@ -245,34 +244,32 @@ var dbapp = {
 			alert("createBookingDB " + error);
 		}
 	},
-	
-	queryBookings : function(){
-		db.transaction(
-				function(tx) {
-					try {
+	queryBookings: function() {
+		try {
+			db.transaction(
+					function(tx) {
 						tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?',
 								[localStorage.country],
 								function(tx, result) {
 									callBacks.successSearchBookingsByCountry(tx, result)
 								},
 								callBacks.errorQuery);
-					} catch (error) {
-						alert("queryBookings : " + error);
 					}
-				}
-		);
+			);
+		} catch (error) {
+			alert("queryBookings : " + error);
+		}
 
 	},
-
 	saveLead: function(tx, objLead) {
-        console.log("dbapp.saveLead");
+		console.log("dbapp.saveLead");
 		try {
 			//$("#logLead").html("Before INSERT");
 			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
-						'phone, address, brand, model, year, ' +
-						'model_audi, type_registry, status, control) VALUES (' +
+					'phone, address, brand, model, year, ' +
+					'model_audi, type_registry, status, control) VALUES (' +
 					' "' + objLead.email + '", ' +
-					objLead.country_id + ', ' + 
+					objLead.country_id + ', ' +
 					objLead.booking_id + ', ' +
 					' "' + objLead.name + '", ' +
 					' "' + objLead.last_name + '", ' +
@@ -283,39 +280,42 @@ var dbapp = {
 					' "' + objLead.year + '", ' +
 					' "' + objLead.model_audi + '", ' +
 					' "' + objLead.type_registry + '", ' +
-					' "' + STATUS_CREATE +'", ' +
+					' "' + STATUS_CREATE + '", ' +
 					' "' + md5(objLead.email) + '")';
 
 			//$("#logLead").html("Insert : " + sql + "</br></br></br>");
 			//TODO: AJUSTAR SUCCESS   
-			var xx = tx.executeSql(sql, [], 
-				function() {
-					console.log("clear inputs");
-					$(':input','#form_lead')
-	 					.not(':radio, :button, :submit, :reset, :hidden')
-	 					.val('');
+			var xx = tx.executeSql(sql, [],
+					function() {
+						console.log("clear inputs");
+						$(':input', '#form_lead')
+								.not(':radio, :button, :submit, :reset, :hidden')
+								.val('');
 
-					$("input[name='type_registry']").checkboxradio("refresh");
-					$("input[name='model_audi']").checkboxradio("refresh");
-	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
+						$("input[name='type_registry']").checkboxradio("refresh");
+						$("input[name='model_audi']").checkboxradio("refresh");
+						$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
 //	 				$('#form_lead select').selectmenu('refresh', true) 
-					$("#leadSuccess").trigger( "click" );
-				}, 
-				callBacks.errorQuery
-			);
+
+						$("#dialog_title").html(i18n.t("translation:general.dialog_lead_title"));
+						$("#dialog_message").html(i18n.t("translation:general.dialog_lead_message"));
+						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_button"));
+						$("#leadSuccess").trigger("click");
+					},
+					callBacks.errorQuery
+					);
 		} catch (error) {
 			alert("bdapp.saveLead " + error);
 
 		}
 	},
-
 	saveSurvey: function(tx, objSurvey) {
-        console.log("dbapp.saveSurvey");
+		console.log("dbapp.saveSurvey");
 		try {
 			var sql = 'INSERT INTO Surveys (email, country_id, experience, testdrive_experience, vehicles,' +
-						'liked, contact, time, model, status) VALUES (' +
+					'liked, contact, time, model, status) VALUES (' +
 					' "' + objSurvey.email + '", ' +
-					objSurvey.country_id + ', ' + 
+					objSurvey.country_id + ', ' +
 					' "' + objSurvey.experience + '", ' +
 					' "' + objSurvey.testdrive_experience + '", ' +
 					' "' + objSurvey.vehicles + '", ' +
@@ -323,40 +323,39 @@ var dbapp = {
 					' "' + objSurvey.contact + '", ' +
 					' "' + objSurvey.time + '", ' +
 					' "' + objSurvey.model + '", ' +
-					' "' + STATUS_CREATE +'")';
+					' "' + STATUS_CREATE + '")';
 
 			$("#logSurvey").html("Insert : " + sql + "</br></br></br>");
 			//TODO: AJUSTAR SUCCESS   
-			var xx = tx.executeSql(sql, [], 
-				function() {
-					console.log("clear inputs");
-					$(':input','#form_survey')
-	 					.not(':radio, :checkbox, :button, :submit, :reset, :hidden')
-	 					.val('');
+			var xx = tx.executeSql(sql, [],
+					function() {
+						console.log("clear inputs");
+						$(':input', '#form_survey')
+								.not(':radio, :checkbox, :button, :submit, :reset, :hidden')
+								.val('');
 
- 					console.log("clear radios");
-					$("input[name='experience']").checkboxradio("refresh");
-					$("input[name='testdrive_experience']").checkboxradio("refresh");
-					$("input[name='vehicles']").checkboxradio("refresh");
-					$("input[name='contact']").checkboxradio("refresh");
-					$("input[name='time']").checkboxradio("refresh");
-					$("input[name='model']").checkboxradio("refresh");
- 					console.log("clear label");
-	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
-	 				$(".ui-checkbox label").removeClass('ui-btn-active ui-checkbox-on');
- 					console.log("clear select");
- 					console.log("click surveySuccess");
-					$("#surveySuccess").trigger( "click" );
-				}, 
-				callBacks.errorQuery
-			);
+						console.log("clear radios");
+						$("input[name='experience']").checkboxradio("refresh");
+						$("input[name='testdrive_experience']").checkboxradio("refresh");
+						$("input[name='vehicles']").checkboxradio("refresh");
+						$("input[name='contact']").checkboxradio("refresh");
+						$("input[name='time']").checkboxradio("refresh");
+						$("input[name='model']").checkboxradio("refresh");
+						console.log("clear label");
+						$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
+						$(".ui-checkbox label").removeClass('ui-btn-active ui-checkbox-on');
+						console.log("clear select");
+						console.log("click surveySuccess");
+						$("#surveySuccess").trigger("click");
+					},
+					callBacks.errorQuery
+					);
 		} catch (error) {
 			alert("bdapp.saveSurvey " + error);
 
 		}
 	},
-
-	sendLeads : function(){
+	sendLeads: function() {
 		db.transaction(
 				function(tx) {
 					try {
@@ -373,8 +372,7 @@ var dbapp = {
 		);
 
 	},
-
-	sendSurveys : function(){
+	sendSurveys: function() {
 		db.transaction(
 				function(tx) {
 					try {
@@ -390,29 +388,27 @@ var dbapp = {
 				}
 		);
 	},
-
-	searchLeadCkeckIn : function(){
-        console.log("searchLeadCkeckIn");
+	searchLeadCkeckIn: function() {
+		console.log("searchLeadCkeckIn");
 
 		var leads;
 		db.transaction(
-			function(tx) {
-				try {
-					tx.executeSql('SELECT * FROM Leads WHERE status = ? OR status = ? OR status = ? AND country_id = ?',
-						[STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO, localStorage.country],
-						function(tx, result) {
-							callBacks.successSearchLeadsCheckIn(tx, result)
-						},
-						callBacks.errorQuery
-					);
-				} catch (error) {
-					alert("searchLeadCkeckIn : " + error);
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Leads WHERE status = ? OR status = ? OR status = ? AND country_id = ?',
+								[STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO, localStorage.country],
+								function(tx, result) {
+									callBacks.successSearchLeadsCheckIn(tx, result)
+								},
+								callBacks.errorQuery
+								);
+					} catch (error) {
+						alert("searchLeadCkeckIn : " + error);
+					}
 				}
-			}
 		);
 	},
-
-	searchLeadByQRCode : function(qrCode){
+	searchLeadByQRCode: function(qrCode) {
 		db.transaction(
 				function(tx) {
 					try {
@@ -429,24 +425,23 @@ var dbapp = {
 		);
 
 	},
-
-	updateDateLastSyncro : function(date){
+	updateDateLastSyncro: function(date) {
 		try {
 			db.transaction(
-				function(tx) {
-					var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
-					tx.executeSql(sql, [], function(tx, result) {
-						$('.synchro').addClass('synchro_updated');
-						$('.synchro_updated').addClass('synchro');
-						$('.synchro_info_txt').html(date.datelocal);
-						setTimeout(function(){
+					function(tx) {
+						var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
+						tx.executeSql(sql, [], function(tx, result) {
 							$('.synchro').addClass('synchro_updated');
-							$('.synchro_updated').addClass('synchro');						
-						}, 120000);
-					},
-					callBacks.errorQuery);
-				}
-		);		
+							$('.synchro_updated').addClass('synchro');
+							$('.synchro_info_txt').html(date.datelocal);
+							setTimeout(function() {
+								$('.synchro').addClass('synchro_updated');
+								$('.synchro_updated').addClass('synchro');
+							}, 120000);
+						},
+								callBacks.errorQuery);
+					}
+			);
 		} catch (error) {
 			alert("updateDateLastSyncro : " + error);
 		}

@@ -4,7 +4,8 @@
 		"title_2": "Audi",
 		"dialog_lead_title" : "Registro lead",
 		"dialog_lead_message" : "El registro del lead ha sido exitoso",		
-		"dialog_lead_button" : "Aceptar"		
+		"dialog_lead_button" : "Aceptar",
+		"last_syncro" : "Última sincronizacón : "
 	},
 	"login": {
 		"username": "Usuario",
