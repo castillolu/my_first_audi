@@ -35,7 +35,8 @@ var dbapp = {
 	},
 	queryDB: function(tx) {
 		console.log("consulta");
-		tx.executeSql('SELECT * FROM Bookings', [], dbapp.querySuccess, callBacks.errorQuery);
+		tx.executeSql('SELECT * FROM Bookings WHERE country_id = ?', 
+			[localStorage.country], dbapp.querySuccess, callBacks.errorQuery);
 	},
 	querySuccess: function(tx, results) {
 		console.log("querySuccess");
