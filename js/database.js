@@ -89,7 +89,7 @@ var dbapp = {
 				'experience TEXT NOT NULL,' +
 				'testdrive_experience TEXT NOT NULL,' +
 				'vehicles TEXT NOT NULL,' +
-				'like TEXT NOT NULL,' +
+				'liked TEXT NOT NULL,' +
 				'contact TEXT NOT NULL,' +
 				'time TEXT NOT NULL,' +
 				'model TEXT INTEGER NOT NULL,' +
@@ -313,7 +313,7 @@ var dbapp = {
         console.log("dbapp.saveSurvey");
 		try {
 			var sql = 'INSERT INTO Surveys (email, country_id, experience, testdrive_experience, vehicles,' +
-						'like, contact, time, model, status) VALUES (' +
+						'liked, contact, time, model, status) VALUES (' +
 					' "' + objSurvey.email + '", ' +
 					objSurvey.country_id + ', ' + 
 					' "' + objSurvey.experience + '", ' +
