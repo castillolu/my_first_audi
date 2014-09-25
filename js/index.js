@@ -87,7 +87,7 @@ var app = {
 		$("#survey").load("survey.html", function() {
 			console.log("Load survey.");
 		});
-		if (localStorage.status == true) {
+		if (localStorage.status == 'true') {
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -106,9 +106,11 @@ var app = {
 //        $(document).on('click', '.item-lead a', app.selectLead);
         app.eventsRegistry();
         app.validateLead();
-	},
+        dbapp.queryBookings();
+    },
     eventsRegistry : function(){
-        if (localStorage.status == true) {
+        if (localStorage.status == 'true') {
+            console.log("eventsRegistry : " + localStorage.status)
             switch (localStorage.type_registry) {
                 case "ON_SITE":
                     var $radios = $('input:radio[name=type_registry]');
@@ -130,7 +132,6 @@ var app = {
                     $(".opt_type_registry").show();
                     break;
             }
-            setTimeout(dbapp.queryBookings, 200);
         }
     },
 	scan: function() {

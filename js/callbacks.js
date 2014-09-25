@@ -83,9 +83,9 @@ var callBacks = {
 	},
 	successSearchBookingsByCountry: function(transaction, results)
 	{
+		console.log("successSearchBookingsByCountry");
 		var html = '<option value="" data-i18n="register.select_booking"></option>';
-		html += '<option value="A">AAA</option>';
-/*
+
 		if (results.rows.length > 0) {
 			for(var i = 0; i < results.rows.length; i++){
 				var id = results.rows.item(i).id
@@ -95,11 +95,10 @@ var callBacks = {
 				html += '<option value="' + id + '">' + textOpt + '</option>';
 			}
 		}
-		*/
 		$("#booking_id").html(html);
 		//refresh and force rebuild
 		setTimeout(function(){
-			$('#booking_id').selectmenu( "refresh" );;
+			$('#booking_id').selectmenu();;
 		},50);
 	},
 
