@@ -488,17 +488,20 @@ var dbapp = {
 			alert("updateDateLastSyncro : " + error);
 		}
 	},
-	checkInLead: function(email, typeRegistry) {
+	checkInLead: function(email, typeReg) {
 		try {
 			db.transaction(
 					function(tx) {
 						var sql = 'UPDATE Leads SET status = ? WHERE email = ? ';
 						tx.executeSql(sql, [STATUS_CHECK_IN, email], function(tx, result) {
-							if(typeRegistry == "DEALER"){
+							if(typeReg == "DEALER"){
 								$.mobile.changePage("#survey");
 							}else{
 								
 							}
+							emailLead = "";
+							typeRegistry = "";
+
 						},
 						callBacks.errorQuery);
 					}

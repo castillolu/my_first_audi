@@ -104,6 +104,7 @@ var app = {
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);		
+		$("#list-data-lead").hide();
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
@@ -528,7 +529,7 @@ var app = {
 	
 	checkInLead : function(){
 		console.log("app.checkInLead");
-		
+		$("#list-data-lead").hide();
 		dbapp.checkInLead(emailLead, typeRegistry);
 	}
 };
