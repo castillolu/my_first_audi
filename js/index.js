@@ -417,9 +417,8 @@ var app = {
         $.mobile.changePage("#check-in");
     },
     goToSynchro: function() {
-//        dbapp.sendLeads();
-//        dbapp.sendSurveys();
-        synchro = 'true';
+        dbapp.sendLeads();
+        dbapp.sendSurveys();
         
         setTimeout(function(){
             if(synchro == 'true'){
