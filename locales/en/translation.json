@@ -45,7 +45,8 @@
 		"model": "Model",
 		"save": "Save",
 		"login": "Login",
-		"back": "Back"
+		"back": "Back",
+		"seach_lead": "Search lead..."
 	},
 	"survey":{
 	   "email": "Your email that was entered at the time of registration:",
@@ -67,5 +68,16 @@
 	   "12_months": "Next 12 months",
 	   "undecided": "Undecided",
 	   "model": "In which Audi models are you interested?"
+	},
+	"checkin":{
+		"qrcode" : "QR CODE",
+		"name":  "Name:",
+		"last_name": "Last Name:",
+		"email": "Email:",
+		"phone_number": "Phone number:",
+		"current_car": "Car you drive:",
+		"audi_model": "Test model:",
+		"type_registry": "Type registry:",
+		"btn_checkin":	 "Check In"
 	}
 }

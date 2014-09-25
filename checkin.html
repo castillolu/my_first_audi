@@ -1,4 +1,4 @@
-<div class="app_contenedor dashboard">
+<div class="app_contenedor">
 	<div class="app_info">
 
 		<div data-role="header">
@@ -17,54 +17,62 @@
 			</div> 
 			<div class="clearing"></div> 
 
-			<div class="contenido login">
+			<div class="contenido login checkin">
 				<div class="contenido_info">
-					<ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search leads..." id="searchLead">
+					<ul data-role="listview" data-filter="true" data-filter-reveal="true" data-i18n="[data-filter-placeholder]translation:attr.seach_lead;" id="searchLead">
 					</ul>
 					<div class="boton_general">
 						<button id="btn_qr_code">
-							QR CODE
+							<span data-i18n="checkin.qrcode"></span>
 							<img src="img/ico_qr.png" />	
 						</button>
 					</div>
 
 					<div id="list-data-lead">
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Name:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.name"></strong></div>
 							<div class="ui-block-b name"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Last Name:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.last_name"></strong></div>
 							<div class="ui-block-b last_name"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Email:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.email"></strong></div>
 							<div class="ui-block-b email"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Phone number:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.phone_number"></strong></div>
 							<div class="ui-block-b phone"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Car you drive:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.current_car"></strong></div>
 							<div class="ui-block-b current_car"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Test model:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.audi_model"></strong></div>
 							<div class="ui-block-b model_audi"></div>
 						</div>
 						<div class="ui-grid-a">
-							<div class="ui-block-a"><strong>Type registry:</strong></div>
+							<div class="ui-block-a"><strong data-i18n="checkin.type_registry"></strong></div>
 							<div class="ui-block-b type_registry"></div>
 						</div>
 					</div>
 					<div class="boton_general">
-						<button class="boton_general" id="btn_check_in_end">Check In
+						<button class="boton_general" id="btn_check_in_end">
+							<span data-i18n="checkin.btn_checkin"></span>
 							<img src="img/ico_check.png">
 						</button>
 					</div>
+
 				</div>
-			</div>		
+			</div>	
+		
+			<div class="btn_normal">
+				<div class="ui-grid-solo">
+					<input type="button" class="btn_normal_info back_to_menu ui-btn-icon-left" data-i18n="[value]translation:attr.back;"  />
+				</div>								
+			</div>
 		</div>		
 	</div>		
 </div>		
