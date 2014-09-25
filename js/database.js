@@ -434,7 +434,7 @@ var dbapp = {
 		db.transaction(
 				function(tx) {
 					try {
-						var sql = 'INSERT INTO Leads (lastupdate) VALUES ("' + date.datelocal + '")';
+						var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
 						tx.executeSql(sql, [], function(tx, result) {
 									$('.synchro').addClass('synchro_updated');
 									$('.synchro_updated').addClass('synchro');

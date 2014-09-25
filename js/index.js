@@ -19,7 +19,7 @@
 var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
-var synchro = false;
+var synchro = 'false';
 
 var app = {
 	// Application Constructor
@@ -421,7 +421,7 @@ var app = {
         dbapp.sendSurveys();
         
         setTimeout(function(){
-            if(synchro == true){
+            if(synchro == 'true'){
                 $("#logSyn").html("Entro Syncro");
                 try {
                     $.ajax(urlAPI + "countries/date_timezone/id/" + localStorage.country, {

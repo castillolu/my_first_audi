@@ -128,9 +128,9 @@ var callBacks = {
 						contentType: "application/json",
 						success: function(e) {
 							if (e.status) {
-								synchro = true;
+								synchro = 'true';
 							} else {
-								synchro = false;
+								synchro = 'false';
 								$("#logSyn").html("Error al crear el registro : " + e.error);
 							}
 						},
@@ -140,8 +140,6 @@ var callBacks = {
 					});
 				}
 			}
-			return synchro;
-
 		}
 		catch (error)
 		{
