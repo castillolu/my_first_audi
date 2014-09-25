@@ -386,7 +386,7 @@ var app = {
                 },
                 crossDomain: true,
                 contentType: "application/json",
-                data: {country: localStorage.country}
+                data: {country: localStorage.country},
                 success: function(data) {
                     if (data.status) {
                         //dbapp.updateBookings(data.data);
