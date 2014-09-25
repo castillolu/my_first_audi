@@ -11,18 +11,29 @@
 		"password": "Contraseña"
 	},
 	"register": {
+		"title": "Lead capture form",
 		"name": "Nombre:",
 		"last_name": "Apellido(s):",
 		"email": "Correo electrónico:",
 		"phone": "Teléfono:",
 		"address": "Dirección:",
 		"current_car": "¿Qué carro conduce actualmente? (Marca/Modelo/Año)",
-		"model_audi": "¿Cuál es su modelo de Mi Primer Audi de interés para su prueba de manejo?",
-		"booking": "Por favor, seleccione la feche para su prueba de manejo:",
+		"model_audi": "¿Cuál es su modelo de Mi Primer Audi de interés para la prueba de manejo?",
+		"booking": "Por favor, seleccione la fecha para la prueba de manejo:",
 		"select_booking": "Seleccione reserva",
 		"select": "Seleccione año",
 		"onsite": "Prueba en sitio",
-		"dealer": "Prueba en Audi Center"
+		"requiere_type_registry": "El campo nombre es obligatorio",
+		"requiere_name": "El campo nombre es obligatorio",
+		"requiere_last_name": "El campo apellido(s) es obligatorio",
+		"requiere_email": "El campo correo electrónico es obligatorio",
+		"requiere_phone": "El campo teléfono es obligatorio",
+		"requiere_address": "El campo dirección es obligatorio",
+		"requiere_brand": "El campo marca es obligatorio",
+		"requiere_model": "El campo modelo es obligatorio",
+		"requiere_year": "El campo año es obligatorio",
+		"requiere_model_audi": "Seleccione modelo de Audi de interés para la prueba de manejo",
+		"requiere_booking": "Por favor, seleccione la fecha para la prueba de manejo"
 	},
 	"attr": {
 		"brand": "Marca",

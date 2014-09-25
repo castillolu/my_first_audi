@@ -8,6 +8,7 @@
 		"password": "Password"
 	},
 	"register": {
+		"title": "Lead capture form",
 		"name": "Name:",
 		"last_name": "Last name:",
 		"email": "Email:",
@@ -19,7 +20,18 @@
 		"select_booking": "Select booking",
 		"select": "Select year",
 		"onsite": "Test drive on site",
-		"dealer": "Test drive on dealership"
+		"dealer": "Test drive on dealership",
+		"requiere_type_registry": "The field type registry is required",
+		"requiere_name": "The field name is required",
+		"requiere_last_name": "The field last name is required",
+		"requiere_email": "The field email is required",
+		"requiere_phone": "The field phone number is required",
+		"requiere_address": "The field address is required",
+		"requiere_brand": "The field brand is required",
+		"requiere_model": "The field model is required",
+		"requiere_year": "The field year is required",
+		"requiere_model_audi": "Select Audi model would you like to test drive",
+		"requiere_booking": "Please select your preferred date for your test drive"		
 	},
 	"attr": {
 		"brand": "Brand",

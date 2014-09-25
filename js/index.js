@@ -165,7 +165,6 @@ var app = {
     validateLead : function(){
         $( "#form_lead" ).validate({
             rules: {
-                email: {required: true },
                 name: {required: true },
                 last_name: {required: true },
                 email: {required: true },
@@ -175,6 +174,17 @@ var app = {
                 current_car_model: {required: true },
                 current_car_year: {required: true },
                 model_audi: {required: true }
+            },
+            messages: {
+                email: {required: i18n.t("translation:register.requiere_email") },
+                name: {required: i18n.t("translation:register.requiere_name") },
+                last_name: {required: i18n.t("translation:register.requiere_last_name") },
+                phone: {required: i18n.t("translation:register.requiere_phone") },
+                address: {required: i18n.t("translation:register.requiere_address") },
+                current_car_brand: {required: i18n.t("translation:register.requiere_brand") },
+                current_car_model: {required: i18n.t("translation:register.requiere_model") },
+                current_car_year: {required: i18n.t("translation:register.requiere_year") },
+                model_audi: {required: i18n.t("translation:register.requiere_model_audi") }
             },
             errorLabelContainer: "#messageErrorLead",
             wrapper: "li",           
@@ -378,15 +388,22 @@ var app = {
 
     },
     hideBooking : function(){
-        $('#booking_id option').attr('selected', false);
-        $(".opt_booking").hide();
+        $( '#booking_id option').attr('selected', false);
+        $( ".opt_booking").hide();
         $( "#booking_id" ).rules( "remove" );
+        $( "input[name='type_registry']").rules( "remove" );
     },
     showBooking : function(){
         $( "#booking_id" ).rules( "add", {
             required: true,
             messages: {
-                required: "Required booking",
+                required: i18n.t("translation:register.requiere_booking"),
+            }
+        });
+        $( "input[name='type_registry']").rules( "add", {
+            required: true,
+            messages: {
+                required: i18n.t("translation:register.requiere_booking"),
             }
         });
 
