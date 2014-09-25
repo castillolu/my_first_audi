@@ -97,6 +97,7 @@ var callBacks = {
 		}
 		$("#booking_id").html(html);
 		$('#form_lead select#booking_id').selectmenu('refresh');
+		$('#form_lead select#country_id').selectmenu('refresh');
 		
 	},
 
