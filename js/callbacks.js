@@ -93,7 +93,6 @@ var callBacks = {
 				textOpt += " - ";
 				textOpt += results.rows.item(i).name;
 				html += '<option value="' + id + '">' + textOpt + '</option>';
-				$("#logLead").append(textOpt);
 			}
 		}
 		
