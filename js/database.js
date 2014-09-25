@@ -287,7 +287,7 @@ var dbapp = {
 					$("input[name='type_registry']").checkboxradio("refresh");
 					$("input[name='model_audi']").checkboxradio("refresh");
 	 				$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
-	 				$('#form_lead select').selectmenu('refresh'); 
+//	 				$('#form_lead select').selectmenu('refresh', true) 
 					$("#leadSuccess").trigger( "click" );
 				}, 
 				callBacks.errorQuery

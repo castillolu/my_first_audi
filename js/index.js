@@ -103,8 +103,9 @@ var app = {
         $('#dealer').on('click', app.showBooking);
         $('#btn_qr_code').on('click', app.scan);
         $('.back_to_menu').on('click', app.backDashboard);
-        //$('#query').on('click', dbapp.queryDemo);
+        $('#query').on('click', dbapp.queryDemo);
 //        $(document).on('click', '.item-lead a', app.selectLead);
+        app.isOnline();
         app.eventsRegistry();
         app.validateLead();
         dbapp.queryBookings();
