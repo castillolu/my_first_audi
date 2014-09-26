@@ -141,6 +141,22 @@ var callBacks = {
 		
 	},
 
+	successSearchLead: function(transaction, results, objLead)
+	{
+		if (results.rows.length > 0) {
+			db.transaction(
+					function(tx) {
+						dbapp.updateLeadDB(tx, objLead);
+					}
+			);
+		} else {
+			db.transaction(
+					function(tx) {
+						dbapp.createLeadDB(tx, objLead);
+					}
+			);
+		}
+	},
 	successSearchLeads : function(tx, results, status)
 	{
 		try {
@@ -183,7 +199,7 @@ var callBacks = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							$("#logSyn").append(text_status + " " + strError + " - statusCode : " + jqXHR.statusCode() + " -- statusCode : " + jqXHR.statusCode + " -- readyState : " + jqXHR.readyState);
+							alert("successSearchLeads : " + text_status + " " + strError + " Status lead : " + status);
 						}
 					});
 				}

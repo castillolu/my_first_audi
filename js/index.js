@@ -329,13 +329,40 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
+					alert("getBookings : " + text_status + " " + strError);
 				}
 			});
 		}
 		catch (error)
 		{
-			alert("getUsers " + error);
+			alert("getBookings " + error);
+		}
+
+	},
+	getLeads: function() {
+		console.log("Updating bookings...");
+		try {
+			$.ajax(urlAPI + "/leads/list", {
+				type: "GET",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				contentType: "application/json",
+				success: function(data) {
+					if (data.status) {
+						dbapp.updateLeads(data.data);
+					} else {
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert("getLeads : " + text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert("getLeads " + error);
 		}
 
 	},
@@ -460,6 +487,7 @@ var app = {
 							if (data.status) {
 								dbapp.updateDateLastSyncro(data.data);
 								setTimeout(app.getBookings(), 1000);
+								setTimeout(app.getLeads(), 1000);
 								sendSynchro = false;
 							} else {
 								console.log("Error al crear el registro : " + data.error);

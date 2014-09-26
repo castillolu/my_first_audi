@@ -346,6 +346,90 @@ var dbapp = {
 		}
 
 	},
+	updateLeads: function(leads) {
+		try {
+			for (var lead in leads) {
+				dbapp.searchLeadDB(leads[lead]);
+			}
+		} catch (error) {
+			alert("updateLeads " + error);
+		}
+	},
+	searchLeadDB: function(objLead) {
+		result = false;
+
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Leads WHERE email = ?',
+								[objLead.email],
+								function(tx, result) {
+									callBacks.successSearchLead(tx, result, objLead)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("searchLeadDB : " + error);
+					}
+				}
+		);
+	},
+	updateLeadDB: function(tx, objLead) {
+		try {
+			var sql = 'UPDATE Leads SET booking_id = ?, name = ?, last_name = ?,' +
+					'phone = ?, address = ?, brand = ?, model = ?, year = ?, ' +
+					'model_audi = ?, type_registry = ?, status = ?, control = ? ' +
+					'WHERE email = ? AND country_id = ?';
+					
+			//TODO: AJUSTAR SUCCESS           
+			tx.executeSql(sql, [
+					objLead.booking.id,
+					objLead.name,
+					objLead.lastName,
+					objLead.phone,
+					objLead.address,
+					objLead.brand,
+					objLead.model,
+					objLead.year,
+					objLead.modelAudi,
+					objLead.typeRegistry,
+					objLead.status,
+					objLead.control,
+					objLead.email,
+					objLead.country.id
+			], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("updateLeadDB " + error);
+		}
+	},
+	createLeadDB: function(tx, objLead) {
+		try {
+	
+			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
+					'phone, address, brand, model, year, ' +
+					'model_audi, type_registry, status, control) VALUES (' +
+					' "' + objLead.email + '", ' +
+					objLead.country.id + ', ' +
+					objLead.booking.id + ', ' +
+					' "' + objLead.name + '", ' +
+					' "' + objLead.lastName + '", ' +
+					' "' + objLead.phone + '", ' +
+					' "' + objLead.address + '", ' +
+					' "' + objLead.brand + '", ' +
+					' "' + objLead.model + '", ' +
+					' "' + objLead.year + '", ' +
+					' "' + objLead.modelAudi + '", ' +
+					' "' + objLead.typeRegistry + '", ' +
+					' "' + objLead.status + '", ' +
+					' "' + objLead.control + '")';
+			
+			//TODO: AJUSTAR SUCCESS  
+			var xx = tx.executeSql(sql, [], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("createLeadDB " + error);
+		}
+	},
 	saveLead: function(tx, objLead) {
 		console.log("dbapp.saveLead");
 		try {
