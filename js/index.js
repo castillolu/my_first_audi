@@ -436,44 +436,41 @@ var app = {
 	},
 	goToSynchro: function() {
 
-		var networkState = navigator.network.connection.type;
+		setTimeout(app.getUsers(), 100);
+		setTimeout(app.getModelsAPI(), 100);
+		dbapp.sendLeads(STATUS_CREATE);
+		dbapp.sendLeads(STATUS_CHECK_IN);
+		dbapp.sendSurveys();
 
-		if (networkState == 'wifi') {
-			setTimeout(app.getUsers(), 100);
-			setTimeout(app.getModelsAPI(), 100);
-			dbapp.sendLeads();
-			dbapp.sendSurveys();
-
-			setTimeout(function() {
-				if (synchro == 'true') {
-					try {
-						$.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
-							type: "GET",
-							beforeSend: function(xhr) {
-								xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-							},
-							crossDomain: true,
-							contentType: "application/json",
-							success: function(data) {
-								if (data.status) {
-									dbapp.updateDateLastSyncro(data.data);
-									setTimeout(app.getBookings(), 100);
-								} else {
-									console.log("Error al crear el registro : " + data.error);
-								}
-							},
-							error: function(jqXHR, text_status, strError) {
-								alert(text_status + " " + strError);
+		setTimeout(function() {
+			if (synchro == 'true') {
+				try {
+					$.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
+						type: "GET",
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+						},
+						crossDomain: true,
+						contentType: "application/json",
+						success: function(data) {
+							if (data.status) {
+								dbapp.updateDateLastSyncro(data.data);
+								setTimeout(app.getBookings(), 1000);
+							} else {
+								console.log("Error al crear el registro : " + data.error);
 							}
-						});
-					}
-					catch (error)
-					{
-						alert("goToSynchro " + error);
-					}
+						},
+						error: function(jqXHR, text_status, strError) {
+							alert(text_status + " " + strError);
+						}
+					});
 				}
-			}, 200);
-		}
+				catch (error)
+				{
+					alert("goToSynchro " + error);
+				}
+			}
+		}, 200);
 
 		console.log("goToSynchro");
 	},

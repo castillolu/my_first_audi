@@ -141,7 +141,7 @@ var callBacks = {
 		
 	},
 
-	successSearchLeads : function(tx, results)
+	successSearchLeads : function(tx, results, status)
 	{
 		try {
 			if (results.rows.length > 0) {
@@ -159,7 +159,12 @@ var callBacks = {
 					objLead.model = results.rows.item(i).model;
 					objLead.year = results.rows.item(i).year;
 					objLead.typeRegistry = results.rows.item(i).type_registry;
-					objLead.status = STATUS_BASE_CENTRAL;
+					if(status == STATUS_CREATE){
+						objLead.status = STATUS_BASE_CENTRAL;
+					}
+					if(status == STATUS_CHECK_IN){
+						objLead.status = STATUS_CHECK_IN_BASE_CENTRAL;
+					}
 
 					$.ajax(urlAPI + "/leads/lead/", {
 						type: "PUT",
@@ -174,7 +179,7 @@ var callBacks = {
 								synchro = 'true';
 							} else {
 								synchro = 'false';
-								$("#logSyn").html("Error al crear el registro : " + e.error);
+								//$("#logSyn").html("Error al crear el registro : " + e.error);
 							}
 						},
 						error: function(jqXHR, text_status, strError) {

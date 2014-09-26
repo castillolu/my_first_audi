@@ -459,14 +459,14 @@ var dbapp = {
 
 		}
 	},
-	sendLeads: function() {
+	sendLeads: function(status) {
 		db.transaction(
 				function(tx) {
 					try {
 						tx.executeSql('SELECT * FROM Leads WHERE status = ?',
-								[STATUS_CREATE],
+								[status],
 								function(tx, result) {
-									callBacks.successSearchLeads(tx, result);
+									callBacks.successSearchLeads(tx, result, status);
 								},
 								callBacks.errorQuery);
 					} catch (error) {
