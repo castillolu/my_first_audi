@@ -183,7 +183,7 @@ var callBacks = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							alert("successSearchLeads : " + text_status + " " + strError + " Status lead : " + status);
+							$("#logSyn").append("successSearchLeads : " + text_status + " " + strError + " Status lead : " + jqXHR);
 						}
 					});
 				}
