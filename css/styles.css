@@ -147,7 +147,7 @@ h1{
 }
 .contenido_login{
 	/*margin:0 auto;*/	
-    padding:10% 0px 0px 0px;
+    padding:20% 0px 0px 0px;
     text-align:center;
 }
 /************ avisos/alertas *************/
@@ -283,6 +283,7 @@ textarea{
 }
 .contenido_login_menu_btn{
 	/*padding:10px;*/
+   margin:0px 0px 5px;
 }
 .btn_home{
 	background-color:#25292c;
@@ -818,6 +819,9 @@ only screen and (                min-resolution: 192dpi) and (min-width: 1300px)
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
 
   /* Large screen, retina, stuff to override above media query */
+.contenido_login{	
+    padding:40% 0px 0px 0px;
+}
 .synchro{
 	font-size:1.2em;   
 }
@@ -952,5 +956,8 @@ em {
 
 .fifty{
 	float: left;
-	width: 50%;
+	width: 100%;
+}
+.fifty label{
+   font-size:13px;
 }
