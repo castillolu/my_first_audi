@@ -459,16 +459,6 @@ var app = {
 		$("#survey_country").val(localStorage.country);
 		
 		dbapp.queryModels();
-		/*
-		var models = JSON.parse(localStorage.getItem("models"));
-		for (i in models) {
-			console.log(models[i]);
-			var html = '<input type="checkbox" name="model" id="model-' + i + '" value="' + models[i].id + '" />';
-			html += '<label for="model-' + i + '">' + models[i].name + '</label>';
-
-			$("#survey_model").append(html);
-		}
-		*/
 		$.mobile.changePage("#survey");
 	},
 	logOut: function() {

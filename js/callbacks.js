@@ -93,7 +93,7 @@ var callBacks = {
 	successSearchModelsByCountry: function(transaction, results)
 	{
 		console.log("successSearchModelsByCountry");
-		var html = '';
+		var html = '<legend data-i18n="survey.model"></legend>';
 		if (results.rows.length > 0) {
 			for(var i = 0; i < results.rows.length; i++){
 				var id = results.rows.item(i).id
@@ -102,7 +102,9 @@ var callBacks = {
 				html += '<label for="model-' + i + '">' + name + '</label>';
 			}
 		}
-		$("#survey_model").html(html);				
+		$("#survey_model").html(html);		
+		$("input[name='model']").checkboxradio("refresh");
+		
 		
 	},
 	successSearchBooking: function(transaction, results, objBooking)
