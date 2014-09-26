@@ -290,7 +290,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status) {
+					if (data.status == "true") {
 						//$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
 						dbapp.updateUsers(data.data);
 					} else {
@@ -319,7 +319,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status) {
+					if (data.status == "true") {
 						console.log("Resultado de la Consulta : " + data.status);
 						dbapp.updateBookings(data.data);
 					} else {
@@ -348,9 +348,9 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status) {
+					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
-					} else {
+					} else { 
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
@@ -375,7 +375,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status) {
+					if (data.status == "true") {
 						dbapp.updateSurveys(data.data);
 					} else {
 					}
@@ -435,7 +435,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status) {
+					if (data.status == "true") {
 						dbapp.updateModels(data.data);
 					} else {
 						console.log("Error al crear el registro : " + data.error);
@@ -491,7 +491,7 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-		app.enableDisableMenu("false");
+		//app.enableDisableMenu("false");
 		setTimeout(app.getUsers(), 200);
 		setTimeout(app.getModelsAPI(), 200);
 		setTimeout(dbapp.sendLeads(STATUS_CREATE), 200);
@@ -515,7 +515,7 @@ var app = {
 								setTimeout(app.getLeads(), 1000);
 								setTimeout(app.getSurveys(), 1000);
 								sendSynchro = false;
-								$(".aviso_confirma").show();
+								//$(".aviso_confirma").show();
 
 							} else {
 								console.log("Error al crear el registro : " + data.error);
