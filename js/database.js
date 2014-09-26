@@ -230,7 +230,7 @@ var dbapp = {
 		try {
 			var sql = 'UPDATE Models SET name = "' + objModel.name + '" ' +
 					'WHERE id = ' + objModel.id + ' ' +
-					'AND id_country = ' + countryId;
+					'AND country_id = ' + countryId;
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [], function() {
 			}, callBacks.errorQuery);
