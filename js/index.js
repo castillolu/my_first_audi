@@ -436,11 +436,11 @@ var app = {
 	},
 	goToSynchro: function() {
 
-		setTimeout(app.getUsers(), 100);
-		setTimeout(app.getModelsAPI(), 100);
-		dbapp.sendLeads(STATUS_CREATE);
-		dbapp.sendLeads(STATUS_CHECK_IN);
-		dbapp.sendSurveys();
+		setTimeout(app.getUsers(), 200);
+		setTimeout(app.getModelsAPI(), 200);
+		setTimeout(dbapp.sendLeads(STATUS_CREATE), 200);
+		setTimeout(dbapp.sendLeads(STATUS_CHECK_IN), 200);
+		setTimeout(dbapp.sendSurveys(), 200);
 
 		setTimeout(function() {
 			if (synchro == 'true') {
