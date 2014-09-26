@@ -42,6 +42,9 @@ var app = {
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
 		setTimeout(app.setLanguage(language, true), 1000);
+		$( document ).ajaxError(function( event, request, settings ) {
+			$( "#logSyn" ).append( "<li>Error requesting page " + settings.url + "</li>" );
+		});		
 	},
 	// deviceready Event Handler
 	//
@@ -348,14 +351,6 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data == "")
-						$("#logSyn").append("is Empty");
-					if (isNaN(data))
-						$("#logSyn").append("not a number");
-					if (data.status == "true")
-						$("#logSyn").append("status is true");
-					if (data.status == "false")
-						$("#logSyn").append("status is false");
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
 					} else { 
@@ -363,7 +358,7 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getLeads : " + text_status + " " + strError);
+					alert("getLeads ajax: " + text_status + " " + strError);
 				}
 			});
 /*		}
