@@ -294,7 +294,9 @@ textarea{
    display:block;
 	/*width:44.5%;*/
 }
-
+.btn_home .disabled{
+   background-color:#40474c;
+}
 .btn_home a{
 	/*display: block;*/
 }
