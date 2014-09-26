@@ -353,8 +353,8 @@ var app = {
 				success: function(data) {
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
-					} else { 
-						return false;
+					} else if(data.status == "false") { 
+						alert('Sin datos');
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
