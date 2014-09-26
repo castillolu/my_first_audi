@@ -339,7 +339,7 @@ var app = {
 	},
 	getLeads: function() {
 		console.log("Updating Leads...");
-		try {
+//		try {
 			$.ajax(urlAPI + "/leads/list", {
 				type: "GET",
 				beforeSend: function(xhr) {
@@ -349,13 +349,13 @@ var app = {
 				contentType: "application/json",
 				success: function(data) {
 					if (data == "")
-						throw "is Empty";
+						$("#logSyn").append("is Empty");
 					if (isNaN(data))
-						throw "not a number";
+						$("#logSyn").append("not a number");
 					if (data.status == "true")
-						throw "data is true";
+						$("#logSyn").append("status is true");
 					if (data.status == "false")
-						throw "data is false";
+						$("#logSyn").append("status is false");
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
 					} else { 
@@ -366,12 +366,12 @@ var app = {
 					alert("getLeads : " + text_status + " " + strError);
 				}
 			});
-		}
+/*		}
 		catch (error)
 		{
 			alert("getLeads " + error);
 		}
-
+*/
 	},
 	getSurveys: function() {
 		console.log("Updating Surveys...");
