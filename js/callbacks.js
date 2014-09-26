@@ -102,8 +102,10 @@ var callBacks = {
 				html += '<label for="model-' + i + '">' + name + '</label>';
 			}
 		}
-		$("#survey_model").html(html);		
-		$("input[name='model']").checkboxradio("refresh");
+		$("#survey_model").html(html);
+		setTimeout(function(){
+			$("input[name='model']").checkboxradio("refresh");
+		},100);
 		
 		
 	},
