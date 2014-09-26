@@ -102,12 +102,9 @@ var callBacks = {
 				html += '<label for="model-' + i + '">' + name + '</label>';
 			}
 		}
-		$("#survey_model").html(html);
-		
-		$("input[type='checkbox']").checkboxradio("refresh");
-		$("#survey_model").trigger("create");
-		
-		
+		//$("#survey_model").html(html);
+		$("#survey_model").controlgroup("container").html(html);
+		$("#survey_model").enhanceWithin().controlgroup("refresh");
 	},
 	successSearchBooking: function(transaction, results, objBooking)
 	{
