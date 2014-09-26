@@ -428,27 +428,28 @@ var dbapp = {
 					' "' + objSurvey.model + '", ' +
 					' "' + STATUS_CREATE + '")';
 
-			$("#logSurvey").html("Insert : " + sql + "</br></br></br>");
+			//$("#logSurvey").html("Insert : " + sql + "</br></br></br>");
 			//TODO: AJUSTAR SUCCESS   
 			var xx = tx.executeSql(sql, [],
 					function() {
-						console.log("clear inputs");
 						$(':input', '#form_survey')
 								.not(':radio, :checkbox, :button, :submit, :reset, :hidden')
 								.val('');
 
-						console.log("clear radios");
 						$("input[name='experience']").checkboxradio("refresh");
 						$("input[name='testdrive_experience']").checkboxradio("refresh");
 						$("input[name='vehicles']").checkboxradio("refresh");
 						$("input[name='contact']").checkboxradio("refresh");
 						$("input[name='time']").checkboxradio("refresh");
 						$("input[name='model']").checkboxradio("refresh");
-						console.log("clear label");
+
 						$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
 						$(".ui-checkbox label").removeClass('ui-btn-active ui-checkbox-on');
-						console.log("clear select");
-						console.log("click surveySuccess");
+						
+						$("#dialog_title").html(i18n.t("translation:general.dialog_survey_title"));
+						$("#dialog_message").html(i18n.t("translation:general.dialog_survey_message"));
+						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_button"));
+						
 						$("#surveySuccess").trigger("click");
 					},
 					callBacks.errorQuery
