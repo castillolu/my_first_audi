@@ -72,7 +72,12 @@
 	   "model": "7. ¿Cuál es su modelo Audi de interés?",
 	   "models_of_interest": "Modelos de interés",
 	   "testdrive": "Prueba de manejo",
-	   "previous_activities": "Experiencias anteriores"
+	   "previous_activities": "Experiencias anteriores",
+	   "requiere_experience": "Seleccione experiencia con Mi Primer Audi.",
+	   "requiere_testdrive_experience": "Seleccione experiencia en la prueba de manejo.",
+	   "requiere_like": "Por favor ingrese lo que mas le gusto de la prueba de manejo.",
+	   "requiere_contact": "Seleccione si le gustaria ser contactado",
+	   "requiere_time": "Seleecione el tiempo de interes para la compra."	   
 	},
 	"checkin":{
 		"qrcode" : "QR CODE",
