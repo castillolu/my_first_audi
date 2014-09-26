@@ -183,7 +183,7 @@ var callBacks = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							alert(text_status + " " + strError);
+							alert("successSearchLeads : " + text_status + " " + strError + " Status lead : " + status);
 						}
 					});
 				}
@@ -223,13 +223,13 @@ var callBacks = {
 						contentType: "application/json",
 						success: function(e) {
 							if (e.status) {
-								$("#logSyn").html("Creacion de registro con el ID : " + e.id);
+								//$("#logSyn").html("Creacion de registro con el ID : " + e.id);
 							} else {
-								$("#logSyn").html("Error al crear el registro : " + e.error);
+								//$("#logSyn").html("Error al crear el registro : " + e.error);
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							alert(text_status + " " + strError);
+							alert("successSearchSurveys : " + text_status + " " + strError);
 						}
 					});
 				}
