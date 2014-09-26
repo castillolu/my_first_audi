@@ -20,6 +20,7 @@ var urlAPI = "http://myfirstaudi.info/api";
 var authAPI = "admin:1234";
 var appStart = false;
 var synchro = 'true';
+var sendSynchro = true;
 
 var app = {
 	// Application Constructor
@@ -267,9 +268,12 @@ var app = {
 
 		if (networkState == 'wifi') {
 			$(".aviso_confirma").hide();
-			$(document).on("click", "#btn_synchro", app.goToSynchro);
 			$("#btn_synchro").removeClass("btn_home_disabled");
 			$("#btn_synchro").addClass("btn_home");
+			if(sendSynchro == false){
+				sendSynchro = true;
+				$(document).on("click", "#btn_synchro", app.goToSynchro);
+			}
 			if (appStart == false) {
 				appStart = true;
 				setTimeout(app.getUsers(), 100);
@@ -456,6 +460,7 @@ var app = {
 							if (data.status) {
 								dbapp.updateDateLastSyncro(data.data);
 								setTimeout(app.getBookings(), 1000);
+								sendSynchro = false;
 							} else {
 								console.log("Error al crear el registro : " + data.error);
 							}
