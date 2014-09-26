@@ -252,14 +252,21 @@ var app = {
 	isOffline: function() {
 		//TODO Disable button Sync 
 		$(document).off("click", "#btn_synchro", false);
+		$(".aviso_confirma").show();
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 	},
 	isOnline: function() {
-		//Enable button Sync 
+		$(document).off("click", "#btn_synchro", false);
+		$(".aviso_confirma").hide();
+		$("#btn_synchro").addClass("btn_home_disabled");
+		$("#btn_synchro").removeClass("btn_home");
+
+		// Enable button Sync 
 		var networkState = navigator.network.connection.type;
 
 		if (networkState == 'wifi') {
+			$(".aviso_confirma").hide();
 			$(document).on("click", "#btn_synchro", app.goToSynchro);
 			$("#btn_synchro").removeClass("btn_home_disabled");
 			$("#btn_synchro").addClass("btn_home");
