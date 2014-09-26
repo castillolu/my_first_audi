@@ -358,7 +358,20 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getLeads ajax: " + text_status + " " + strError);
+					if(jqXHR.status==0){
+						alert('You are offline!!\n Please Check Your Network.');
+					}else if(jqXHR.status==404){
+						alert('Requested URL not found.');
+					}else if(jqXHR.status==500){
+						alert('Internel Server Error.');
+					}else if(text_status=='parsererror'){
+						alert('Error.\nParsing JSON Request failed. '+jqXHR.status);
+					}else if(text_status=='timeout'){
+						alert('Request Time out.');
+					}else {
+						alert('Unknow Error.\n'+jqXHR.responseText);
+					}   					
+					//alert("getLeads ajax: " + text_status + " " + strError);
 				}
 			});
 /*		}
