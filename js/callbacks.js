@@ -103,9 +103,7 @@ var callBacks = {
 			}
 		}
 		$("#survey_model").html(html);
-		setTimeout(function(){
-			$("input[name='model']").checkboxradio("refresh");
-		},100);
+		$("input[type='checkbox']").checkboxradio("refresh");
 		
 		
 	},
