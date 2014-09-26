@@ -376,7 +376,7 @@ var dbapp = {
 	updateLeadDB: function(tx, objLead) {
 		try {
 			var booking = "";
-			if(objLead.booking == "undefined"){
+			if(objLead.booking == ""){
 				booking = "NULL";
 			}else{
 				booking = objLead.booking.id;
@@ -413,7 +413,7 @@ var dbapp = {
 		try {
 	
 			var booking = "";
-			if(objLead.booking == "undefined"){
+			if(objLead.booking == ""){
 				booking = "NULL";
 			}else{
 				booking = objLead.booking.id;
