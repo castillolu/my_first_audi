@@ -375,6 +375,13 @@ var dbapp = {
 	},
 	updateLeadDB: function(tx, objLead) {
 		try {
+			var booking = "";
+			if(objLead.booking == "undefined"){
+				booking = "NULL";
+			}else{
+				booking = objLead.booking.id;
+			}
+			
 			var sql = 'UPDATE Leads SET booking_id = ?, name = ?, last_name = ?,' +
 					'phone = ?, address = ?, brand = ?, model = ?, year = ?, ' +
 					'model_audi = ?, type_registry = ?, status = ?, control = ? ' +
@@ -382,7 +389,7 @@ var dbapp = {
 					
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [
-					objLead.booking.id,
+					booking,
 					objLead.name,
 					objLead.lastName,
 					objLead.phone,
@@ -405,12 +412,19 @@ var dbapp = {
 	createLeadDB: function(tx, objLead) {
 		try {
 	
+			var booking = "";
+			if(objLead.booking == "undefined"){
+				booking = "NULL";
+			}else{
+				booking = objLead.booking.id;
+			}
+
 			var sql = 'INSERT INTO Leads (email, country_id, booking_id, name, last_name,' +
 					'phone, address, brand, model, year, ' +
 					'model_audi, type_registry, status, control) VALUES (' +
 					' "' + objLead.email + '", ' +
 					objLead.country.id + ', ' +
-					objLead.booking.id + ', ' +
+					booking + ', ' +
 					' "' + objLead.name + '", ' +
 					' "' + objLead.lastName + '", ' +
 					' "' + objLead.phone + '", ' +
