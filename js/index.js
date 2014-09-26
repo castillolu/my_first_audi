@@ -258,7 +258,7 @@ var app = {
 	},
 	isOnline: function() {
 		$(document).off("click", "#btn_synchro", false);
-		$(".aviso_confirma").hide();
+		$(".aviso_confirma").show();
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 
