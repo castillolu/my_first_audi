@@ -70,7 +70,11 @@
 	   "6_months": "Next 6 months",
 	   "12_months": "Next 12 months",
 	   "undecided": "Undecided",
-	   "model": "In which Audi models are you interested?"
+	   "model": "In which Audi models are you interested?",
+	   "models_of_interest": "Models of interest",
+	   "testdrive": "Test drive",
+	   "previous_activities": "Previous activities"
+	   
 	},
 	"checkin":{
 		"qrcode" : "QR CODE",
