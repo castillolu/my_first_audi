@@ -4,7 +4,7 @@
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-/*    -webkit-user-select: none; */                 /* prevent copy paste, to allow, change 'none' to 'text' */
+	/*    -webkit-user-select: none; */                 /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 body {
 	font-family:Verdana, Geneva, sans-serif;
@@ -155,7 +155,7 @@ h1{
 }
 .aviso_confirma{
 	font-size:0.9em;
-   text-align:center;
+	text-align:center;
 	/*margin:0 auto;
 	width:93%;*/
 }
@@ -165,21 +165,21 @@ h1{
 	font-family: 'AudiExtendedBold';
 	font-size:1.8em;
 	padding:12px 10px 5px 15px;
-   margin:5px;
+	margin:5px;
 }
 .aviso_contenido{
-   border:1px solid #d7d7d7;
-   margin:5px;
-   text-align:center;
+	border:1px solid #d7d7d7;
+	margin:5px;
+	text-align:center;
 	/*margin:5px 0px 5px 0px;*/
 	padding:0px 0px 15px 0px;
 }
 .aviso_contenido_info{
-   padding:20px;
-   text-align:left;
+	padding:20px;
+	text-align:left;
 }
 .aviso_contenido_info p{
-   font-size:1.2em;
+	font-size:1.2em;
 }
 /************ formularios *************/
 input{
@@ -282,7 +282,7 @@ textarea{
 }
 .contenido_login_menu_btn{
 	/*padding:10px;*/
-   margin:0px 0px 5px;
+	margin:0px 0px 5px;
 }
 .btn_home{
 	background-color:#25292c;
@@ -291,11 +291,18 @@ textarea{
 	font-size:1.6em;
 	margin:5px;
 	padding:10% 2% 2%;
-   display:block;
+	display:block;
 	/*width:44.5%;*/
 }
-.btn_home .disabled{
-   background-color:#40474c;
+.btn_home_disabled{
+	background-color:#40474c;
+	border:1px solid #FFF;
+	/*float:left;*/
+	font-size:1.6em;
+	margin:5px;
+	padding:10% 2% 2%;
+	display:block;
+	/*width:44.5%;*/
 }
 .btn_home a{
 	/*display: block;*/
@@ -314,7 +321,7 @@ textarea{
 	/*color:#97999a;*/
 	font-family: 'AudiExtendedBold';
 	padding:15px 0px 2px 5px;
-   text-align:left;
+	text-align:left;
 }
 .btn_home_salir .btn_home_info{
 	color:#FFFFFF;
@@ -324,8 +331,8 @@ textarea{
 	text-align:center;
 }
 .btn_home_ico img{
-   height:60px;
-   min-width:60px;
+	height:60px;
+	min-width:60px;
 }
 .btn_normal{
 	/*background-color:#25292c;
@@ -334,10 +341,10 @@ textarea{
 	/*margin:0 auto;
 	text-align:center;
 	width:30%;*/
-   padding:0px 25%;
+	padding:0px 25%;
 }
 .btn_normal .ui-btn{
-   height:30px;
+	height:30px;
 }
 .btn_normal{
 	/*background-color:#25292c;
@@ -346,7 +353,7 @@ textarea{
 	/*margin:0 auto;
 	text-align:center;
 	width:30%;*/
-   padding:0px 25%;
+	padding:0px 25%;
 }.btn_normal_info{
     background-color: #25292c;
     color: #FFFFFF;
@@ -375,21 +382,21 @@ textarea{
 	/*padding:0px 0px 0px 10px;*/
 }
 .btn_normal .ui-grid-solo{
-   color:#FFF;
-   width:50%;
-   margin:0 auto;
-   padding:35% 0px 0px;
+	color:#FFF;
+	width:50%;
+	margin:0 auto;
+	padding:35% 0px 0px;
 }
 /************ error list *************/
 #messageErrorLead, #messageErrorSurvey{
-   border:1px solid #d7d7d7;
-   background-color:#f4f4f4;
-   margin:5px;
-   padding:5px;
+	border:1px solid #d7d7d7;
+	background-color:#f4f4f4;
+	margin:5px;
+	padding:5px;
 }
 #messageErrorLead li, #messageErrorSurvey li{
-   list-style:none;
-   padding:0 10px;
+	list-style:none;
+	padding:0 10px;
 }
 /************ clearing *************/
 .clearing{
@@ -402,9 +409,9 @@ a{
 }
 /************ listas *************/
 #list-data-lead{
-   padding:10px;
-   border: 1px solid #d7d7d7;
-   margin:10px 0px;
+	padding:10px;
+	border: 1px solid #d7d7d7;
+	margin:10px 0px;
 }
 /*
 jQuery Mobile
@@ -450,40 +457,40 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 }
 
 .aviso_contenido button{
-   /*width:50%;
-   height:40px;
-   color:#FFF;
-   margin:5px 0px 10px;
-   background-color:#25292c;
-   border: none;
-   font-size:1.3em;*/
+	/*width:50%;
+	height:40px;
+	color:#FFF;
+	margin:5px 0px 10px;
+	background-color:#25292c;
+	border: none;
+	font-size:1.3em;*/
 }
 .aviso_contenido .btn_accept{
-   width:50%;
-   height:40px;
-   color:#FFF;
-   margin:5px 0px 10px;
-   background-color:#25292c;
-   border: none;
-   font-size:1.3em;
-   font-family:Verdana, Geneva, sans-serif;
-  /* margin:0 auto;*/
-   padding:10px;
+	width:50%;
+	height:40px;
+	color:#FFF;
+	margin:5px 0px 10px;
+	background-color:#25292c;
+	border: none;
+	font-size:1.3em;
+	font-family:Verdana, Geneva, sans-serif;
+	/* margin:0 auto;*/
+	padding:10px;
 }
 .contenido_login #btn_logout{
-   width:98%;
-   height:50px;
-   color:#FFF;
-   margin:5px 0px 10px;
-   background-color:#e21838;
-   border: none;
-   font-size:1.4em;
-   font-family: 'AudiExtendedBold';
-   margin:0 auto;
-   padding:10px;
+	width:98%;
+	height:50px;
+	color:#FFF;
+	margin:5px 0px 10px;
+	background-color:#e21838;
+	border: none;
+	font-size:1.4em;
+	font-family: 'AudiExtendedBold';
+	margin:0 auto;
+	padding:10px;
 }
 .ui-filterable{
-   margin-bottom:3.5%;
+	margin-bottom:3.5%;
 }
 /* Active radio button icon */
 .ui-page-theme-a .ui-radio-on:after,
@@ -532,7 +539,7 @@ textarea.ui-input-text {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	outline: 0;
-   font-size:1.4em;
+	font-size:1.4em;
 }
 .ui-input-text input,
 .ui-input-search input {
@@ -546,7 +553,7 @@ textarea.ui-input-text {
 	border-radius: inherit;
 }
 .ui-input-search input {
-   padding-left: 30px;
+	padding-left: 30px;
 }
 .ui-input-search:after {
 	position: absolute;
@@ -560,7 +567,7 @@ textarea.ui-input-text {
 	height: 14px;
 	filter: Alpha(Opacity=50);
 	opacity: .5;
-   background-size:100%;
+	background-size:100%;
 }
 .ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear,
 .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear {
@@ -638,41 +645,41 @@ label.error {
 }
 /* Button up */
 .boton_general .ui-btn{
-   background-color:#25292c;
-   color:#FFFFFF;
-   font-size:1.4em;
+	background-color:#25292c;
+	color:#FFFFFF;
+	font-size:1.4em;
 }
 .boton_general .ui-btn:active{
-   background-color:#25292c;
-   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+	background-color:#25292c;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .boton_general .ui-btn img{
-   vertical-align:bottom;
-   width:7%;
+	vertical-align:bottom;
+	width:7%;
 }
 /* Button hover */
 .aviso_contenido_info .ui-btn:hover{
 	background-color: 			#e21838 /*{a-bhover-background-color}*/;
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
-   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .boton_general .ui-btn:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
-   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .aviso_contenido .btn_accept:hover{
 	background-color: 			#25292c /*{a-bhover-background-color}*/;
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
-   text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .aviso_contenido_info .ui-btn:active{
 	background-color: 			#e21838 /*{a-bdown-background-color}*/;
-   color: 					#FFFFFF  /*{a-bhover-color}*/;
-  text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .contenido login .ui-btn {
-   background-color:#06C;
+	background-color:#06C;
 }
 /* Links */
 .ui-page-theme-a a,
@@ -707,8 +714,8 @@ html body .ui-group-theme-a a:active {
 #list-data-lead .ui-grid-d,
 #list-data-lead .ui-grid-solo {
 	overflow: hidden;
-   padding:5px 25px;
-   font-size:1.2em;   
+	padding:5px 25px;
+	font-size:1.2em;   
 }
 /* Button up */
 .ui-page-theme-a .ui-btn,
@@ -723,7 +730,7 @@ html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited,
 html head + body .ui-btn.ui-btn-a:visited {
 	text-shadow: 0 /*{a-bup-shadow-x}*/ 0px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/  /*{a-bup-shadow-color}*/;
-   margin:0 auto;
+	margin:0 auto;
 }
 /* Button hover */
 .ui-page-theme-a .ui-btn:hover,
@@ -737,7 +744,7 @@ html head + body .ui-btn.ui-btn-a:hover {
 [class*="ui-block-"] > button.ui-btn {
 	margin-right: 0;
 	margin-left: 0;
-   margin:0 auto;
+	margin:0 auto;
 }
 /* titulos popups */
 .ui-header .ui-title,
@@ -752,30 +759,30 @@ html head + body .ui-btn.ui-btn-a:hover {
 	overflow: hidden;
 	white-space: nowrap;
 	outline: 0 !important;
-   font-family: 'AudiExtendedBold';
+	font-family: 'AudiExtendedBold';
 }
 #dialogLead a.ui-btn.ui-icon-delete,
 #dialogCheckIn a.ui-btn.ui-icon-delete{
- display: none;
+	display: none;
 }
 #dialogLead a,
 #dialogCheckIn a{
-   background-color:#25292c;
-   color:#FFF;
-   width:50%;
+	background-color:#25292c;
+	color:#FFF;
+	width:50%;
 }
 #dialogCheckIn .ui-block-b a{
-   background-color:#e21838;
-   color:#FFF;
-   width:50%;
+	background-color:#e21838;
+	color:#FFF;
+	width:50%;
 }
 #dialogLead p,
 #dialogCheckIn p{
-   padding:10px;
-   font-size:1.2em;
+	padding:10px;
+	font-size:1.2em;
 }
 .ui-dialog {
-	 background:#dddddd !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
+	background:#dddddd !important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
 }
 .ui-dialog-contain {
 	width: 92.5%;
@@ -789,15 +796,15 @@ html head + body .ui-btn.ui-btn-a:hover {
 	display: block;
 	position: relative;
 	overflow: visible;
-   border-left:1px solid #dddddd;
-   border-right:1px solid #dddddd;
-   width:95%;
-   margin:0 auto;
+	border-left:1px solid #dddddd;
+	border-right:1px solid #dddddd;
+	width:95%;
+	margin:0 auto;
 }
 html .ui-filterable + .ui-listview,
 html .ui-filterable.ui-listview {
 	margin-top: -1em;
-   margin-bottom: .5em;
+	margin-bottom: .5em;
 }
 @media screen and (orientation: portrait) {
 	label.error {
@@ -819,130 +826,130 @@ only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1300px)
 only screen and (                min-resolution: 192dpi) and (min-width: 1300px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 1300px) { 
 
-  /* Large screen, retina, stuff to override above media query */
-.contenido_login{	
-    padding:40% 0px 0px 0px;
-}
-.synchro{
-	font-size:1.2em;   
-}
-.header_1_img img, .header_2_img img{
-   min-width:1200px;
-   height:auto;
-}
-.header_3_titulo{
-	font-size:10.5em;
-	line-height:140px;
-}
-.header_logo img{
-   /*min-width:1200px;
-   height:auto;*/
-}
-.btn_home{
-   font-size:3em;
-   padding:20% 4% 4%;
-	/*width:44.5%;*/
-}
-.btn_home_ico img{
-   height:120px;
-   min-width:120px;
-}
-.aviso_titulo{
-	font-size:2.8em;
-}
-.btn_normal .ui-btn{
-   height:80px;
-}
-.boton_general .ui-btn{
-   font-size:3em;
-}
-.boton_general .ui-btn img{
-   width:9%;
-}
-/* Buttons and icons */
-.ui-btn {
-	font-size: 32px;
-}
-.aviso_contenido_info p{
-   font-size:2.4em;
-}
-.aviso_contenido .btn_accept{
-   height:80px;
-   font-size:2.6em;
-}
-.contenido_login #btn_logout{
-   height:100px;
-   font-size:2.8em;
-   width:100%;
-}
+	/* Large screen, retina, stuff to override above media query */
+	.contenido_login{	
+		padding:40% 0px 0px 0px;
+	}
+	.synchro{
+		font-size:1.2em;   
+	}
+	.header_1_img img, .header_2_img img{
+		min-width:1200px;
+		height:auto;
+	}
+	.header_3_titulo{
+		font-size:10.5em;
+		line-height:140px;
+	}
+	.header_logo img{
+		/*min-width:1200px;
+		height:auto;*/
+	}
+	.btn_home{
+		font-size:3em;
+		padding:20% 4% 4%;
+		/*width:44.5%;*/
+	}
+	.btn_home_ico img{
+		height:120px;
+		min-width:120px;
+	}
+	.aviso_titulo{
+		font-size:2.8em;
+	}
+	.btn_normal .ui-btn{
+		height:80px;
+	}
+	.boton_general .ui-btn{
+		font-size:3em;
+	}
+	.boton_general .ui-btn img{
+		width:9%;
+	}
+	/* Buttons and icons */
+	.ui-btn {
+		font-size: 32px;
+	}
+	.aviso_contenido_info p{
+		font-size:2.4em;
+	}
+	.aviso_contenido .btn_accept{
+		height:80px;
+		font-size:2.6em;
+	}
+	.contenido_login #btn_logout{
+		height:100px;
+		font-size:2.8em;
+		width:100%;
+	}
 
-/* Form inputs */
-.ui-input-text input,
-.ui-input-search input,
-textarea.ui-input-text {
-   font-size:2.8em;
-}
-/* Hide the native input element */
-.ui-input-btn input {
-    font-size: 1.7gitem;
-}
-/* Form labels (overrides font-weight bold in bars, and mini font-size) */
-.ui-mobile label,
-div.ui-controlgroup-label {
-	font-weight: normal;
-	font-size: 32px;
-}
-/* content configurations. */
-#list-data-lead .ui-grid-a,
-#list-data-lead .ui-grid-b,
-#list-data-lead .ui-grid-c,
-#list-data-lead .ui-grid-d,
-#list-data-lead .ui-grid-solo {
-   font-size:2.8em;   
-}
-.ui-input-search:after {
-   left:.6em;
-	width: 36px;
-	height: 36px;
-   top:35%;
-}
-.ui-input-search input{
-   padding-left:60px;
-   text-indent:50;
-}
-.ui-btn-icon-left:after,
-.ui-btn-icon-right:after,
-.ui-btn-icon-top:after,
-.ui-btn-icon-bottom:after,
-.ui-btn-icon-notext:after {
-	width: 40px;
-	height: 40px;
-}
-.ui-btn-icon-notext:after,
-.ui-btn-icon-left:after,
-.ui-btn-icon-right:after {
-	top: 50%;
-	margin-top: -25px;
-}
-.ui-input-search .ui-btn-icon-notext:after,
-.ui-input-search .ui-btn-icon-left:after,
-.ui-input-search .ui-btn-icon-right:after {
-   top: 25%;
- }
-.ui-dialog-contain {
-	width: 100%;
-	max-width: 1000px;
-}
-#dialogLead p, #dialogCheckIn p{
-   font-size:2.4em;
-}
-.ui-header .ui-title,
-.ui-footer .ui-title {
-	font-size: 4em;
-}
-.ui-dialog-contain {
-	top: 30em;
-}
+	/* Form inputs */
+	.ui-input-text input,
+	.ui-input-search input,
+	textarea.ui-input-text {
+		font-size:2.8em;
+	}
+	/* Hide the native input element */
+	.ui-input-btn input {
+		font-size: 1.7gitem;
+	}
+	/* Form labels (overrides font-weight bold in bars, and mini font-size) */
+	.ui-mobile label,
+	div.ui-controlgroup-label {
+		font-weight: normal;
+		font-size: 32px;
+	}
+	/* content configurations. */
+	#list-data-lead .ui-grid-a,
+	#list-data-lead .ui-grid-b,
+	#list-data-lead .ui-grid-c,
+	#list-data-lead .ui-grid-d,
+	#list-data-lead .ui-grid-solo {
+		font-size:2.8em;   
+	}
+	.ui-input-search:after {
+		left:.6em;
+		width: 36px;
+		height: 36px;
+		top:35%;
+	}
+	.ui-input-search input{
+		padding-left:60px;
+		text-indent:50;
+	}
+	.ui-btn-icon-left:after,
+	.ui-btn-icon-right:after,
+	.ui-btn-icon-top:after,
+	.ui-btn-icon-bottom:after,
+	.ui-btn-icon-notext:after {
+		width: 40px;
+		height: 40px;
+	}
+	.ui-btn-icon-notext:after,
+	.ui-btn-icon-left:after,
+	.ui-btn-icon-right:after {
+		top: 50%;
+		margin-top: -25px;
+	}
+	.ui-input-search .ui-btn-icon-notext:after,
+	.ui-input-search .ui-btn-icon-left:after,
+	.ui-input-search .ui-btn-icon-right:after {
+		top: 25%;
+	}
+	.ui-dialog-contain {
+		width: 100%;
+		max-width: 1000px;
+	}
+	#dialogLead p, #dialogCheckIn p{
+		font-size:2.4em;
+	}
+	.ui-header .ui-title,
+	.ui-footer .ui-title {
+		font-size: 4em;
+	}
+	.ui-dialog-contain {
+		top: 30em;
+	}
 }
 
 

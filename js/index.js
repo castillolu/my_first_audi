@@ -103,14 +103,13 @@ var app = {
 		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
 		$('.back_to_menu').on('click', app.backDashboard);
-		$(document).on('click', 'ul#searchLead li a', app.selectLead);		
+		$(document).on('click', 'ul#searchLead li a', app.selectLead);
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
 	},
-
 	validateLead: function() {
 		$("#form_lead").validate({
 			rules: {
@@ -252,9 +251,17 @@ var app = {
 	},
 	isOffline: function() {
 		//TODO Disable button Sync 
+		$(document).off( "click", "#btn_synchro", false );
+		$("#btn_synchro").addClass("btn_home_disabled");
+		$("#btn_synchro").removeClass("btn_home");
 	},
 	isOnline: function() {
 		//TODO Enable button Sync 
+		$(document).on( "click", "#btn_synchro", app.goToSynchro );
+ 
+		$("#btn_synchro").on();
+		$("#btn_synchro").removeClass("btn_home_disabled");
+		$("#btn_synchro").addClass("btn_home");
 		var networkState = navigator.network.connection.type;
 
 		if (networkState == 'wifi' && appStart == false) {
@@ -321,37 +328,39 @@ var app = {
 		}
 
 	},
-	getModels: function() {
-		console.log("Updating models...");
-		try {
-			$.ajax(urlAPI + "/models/list", {
-				type: "GET",
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-				},
-				crossDomain: true,
-				contentType: "application/json",
-				data: {country: localStorage.country},
-				success: function(data) {
-					if (data.status) {
-						//dbapp.updateBookings(data.data);
-
-						localStorage.setItem("models", JSON.stringify(data.data));
-					} else {
-						console.log("Error al crear el registro : " + data.error);
-					}
-				},
-				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
-				}
-			});
-		}
-		catch (error)
-		{
-			alert("getUsers " + error);
-		}
-
-	},
+	/*
+	 getModels: function() {
+	 console.log("Updating models...");
+	 try {
+	 $.ajax(urlAPI + "/models/list", {
+	 type: "GET",
+	 beforeSend: function(xhr) {
+	 xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+	 },
+	 crossDomain: true,
+	 contentType: "application/json",
+	 data: {country: localStorage.country},
+	 success: function(data) {
+	 if (data.status) {
+	 //dbapp.updateBookings(data.data);
+	 
+	 localStorage.setItem("models", JSON.stringify(data.data));
+	 } else {
+	 console.log("Error al crear el registro : " + data.error);
+	 }
+	 },
+	 error: function(jqXHR, text_status, strError) {
+	 alert(text_status + " " + strError);
+	 }
+	 });
+	 }
+	 catch (error)
+	 {
+	 alert("getUsers " + error);
+	 }
+	 
+	 },
+	 */
 	getModelsAPI: function() {
 		console.log("Updating models...");
 		try {
@@ -419,45 +428,52 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-		dbapp.sendLeads();
-		dbapp.sendSurveys();
 
-		setTimeout(function() {
-			if (synchro == 'true') {
-				try {
-					$.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
-						type: "GET",
-						beforeSend: function(xhr) {
-							xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-						},
-						crossDomain: true,
-						contentType: "application/json",
-						success: function(data) {
-							if (data.status) {
-								dbapp.updateDateLastSyncro(data.data);
-								setTimeout(app.getBookings(), 100);
-							} else {
-								console.log("Error al crear el registro : " + data.error);
+		var networkState = navigator.network.connection.type;
+
+		if (networkState == 'wifi') {
+			setTimeout(app.getUsers(), 100);
+			setTimeout(app.getModelsAPI(), 100);
+			dbapp.sendLeads();
+			dbapp.sendSurveys();
+
+			setTimeout(function() {
+				if (synchro == 'true') {
+					try {
+						$.ajax(urlAPI + "/countries/date_timezone/id/" + localStorage.country, {
+							type: "GET",
+							beforeSend: function(xhr) {
+								xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+							},
+							crossDomain: true,
+							contentType: "application/json",
+							success: function(data) {
+								if (data.status) {
+									dbapp.updateDateLastSyncro(data.data);
+									setTimeout(app.getBookings(), 100);
+								} else {
+									console.log("Error al crear el registro : " + data.error);
+								}
+							},
+							error: function(jqXHR, text_status, strError) {
+								alert(text_status + " " + strError);
 							}
-						},
-						error: function(jqXHR, text_status, strError) {
-							alert(text_status + " " + strError);
-						}
-					});
+						});
+					}
+					catch (error)
+					{
+						alert("goToSynchro " + error);
+					}
 				}
-				catch (error)
-				{
-					alert("goToSynchro " + error);
-				}
-			}
-		}, 200);
+			}, 200);
+		}
 
 		console.log("goToSynchro");
 	},
 	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
 		$("#survey_country").val(localStorage.country);
-		
+
 		dbapp.queryModels();
 		$.mobile.changePage("#survey");
 	},
@@ -500,7 +516,6 @@ var app = {
 		console.log("loadAutoCompleteLead");
 		dbapp.searchLeadCkeckIn();
 	},
-	
 	scan: function() {
 		try {
 			var scanner = cordova.require("cordova/plugin/BarcodeScanner");
@@ -527,28 +542,25 @@ var app = {
 		}
 
 	},
-	
 	selectLead: function()
 	{
 		console.log("selectLead");
 		dbapp.searchLeadByEmail($(this).attr('id'));
-		$( "#searchLead li" ).addClass( "ui-screen-hidden" );
-		
+		$("#searchLead li").addClass("ui-screen-hidden");
+
 	},
-	
-	confirmCheckInLead : function(){
-	
+	confirmCheckInLead: function() {
+
 		console.log("app.confirmCheckInLead");
-		
+
 		$("#dialog_checkin_title").html(i18n.t("translation:checkin.dialog_checkin_title"));
 		$("#dialog_checkin_message").html(i18n.t("translation:checkin.dialog_checkin_message"));
 		$("#dialog_checkin_btn_continue").html(i18n.t("translation:checkin.dialog_checkin_button_continue"));
 		$("#dialog_checkin_btn_cancel").html(i18n.t("translation:checkin.dialog_checkin_button_cancel"));
 		$("#confirmSuccess").trigger("click");
-		
+
 	},
-	
-	checkInLead : function(){
+	checkInLead: function() {
 		console.log("app.checkInLead");
 		$("#list-data-lead").hide();
 		dbapp.checkInLead(emailLead, typeRegistry);
