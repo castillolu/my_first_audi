@@ -183,7 +183,7 @@ var callBacks = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							$("#logSyn").append("successSearchLeads : " + text_status + " " + strError + " Status lead : " + jqXHR);
+							$("#logSyn").append(text_status + " " + strError + " - statusCode : " + jqXHR.statusCode() + " -- statusCode : " + jqXHR.statusCode + " -- readyState : " + jqXHR.readyState);
 						}
 					});
 				}
