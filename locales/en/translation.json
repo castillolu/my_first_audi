@@ -12,6 +12,13 @@
 		"dialog_lead_exist_message" : "Please verify your email address. The email entered is already registered.",		
 		"dialog_lead_exist_button" : "Ok"
 	},
+	"dashboard":{
+		"form":"Form",
+		"checkin":"Check in",
+		"synchro":"Synchro",
+		"survey":"Survey",
+		"exit": "Exit"
+	},
 	"login": {
 		"title": "User log-in",
 		"username": "User",

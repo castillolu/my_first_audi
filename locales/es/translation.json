@@ -12,6 +12,13 @@
 		"dialog_lead_exist_message" : "Verifique el correo eletrónico, ya que el utilizado se encuentra asociado a otro usuario.",		
 		"dialog_lead_exist_button" : "Aceptar"
 	},
+	"dashboard":{
+		"form":"Formulario",
+		"checkin":"Registro",
+		"synchro":"Sincronización",
+		"survey":"Encuesta",
+		"exit": "Salir"
+	},
 	"login": {
 		"title": "Ingreso de usuario",
 		"username": "Usuario",

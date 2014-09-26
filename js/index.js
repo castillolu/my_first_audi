@@ -64,11 +64,11 @@ var app = {
 		if (firstTime) {
 			$.i18n.init(function(t) {
 				lng: language;
-				$(".login, .general, .register, .survey, .checkin").i18n();
+				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
 			});
 		} else {
 			i18n.setLng(language, function(t) {
-				$(".login, .general, .register, .survey, .checkin").i18n();
+				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
 			});
 		}
 	},
