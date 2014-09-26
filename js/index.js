@@ -348,7 +348,14 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					$("#logSyn").append(data.status);
+					if (data == "")
+						throw "is Empty";
+					if (isNaN(data))
+						throw "not a number";
+					if (data.status == "true")
+						throw "data is true";
+					if (data.status == "false")
+						throw "data is false";
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
 					} else { 
