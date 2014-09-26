@@ -17,7 +17,10 @@
 		"checkin":"Registro",
 		"synchro":"Sincronización",
 		"survey":"Encuesta",
-		"exit": "Salir"
+		"exit": "Salir",
+		"confirmation": "Confirmación",
+		"message_synchro" : "Su sincronización fue existosa",
+		"accept":"Aceptar"
 	},
 	"login": {
 		"title": "Ingreso de usuario",

@@ -104,6 +104,7 @@ var app = {
 		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
 		$('.back_to_menu').on('click', app.backDashboard);
+		$('.btn_accept').on('click', app.enableDisableMenu("true"));
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
@@ -253,13 +254,11 @@ var app = {
 	isOffline: function() {
 		//TODO Disable button Sync 
 		$(document).off("click", "#btn_synchro", false);
-		$(".aviso_confirma").show();
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 	},
 	isOnline: function() {
 		$(document).off("click", "#btn_synchro", false);
-		$(".aviso_confirma").show();
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 
@@ -267,7 +266,6 @@ var app = {
 		var networkState = navigator.network.connection.type;
 
 		if (networkState == 'wifi') {
-			$(".aviso_confirma").hide();
 			$("#btn_synchro").removeClass("btn_home_disabled");
 			$("#btn_synchro").addClass("btn_home");
 			if(sendSynchro == false){
@@ -340,7 +338,7 @@ var app = {
 
 	},
 	getLeads: function() {
-		console.log("Updating bookings...");
+		console.log("Updating Leads...");
 		try {
 			$.ajax(urlAPI + "/leads/list", {
 				type: "GET",
@@ -363,6 +361,33 @@ var app = {
 		catch (error)
 		{
 			alert("getLeads " + error);
+		}
+
+	},
+	getSurveys: function() {
+		console.log("Updating Surveys...");
+		try {
+			$.ajax(urlAPI + "/surveys/list", {
+				type: "GET",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				contentType: "application/json",
+				success: function(data) {
+					if (data.status) {
+						dbapp.updateSurveys(data.data);
+					} else {
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert("getSurveys : " + text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert("getSurveys " + error);
 		}
 
 	},
@@ -466,7 +491,7 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-
+		app.enableDisableMenu("false");
 		setTimeout(app.getUsers(), 200);
 		setTimeout(app.getModelsAPI(), 200);
 		setTimeout(dbapp.sendLeads(STATUS_CREATE), 200);
@@ -488,7 +513,10 @@ var app = {
 								dbapp.updateDateLastSyncro(data.data);
 								setTimeout(app.getBookings(), 1000);
 								setTimeout(app.getLeads(), 1000);
+								setTimeout(app.getSurveys(), 1000);
 								sendSynchro = false;
+								$(".aviso_confirma").show();
+
 							} else {
 								console.log("Error al crear el registro : " + data.error);
 							}
@@ -601,5 +629,29 @@ var app = {
 		console.log("app.checkInLead");
 		$("#list-data-lead").hide();
 		dbapp.checkInLead(emailLead, typeRegistry);
+	},
+	
+	enableDisableMenu: function(action){
+		if(action == "true"){
+			$(document).on("click", "#btn_lead", app.goToFormLead);
+			$(document).on("click", "#btn_check_in", app.goToFormCheckIn);
+			$(document).on("click", "#btn_synchro", app.goToSynchro);
+			$(document).on("click", "#btn_survey", app.goToFormSurvey);
+			$(document).on("click", "#btn_logout", app.logOut);
+			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").addClass("btn_home");
+			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").removeClass("btn_home_disabled");
+			$(".aviso_confirma").hide();
+		}else{
+			$(document).off("click", "#btn_synchro", false);
+			$(document).off("click", "#btn_lead", false);
+			$(document).off("click", "#btn_check_in", false);
+			$(document).off("click", "#btn_survey", false);
+			$(document).off("click", "#btn_logout", false);
+			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").addClass("btn_home_disabled");
+			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").removeClass("btn_home");
+		}
+
 	}
+	
+	
 };

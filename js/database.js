@@ -492,6 +492,80 @@ var dbapp = {
 
 		}
 	},
+	updateSurveys: function(surveys) {
+		try {
+			for (var survey in surveys) {
+				dbapp.searchSurveyDB(surveys[survey]);
+			}
+		} catch (error) {
+			alert("updateSurveys " + error);
+		}
+	},
+	searchSurveyDB: function(objSurvey) {
+		result = false;
+
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Surveys WHERE email = ?',
+								[objSurvey.email],
+								function(tx, result) {
+									callBacks.successSearchSurvey(tx, result, objSurvey)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("searchSurveyDB : " + error);
+					}
+				}
+		);
+	},
+	updateSurveyDB: function(tx, objSurvey) {
+		try {
+			var sql = 'UPDATE Leads SET experience = ?, testdrive_experience = ?, vehicles = ?,' +
+					'liked = ?, contact = ?, time = ?, model = ?, status = ? ' +
+					'WHERE email = ? AND country_id = ?';
+
+			//TODO: AJUSTAR SUCCESS           
+			tx.executeSql(sql, [
+					objSurvey.experience,
+					objSurvey.testDriveExperience,
+					objSurvey.vehicles,
+					objSurvey.like,
+					objSurvey.contact,
+					objSurvey.time,
+					objSurvey.model,
+					objSurvey.status,
+					objSurvey.email,
+					objSurvey.country.id
+			], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("updateSurveyDB " + error);
+		}
+	},
+	createSurveyDB: function(tx, objSurvey) {
+		try {
+
+			var sql = 'INSERT INTO Surveys (email, country_id, experience, testdrive_experience, vehicles,' +
+					'liked, contact, time, model, status) VALUES (' +
+					' "' + objSurvey.email + '", ' +
+					objSurvey.country.id + ', ' +
+					' "' + objSurvey.experience + '", ' +
+					' "' + objSurvey.testDriveExperience + '", ' +
+					' "' + objSurvey.vehicles + '", ' +
+					' "' + objSurvey.like + '", ' +
+					' "' + objSurvey.contact + '", ' +
+					' "' + objSurvey.time + '", ' +
+					' "' + objSurvey.model + '", ' +
+					' "' + objSurvey.status + '")';
+
+			//TODO: AJUSTAR SUCCESS  
+			var xx = tx.executeSql(sql, [], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("createSurveyDB " + error);
+		}
+	},
 	
 	updateQuotasBooking : function(bookingId){
 		db.transaction(

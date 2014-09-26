@@ -141,6 +141,23 @@ var callBacks = {
 		
 	},
 
+	successSearchSurvey: function(transaction, results, objSurvey)
+	{
+		if (results.rows.length > 0) {
+			db.transaction(
+					function(tx) {
+						dbapp.updateSurveyDB(tx, objSurvey);
+					}
+			);
+		} else {
+			db.transaction(
+					function(tx) {
+						dbapp.createSurveyDB(tx, objSurvey);
+					}
+			);
+		}
+	},
+
 	successSearchLead: function(transaction, results, objLead)
 	{
 		if (results.rows.length > 0) {
