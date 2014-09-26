@@ -291,10 +291,10 @@ var app = {
 				contentType: "application/json",
 				success: function(data) {
 					if (data.status) {
-						$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
+						//$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
 						dbapp.updateUsers(data.data);
 					} else {
-						$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
+						//$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {

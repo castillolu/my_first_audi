@@ -725,7 +725,7 @@ var dbapp = {
 						tx.executeSql(sql, [], function(tx, result) {
 							$('.synchro').addClass('synchro_updated');
 							$('.synchro_updated').addClass('synchro');
-							$('.synchro_info_txt').html(date.datelocal);
+							$('.synchro_info_txt').html(i18n.t("translation:general.last_sync") + " : " + date.datelocal);
 							setTimeout(function() {
 								$('.synchro').addClass('synchro_updated');
 								$('.synchro_updated').addClass('synchro');

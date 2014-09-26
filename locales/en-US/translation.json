@@ -10,7 +10,8 @@
 		"last_syncro" : "Last synchronization : ",
 		"dialog_lead_exist_title" : "This email address is registered",
 		"dialog_lead_exist_message" : "Please verify your email address. The email entered is already registered.",		
-		"dialog_lead_exist_button" : "Ok"
+		"dialog_lead_exist_button" : "Ok",
+		"last_sync" : "Last sync:"		
 	},
 	"dashboard":{
 		"form":"Form",

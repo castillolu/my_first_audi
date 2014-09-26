@@ -10,7 +10,8 @@
 		"last_syncro" : "Última sincronizacón : ",
 		"dialog_lead_exist_title" : "Correo electrónico ya registrado",
 		"dialog_lead_exist_message" : "Verifique el correo eletrónico, ya que el utilizado se encuentra asociado a otro usuario.",		
-		"dialog_lead_exist_button" : "Aceptar"
+		"dialog_lead_exist_button" : "Aceptar",
+		"last_sync" : "Última sincronización:"
 	},
 	"dashboard":{
 		"form":"Formulario",
