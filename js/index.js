@@ -361,7 +361,7 @@ var app = {
 					if(jqXHR.status==0){
 						alert('You are offline!!\n Please Check Your Network.');
 					}else if(jqXHR.status==404){
-						alert('Requested URL not found.');
+						alert('Requested URL not found.' + urlAPI + "/leads/list");
 					}else if(jqXHR.status==500){
 						alert('Internel Server Error.');
 					}else if(text_status=='parsererror'){
