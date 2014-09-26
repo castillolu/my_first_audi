@@ -239,7 +239,6 @@ var app = {
 				setTimeout(function() {
 					if (localStorage.status == 'true') {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
-						setTimeout(app.getModels(), 100);
 						$.mobile.changePage("#dashboard");
 					} else {
 						alert("Your login failed");
@@ -261,6 +260,7 @@ var app = {
 		if (networkState == 'wifi' && appStart == false) {
 			appStart = true;
 			setTimeout(app.getUsers(), 100);
+			setTimeout(app.getModelsAPI(), 100);
 		}
 	},
 	getUsers: function() {
@@ -352,6 +352,34 @@ var app = {
 		}
 
 	},
+	getModelsAPI: function() {
+		console.log("Updating models...");
+		try {
+			$.ajax(urlAPI + "/countries/list", {
+				type: "GET",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
+				},
+				crossDomain: true,
+				contentType: "application/json",
+				success: function(data) {
+					if (data.status) {
+						dbapp.updateModels(data.data);
+					} else {
+						console.log("Error al crear el registro : " + data.error);
+					}
+				},
+				error: function(jqXHR, text_status, strError) {
+					alert(text_status + " " + strError);
+				}
+			});
+		}
+		catch (error)
+		{
+			alert("getModelsAPI " + error);
+		}
+
+	},
 	goToFormLead: function() {
 		dbapp.queryBookings();
 		switch (localStorage.type_registry) {
@@ -429,7 +457,9 @@ var app = {
 	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
 		$("#survey_country").val(localStorage.country);
-
+		
+		dbapp.queryModels();
+		/*
 		var models = JSON.parse(localStorage.getItem("models"));
 		for (i in models) {
 			console.log(models[i]);
@@ -438,7 +468,7 @@ var app = {
 
 			$("#survey_model").append(html);
 		}
-
+		*/
 		$.mobile.changePage("#survey");
 	},
 	logOut: function() {

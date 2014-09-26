@@ -102,6 +102,11 @@ var dbapp = {
 				'name TEXT NOT NULL, ' +
 				'date TEXT NOT NULL,' +
 				'quotas INTEGER NOT NULL)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS Models(' +
+				'id INTEGER NOT NULL, ' +
+				'country_id INTEGER NOT NULL, ' +
+				'name TEXT NOT NULL, ' +
+				'PRIMARY KEY (id, country_id))');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS Updates(' +
 				'lastupdate TEXT NOT NULL)');
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
@@ -192,6 +197,78 @@ var dbapp = {
 			alert("createUserDB " + error);
 		}
 	},
+	//Update models from BD PHP
+	updateModels: function(countries) {
+		try {
+			for (var country in countries) {
+				var models = countries[country].models;
+				for(var model in models){
+					dbapp.searchModelDB(models[model], countries[country].id);
+				}
+			}
+		} catch (error) {
+			alert("updateModels " + error);
+		}
+	},
+	searchModelDB : function(objModel, countryId){
+		db.transaction(
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Models WHERE id = ? AND country_id = ?',
+								[objModel.id, countryId],
+								function(tx, result) {
+									callBacks.successSearchModel(tx, result, objModel, countryId)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("searchModelDB : " + error);
+					}
+				}
+		);
+	},
+	updateModelDB: function(tx, objModel, countryId) {
+		try {
+			var sql = 'UPDATE Models SET name "' + objModel.name + '" ' +
+					'WHERE id = ' + objModel.id + ' ' +
+					'AND id_country = ' + countryId;
+			//TODO: AJUSTAR SUCCESS           
+			tx.executeSql(sql, [], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("updateModelDB " + error);
+		}
+	},
+	createModelDB: function(tx, objModel, countryId) {
+		try {
+			var sql = 'INSERT INTO Models (id, country_id, name) ' +
+					' VALUES (' + objBooking.id +
+					', ' + objBooking.country.id +
+					', "' + objBooking.name + '")';
+			//TODO: AJUSTAR SUCCESS  
+			var xx = tx.executeSql(sql, [], function() {
+			}, callBacks.errorQuery);
+		} catch (error) {
+			alert("createModelDB " + error);
+		}
+	},
+	queryModels: function() {
+		try {
+			db.transaction(
+					function(tx) {
+						tx.executeSql('SELECT * FROM Models WHERE country_id = ? ',
+								[localStorage.country],
+								function(tx, result) {
+									callBacks.successSearchModelsByCountry(tx, result)
+								},
+								callBacks.errorQuery);
+					}
+			);
+		} catch (error) {
+			alert("queryModels : " + error);
+		}
+
+	},
+	
 	//Update bookings from BD PHP
 	updateBookings: function(bookings) {
 		try {

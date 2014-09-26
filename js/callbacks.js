@@ -74,6 +74,37 @@ var callBacks = {
 			);
 		}
 	},
+	successSearchModel: function(transaction, results, objModel, countryId)
+	{
+		if (results.rows.length > 0) {
+			db.transaction(
+					function(tx) {
+						dbapp.updateModelDB(tx, objModel, countryId);
+					}
+			);
+		} else {
+			db.transaction(
+					function(tx) {
+						dbapp.createModelDB(tx, objModel, countryId);
+					}
+			);
+		}
+	},
+	successSearchModelsByCountry: function(transaction, results)
+	{
+		console.log("successSearchModelsByCountry");
+		var html = '';
+		if (results.rows.length > 0) {
+			for(var i = 0; i < results.rows.length; i++){
+				var id = results.rows.item(i).id
+				var name = results.rows.item(i).name;
+				html += '<input type="checkbox" name="model" id="model-' + i + '" value="' + id + '" />';
+				html += '<label for="model-' + i + '">' + name + '</label>';
+			}
+		}
+		$("#survey_model").html(html);				
+		
+	},
 	successSearchBooking: function(transaction, results, objBooking)
 	{
 		if (results.rows.length > 0) {
