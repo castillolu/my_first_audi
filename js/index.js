@@ -251,23 +251,23 @@ var app = {
 	},
 	isOffline: function() {
 		//TODO Disable button Sync 
-		$(document).off( "click", "#btn_synchro", false );
+		$(document).off("click", "#btn_synchro", false);
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 	},
 	isOnline: function() {
-		//TODO Enable button Sync 
-		$(document).on( "click", "#btn_synchro", app.goToSynchro );
- 
-		$("#btn_synchro").on();
-		$("#btn_synchro").removeClass("btn_home_disabled");
-		$("#btn_synchro").addClass("btn_home");
+		//Enable button Sync 
 		var networkState = navigator.network.connection.type;
 
-		if (networkState == 'wifi' && appStart == false) {
-			appStart = true;
-			setTimeout(app.getUsers(), 100);
-			setTimeout(app.getModelsAPI(), 100);
+		if (networkState == 'wifi') {
+			$(document).on("click", "#btn_synchro", app.goToSynchro);
+			$("#btn_synchro").removeClass("btn_home_disabled");
+			$("#btn_synchro").addClass("btn_home");
+			if (appStart == false) {
+				appStart = true;
+				setTimeout(app.getUsers(), 100);
+				setTimeout(app.getModelsAPI(), 100);
+			}
 		}
 	},
 	getUsers: function() {
