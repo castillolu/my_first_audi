@@ -348,6 +348,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
+					$("#logSyn").append(data.status);
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
 					} else { 
