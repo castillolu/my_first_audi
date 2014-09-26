@@ -351,6 +351,7 @@ var app = {
 					if (data.status == "true") {
 						dbapp.updateLeads(data.data);
 					} else { 
+						return false;
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
