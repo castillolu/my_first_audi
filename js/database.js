@@ -228,7 +228,7 @@ var dbapp = {
 	},
 	updateModelDB: function(tx, objModel, countryId) {
 		try {
-			var sql = 'UPDATE Models SET name "' + objModel.name + '" ' +
+			var sql = 'UPDATE Models SET name = "' + objModel.name + '" ' +
 					'WHERE id = ' + objModel.id + ' ' +
 					'AND id_country = ' + countryId;
 			//TODO: AJUSTAR SUCCESS           
