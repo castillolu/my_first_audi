@@ -521,7 +521,7 @@ var dbapp = {
 	},
 	updateSurveyDB: function(tx, objSurvey) {
 		try {
-			var sql = 'UPDATE Leads SET experience = ?, testdrive_experience = ?, vehicles = ?,' +
+			var sql = 'UPDATE Surveys SET experience = ?, testdrive_experience = ?, vehicles = ?,' +
 					'liked = ?, contact = ?, time = ?, model = ?, status = ? ' +
 					'WHERE email = ? AND country_id = ?';
 
