@@ -241,9 +241,9 @@ var dbapp = {
 	createModelDB: function(tx, objModel, countryId) {
 		try {
 			var sql = 'INSERT INTO Models (id, country_id, name) ' +
-					' VALUES (' + objBooking.id +
-					', ' + objBooking.country.id +
-					', "' + objBooking.name + '")';
+					' VALUES (' + objModel.id +
+					', ' + countryId +
+					', "' + objModel.name + '")';
 			//TODO: AJUSTAR SUCCESS  
 			var xx = tx.executeSql(sql, [], function() {
 			}, callBacks.errorQuery);
