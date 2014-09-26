@@ -103,9 +103,9 @@ var app = {
 		$('#btn_qr_code').on('click', app.scan);
 		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
-		$('#close_message').on('click', app.enableDisableMenu("true"));
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);
+		$(document).on('click', '#close_message', app.enableDisableMenu("true"));
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
 //        $('#query').on('click', dbapp.queryDemo);
