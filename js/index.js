@@ -342,7 +342,7 @@ var app = {
 	},
 	getLeads: function() {
 		console.log("Updating Leads...");
-//		try {
+		try {
 			$.ajax(urlAPI + "/leads/list", {
 				type: "GET",
 				beforeSend: function(xhr) {
@@ -358,28 +358,14 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					if(jqXHR.status==0){
-						alert('You are offline!!\n Please Check Your Network.');
-					}else if(jqXHR.status==404){
-						alert('Requested URL not found.' + urlAPI + "/leads/list");
-					}else if(jqXHR.status==500){
-						alert('Internel Server Error.');
-					}else if(text_status=='parsererror'){
-						alert('Error.\nParsing JSON Request failed. '+jqXHR.status);
-					}else if(text_status=='timeout'){
-						alert('Request Time out.');
-					}else {
-						alert('Unknow Error.\n'+jqXHR.responseText);
-					}   					
-					//alert("getLeads ajax: " + text_status + " " + strError);
+					alert("getLeads : " + text_status + " - " + strError);
 				}
 			});
-/*		}
+		}
 		catch (error)
 		{
 			alert("getLeads " + error);
 		}
-*/
 	},
 	getSurveys: function() {
 		console.log("Updating Surveys...");
@@ -398,7 +384,7 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getSurveys : " + text_status + " " + strError);
+					alert("getSurveys : " + text_status + " - " + strError);
 				}
 			});
 		}
