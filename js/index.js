@@ -314,11 +314,11 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status == "true") {
+					if (data.status == true) {
 						//$(".synchro_info_txt").append("Resultado de la Consulta : " + data.status);
 						dbapp.updateUsers(data.data);
 					} else {
-						//$(".synchro_info_txt").append("Error al crear el registro : " + data.error);
+						console.log("Error al crear users : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
@@ -416,39 +416,6 @@ var app = {
 		}
 
 	},
-	/*
-	 getModels: function() {
-	 console.log("Updating models...");
-	 try {
-	 $.ajax(urlAPI + "/models/list", {
-	 type: "GET",
-	 beforeSend: function(xhr) {
-	 xhr.setRequestHeader("Authorization", "Basic " + btoa(authAPI));
-	 },
-	 crossDomain: true,
-	 contentType: "application/json",
-	 data: {country: localStorage.country},
-	 success: function(data) {
-	 if (data.status) {
-	 //dbapp.updateBookings(data.data);
-	 
-	 localStorage.setItem("models", JSON.stringify(data.data));
-	 } else {
-	 console.log("Error al crear el registro : " + data.error);
-	 }
-	 },
-	 error: function(jqXHR, text_status, strError) {
-	 alert(text_status + " " + strError);
-	 }
-	 });
-	 }
-	 catch (error)
-	 {
-	 alert("getUsers " + error);
-	 }
-	 
-	 },
-	 */
 	getModelsAPI: function() {
 		console.log("Updating models...");
 		try {
@@ -460,10 +427,10 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status == "true") {
+					if (data.status == true) {
 						dbapp.updateModels(data.data);
 					} else {
-						console.log("Error al crear el registro : " + data.error);
+						console.log("Error al crear models : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
@@ -535,7 +502,7 @@ var app = {
 						crossDomain: true,
 						contentType: "application/json",
 						success: function(data) {
-							if (data.status) {
+							if (data.status == true) {
 								dbapp.updateDateLastSyncro(data.data);
 								setTimeout(app.getBookings(), 1000);
 								setTimeout(app.getLeads(), 1000);
@@ -544,7 +511,7 @@ var app = {
 								//$(".aviso_confirma").show();
 
 							} else {
-								console.log("Error al crear el registro : " + data.error);
+								console.log("Error al crear el lastupdate : " + data.error);
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
