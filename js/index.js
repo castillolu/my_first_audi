@@ -101,8 +101,8 @@ var app = {
 	},
 	loadActions: function() {
 //		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-		document.addEventListener("offline", this.isOffline, false);
-		document.addEventListener("online", this.isOnline, false);
+		document.addEventListener("offline", app.isOffline, false);
+		document.addEventListener("online", app.isOnline, false);
 		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
 		$('#btn_check_in').on('click', app.goToFormCheckIn);
