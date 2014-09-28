@@ -38,9 +38,6 @@ var app = {
 		} else {
 			$(document).on('ready', this.onDeviceReady);
 		}
-		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-		document.addEventListener("offline", this.isOffline, false);
-		document.addEventListener("online", this.isOnline, false);
 		setTimeout(app.setLanguage(language, true), 1000);
 		$(document).ajaxError(function(event, request, settings) {
 			console.log("Error requesting page " + settings.url);
@@ -51,7 +48,11 @@ var app = {
 	// The scope of `this` is the event. In order to call the `receivedEvent`
 	// function, we must explicity call `app.receivedEvent(...);`
 	onDeviceReady: function() {
+		console.log("onDeviceReady");
 		app.receivedEvent('deviceready');
+		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
+		document.addEventListener("offline", this.isOffline, false);
+		document.addEventListener("online", this.isOnline, false);
 		app.loadContent();
 		setTimeout(function() {
 			app.loadActions();
