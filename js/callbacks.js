@@ -174,6 +174,14 @@ var callBacks = {
 			);
 		}
 	},
+	successLastUpdate: function(transaction, results)
+	{
+		if (results.rows.length > 0) {
+			$('.synchro_info_txt').html(i18n.t("translation:general.last_sync") + " " + results.rows.item(0).lastupdate);
+		}else{
+			$('.synchro_info_txt').html(i18n.t("translation:general.last_sync") + " " + i18n.t("translation:general.never_sync"));
+		}
+	},
 	successSearchLeads : function(tx, results, status)
 	{
 		try {

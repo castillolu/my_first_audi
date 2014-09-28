@@ -114,6 +114,7 @@ var app = {
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
+		app.getLastUpdate();
 	},
 	validateLead: function() {
 		$("#form_lead").validate({
@@ -253,6 +254,10 @@ var app = {
 		} catch (error) {
 			alert("loginAuth : " + error);
 		}
+	},
+	getLastUpdate : function(){
+		console.log("getLastUpdate");
+		dbapp.queryLastUpdate();
 	},
 	isOffline: function() {
 		//TODO Disable button Sync 

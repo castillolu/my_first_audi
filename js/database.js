@@ -160,6 +160,23 @@ var dbapp = {
 				}
 		);
 	},
+	queryLastUpdate: function() {
+		db.transaction(
+			function(tx) {
+				try {
+					tx.executeSql('SELECT * FROM Updates ORDER BY lastupdate DESC LIMIT 1',
+							[],
+							function(tx, result) {
+								callBacks.successLastUpdate(tx, result)
+							},
+							callBacks.errorQuery);
+				} catch (error) {
+					alert("queryLastUpdate : " + error);
+				}
+			}
+		);
+
+	},
 	updateUserDB: function(tx, objUser) {
 		var sql = 'UPDATE Users SET country_id = ' + objUser.country.id + ', ' +
 				'profile_id = ' + objUser.profile.id + ', ' +
@@ -202,7 +219,7 @@ var dbapp = {
 		try {
 			for (var country in countries) {
 				var models = countries[country].models;
-				for(var model in models){
+				for (var model in models) {
 					dbapp.searchModelDB(models[model], countries[country].id);
 				}
 			}
@@ -210,7 +227,7 @@ var dbapp = {
 			alert("updateModels " + error);
 		}
 	},
-	searchModelDB : function(objModel, countryId){
+	searchModelDB: function(objModel, countryId) {
 		db.transaction(
 				function(tx) {
 					try {
@@ -268,7 +285,6 @@ var dbapp = {
 		}
 
 	},
-	
 	//Update bookings from BD PHP
 	updateBookings: function(bookings) {
 		try {
@@ -376,33 +392,33 @@ var dbapp = {
 	updateLeadDB: function(tx, objLead) {
 		try {
 			var booking = "";
-			if(objLead.booking == ""){
+			if (objLead.booking == "") {
 				booking = "NULL";
-			}else{
+			} else {
 				booking = objLead.booking.id;
 			}
-			
+
 			var sql = 'UPDATE Leads SET booking_id = ?, name = ?, last_name = ?,' +
 					'phone = ?, address = ?, brand = ?, model = ?, year = ?, ' +
 					'model_audi = ?, type_registry = ?, status = ?, control = ? ' +
 					'WHERE email = ? AND country_id = ?';
-					
+
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [
-					booking,
-					objLead.name,
-					objLead.lastName,
-					objLead.phone,
-					objLead.address,
-					objLead.brand,
-					objLead.model,
-					objLead.year,
-					objLead.modelAudi,
-					objLead.typeRegistry,
-					objLead.status,
-					objLead.control,
-					objLead.email,
-					objLead.country.id
+				booking,
+				objLead.name,
+				objLead.lastName,
+				objLead.phone,
+				objLead.address,
+				objLead.brand,
+				objLead.model,
+				objLead.year,
+				objLead.modelAudi,
+				objLead.typeRegistry,
+				objLead.status,
+				objLead.control,
+				objLead.email,
+				objLead.country.id
 			], function() {
 			}, callBacks.errorQuery);
 		} catch (error) {
@@ -411,11 +427,11 @@ var dbapp = {
 	},
 	createLeadDB: function(tx, objLead) {
 		try {
-	
+
 			var booking = "";
-			if(objLead.booking == ""){
+			if (objLead.booking == "") {
 				booking = "NULL";
-			}else{
+			} else {
 				booking = objLead.booking.id;
 			}
 
@@ -436,7 +452,7 @@ var dbapp = {
 					' "' + objLead.typeRegistry + '", ' +
 					' "' + objLead.status + '", ' +
 					' "' + objLead.control + '")';
-			
+
 			//TODO: AJUSTAR SUCCESS  
 			var xx = tx.executeSql(sql, [], function() {
 			}, callBacks.errorQuery);
@@ -480,7 +496,7 @@ var dbapp = {
 						$("#dialog_message").html(i18n.t("translation:general.dialog_lead_message"));
 						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_button"));
 						$("#leadSuccess").trigger("click");
-						if(objLead.booking_id != "NULL"){
+						if (objLead.booking_id != "NULL") {
 							dbapp.updateQuotasBooking(objLead.booking_id);
 							dbapp.queryBookings();
 						}
@@ -527,16 +543,16 @@ var dbapp = {
 
 			//TODO: AJUSTAR SUCCESS           
 			tx.executeSql(sql, [
-					objSurvey.experience,
-					objSurvey.testDriveExperience,
-					objSurvey.vehicles,
-					objSurvey.like,
-					objSurvey.contact,
-					objSurvey.time,
-					objSurvey.model,
-					objSurvey.status,
-					objSurvey.email,
-					objSurvey.country.id
+				objSurvey.experience,
+				objSurvey.testDriveExperience,
+				objSurvey.vehicles,
+				objSurvey.like,
+				objSurvey.contact,
+				objSurvey.time,
+				objSurvey.model,
+				objSurvey.status,
+				objSurvey.email,
+				objSurvey.country.id
 			], function() {
 			}, callBacks.errorQuery);
 		} catch (error) {
@@ -566,8 +582,7 @@ var dbapp = {
 			alert("createSurveyDB " + error);
 		}
 	},
-	
-	updateQuotasBooking : function(bookingId){
+	updateQuotasBooking: function(bookingId) {
 		db.transaction(
 				function(tx) {
 					try {
@@ -582,8 +597,7 @@ var dbapp = {
 					}
 				}
 		);
-	},	
-	
+},
 	saveSurvey: function(tx, objSurvey) {
 		console.log("dbapp.saveSurvey");
 		try {
@@ -617,11 +631,11 @@ var dbapp = {
 
 						$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
 						$(".ui-checkbox label").removeClass('ui-btn-active ui-checkbox-on');
-						
+
 						$("#dialog_title").html(i18n.t("translation:general.dialog_survey_title"));
 						$("#dialog_message").html(i18n.t("translation:general.dialog_survey_message"));
 						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_button"));
-						
+
 						$("#surveySuccess").trigger("click");
 					},
 					callBacks.errorQuery
@@ -744,16 +758,16 @@ var dbapp = {
 					function(tx) {
 						var sql = 'UPDATE Leads SET status = ? WHERE email = ? ';
 						tx.executeSql(sql, [STATUS_CHECK_IN, email], function(tx, result) {
-							if(typeReg == "DEALER"){
+							if (typeReg == "DEALER") {
 								$.mobile.changePage("#survey");
-							}else{
-								
+							} else {
+
 							}
 							emailLead = "";
 							typeRegistry = "";
 
 						},
-						callBacks.errorQuery);
+								callBacks.errorQuery);
 					}
 			);
 		} catch (error) {
