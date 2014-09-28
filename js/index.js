@@ -33,13 +33,7 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			console.log("Mobile");
-			document.addEventListener('deviceready', this.onDeviceReady, false);
-		} else {
-			console.log("Desktop");
-			$(document).on('ready', this.onDeviceReady);
-		}
+		document.addEventListener('deviceready', this.onDeviceReady, false);
 		console.log(language);
 		setTimeout(app.setLanguage(language, true), 1000);
 		$(document).ajaxError(function(event, request, settings) {
