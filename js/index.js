@@ -373,7 +373,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status == "true") {
+					if (data.status == true) {
 						dbapp.updateLeads(data.data);
 					} else if (data.status == "false") {
 						alert('Sin datos');
@@ -400,7 +400,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					if (data.status == "true") {
+					if (data.status == true) {
 						dbapp.updateSurveys(data.data);
 					} else {
 					}

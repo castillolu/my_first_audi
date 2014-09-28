@@ -315,7 +315,7 @@ var dbapp = {
 		);
 	},
 	updateBookingDB: function(tx, objBooking) {
-		$("#log").append("updateBookingDB");
+		console.log("updateBookingDB");
 		try {
 			var sql = 'UPDATE Bookings SET country_id = ' + objBooking.country.id + ', ' +
 					'name = "' + objBooking.name + '", ' +
@@ -330,6 +330,7 @@ var dbapp = {
 		}
 	},
 	createBookingDB: function(tx, objBooking) {
+		console.log("createBookingDB");
 		try {
 			var sql = 'INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
 					' VALUES (' +
