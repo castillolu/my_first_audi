@@ -97,6 +97,10 @@ var app = {
 //		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
 		document.addEventListener("offline", app.isOffline, false);
 		document.addEventListener("online", app.isOnline, false);
+		if ((navigator.network.connection.type).toUpperCase() != "NONE" &&
+				(navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+			app.isOnline();
+		}
 		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
 		$('#btn_check_in').on('click', app.goToFormCheckIn);
