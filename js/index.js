@@ -53,13 +53,10 @@ var app = {
 	onDeviceReady: function() {
 		console.log("onDeviceReady");
 		app.receivedEvent('deviceready');
-		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-		document.addEventListener("offline", this.isOffline, false);
-		document.addEventListener("online", this.isOnline, false);
 		app.loadContent();
 		setTimeout(function() {
 			app.loadActions();
-		}, 500);
+		}, 1000);
 	},
 	// Update DOM on a Received Event
 	receivedEvent: function(id) {
@@ -103,6 +100,10 @@ var app = {
 
 	},
 	loadActions: function() {
+//		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
+		document.addEventListener("offline", this.isOffline, false);
+		document.addEventListener("online", this.isOnline, false);
+		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
 		$('#btn_check_in').on('click', app.goToFormCheckIn);
 		$('#btn_synchro').on('click', app.goToSynchro);
@@ -118,7 +119,10 @@ var app = {
 		$(document).on('click', '#close_message', app.enableDisableMenu("true"));
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
-		$(document).on('offline online', function(event) {
+		$(document).on('offline', function(event) {
+			alert('You are ' + event.type + '!');
+		});
+		$(document).on('online', function(event) {
 			alert('You are ' + event.type + '!');
 		});
 //        $('#query').on('click', dbapp.queryDemo);
