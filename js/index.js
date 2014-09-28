@@ -97,9 +97,6 @@ var app = {
 
 	},
 	loadActions: function() {
-//		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-//		document.addEventListener("offline", app.isOffline, false);
-//		document.addEventListener("online", app.isOnline, false);
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			if ((navigator.network.connection.type).toUpperCase() != "NONE" &&
 					(navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
@@ -506,9 +503,9 @@ var app = {
 						success: function(data) {
 							if (data.status == true) {
 								dbapp.updateDateLastSyncro(data.data);
-								setTimeout(app.getBookings(), 1000);
-								setTimeout(app.getLeads(), 1000);
-								setTimeout(app.getSurveys(), 1000);
+								setTimeout(app.getBookings(), 500);
+								setTimeout(app.getLeads(), 500);
+								setTimeout(app.getSurveys(), 500);
 								sendSynchro = false;
 								$(".aviso_confirma").show();
 

@@ -162,18 +162,18 @@ var dbapp = {
 	},
 	queryLastUpdate: function() {
 		db.transaction(
-			function(tx) {
-				try {
-					tx.executeSql('SELECT * FROM Updates ORDER BY lastupdate DESC LIMIT 1',
-							[],
-							function(tx, result) {
-								callBacks.successLastUpdate(tx, result)
-							},
-							callBacks.errorQuery);
-				} catch (error) {
-					alert("queryLastUpdate : " + error);
+				function(tx) {
+					try {
+						tx.executeSql('SELECT * FROM Updates ORDER BY lastupdate DESC LIMIT 1',
+								[],
+								function(tx, result) {
+									callBacks.successLastUpdate(tx, result)
+								},
+								callBacks.errorQuery);
+					} catch (error) {
+						alert("queryLastUpdate : " + error);
+					}
 				}
-			}
 		);
 
 	},
@@ -598,7 +598,7 @@ var dbapp = {
 					}
 				}
 		);
-},
+	},
 	saveSurvey: function(tx, objSurvey) {
 		console.log("dbapp.saveSurvey");
 		try {
@@ -739,14 +739,13 @@ var dbapp = {
 						var sql = 'INSERT INTO Updates (lastupdate) VALUES ("' + date.datelocal + '")';
 						tx.executeSql(sql, [], function(tx, result) {
 							$('.synchro').addClass('synchro_updated');
-							$('.synchro_updated').addClass('synchro');
-							$('.synchro_info_txt').html(i18n.t("translation:general.last_sync") + " : " + date.datelocal);
+							$('.synchro_updated').removeClass('synchro');
+							$('.synchro_info_txt').html(i18n.t("translation:general.last_sync") + " " + date.datelocal);
 							setTimeout(function() {
-								$('.synchro').addClass('synchro_updated');
 								$('.synchro_updated').addClass('synchro');
-							}, 120000);
-						},
-								callBacks.errorQuery);
+								$('.synchro').removeClass('synchro_updated');
+							}, 60000);
+						}, callBacks.errorQuery);
 					}
 			);
 		} catch (error) {
