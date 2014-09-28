@@ -71,7 +71,9 @@ var app = {
 				lng: language
 			};
 			$.i18n.init(options);
-			$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
+			i18n.setLng(language, function(t) {
+				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
+			});
 		} else {
 			i18n.setLng(language, function(t) {
 				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
