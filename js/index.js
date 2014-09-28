@@ -33,8 +33,11 @@ var app = {
 	// `load`, `deviceready`, `offline`, and `online`.
 	bindEvents: function() {
 		var language = window.navigator.userLanguage || window.navigator.language;
-		document.addEventListener('deviceready', this.onDeviceReady, false);
-		console.log(language);
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			document.addEventListener('deviceready', app.onDeviceReady, false);
+		} else {
+			$(document).on('ready', app.onDeviceReady);
+		}
 		setTimeout(app.setLanguage(language, true), 1000);
 		$(document).ajaxError(function(event, request, settings) {
 			console.log("Error requesting page " + settings.url);
@@ -95,11 +98,13 @@ var app = {
 	},
 	loadActions: function() {
 //		document.getElementById('login').addEventListener('submit', this.loginAuth, false);
-		document.addEventListener("offline", app.isOffline, false);
-		document.addEventListener("online", app.isOnline, false);
-		if ((navigator.network.connection.type).toUpperCase() != "NONE" &&
-				(navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
-			app.isOnline();
+//		document.addEventListener("offline", app.isOffline, false);
+//		document.addEventListener("online", app.isOnline, false);
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			if ((navigator.network.connection.type).toUpperCase() != "NONE" &&
+					(navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
+				app.isOnline();
+			}
 		}
 		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
@@ -112,17 +117,14 @@ var app = {
 		$('#btn_qr_code').on('click', app.scan);
 		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
+		$("#close_message").on('click', function(){
+			app.enableDisableMenu("true");
+		});
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);
-		$(document).on('click', '#close_message', app.enableDisableMenu("true"));
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
-		$(document).on('offline', function(event) {
-			alert('You are ' + event.type + '!');
-		});
-		$(document).on('online', function(event) {
-			alert('You are ' + event.type + '!');
-		});
+
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
@@ -484,7 +486,7 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-		//app.enableDisableMenu("false");
+		app.enableDisableMenu("false");
 		setTimeout(app.getUsers(), 200);
 		setTimeout(app.getModelsAPI(), 200);
 		setTimeout(dbapp.sendLeads(STATUS_CREATE), 200);
@@ -508,7 +510,7 @@ var app = {
 								setTimeout(app.getLeads(), 1000);
 								setTimeout(app.getSurveys(), 1000);
 								sendSynchro = false;
-								//$(".aviso_confirma").show();
+								$(".aviso_confirma").show();
 
 							} else {
 								console.log("Error al crear el lastupdate : " + data.error);
@@ -642,8 +644,5 @@ var app = {
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").addClass("btn_home_disabled");
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").removeClass("btn_home");
 		}
-
 	}
-
-
 };

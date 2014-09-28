@@ -85,8 +85,12 @@
 	   "model": "7.In which Audi models are you interested?",
 	   "models_of_interest": "Models of interest",
 	   "testdrive": "Test drive",
-	   "previous_activities": "Previous activities"
-	   
+	   "previous_activities": "Previous activities",
+	   "requiere_experience": "Select your my First Audi experience",
+	   "requiere_testdrive_experience": "Select your test drive experience in general",
+	   "requiere_like": "Please enter you like the most from your test drive.",
+	   "requiere_contact": "Select if would you like to be contacted by the salesperson",
+	   "requiere_time": "Select your interested in purchasing an Audi."
 	},
 	"checkin":{
 		"qrcode" : "QR CODE",
