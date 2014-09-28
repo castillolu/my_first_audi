@@ -40,7 +40,7 @@ var app = {
 			console.log("Desktop");
 			$(document).on('ready', this.onDeviceReady);
 		}
-		consle.log(language);
+		console.log(language);
 		setTimeout(app.setLanguage(language, true), 1000);
 		$(document).ajaxError(function(event, request, settings) {
 			console.log("Error requesting page " + settings.url);
