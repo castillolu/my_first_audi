@@ -66,10 +66,12 @@ var app = {
 	setLanguage: function(language, firstTime)
 	{
 		if (firstTime) {
-			$.i18n.init(function(t) {
-				lng: language;
-				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
-			});
+			var options = { 
+				resGetPath: 'languages/__lng__/__ns__.json',
+				lng: language
+			};
+			$.i18n.init(options);
+			$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
 		} else {
 			i18n.setLng(language, function(t) {
 				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
