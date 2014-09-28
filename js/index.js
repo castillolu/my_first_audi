@@ -343,12 +343,12 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
-					console.log(data);
+					console.log(data.status);
 					if (data.status == true) {
-						console.log("Resultado de la Consulta : " + data.status);
+						console.log("Resultado de la Consulta booking : " + data.status);
 						dbapp.updateBookings(data.data);
 					} else {
-						console.log("Error al crear el registro : " + data.error);
+						console.log("Error al crear el booking : " + data.error);
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
