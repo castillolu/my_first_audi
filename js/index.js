@@ -42,9 +42,9 @@ var app = {
 		document.addEventListener("offline", this.isOffline, false);
 		document.addEventListener("online", this.isOnline, false);
 		setTimeout(app.setLanguage(language, true), 1000);
-		$( document ).ajaxError(function( event, request, settings ) {
+		/*$( document ).ajaxError(function( event, request, settings ) {
 			$( "#logSyn" ).append( "<li>Error requesting page " + settings.url + "</li>" );
-		});		
+		});*/		
 	},
 	// deviceready Event Handler
 	//
@@ -55,7 +55,6 @@ var app = {
 		app.loadContent();
 		setTimeout(function() {
 			app.loadActions();
-			app.loadAutoCompleteLead();
 		}, 500);
 	},
 	// Update DOM on a Received Event
@@ -276,6 +275,8 @@ var app = {
 
 		// Enable button Sync 
 		var networkState = navigator.network.connection.type;
+		console.log("isOnline");
+		console.log(networkState);
 
 		if (networkState == 'wifi') {
 			$("#btn_synchro").removeClass("btn_home_disabled");
@@ -500,6 +501,7 @@ var app = {
 	},
 	goToFormCheckIn: function() {
 		console.log("goToFormCheckIn");
+		app.loadAutoCompleteLead();		
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
