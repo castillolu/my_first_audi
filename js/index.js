@@ -343,6 +343,7 @@ var app = {
 				crossDomain: true,
 				contentType: "application/json",
 				success: function(data) {
+					console.log(data);
 					if (data.status == true) {
 						console.log("Resultado de la Consulta : " + data.status);
 						dbapp.updateBookings(data.data);
