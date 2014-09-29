@@ -833,6 +833,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 	.synchro{
 		font-size:1.2em;   
 	}
+    .synchro_info_txt{
+       padding:15px 10px 3px 10px;
+   }
 	.header_1_img img, .header_2_img img{
 		min-width:1200px;
 		height:auto;
