@@ -121,7 +121,9 @@ var app = {
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);
 		$("#list-data-lead").hide();
 		$(".aviso_confirma").hide();
-
+		 if (/iPad/i.test(navigator.userAgent)) {
+			$('.synchro').addClass("synchro_ipad");
+		 }
 //        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
