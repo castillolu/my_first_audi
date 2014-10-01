@@ -258,14 +258,14 @@ var app = {
 				console.log("Before dbapp.auth" + localStorage.status);
 				dbapp.auth(user, password);
 				setTimeout(function() {
-					console.log("Before If Status" + localStorage.status);
-					if (localStorage.status == true) {
+					console.log("Before If Status = " + localStorage.status);
+					if (localStorage.status == 'true') {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
 					} else {
 						alert("Your login failed");
 					}
-				}, 50);
+				}, 200);
 			}
 			return false;
 		} catch (error) {
