@@ -255,7 +255,7 @@ var app = {
 			var user = $("#email", this).val();
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
-				console.log("Before dbapp.auth" + localStorage.status);
+				console.log("Before dbapp.auth - Status = " + localStorage.status);
 				dbapp.auth(user, password);
 				setTimeout(function() {
 					console.log("Before If Status = " + localStorage.status);
@@ -543,7 +543,6 @@ var app = {
 		localStorage.clear();
 		localStorage.setItem("status", false);
 		window.location.href = "index.html";
-		//$.mobile.changePage("#login-page", {reloadPage: true});
 	},
 	backDashboard: function() {
 		console.log("backDashboard");
