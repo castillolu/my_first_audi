@@ -255,9 +255,11 @@ var app = {
 			var user = $("#email", this).val();
 			var password = $("#password", this).val();
 			if (user != '' && password != '') {
+				console.log("Before dbapp.auth" + localStorage.status);
 				dbapp.auth(user, password);
 				setTimeout(function() {
-					if (localStorage.status == 'true') {
+					console.log("Before If Status" + localStorage.status);
+					if (localStorage.status == true) {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
 					} else {
