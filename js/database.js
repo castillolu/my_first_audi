@@ -685,8 +685,8 @@ var dbapp = {
 		db.transaction(
 				function(tx) {
 					try {
-						tx.executeSql('SELECT * FROM Leads WHERE status = ? OR status = ? OR status = ? AND country_id = ?',
-								[STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO, localStorage.country],
+						tx.executeSql('SELECT * FROM Leads WHERE country_id = ? AND (status = ? OR status = ? OR status = ?)' ,
+								[localStorage.country, STATUS_CREATE, STATUS_BASE_CENTRAL, STATUS_MARKETO],
 								function(tx, result) {
 									callBacks.successSearchLeadsCheckIn(tx, result)
 								},
@@ -702,8 +702,8 @@ var dbapp = {
 		db.transaction(
 				function(tx) {
 					try {
-						tx.executeSql('SELECT * FROM Leads WHERE control = ?',
-								[qrCode],
+						tx.executeSql('SELECT * FROM Leads WHERE control = ? AND country_id = ?',
+								[qrCode, localStorage.country],
 								function(tx, result) {
 									callBacks.successSearchLeadQRCodeOrEmail(tx, result)
 								},
@@ -719,8 +719,8 @@ var dbapp = {
 		db.transaction(
 				function(tx) {
 					try {
-						tx.executeSql('SELECT * FROM Leads WHERE email = ?',
-								[email],
+						tx.executeSql('SELECT * FROM Leads WHERE email = ? AND country_id = ?',
+								[email localStorage.country],
 								function(tx, result) {
 									callBacks.successSearchLeadQRCodeOrEmail(tx, result)
 								},
