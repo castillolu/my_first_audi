@@ -12,6 +12,8 @@
 		"dialog_lead_exist_message" : "Verifique el correo eletrónico, ya que el utilizado se encuentra asociado a otro usuario.",		
 		"dialog_lead_no_exist_title" : "Resutlado del lead",
 		"dialog_lead_no_exist_message" : "Verifique el codigo QR, ya que el utilizado no se encuentra asociado a ninguún lead.",		
+		"dialog_login_title" : "Ingreso de usuario",
+		"dialog_login_message" : "Por favor verifique su usuario y contraseña e intente nuevamente",		
 		"dialog_lead_exist_button" : "Aceptar",
 		"last_sync" : "Última sincronización:",
 		"never_sync" : "Nunca ha sincronizado"

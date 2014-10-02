@@ -12,6 +12,8 @@
 		"dialog_lead_exist_message" : "Please verify your email address. The email entered is already registered.",		
 		"dialog_lead_no_exist_title" : "Result of lead",
 		"dialog_lead_no_exist_message" : "Please verify your QR Code, The scanned is not associated to any email.",		
+		"dialog_login_title" : "User log-in",
+		"dialog_login_message" : "Please verify your user and password and try again.",		
 		"dialog_lead_exist_button" : "Ok",
 		"last_sync" : "Last sync:",
 		"never_sync" : "It has never synchronized"

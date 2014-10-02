@@ -233,7 +233,7 @@ var app = {
 		});
 	},
 	saveSurvey: function() {
-		$('#logIndex').html("app.saveSurvey");
+		console.log("app.saveSurvey");
 		try {
 			//disable the button so we can't resubmit while we wait
 			//$("#submit-lead", this).attr("disabled", "disabled");
@@ -278,7 +278,10 @@ var app = {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
 					} else {
-						alert("Your login failed");
+						$("#dialog_title").html(i18n.t("translation:general.dialog_login_title"));
+						$("#dialog_message").html(i18n.t("translation:general.dialog_login_message"));
+						$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_exist_button"));
+						$("#leadSuccess").trigger("click");
 					}
 				}, 200);
 			}
