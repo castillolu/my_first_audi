@@ -135,20 +135,6 @@ var app = {
 		app.validateLead();
 		app.validateSurvey();
 		app.getLastUpdate();
-		switch(localStorage.type_registry){
-			case TYPE_REGISTRY_ONSITE:
-				app.hideBooking();
-				alert("1");
-				break;
-			case TYPE_REGISTRY_DEALER:
-				app.showBooking();
-				alert("2");
-				break;
-			case TYPE_REGISTRY_BOTH:
-				alert("3");
-				app.addRequiredRegister();
-				break;
-		}
 	},
 	blockBackButton : function(e){
 	    if($.mobile.activePage.is('#login_page')){
@@ -297,6 +283,20 @@ var app = {
 					if (localStorage.status == 'true') {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
+						switch(localStorage.type_registry){
+							case TYPE_REGISTRY_ONSITE:
+								app.hideBooking();
+								alert("1");
+								break;
+							case TYPE_REGISTRY_DEALER:
+								app.showBooking();
+								alert("2");
+								break;
+							case TYPE_REGISTRY_BOTH:
+								alert("3");
+								app.addRequiredRegister();
+								break;
+						}
 					} else {
 						$("#dialog_title").html(i18n.t("translation:general.dialog_login_title"));
 						$("#dialog_message").html(i18n.t("translation:general.dialog_login_message"));
