@@ -538,7 +538,9 @@ var app = {
 		$("#survey_country").val(localStorage.country);
 
 		dbapp.queryModels();
-		$.mobile.changePage("#survey");
+		setTimeout(function(){
+			$.mobile.changePage("#survey");
+		},200)
 	},
 	logOut: function() {
 		console.log("logOut");
