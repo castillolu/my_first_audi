@@ -92,7 +92,6 @@ var app = {
 		});
 		if (localStorage.status == 'true') {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
-			dbapp.queryModels();
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -261,7 +260,6 @@ var app = {
 				setTimeout(function() {
 					console.log("Before If Status = " + localStorage.status);
 					if (localStorage.status == 'true') {
-						dbapp.queryModels();
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
 					} else {
@@ -537,11 +535,10 @@ var app = {
 	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
 		$("#survey_country").val(localStorage.country);
-
 		dbapp.queryModels();
 		setTimeout(function(){
 			$.mobile.changePage("#survey");
-		},200)
+		},500)
 	},
 	logOut: function() {
 		console.log("logOut");
