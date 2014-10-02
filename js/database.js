@@ -720,7 +720,7 @@ var dbapp = {
 				function(tx) {
 					try {
 						tx.executeSql('SELECT * FROM Leads WHERE email = ? AND country_id = ?',
-								[email localStorage.country],
+								[email, localStorage.country],
 								function(tx, result) {
 									callBacks.successSearchLeadQRCodeOrEmail(tx, result)
 								},
