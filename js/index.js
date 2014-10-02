@@ -482,6 +482,7 @@ var app = {
 		$.mobile.changePage("#register");
 	},
 	goToFormCheckIn: function() {
+		$("#btn_check_in_end").hide();
 		console.log("goToFormCheckIn");
 		app.loadAutoCompleteLead();
 		$.mobile.changePage("#check-in");

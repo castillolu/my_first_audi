@@ -323,11 +323,13 @@ var callBacks = {
 				$("#list-data-lead .current_car").html(results.rows.item(0).brand + " / " + results.rows.item(0).model + " / " + results.rows.item(0).year);
 				$("#list-data-lead .model_audi").html(results.rows.item(0).model_audi);
 				$("#list-data-lead .type_registry").html(results.rows.item(0).type_registry);
+				$("#btn_check_in_end").show();
 			}else{
 				$("#dialog_title").html(i18n.t("translation:general.dialog_lead_no_exist_title"));
 				$("#dialog_message").html(i18n.t("translation:general.dialog_lead_no_exist_message"));
 				$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_exist_button"));
 				$("#leadSuccess").trigger("click");
+				$("#btn_check_in_end").hide();
 			}
 		}
 		catch (error)
