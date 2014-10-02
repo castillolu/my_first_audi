@@ -92,6 +92,7 @@ var app = {
 		});
 		if (localStorage.status == 'true') {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
+			dbapp.queryModels();
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -260,6 +261,7 @@ var app = {
 				setTimeout(function() {
 					console.log("Before If Status = " + localStorage.status);
 					if (localStorage.status == 'true') {
+						dbapp.queryModels();
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
 					} else {
@@ -484,7 +486,6 @@ var app = {
 	goToFormCheckIn: function() {
 		console.log("goToFormCheckIn");
 		$("#btn_check_in_end").hide();
-		$("#searchLead li").addClass("ui-screen-hidden");		
 		app.loadAutoCompleteLead();
 		$.mobile.changePage("#check-in");
 	},

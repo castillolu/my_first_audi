@@ -330,6 +330,7 @@ var callBacks = {
 				$("#dialog_message").html(i18n.t("translation:general.dialog_lead_no_exist_message"));
 				$("#dialog_btn").html(i18n.t("translation:general.dialog_lead_exist_button"));
 				$("#leadSuccess").trigger("click");
+				$("#list-data-lead").hide();
 				$("#btn_check_in_end").hide();
 			}
 		}
