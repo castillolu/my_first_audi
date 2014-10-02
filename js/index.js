@@ -22,6 +22,11 @@ var appStart = false;
 var synchro = 'true';
 var sendSynchro = true;
 
+//TYPE REGISTRY
+var TYPE_REGISTRY_ONSITE  = "ON_SITE";
+var TYPE_REGISTRY_DEALER  = "DEALER";
+var TYPE_REGISTRY_BOTH    = "DEALER_AND_ON_SITE";
+
 var app = {
 	// Application Constructor
 	initialize: function() {
@@ -124,10 +129,20 @@ var app = {
 		 if (/iPad/i.test(navigator.userAgent)) {
 			$('.synchro').addClass("synchro_ipad");
 		 }
-//        $('#query').on('click', dbapp.queryDemo);
 		app.validateLead();
 		app.validateSurvey();
 		app.getLastUpdate();
+		switch(localStorage.type_registry){
+			case TYPE_REGISTRY_ONSITE:
+				app.hideBooking();
+				break;
+			case TYPE_REGISTRY_DEALER:
+				app.showBooking();
+				break;
+			case TYPE_REGISTRY_BOTH:
+				app.addRequiredRegister();
+				break;
+		}
 	},
 	validateLead: function() {
 		console.log("validateLead");
@@ -552,12 +567,14 @@ var app = {
 
 	},
 	hideBooking: function() {
+		console.log("hideBooking");
 		$('#booking_id option').attr('selected', false);
 		$(".opt_booking").hide();
 		$("#booking_id").rules("remove");
 		$("input[name='type_registry']").rules("remove");
 	},
 	showBooking: function() {
+		console.log("showBooking");
 		$("#booking_id").rules("add", {
 			required: true,
 			messages: {
@@ -567,11 +584,21 @@ var app = {
 		$("input[name='type_registry']").rules("add", {
 			required: true,
 			messages: {
-				required: i18n.t("translation:register.requiere_booking"),
+				required: i18n.t("translation:register.requiere_type_registry"),
 			}
 		});
 
 		$(".opt_booking").show();
+	},
+
+	addRequiredRegister: function(){
+		console.log("addRequiredRegister");
+		$("input[name='type_registry']").rules("add", {
+			required: true,
+			messages: {
+				required: i18n.t("translation:register.requiere_type_registry"),
+			}
+		});
 	},
 	/*CHECK-IN*/
 	loadAutoCompleteLead: function() {
