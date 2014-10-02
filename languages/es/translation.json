@@ -45,7 +45,7 @@
 		"select": "Seleccione año",
 		"onsite": "Prueba en sitio",
 		"dealer": "Prueba en Audi Center",		
-		"requiere_type_registry": "El campo nombre es obligatorio",
+		"requiere_type_registry": "El tipo de registro es obligatorio",
 		"requiere_name": "El campo nombre es obligatorio",
 		"requiere_last_name": "El campo apellido(s) es obligatorio",
 		"requiere_email": "El campo correo electrónico es obligatorio",
