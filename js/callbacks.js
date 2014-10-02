@@ -288,7 +288,6 @@ var callBacks = {
         console.log("successSearchLeadsCheckIn");
 		try {
 			var html = "";
-			$("#searchLead").html("");
 			if (results.rows.length > 0) {
 				for(var i = 0; i < results.rows.length; i++){
 					var obj = {};
@@ -297,6 +296,7 @@ var callBacks = {
 					obj.lastName = results.rows.item(i).last_name;
 					var content = obj.name + " " + obj.lastName + " (" + obj.email + ")";
 					html += '<li><a id="'+ obj.email + '" href="#">' + content + '</a></li>';
+					console.log(obj);
 
 				}
 			}
