@@ -482,8 +482,9 @@ var app = {
 		$.mobile.changePage("#register");
 	},
 	goToFormCheckIn: function() {
-		$("#btn_check_in_end").hide();
 		console.log("goToFormCheckIn");
+		$("#btn_check_in_end").hide();
+		$("#searchLead li").addClass("ui-screen-hidden");		
 		app.loadAutoCompleteLead();
 		$.mobile.changePage("#check-in");
 	},
@@ -611,7 +612,6 @@ var app = {
 
 	},
 	confirmCheckInLead: function() {
-
 		console.log("app.confirmCheckInLead");
 
 		$("#dialog_checkin_title").html(i18n.t("translation:checkin.dialog_checkin_title"));
