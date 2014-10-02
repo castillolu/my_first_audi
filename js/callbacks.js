@@ -301,6 +301,7 @@ var callBacks = {
 				}
 			}
 			$("#searchLead").html(html);
+			$("#searchLead li").addClass("ui-screen-hidden");		
 		}
 		catch (error)
 		{
