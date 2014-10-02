@@ -31,7 +31,8 @@
 	"login": {
 		"title": "User log-in",
 		"username": "User",
-		"password": "Password"
+		"password": "Password",
+		"confirm_logout": "Are you sure you want to logout?"
 	},
 	"register": {
 		"title": "Registration Form",

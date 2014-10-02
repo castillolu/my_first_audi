@@ -108,6 +108,9 @@ var app = {
 				app.isOnline();
 			}
 		}
+
+		document.addEventListener("backbutton", app.blockBackButton, false);
+
 		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
 		$('#btn_check_in').on('click', app.goToFormCheckIn);
@@ -143,6 +146,20 @@ var app = {
 				app.addRequiredRegister();
 				break;
 		}
+	},
+	blockBackButton : function(e){
+	    if($.mobile.activePage.is('#login_page')){
+	        e.preventDefault();
+	    }
+	    else {
+	        if (confirm(i18n.t("translation:login.confirm_logout"))) {
+	            /* Here is where my AJAX code for logging off goes */
+	            app.logOut();
+	        }
+	        else {
+	            return false;
+	        }
+	    }
 	},
 	validateLead: function() {
 		console.log("validateLead");

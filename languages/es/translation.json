@@ -31,7 +31,8 @@
 	"login": {
 		"title": "Ingreso de usuario",
 		"username": "Usuario",
-		"password": "Contraseña"
+		"password": "Contraseña",
+		"confirm_logout": "¿Está seguro de salir de la aplicacioón?"
 	},
 	"register": {
 		"title": "Formulario de registro",
