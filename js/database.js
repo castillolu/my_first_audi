@@ -488,7 +488,9 @@ var dbapp = {
 								.not(':radio, :button, :submit, :reset, :hidden')
 								.val('');
 
+						$("input[name='type_registry'][checked]").removeAttr("checked");
 						$("input[name='type_registry']").checkboxradio("refresh");
+						$("input[name='model_audi'][checked]").removeAttr("checked");
 						$("input[name='model_audi']").checkboxradio("refresh");
 						$(".ui-radio label").removeClass('ui-btn-active ui-radio-on');
 //	 				$('#form_lead select').selectmenu('refresh', true) 
