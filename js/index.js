@@ -538,7 +538,7 @@ var app = {
 		$.mobile.changePage("#survey");
 		setTimeout(function(){
 			dbapp.queryModels();
-		},500)
+		},1000)
 	},
 	logOut: function() {
 		console.log("logOut");
