@@ -19,7 +19,7 @@
 		"never_sync" : "It has never synchronized"
 	},
 	"dashboard":{
-		"form":"Registrtion Form",
+		"form":"Registration Form",
 		"checkin":"Check-In",
 		"synchro":"Synchronization",
 		"survey":"Survey",
@@ -45,7 +45,7 @@
 		"model_audi": "What My First Audi model would you like to test drive?",
 		"booking": "Please select your preferred date for your test drive:",
 		"select_booking": "Select booking",
-		"select": "Select year",
+		"select": "Year",
 		"type_registry": "Please choose test drive registration type",
 		"onsite": "Test drive on site",
 		"dealer": "Test drive on dealership",
