@@ -528,7 +528,7 @@ var app = {
 
 	    $.mobile.loading( "show", {
 	            text: "Loading",
-	            textVisible: false,
+	            textVisible: true,
 	            theme: "b",
 	            textonly: false,
 	            html: ""
