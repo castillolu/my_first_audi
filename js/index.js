@@ -518,6 +518,7 @@ var app = {
 	},
 	goToFormCheckIn: function() {
 		console.log("goToFormCheckIn");
+		$("#list-data-lead").hide();
 		$("#btn_check_in_end").hide();
 		app.loadAutoCompleteLead();
 		$.mobile.changePage("#check-in");
