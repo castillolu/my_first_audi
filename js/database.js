@@ -762,6 +762,7 @@ var dbapp = {
 						var sql = 'UPDATE Leads SET status = ? WHERE email = ? ';
 						tx.executeSql(sql, [STATUS_CHECK_IN, email], function(tx, result) {
 							if (typeReg == "DEALER") {
+								$("#email_survey").val(email);
 								app.goToFormSurvey();
 								//$.mobile.changePage("#survey");
 							} else {
