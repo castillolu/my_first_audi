@@ -46,6 +46,7 @@
 		"booking": "Please select your preferred date for your test drive:",
 		"select_booking": "Select booking",
 		"select": "Select year",
+		"type_registry": "Please choose test drive registration type",
 		"onsite": "Test drive on site",
 		"dealer": "Test drive on dealership",
 		"requiere_type_registry": "The field Type registry is required",
