@@ -286,14 +286,11 @@ var app = {
 						switch(localStorage.type_registry){
 							case TYPE_REGISTRY_ONSITE:
 								app.hideBooking();
-								alert("1");
 								break;
 							case TYPE_REGISTRY_DEALER:
 								app.showBooking();
-								alert("2");
 								break;
 							case TYPE_REGISTRY_BOTH:
-								alert("3");
 								app.addRequiredRegister();
 								break;
 						}
