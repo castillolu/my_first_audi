@@ -741,6 +741,9 @@ html head + body .ui-btn.ui-btn-a:hover {
 	margin-left: 0;
 	margin:0 auto;
 }
+.ui-loader {
+	background-color: #AA142D;
+}
 /* titulos popups */
 .ui-header .ui-title,
 .ui-footer .ui-title {
