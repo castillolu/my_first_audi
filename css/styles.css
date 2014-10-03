@@ -845,6 +845,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1300px)
 		padding:20% 4% 4%;
 		/*width:44.5%;*/
 	}
+	.btn_home_disabled{
+		font-size:3em;
+	}
 	.btn_home_ico img{
 		height:120px;
 		min-width:120px;
