@@ -360,7 +360,7 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
+					alert("getUsers " + text_status + " " + strError);
 				}
 			});
 		}
@@ -525,6 +525,14 @@ var app = {
 	},
 	goToSynchro: function() {
 		app.enableDisableMenu("false");
+
+	    $.mobile.loading( "show", {
+	            text: "Loading",
+	            textVisible: false,
+	            theme: "b",
+	            textonly: false,
+	            html: ""
+	    });		
 		setTimeout(app.getUsers(), 200);
 		setTimeout(app.getModelsAPI(), 200);
 		setTimeout(dbapp.sendLeads(STATUS_CREATE), 200);
@@ -549,6 +557,7 @@ var app = {
 								setTimeout(app.getSurveys(), 500);
 								sendSynchro = false;
 								$(".aviso_confirma").show();
+								$.mobile.loading( "hide" );
 
 							} else {
 								console.log("Error al crear el lastupdate : " + data.error);
@@ -564,7 +573,7 @@ var app = {
 					alert("goToSynchro " + error);
 				}
 			}
-		}, 200);
+		}, 1000);
 
 		console.log("goToSynchro");
 	},
