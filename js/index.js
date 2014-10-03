@@ -156,7 +156,7 @@ var app = {
 			rules: {
 				name: {required: true},
 				last_name: {required: true},
-				email: {required: true},
+				email: {required: true, email: true},
 				phone: {required: true},
 				address: {required: true},
 				current_car_brand: {required: true},
@@ -165,7 +165,7 @@ var app = {
 				model_audi: {required: true}
 			},
 			messages: {
-				email: {required: i18n.t("translation:register.requiere_email")},
+				email: {required: i18n.t("translation:register.requiere_email"), email : i18n.t("translation:register.valid_email")},
 				name: {required: i18n.t("translation:register.requiere_name")},
 				last_name: {required: i18n.t("translation:register.requiere_last_name")},
 				phone: {required: i18n.t("translation:register.requiere_phone")},
@@ -216,14 +216,14 @@ var app = {
 		$("#form_survey").validate({
 			rules: {
 				experience: {required: true},
-				email_survey: {required: true},
+				email_survey: {required: true, email: true},
 				testdrive_experience: {required: true},
 				like: {required: true},
 				contact: {required: true},
 				time: {required: true}
 			},
 			messages: {
-				email_survey: {required: i18n.t("translation:register.requiere_email")},
+				email_survey: {required: i18n.t("translation:register.requiere_email"), email : i18n.t("translation:register.valid_email")},
 				experience: {required: i18n.t("translation:survey.requiere_experience")},
 				testdrive_experience: {required: i18n.t("translation:survey.requiere_testdrive_experience")},
 				like: {required: i18n.t("translation:survey.requiere_like")},

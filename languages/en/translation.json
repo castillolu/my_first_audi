@@ -52,6 +52,7 @@
 		"requiere_name": "The field Name is required",
 		"requiere_last_name": "The field Last name is required",
 		"requiere_email": "The field Email is required",
+		"valid_email": "Please enter a valid email address.",
 		"requiere_phone": "The field Phone number is required",
 		"requiere_address": "The field Address is required",
 		"requiere_brand": "The field Brand is required",
