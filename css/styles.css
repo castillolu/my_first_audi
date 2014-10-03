@@ -654,9 +654,24 @@ label.error {
 	color:#FFFFFF;
 	font-size:1.4em;
 }
+.boton_general .ui-btn:active{
+	background-color:#25292c;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+}
 .boton_general .ui-btn img{
 	vertical-align:bottom;
 	width:7%;
+}
+/* Button hover */
+.boton_general .ui-btn:hover{
+	background-color: 			#25292c /*{a-bhover-background-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
+}
+.aviso_contenido .btn_accept:hover{
+	background-color: 			#25292c /*{a-bhover-background-color}*/;
+	color: 					#FFFFFF  /*{a-bhover-color}*/;
+	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
 .contenido login .ui-btn {
 	background-color:#06C;

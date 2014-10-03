@@ -313,7 +313,6 @@ var callBacks = {
         console.log("successSearchLeadQRCodeOrEmail");
 		try {
 			if (results.rows.length > 0) {
-				$("#list-data-lead").show();
 				emailLead = results.rows.item(0).email;
 				typeRegistry = results.rows.item(0).type_registry;
 				nameLead = results.rows.item(0).name +" "+ results.rows.item(0).last_name;
@@ -325,6 +324,7 @@ var callBacks = {
 				$("#list-data-lead .current_car").html(results.rows.item(0).brand + " / " + results.rows.item(0).model + " / " + results.rows.item(0).year);
 				$("#list-data-lead .model_audi").html(results.rows.item(0).model_audi);
 				$("#list-data-lead .type_registry").html(results.rows.item(0).type_registry);
+				$("#list-data-lead").show();
 				$("#btn_check_in_end").show();
 			}else{
 				$("#dialog_title").html(i18n.t("translation:general.dialog_lead_no_exist_title"));

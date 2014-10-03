@@ -770,7 +770,8 @@ var dbapp = {
 							emailLead = "";
 							typeRegistry = "";
 							nameLead = "";
-
+							$("#list-data-lead").hide();
+							$("#btn_check_in_end").hide();
 						},
 						callBacks.errorQuery);
 					}
