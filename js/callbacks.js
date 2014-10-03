@@ -270,7 +270,7 @@ var callBacks = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							alert("successSearchSurveys : " + text_status + " " + strError);
+							alert("successSearchSurveys : " + text_status + " - " + strError + " - " + objSurvey.email + " Status: " + jqXHR.status);
 						}
 					});
 				}
