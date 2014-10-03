@@ -662,7 +662,8 @@ var app = {
 		console.log("app.confirmCheckInLead");
 
 		$("#dialog_checkin_title").html(i18n.t("translation:checkin.dialog_checkin_title"));
-		$("#dialog_checkin_message").html(i18n.t("translation:checkin.dialog_checkin_message"));
+		$("#dialog_checkin_message").html(i18n.t("translation:checkin.dialog_checkin_message", {Name: nameLead}));
+
 		$("#dialog_checkin_btn_continue").html(i18n.t("translation:checkin.dialog_checkin_button_continue"));
 		$("#dialog_checkin_btn_cancel").html(i18n.t("translation:checkin.dialog_checkin_button_cancel"));
 		$("#confirmSuccess").trigger("click");

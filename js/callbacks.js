@@ -316,6 +316,7 @@ var callBacks = {
 				$("#list-data-lead").show();
 				emailLead = results.rows.item(0).email;
 				typeRegistry = results.rows.item(0).type_registry;
+				nameLead = results.rows.item(0).name +" "+ results.rows.item(0).last_name;
 				$("#list-data-lead .name").html(results.rows.item(0).name);
 				$("#list-data-lead .last_name").html(results.rows.item(0).last_name);
 				$("#list-data-lead .email").html(results.rows.item(0).email);

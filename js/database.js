@@ -11,6 +11,7 @@ var maxSize = 2097152;
 var result = false;
 var emailLead = "";
 var typeRegistry = "";
+var nameLead = "";
 
 //STATUS LEAD AND SURVEY
 var STATUS_CREATE = 'CREATE';
@@ -768,6 +769,7 @@ var dbapp = {
 							}
 							emailLead = "";
 							typeRegistry = "";
+							nameLead = "";
 
 						},
 						callBacks.errorQuery);
