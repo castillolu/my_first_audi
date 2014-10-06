@@ -342,10 +342,7 @@ var app = {
 		if (networkState == 'wifi') {
 			$("#btn_synchro").removeClass("btn_home_disabled");
 			$("#btn_synchro").addClass("btn_home");
-			if (sendSynchro == false) {
-				sendSynchro = true;
-				$("#btn_synchro").prop({disabled: false});
-			}
+			$("#btn_synchro").prop({disabled: false});
 			if (appStart == false) {
 				appStart = true;
 				setTimeout(app.getUsers(), 100);
