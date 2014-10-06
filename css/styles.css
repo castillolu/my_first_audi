@@ -289,9 +289,19 @@ textarea{
 	/*padding:10px;*/
 	margin:0px 0px 5px;
 }
-.btn_home{
-	background-color:#25292c;
-	border:1px solid #FFF;
+button.btn_home{
+	background-color:#25292c!important;
+	border:1px solid #FFF!important;
+	/*float:left;*/
+	font-size:1.2em!important;
+	margin:5px;
+	padding:10% 2% 2%;
+	display:block;
+	/*width:44.5%;*/
+}
+button.btn_home_disabled{
+	background-color:#40474c!important;
+	border:1px solid #FFF!important;
 	/*float:left;*/
 	font-size:1.2em;
 	margin:5px;
@@ -299,20 +309,7 @@ textarea{
 	display:block;
 	/*width:44.5%;*/
 }
-.btn_home_disabled{
-	background-color:#40474c;
-	border:1px solid #FFF;
-	/*float:left;*/
-	font-size:1.2em;
-	margin:5px;
-	padding:10% 2% 2%;
-	display:block;
-	/*width:44.5%;*/
-}
-.btn_home a{
-	/*display: block;*/
-}
-.btn_home_salir{
+button .btn_home_salir{
 	background-color:#e21838;
 	clear:both;
 	font-size:1.6em;
@@ -322,14 +319,14 @@ textarea{
 	text-align:center;
 	/*width:93%;*/
 }
-.btn_home_info{
+button .btn_home_info{
 	/*color:#97999a;*/
 	font-family: 'AudiExtendedBold';
 	padding:15px 0px 2px 5px;
-	text-align:left;
+	text-align:left!important;
 }
-.btn_home_salir .btn_home_info{
-	color:#FFFFFF;
+button .btn_home_salir, button .btn_home_info{
+	color:#dddddd!important;
 }
 .btn_home_ico{
 	/*margin:0 auto;*/
