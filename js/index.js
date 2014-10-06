@@ -123,7 +123,7 @@ var app = {
 		$('#btn_check_in_end').on('click', app.confirmCheckInLead);
 		$('#dialog_checkin_btn_continue').on('click', app.checkInLead);
 		$("#close_message").on('click', function(){
-			app.enableDisableMenu("true");
+			app.enableDisableMenu(true);
 		});
 		$('.back_to_menu').on('click', app.backDashboard);
 		$(document).on('click', 'ul#searchLead li a', app.selectLead);
@@ -524,7 +524,7 @@ var app = {
 		$.mobile.changePage("#check-in");
 	},
 	goToSynchro: function() {
-		app.enableDisableMenu("false");
+		app.enableDisableMenu(false);
 
 	    $.mobile.loading( "show", {
 	            text: i18n.t("translation:general.synchronizing"),
@@ -685,7 +685,7 @@ var app = {
 		dbapp.checkInLead(emailLead, typeRegistry);
 	},
 	enableDisableMenu: function(action) {
-		if (action == "true") {
+		if (action == true) {
 /*
 			$(document).on("click", "#btn_lead", app.goToFormLead);
 			$(document).on("click", "#btn_check_in", app.goToFormCheckIn);
