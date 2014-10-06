@@ -483,9 +483,10 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	padding:10px;
 }
 .contenido_login #btn_logout{
-	width:98%;
-	height:50px;
+	border-radius : 0;
+	-webkit-border-radius : 0;
 	color:#FFF;
+	height:50px;
 	margin:5px 0px 10px;
 	background-color:#e21838;
 	border: none;
@@ -493,6 +494,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	font-family: 'AudiExtendedBold';
 	margin:0 auto;
 	padding:10px;
+	width:100%;
 }
 .ui-filterable{
 	margin-bottom:3.5%;
