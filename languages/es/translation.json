@@ -18,7 +18,7 @@
 		"last_sync" : "Última sincronización:",
 		"never_sync" : "Nunca ha sincronizado",
 		"synchronizing" : "Sincronizando...",
-		"message_error" : "Error al sincronizar con el siguiente mensaje '__messageError__'. Por favor intente mas tarde."
+		"message_error" : "Error en la comunicación con el siguiente mensaje '__messageError__'. Por favor intente mas tarde."
 	},
 	"dashboard":{
 		"form":"Formulario",

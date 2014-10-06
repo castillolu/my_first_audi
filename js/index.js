@@ -572,8 +572,9 @@ var app = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							var messageError = "Status Error : " + jqXHR.status + " - " +text_status + " - " + strError;
-							alert(i18n.t("translation:general.synchro_error", {messageError: messageError}));
+							var messageError = jqXHR.status + " - " +text_status + " - " + strError;
+							messageError = i18n.t("translation:general.synchro_error", {messageError: messageError});
+							alert(messageError);
 						}
 					});
 				}
