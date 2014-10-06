@@ -572,7 +572,8 @@ var app = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							alert(text_status + " " + strError);
+							var messageError = "Status Error : " + jqXHR.status + " - " +text_status + " - " + strError;
+							alert(i18n.t("translation:general.synchro_error", {messageError: messageError}));
 						}
 					});
 				}
@@ -652,12 +653,6 @@ var app = {
 				if (result.format = "QR_CODE") {
 					dbapp.searchLeadByQRCode(result.text);
 				}
-				/*
-				 alert("We got a barcode\n" +
-				 "Result: " + result.text + "\n" +
-				 "Format: " + result.format + "\n" +
-				 "Cancelled: " + result.cancelled);
-				 */
 				console.log(result);
 
 			}, function(error) {

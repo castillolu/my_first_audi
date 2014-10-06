@@ -17,7 +17,8 @@
 		"dialog_lead_exist_button" : "Aceptar",
 		"last_sync" : "Última sincronización:",
 		"never_sync" : "Nunca ha sincronizado",
-		"synchronizing" : "Sincronizando..."
+		"synchronizing" : "Sincronizando...",
+		"message_error" : "Error al sincronizar con el siguiente mensaje '__messageError__'. Por favor intente mas tarde."
 	},
 	"dashboard":{
 		"form":"Formulario",
