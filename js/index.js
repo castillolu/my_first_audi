@@ -112,6 +112,8 @@ var app = {
 		}
 
 		document.addEventListener("backbutton", app.blockBackButton, false);
+		document.addEventListener("online", app.isOnline, false);
+		document.addEventListener("offline", app.isOffline, false);		
 
 		$('#login').on('submit', app.loginAuth);
 		$('#btn_lead').on('click', app.goToFormLead);
