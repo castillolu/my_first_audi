@@ -106,6 +106,8 @@ var app = {
 			if ((navigator.network.connection.type).toUpperCase() != "NONE" &&
 					(navigator.network.connection.type).toUpperCase() != "UNKNOWN") {
 				app.isOnline();
+			}else{
+				app.isOffline();
 			}
 		}
 
@@ -368,7 +370,9 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getUsers " + text_status + " " + strError);
+					var messageError = "getUsers : "+ jqXHR.status + " - " +text_status + " - " + strError;						
+					messageError = i18n.t("translation:general.message_error", {messageError: messageError});
+					alert(messageError);
 				}
 			});
 		}
@@ -398,7 +402,9 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getBookings : " + text_status + " " + strError);
+					var messageError = "getBookings : "+ jqXHR.status + " - " +text_status + " - " + strError;						
+					messageError = i18n.t("translation:general.message_error", {messageError: messageError});
+					alert(messageError);
 				}
 			});
 		}
@@ -426,7 +432,9 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getLeads : " + text_status + " - " + strError);
+					var messageError = "getLeads : "+ jqXHR.status + " - " +text_status + " - " + strError;						
+					messageError = i18n.t("translation:general.message_error", {messageError: messageError});
+					alert(messageError);
 				}
 			});
 		}
@@ -452,7 +460,9 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert("getSurveys : " + text_status + " - " + strError);
+					var messageError = "getSurveys : "+ jqXHR.status + " - " +text_status + " - " + strError;						
+					messageError = i18n.t("translation:general.message_error", {messageError: messageError});
+					alert(messageError);
 				}
 			});
 		}
@@ -480,7 +490,9 @@ var app = {
 					}
 				},
 				error: function(jqXHR, text_status, strError) {
-					alert(text_status + " " + strError);
+					var messageError = "getModelsAPI : "+ jqXHR.status + " - " +text_status + " - " + strError;						
+					messageError = i18n.t("translation:general.message_error", {messageError: messageError});
+					alert(messageError);
 				}
 			});
 		}
@@ -572,8 +584,7 @@ var app = {
 							}
 						},
 						error: function(jqXHR, text_status, strError) {
-							var messageError = jqXHR.status + " - " +text_status + " - " + strError;
-							
+							var messageError = jqXHR.status + " - " +text_status + " - " + strError;						
 							messageError = i18n.t("translation:general.message_error", {messageError: messageError});
 							alert(messageError);
 						}
