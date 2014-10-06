@@ -744,10 +744,6 @@ html head + body .ui-btn.ui-btn-a:hover {
 }
 .ui-loader {
 	background-color: #AA142D;
-	height: 10%;
-	left : 44.5%;
-	top: 45%;
-	width: 11%;
 }
 ..ui-icon-loading{
 	background : url(../img/ajax-loader.gif) #AA142D;

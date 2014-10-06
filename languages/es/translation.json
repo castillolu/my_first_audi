@@ -25,7 +25,7 @@
 		"survey":"Encuesta",
 		"exit": "Salir",
 		"confirmation": "Confirmación",
-		"message_synchro" : "Su sincronización fue exitosa",
+		"message_synchro" : "Su sincronización fue exitosa.",
 		"accept":"Aceptar"
 	},
 	"login": {
@@ -50,7 +50,7 @@
 		"onsite": "Prueba en sitio",
 		"dealer": "Prueba en Audi Center",		
 		"requiere_type_registry": "El Tipo de registro es obligatorio",
-		"requiere_name": "El campo Nombre es obligatorio",
+		"requiere_name": "El campo Nombre(s) es obligatorio.",
 		"requiere_last_name": "El campo Apellido(s) es obligatorio.",
 		"requiere_email": "El campo Correo electrónico es obligatorio.",
 		"valid_email": "Por favor ingrese un Correo electrónico válido.",
