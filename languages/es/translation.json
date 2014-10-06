@@ -51,16 +51,16 @@
 		"dealer": "Prueba en Audi Center",		
 		"requiere_type_registry": "El Tipo de registro es obligatorio",
 		"requiere_name": "El campo Nombre es obligatorio",
-		"requiere_last_name": "El campo Apellido(s) es obligatorio",
-		"requiere_email": "El campo Correo electrónico es obligatorio",
-		"valid_email": "Por favor ingrese un Correo electrónico válido",
-		"requiere_phone": "El campo Teléfono es obligatorio",
-		"requiere_address": "El campo Dirección es obligatorio",
-		"requiere_brand": "El campo Marca es obligatorio",
-		"requiere_model": "El campo Modelo es obligatorio",
-		"requiere_year": "El campo Año es obligatorio",
-		"requiere_model_audi": "Seleccione modelo de Audi de interés para la prueba de manejo",
-		"requiere_booking": "Por favor, seleccione la fecha para la prueba de manejo"
+		"requiere_last_name": "El campo Apellido(s) es obligatorio.",
+		"requiere_email": "El campo Correo electrónico es obligatorio.",
+		"valid_email": "Por favor ingrese un Correo electrónico válido.",
+		"requiere_phone": "El campo Teléfono es obligatorio.",
+		"requiere_address": "El campo Dirección es obligatorio.",
+		"requiere_brand": "El campo Marca es obligatorio.",
+		"requiere_model": "El campo Modelo es obligatorio.",
+		"requiere_year": "El campo Año es obligatorio.",
+		"requiere_model_audi": "Seleccione modelo de Audi de interés para la prueba de manejo.",
+		"requiere_booking": "Por favor, seleccione la fecha para la prueba de manejo."
 	},
 	"attr": {
 		"brand": "Marca",
@@ -96,8 +96,8 @@
 	   "requiere_experience": "Seleccione cómo fue su experiencia con Mi Primer Audi.",
 	   "requiere_testdrive_experience": "Seleccione cómo calificaría su experiencia en la prueba de manejo en general.",
 	   "requiere_like": "El campo 'comparta con nosotros lo que más le gustó de su prueba de manejo' es obligatorio.",
-	   "requiere_contact": "Seleccione si le gustaría ser contactado",
-	   "requiere_time": "Seleecione el tiempo de interés para la compra."	   
+	   "requiere_contact": "Seleccione si le gustaría ser contactado.",
+	   "requiere_time": "Seleccione el tiempo de interés para la compra."	   
 	},
 	"checkin":{
 		"qrcode" : "QR CODE",
