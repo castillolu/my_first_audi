@@ -573,7 +573,8 @@ var app = {
 						},
 						error: function(jqXHR, text_status, strError) {
 							var messageError = jqXHR.status + " - " +text_status + " - " + strError;
-							messageError = i18n.t("translation:general.synchro_error", {messageError: messageError});
+							
+							messageError = i18n.t("translation:general.message_error", {messageError: messageError});
 							alert(messageError);
 						}
 					});
