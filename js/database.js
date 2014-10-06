@@ -761,12 +761,13 @@ var dbapp = {
 					function(tx) {
 						var sql = 'UPDATE Leads SET status = ? WHERE email = ? ';
 						tx.executeSql(sql, [STATUS_CHECK_IN, email], function(tx, result) {
+							app.loadAutoCompleteLead();
 							if (typeReg == "DEALER") {
 								$("#email_survey").val(email);
 								app.goToFormSurvey();
 								//$.mobile.changePage("#survey");
 							} else {
-
+								$("#email_survey").val("");
 							}
 							emailLead = "";
 							typeRegistry = "";
