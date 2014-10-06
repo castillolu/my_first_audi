@@ -330,7 +330,7 @@ var app = {
 		$("#btn_synchro").removeClass("btn_home");
 	},
 	isOnline: function() {
-		$("#btn_synchro").prop({disabled: false});
+		$("#btn_synchro").prop({disabled: true});
 		$("#btn_synchro").addClass("btn_home_disabled");
 		$("#btn_synchro").removeClass("btn_home");
 
@@ -344,7 +344,7 @@ var app = {
 			$("#btn_synchro").addClass("btn_home");
 			if (sendSynchro == false) {
 				sendSynchro = true;
-				$("#btn_synchro").prop({disabled: true});
+				$("#btn_synchro").prop({disabled: false});
 			}
 			if (appStart == false) {
 				appStart = true;
