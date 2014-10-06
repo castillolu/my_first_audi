@@ -159,7 +159,10 @@ h1{
 	/*font-size:0.9em;*/
 }
 .aviso_confirma{
+	background-color: #dddddd;
+	border:1px solid #d7d7d7;
 	font-size:0.9em;
+	margin-bottom : 0.6em;
 	text-align:center;
 	/*margin:0 auto;
 	width:93%;*/
@@ -173,7 +176,6 @@ h1{
 	margin:5px;
 }
 .aviso_contenido{
-	border:1px solid #d7d7d7;
 	margin:5px;
 	text-align:center;
 	/*margin:5px 0px 5px 0px;*/
