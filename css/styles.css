@@ -176,6 +176,13 @@ h1{
 	margin:5px;
 }
 .aviso_contenido{
+	border:1px solid #d7d7d7;
+	margin:5px;
+	text-align:center;
+	/*margin:5px 0px 5px 0px;*/
+	padding:0px 0px 15px 0px;
+}
+.aviso_contenido_home{
 	margin:5px;
 	text-align:center;
 	/*margin:5px 0px 5px 0px;*/
@@ -470,7 +477,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 	border: none;
 	font-size:1.3em;*/
 }
-.aviso_contenido .btn_accept{
+.aviso_contenido_home .btn_accept{
 	width:50%;
 	height:40px;
 	color:#FFF;
