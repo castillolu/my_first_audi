@@ -154,9 +154,13 @@ var app = {
 		console.log("validateLead");
 		$("#form_lead").validate({
 			rules: {
+				type_registry: {required: true},
 				name: {required: true},
 				last_name: {required: true},
-				email: {required: true, email: true},
+				email_lead: {
+					required: true,
+					email: true
+				},
 				phone: {required: true},
 				address: {required: true},
 				current_car_brand: {required: true},
@@ -165,9 +169,13 @@ var app = {
 				model_audi: {required: true}
 			},
 			messages: {
+				type_registry: {required: i18n.t("translation:register.requiere_type_registry")},
 				name: {required: i18n.t("translation:register.requiere_name")},
 				last_name: {required: i18n.t("translation:register.requiere_last_name")},
-				email: {required: i18n.t("translation:register.requiere_email"), email : i18n.t("translation:register.valid_email")},
+				email_lead: {
+					required: i18n.t("translation:register.requiere_email"),
+					email : i18n.t("translation:register.valid_email")
+				},
 				phone: {required: i18n.t("translation:register.requiere_phone")},
 				address: {required: i18n.t("translation:register.requiere_address")},
 				current_car_brand: {required: i18n.t("translation:register.requiere_brand")},
