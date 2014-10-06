@@ -686,20 +686,34 @@ var app = {
 	},
 	enableDisableMenu: function(action) {
 		if (action == "true") {
+/*
 			$(document).on("click", "#btn_lead", app.goToFormLead);
 			$(document).on("click", "#btn_check_in", app.goToFormCheckIn);
 			$(document).on("click", "#btn_synchro", app.goToSynchro);
 			$(document).on("click", "#btn_survey", app.goToFormSurvey);
 			$(document).on("click", "#btn_logout", app.logOut);
+			*/
+			$("#btn_lead").prop({disabled: true});
+			$("#btn_check_in").prop({disabled: true});
+			$("#btn_synchro").prop({disabled: true});
+			$("#btn_survey").prop({disabled: true});
+			$("#btn_logout").prop({disabled: true});
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").addClass("btn_home");
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").removeClass("btn_home_disabled");
 			$(".aviso_confirma").hide();
 		} else {
+			/*
 			$(document).off("click", "#btn_synchro", false);
 			$(document).off("click", "#btn_lead", false);
 			$(document).off("click", "#btn_check_in", false);
 			$(document).off("click", "#btn_survey", false);
 			$(document).off("click", "#btn_logout", false);
+*/
+			$("#btn_lead").prop({disabled: false});
+			$("#btn_check_in").prop({disabled: false});
+			$("#btn_synchro").prop({disabled: false});
+			$("#btn_survey").prop({disabled: false});
+			$("#btn_logout").prop({disabled: false});			
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").addClass("btn_home_disabled");
 			$("#btn_synchro, #btn_lead, #btn_check_in, #btn_survey").removeClass("btn_home");
 		}
