@@ -479,7 +479,7 @@ html body div.ui-slider-track.ui-body-a .ui-btn-active {
 }
 .aviso_contenido_home .btn_accept{
 	width:50%;
-	height:40px;
+	height:60px;
 	color:#FFF;
 	margin:5px 0px 10px;
 	background-color:#25292c;
@@ -677,8 +677,8 @@ label.error {
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
-.aviso_contenido .btn_accept:hover{
-	background-color: 			#25292c /*{a-bhover-background-color}*/;
+.aviso_contenido_home .btn_accept:hover{
+	background-color: 		#25292c /*{a-bhover-background-color}*/;
 	color: 					#FFFFFF  /*{a-bhover-color}*/;
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ 0 /*{a-bhover-shadow-color}*/;
 }
