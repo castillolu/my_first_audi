@@ -36,7 +36,7 @@
 	},
 	"register": {
 		"title": "Formulario de registro",
-		"name": "Nombre:",
+		"name": "Nombre(s):",
 		"last_name": "Apellido(s):",
 		"email": "Correo electrónico:",
 		"phone": "Teléfono:",
@@ -46,7 +46,7 @@
 		"booking": "Por favor, seleccione la fecha para la prueba de manejo:",
 		"select_booking": "Seleccione reserva",
 		"select": "Año",
-		"type_registry": "Por favor, seleccione el tipo de prueba para el registro",
+		"type_registry": "Por favor, seleccione el tipo de prueba para el registro:",
 		"onsite": "Prueba en sitio",
 		"dealer": "Prueba en Audi Center",		
 		"requiere_type_registry": "El Tipo de registro es obligatorio",
@@ -101,7 +101,7 @@
 	},
 	"checkin":{
 		"qrcode" : "QR CODE",
-		"name":  "Nombre:",
+		"name":  "Nombre(s):",
 		"last_name": "Apellido(s):",
 		"email": "Correo electrónico:",
 		"phone_number": "Teléfono:",
