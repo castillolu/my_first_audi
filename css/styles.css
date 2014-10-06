@@ -743,12 +743,16 @@ html head + body .ui-btn.ui-btn-a:hover {
 }
 .ui-loader {
 	background-color: #AA142D;
-	height: 9%;
-	left : 50.7%;
+	height: 10%;
+	left : 44.5%;
+	top: 45%;
 	width: 11%;
 }
 ..ui-icon-loading{
 	background : url(../img/ajax-loader.gif) #AA142D;
+}
+.ui-loader-verbose{
+	opacity: 1;
 }
 /* titulos popups */
 .ui-header .ui-title,

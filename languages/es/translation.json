@@ -10,7 +10,7 @@
 		"last_syncro" : "Última sincronizacón : ",
 		"dialog_lead_exist_title" : "El lead ya existe",
 		"dialog_lead_exist_message" : "Verifique el correo eletrónico, ya que el utilizado se encuentra asociado a otro registro.",		
-		"dialog_lead_no_exist_title" : "Resutlado",
+		"dialog_lead_no_exist_title" : "Resultado",
 		"dialog_lead_no_exist_message" : "Verifique el código QR, ya que el utilizado no se encuentra asociado a ningún registro.",		
 		"dialog_login_title" : "Ingreso de usuario",
 		"dialog_login_message" : "Por favor verifique su usuario y contraseña e intente nuevamente",		
