@@ -745,7 +745,7 @@ html head + body .ui-btn.ui-btn-a:hover {
 .ui-loader {
 	background-color: #AA142D;
 }
-..ui-icon-loading{
+.ui-icon-loading{
 	background : url(../img/ajax-loader.gif) #AA142D;
 }
 .ui-loader-verbose{
