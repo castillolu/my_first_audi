@@ -527,7 +527,7 @@ var app = {
 		app.enableDisableMenu("false");
 
 	    $.mobile.loading( "show", {
-	            text: "Loading",
+	            text: i18n.t("translation:general.synchronizing"),
 	            textVisible: true,
 	            theme: "b",
 	            textonly: false,

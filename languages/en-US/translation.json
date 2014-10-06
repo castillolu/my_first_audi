@@ -16,7 +16,8 @@
 		"dialog_login_message" : "Please verify your user and password and try again.",		
 		"dialog_lead_exist_button" : "Ok",
 		"last_sync" : "Last sync:",
-		"never_sync" : "It has never synchronized"
+		"never_sync" : "It has never synchronized",
+		"synchronizing" : "Synchronizing..."
 	},
 	"dashboard":{
 		"form":"Registration Form",

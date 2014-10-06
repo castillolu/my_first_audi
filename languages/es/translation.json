@@ -16,7 +16,8 @@
 		"dialog_login_message" : "Por favor verifique su usuario y contraseña e intente nuevamente",		
 		"dialog_lead_exist_button" : "Aceptar",
 		"last_sync" : "Última sincronización:",
-		"never_sync" : "Nunca ha sincronizado"
+		"never_sync" : "Nunca ha sincronizado",
+		"synchronizing" : "Sincronizando..."
 	},
 	"dashboard":{
 		"form":"Formulario",
