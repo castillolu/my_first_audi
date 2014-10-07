@@ -81,9 +81,7 @@ var app = {
 				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
 			});
 		}
-		app.validateLead();
-		app.validateSurvey();
-
+		app.getLastUpdate();
 	},
 	loadContent: function() {
 		$("#dashboard").load("dashboard.html", function() {
@@ -102,7 +100,7 @@ var app = {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
 			$.mobile.changePage("#dashboard");
 		}
-
+		app.getLastUpdate();
 	},
 	loadActions: function() {
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -139,7 +137,6 @@ var app = {
 		 if (/iPad/i.test(navigator.userAgent)) {
 			$('.synchro').addClass("synchro_ipad");
 		 }
-		app.getLastUpdate();
 	},
 	blockBackButton : function(e){
 	    if($.mobile.activePage.is('#login_page')){
@@ -503,6 +500,7 @@ var app = {
 
 	},
 	goToFormLead: function() {
+		app.validateLead();
 		dbapp.queryBookings();
 		switch (localStorage.type_registry) {
 			case "ON_SITE":
@@ -601,6 +599,7 @@ var app = {
 	},
 	goToFormSurvey: function() {
 		console.log("goToFormSurvey");
+		app.validateSurvey();
 		$("#survey_country").val(localStorage.country);
 		$.mobile.changePage("#survey");
 		setTimeout(function(){

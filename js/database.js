@@ -113,7 +113,7 @@ var dbapp = {
 		tx.executeSql('INSERT INTO Users (id, country_id, profile_id, name, ' +
 				'last_name, email, password, type_registry, language) ' +
 				' VALUES (1, 1, 1, "Admin", "Admin", "admin@admin.com",' +
-				'"21232f297a57a5a743894a0e4a801fc3", "DEALER", "en-US")');
+				'"21232f297a57a5a743894a0e4a801fc3", "DEALER", "es")');
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		} else {
 			tx.executeSql('INSERT INTO Bookings (id, country_id, name, date, quotas) ' +
