@@ -81,6 +81,9 @@ var app = {
 				$(".login, .general, .register, .survey, .checkin, .dashboard").i18n();
 			});
 		}
+		app.validateLead();
+		app.validateSurvey();
+
 	},
 	loadContent: function() {
 		$("#dashboard").load("dashboard.html", function() {
@@ -97,8 +100,6 @@ var app = {
 		});
 		if (localStorage.status == 'true') {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
-			app.validateLead();
-			app.validateSurvey();
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -295,8 +296,6 @@ var app = {
 					if (localStorage.status == 'true') {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
-						app.validateLead();
-						app.validateSurvey();
 						switch(localStorage.type_registry){
 							case TYPE_REGISTRY_ONSITE:
 								app.hideBooking();
