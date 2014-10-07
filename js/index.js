@@ -97,6 +97,8 @@ var app = {
 		});
 		if (localStorage.status == 'true') {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
+			app.validateLead();
+			app.validateSurvey();
 			$.mobile.changePage("#dashboard");
 		}
 
@@ -136,8 +138,6 @@ var app = {
 		 if (/iPad/i.test(navigator.userAgent)) {
 			$('.synchro').addClass("synchro_ipad");
 		 }
-		app.validateLead();
-		app.validateSurvey();
 		app.getLastUpdate();
 	},
 	blockBackButton : function(e){
@@ -295,6 +295,8 @@ var app = {
 					if (localStorage.status == 'true') {
 						setTimeout(app.setLanguage(localStorage.language, false), 1000);
 						$.mobile.changePage("#dashboard");
+						app.validateLead();
+						app.validateSurvey();
 						switch(localStorage.type_registry){
 							case TYPE_REGISTRY_ONSITE:
 								app.hideBooking();
@@ -615,7 +617,6 @@ var app = {
 	backDashboard: function() {
 		console.log("backDashboard");
 		$.mobile.changePage("#dashboard");
-
 	},
 	hideBooking: function() {
 		console.log("hideBooking");
