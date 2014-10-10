@@ -22,7 +22,7 @@
     <preference name="phonegap-version" value="3.5.0" />
     <preference name="orientation"      value="portrait" />
     <preference name="target-device"    value="tablet" />
-    <preference name="fullscreen"       value="true" />
+    <preference name="fullscreen"       value="false" />
     <preference name="webviewbounce"    value="false" />
 
 	<access origin="http://myfirstaudi.info" subdomains="true" />
