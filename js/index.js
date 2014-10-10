@@ -98,7 +98,9 @@ var app = {
 		});
 		if (localStorage.status == 'true') {
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
-			$.mobile.changePage("#dashboard");
+			setTimeout(function(){
+				$.mobile.changePage("#dashboard");
+			}, 1000);
 		}
 		app.getLastUpdate();
 	},
