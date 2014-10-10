@@ -97,8 +97,10 @@ var app = {
 			console.log("Load survey.");
 		});
 		if (localStorage.status == 'true') {
+			$('body').hide();
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
 			setTimeout(function(){
+				$('body').hide();
 				$.mobile.changePage("#dashboard");
 			}, 1000);
 		}
