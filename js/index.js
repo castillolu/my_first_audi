@@ -100,7 +100,7 @@ var app = {
 			$('body').hide();
 			setTimeout(app.setLanguage(localStorage.language, false), 1000);
 			setTimeout(function(){
-				$('body').hide();
+				$('body').show();
 				$.mobile.changePage("#dashboard");
 			}, 1000);
 		}
