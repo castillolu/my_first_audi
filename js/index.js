@@ -220,7 +220,7 @@ var app = {
 						dbapp.saveLead(tx, objLead);
 					}
 			);
-			return false;
+			return true;
 		} catch (error) {
 			alert("app.saveLead " + error);
 		}
@@ -608,7 +608,7 @@ var app = {
 		$.mobile.changePage("#survey");
 		setTimeout(function(){
 			dbapp.queryModels();
-		},1000)
+		},1000);
 	},
 	logOut: function() {
 		console.log("logOut");
