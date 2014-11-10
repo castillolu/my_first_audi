@@ -220,7 +220,7 @@ var app = {
 						dbapp.saveLead(tx, objLead);
 					}
 			);
-			return true;
+			return false;
 		} catch (error) {
 			alert("app.saveLead " + error);
 		}
@@ -605,10 +605,10 @@ var app = {
 		console.log("goToFormSurvey");
 		app.validateSurvey();
 		$("#survey_country").val(localStorage.country);
-		$.mobile.changePage("#survey");
 		setTimeout(function(){
 			dbapp.queryModels();
 		},1000);
+		$.mobile.changePage("#survey");
 	},
 	logOut: function() {
 		console.log("logOut");
