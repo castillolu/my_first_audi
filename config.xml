@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "info.myfirstaudi"
-        version   = "1.0.6">
+        version   = "1.0.7">
     <name>Mi primer Audi</name>
 
     <description>
@@ -19,7 +19,7 @@
     <gap:platform name="ios" />
     <gap:platform name="android" />    
 
-    <preference name="phonegap-version" value="3.6.3" />
+    <preference name="phonegap-version" value="3.4" />
     <preference name="orientation"      value="portrait" />
     <preference name="target-device"    value="tablet" />
     <preference name="fullscreen"       value="false" />
