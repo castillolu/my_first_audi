@@ -43,7 +43,7 @@
 		"email" : "Adresse électronique",
 		"phone" : "Téléphone",
 		"address" : "Adresse",
-		"current_car" : "Quelle voiture conduisez-vous dans ce moment? (Maque/Modèle/Année)",
+		"current_car" : "Quelle voiture conduisez-vous dans ce moment? (Marque/Modèle/Année)",
 		"model_audi" : "Quel modèle de Mon Premier Audi vous intéresse pour le test de conduite?",
 		"booking" : "Veuillez choisir une date pour le test de conduite",
 		"select_booking" : "Choisissez réservation",
